@@ -1,13 +1,13 @@
 <p align="center">
-  <img src="static/images/mug-black.png" alt="Cups Of Joy Logo">
+  <img src="src/assets/images/logo.png" alt="Travel Space">
 </p>
-<h1 align="center">Cups of Joy</h1>
+<h1 align="center">Travel Space</h1>
 
 <h2>Welcome</h2>
 
 Link to live website: [CLICK HERE!](https://cupsofjoy-c2c917eb3f59.herokuapp.com/)
 
-![Am I Responsive Image](documentation/amireponsive/cupsofjoy.png)
+![Am I Responsive Image]()
 
 # Introduction
 
@@ -1040,28 +1040,16 @@ The following blogs/tutorials complemented my learning for this project:
 ## Media
 
 The following sites were used to gather the photographic media used:
-
-- [Reviews Page by Arshad Sutar](https://www.pexels.com/sv-se/foto/bonor-koffein-kaffe-kopp-1749303/)
-- [Home Page Image by Pixabay](https://www.pexels.com/sv-se/foto/koffein-kaffe-kopp-latte-459489/)
-- [Default Image by Frank Leuderalbert](https://www.pexels.com/sv-se/foto/koffein-kaffe-cappuccino-dryck-9188611/)
-- [Review Image by Quang Nguyen Vinh](https://www.pexels.com/sv-se/foto/2159065/)
-- [About Page Image by cottonbro studio](https://www.pexels.com/sv-se/foto/man-kaffe-kafe-loft-4790061/)
-- [Slideshow Image by Afta Putta Gunawan](https://www.pexels.com/sv-se/foto/683039/)
-- [Slideshow Image by Quark Studio](https://www.pexels.com/sv-se/foto/man-manniskor-kvinna-kafe-2506993/)
-- [Slideshow Image by Alina](https://www.pexels.com/sv-se/foto/konst-kopp-oskarpa-latte-420754/)
-- [Article by Chevanon Photography](https://www.pexels.com/sv-se/foto/302899/)
-- [Article by Chevanon Photography](https://www.pexels.com/sv-se/foto/302901/)
-- [Article Image by Lukas](https://www.pexels.com/sv-se/foto/942732/)
-- [Article Image by Aleksandar Pasaric](https://www.pexels.com/sv-se/foto/mat-bonor-koffein-kaffe-2711959/)
-- [Article Image by Barcelona Albertus](https://www.pexels.com/sv-se/foto/man-hander-kaffe-rana-1924951/)
-- [Article Image by Livier Garcia](https://www.pexels.com/sv-se/foto/1459339/)
-- [Article Image by Lukas](https://www.pexels.com/sv-se/foto/942736/)
-- [Article Image by cottonbro studio](https://www.pexels.com/sv-se/foto/man-bonor-kaffe-arbetssatt-4820817/)
-- [Article Image by Pixabay](https://www.pexels.com/sv-se/foto/koffein-kaffe-kopp-rana-164653/)
-- [Article Image by Pixabay](https://www.pexels.com/sv-se/foto/halsosam-hav-solnedgang-man-414012/)
-- [Article Image by Bia Santana](https://www.pexels.com/sv-se/foto/gata-gaende-flicka-vagg-16162211/)
-- [Article Image by Pixabay](https://www.pexels.com/sv-se/foto/man-manniskor-hatt-ansikte-59858/)
-- [Logo & Favicon by icons8.com](https://icons8.com/icon/set/drinks/laces)
+**Pages**
+- [xxx Page by xxx]()
+- [xxx Page by xxx]()
+**Slideshow**
+- [Slideshow Image byxxx]()
+- [Slideshow Image byxxx]()
+**Articles**
+- [Article Image by xxx]()
+**Logo**
+- [Logo & Favicon by logo.com](https://logo.com/)
 
 ## Additional reading/tutorials/books/blogs
 
