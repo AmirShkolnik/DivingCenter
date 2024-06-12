@@ -5,13 +5,13 @@
 
 <h2>Welcome</h2>
 
-Link to live website: [CLICK HERE!](https://cupsofjoy-c2c917eb3f59.herokuapp.com/)
+Link to live website: [CLICK HERE!](https://travelspace-05a60ae0306b.herokuapp.com/)
 
 ![Am I Responsive Image]()
 
 # Introduction
 
-## Cups of Joy
+## Travel Space
 
 Welcome to [**Cups of Joy**](https://cupsofjoy-c2c917eb3f59.herokuapp.com/), a vibrant online platform dedicated to celebrating the art of coffee and fostering a sense of community. Our mission is to create a warm and inviting space where coffee enthusiasts can explore the rich world of artisanal brews, share their passion, and connect with like-minded individuals.
 
@@ -85,11 +85,11 @@ Join [**Cups of Joy**](https://cupsofjoy-c2c917eb3f59.herokuapp.com/) today and 
 
 # Overview
 
-Live Version: [**Cups of Joy**](https://cupsofjoy-c2c917eb3f59.herokuapp.com/)
+Live Version: [**Travel Space**](https://travelspace-05a60ae0306b.herokuapp.com/)
 
 ![Home Page](documentation/Features/home.png)
 
-**Cups of Joy**is a vibrant online platform celebrating the art of coffee and fostering a sense of community. It serves as a communal hub for:
+**Travel Space** is a vibrant online platform celebrating the art of coffee and fostering a sense of community. It serves as a communal hub for:
 
 - Joining a passionate community of coffee enthusiasts and professionals.
 - Creating personalized profiles to share coffee experiences and insights.
@@ -124,17 +124,17 @@ Overall, the UX design of Cups Of Joy aims to create an immersive and inclusive 
 
 The color scheme for Cups Of Joy is carefully crafted to evoke a warm, inviting, and coffee-inspired atmosphere. Here's a detailed breakdown:
 
-[Colors by romanuke.com](https://color.romanuke.com/tsvetovaya-palitra-1160/) - Colour Scheme for Cups Of Joy website
+[Colors by sarahtitus.com](https://www.sarahtitus.com/25-best-travel-destinations-color-palettes/) - Colour Scheme for Travel Space website
 
-![Palette](documentation/colour/colorscheme.png)
+![Palette](doc/images/color-scheme.png)
 
-- **#4a5060 (Dark Grayish Blue):** This deep, rich shade is used as the primary background color for the navigation menu, creating a cozy and grounding foundation for the website.
+- **Lotus Green – #317312:** This deep, rich shade is used as the primary background color for the navigation menu, creating a cozy and grounding foundation for the website.
 
-- **#70AFE2 (Bright Sky Blue):** Reminiscent of a clear morning sky, this vibrant hue is employed for accents, buttons, and interactive elements, adding a refreshing and energizing touch to the design.
+- **Green Scallion – #6EBB2D** Reminiscent of a clear morning sky, this vibrant hue is employed for accents, buttons, and interactive elements, adding a refreshing and energizing touch to the design.
 
-- **#926e5a (Warm Brown):** Inspired by the rich tones of freshly brewed coffee, this earthy shade is utilized for accents and highlights, evoking a sense of comfort and familiarity.
+- **Blue Isle – #24BAEC** Inspired by the rich tones of freshly brewed coffee, this earthy shade is utilized for accents and highlights, evoking a sense of comfort and familiarity.
 
-- **#929fb0 (Soft Gray):** This muted gray tone serves as a complementary color, providing a subtle backdrop for content and allowing the other colors to shine.
+- **Capri Blue – #166EF3** This muted gray tone serves as a complementary color, providing a subtle backdrop for content and allowing the other colors to shine.
 
 - **#FFFFFF (White):** Used for backgrounds, text, and other elements, white creates a clean and crisp canvas, ensuring excellent readability and contrast.
 
@@ -150,7 +150,7 @@ The font choices for **Cups Of Joy** are carefully curated to create a warm, inv
 
 ### Google Fonts
 
-**Cups Of Joy** utilizes fonts from  [Google Fonts](https://fonts.google.com/), a library of open-source font families, ensuring easy integration and accessibility across various devices and platforms.
+**Travel Space** utilizes fonts from  [Google Fonts](doc/fonts/roboto-fonts.png), a library of open-source font families, ensuring easy integration and accessibility across various devices and platforms.
 
 #### Roboto
 - **Usage:** Body text, descriptions, and content.
