@@ -1045,6 +1045,16 @@ The following blogs/tutorials complemented my learning for this project:
 - [React Bootstrap](https://react-bootstrap-v4.netlify.app/getting-started/introduction/)
 - [React Router](https://reactrouter.com/en/main)
 
+**Django REST framework**
+- [Django REST framework](https://www.django-rest-framework.org/)
+
+**Code Institute Template**
+- [Code Institute Template](https://github.com/Code-Institute-Org/ci-full-template)
+- [Setting up basic Django Project with Cloudinary](https://docs.google.com/document/d/1LCLxWhmW_4VTE4GXsnHgmPUwSPKNT4KyMxSH8agbVqU/edit#heading=h.mpopj7v69qqn)
+
+
+
+
 - Code Institute PP5 Walkthrough - Moments
 
 
