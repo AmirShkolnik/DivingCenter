@@ -6,7 +6,11 @@
   background-size: cover; /* to make the image cover the entire element */
   background-position: center; /* to center the image */
   background-repeat: no-repeat; /* to prevent the image from repeating */
-}
+  }
+
+  .Main {
+    padding-top: 81px;
+  }
   
   * {
     box-sizing: border-box;

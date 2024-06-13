@@ -1026,7 +1026,11 @@ The following blogs/tutorials complemented my learning for this project:
 **React**
 - [Using CSS Modules In React App](https://medium.com/@ralph1786/using-css-modules-in-react-app-c2079eadbb87)
 - [Adding a CSS Modules Stylesheet](https://create-react-app.dev/docs/adding-a-css-modules-stylesheet/)
-- [xxx Page by xxx]()
+- [React Functional Components VS Class Components](https://articles.wesionary.team/react-functional-components-vs-class-components-86a2d2821a22)
+- [React Bootstrap](https://react-bootstrap-v4.netlify.app/getting-started/introduction/)
+- [React Router](https://reactrouter.com/en/main)
+
+- Code Institute PP5 Walkthrough - Moments
 
 
 
@@ -1034,7 +1038,7 @@ The following blogs/tutorials complemented my learning for this project:
 
 The following sites were used to gather the photographic media used:
 **Pages**
-- [xxx Page by xxx]()
+
 - [xxx Page by xxx]()
 **Slideshow**
 - [Slideshow Image byxxx]()
