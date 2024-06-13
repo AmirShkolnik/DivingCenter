@@ -1023,19 +1023,12 @@ Here's an original step-by-step guide for forking the "Cups of Joy" project from
 
 The following blogs/tutorials complemented my learning for this project:
 
-- [Django Docs](https://www.djangoproject.com/)
-- [Bootstrap Docs](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
-- [Blog Article](<https://www.sankalpjonna.com/learn-django/how-to-override-the-save-method-in-your-django-models>)
-- [StackOverflow](<https://stackoverflow.com/questions/11754877/troubleshooting-related-field-has-invalid-lookup-icontains>)
-- [Very Academy](<https://www.youtube.com/watch?v=H4QPHLmsZMU>)
-- [StackOverflow for Pagination ](<https://stackoverflow.com/questions/30864011/display-only-some-of-the-page-numbers-by-django-pagination>)
-- [How TO - Slideshow](https://www.w3schools.com/howto/howto_js_slideshow.asp)
-- [Manage images](https://cloudinary.com/documentation/django_helper_methods_tutorial)
-- [Bootstrap 4 Simple Landing Page](https://www.youtube.com/watch?v=evSgm1bKdxU)
-- [Create Blog Like Button](https://www.youtube.com/watch?v=PXqRPqDjDgc)
-- [Am I Responsive](https://ui.dev/amiresponsive)
-- [ Creating a User Bookmark / Favourites Features](https://www.youtube.com/watch?v=H4QPHLmsZMU)
-- [Home Page](https://it-restaurant-42ee32c14928.herokuapp.com/)
+**React**
+- [Using CSS Modules In React App](https://medium.com/@ralph1786/using-css-modules-in-react-app-c2079eadbb87)
+- [Adding a CSS Modules Stylesheet](https://create-react-app.dev/docs/adding-a-css-modules-stylesheet/)
+- [xxx Page by xxx]()
+
+
 
 ## Media
 
@@ -1053,15 +1046,12 @@ The following sites were used to gather the photographic media used:
 
 ## Additional reading/tutorials/books/blogs
 
-- [Dee Mc](https://www.youtube.com/watch?v=sBjbty691eI&list=PLXuTq6OsqZjbCSfiLNb2f1FOs8viArjWy) for Django
-- [Geeks for Geeks](https://www.geeksforgeeks.org/python-programming-language/?ref=ghm) for additional Python learning.
+**User Stories**
 - [User Stories](https://storiesonboard.com/blog/epics-and-user-stories)
 - [Epics](https://www.youtube.com/watch?v=ogV2r9579WI)
-- [CI PP4](https://www.youtube.com/watch?v=Q5cdZXomzVg&list=PL_7334VduOHsrWzhu5Ta2lrkp016kcBWY&index=44)
-- [Portfolio Project 4: The guide to MVP](https://www.youtube.com/watch?v=vIv1c6RLBac&list=PL_7334VduOHsrWzhu5Ta2lrkp016kcBWY&index=34)
-- PP4 walkthrough projects.
-- Used Google and Bing Search for website text and post content. 
-- I used Perplexity.ai and Grammarly for checking my writing for mistakes in grammar, spelling, and punctuation.
+
+**xxx**
+- [xxx Page by xxx]()
 
 ## Readme and Testing Inspiration
 - [Readme by Shizuka Donaghue](https://github.com/ShizukaDonaghue/happy-beans)
