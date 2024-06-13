@@ -126,7 +126,22 @@ The color scheme for Cups Of Joy is carefully crafted to evoke a warm, inviting,
 
 [Colors by sarahtitus.com](https://www.sarahtitus.com/25-best-travel-destinations-color-palettes/) - Colour Scheme for Travel Space website
 
-![Palette](doc/images/color-scheme.png)
+![Palette 1](doc/images/colors/color-scheme.png)
+
+Lotus Green – #317312
+Green Scallion – #6EBB2D
+Wafer Brown – #DED6C9
+Blue Isle – #24BAEC
+Capri Blue – #166EF3
+
+![Palette 2](doc/images/colors/colors.png)
+
+Dark Magic Blue – #222222
+Tamarillo Red – #891F11
+Orange Spray – #FE940A
+Lemon Pie – #FDE24D
+Empire Blue – #3A77C7
+
 
 - **Lotus Green – #317312:** This deep, rich shade is used as the primary background color for the navigation menu, creating a cozy and grounding foundation for the website.
 
