@@ -1,8 +1,12 @@
 .App {
-    font-family: "Roboto", sans-serif;
-    background-color: #f8f8f8;
-    min-height: 100vh;
-  }
+  font-family: "Roboto", sans-serif;
+  background-color: #f8f8f8;
+  min-height: 100vh;
+  background-image: url('../src/assets/images/bg_home.webp'); /* Add this line */
+  background-size: cover; /* to make the image cover the entire element */
+  background-position: center; /* to center the image */
+  background-repeat: no-repeat; /* to prevent the image from repeating */
+}
   
   * {
     box-sizing: border-box;
@@ -18,7 +22,7 @@
   }
   
   a:hover i {
-    color: #2142b2;
+    color: #FE940A;
     transition: color ease-in-out 0.3s;
   }
   
@@ -32,5 +36,5 @@
   i:hover {
     cursor: pointer;
     transition: color ease-in-out 0.3s;
-    color: #2142b2;
+    color: #FE940A;
   }

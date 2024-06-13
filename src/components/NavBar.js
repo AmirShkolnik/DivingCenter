@@ -1,6 +1,6 @@
 import React from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
-import logo from "../assets/images/logo-color.webp";
+import logo from "../assets/images/logo-black-color.webp";
 import styles from "../styles/NavBar.module.css";
 
 const NavBar = () => {
