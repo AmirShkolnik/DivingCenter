@@ -34,7 +34,7 @@
 
 .home-text {
     text-align: center;
-    color: white;
+    color: #c7ae6a;
 }
 
 h1 {
@@ -50,10 +50,10 @@ p {
 .home-btn {
     margin-top: 20px;
     padding: 10px 20px;
-    border: 2px solid white;
+    border: 2px solid #c7ae6a;
     border-radius: 0.25em;
     background-color: rgba(255, 255, 255, 0.2);
-    color: white;
+    color: #b99a45;
     font-size: 1.2em;
     cursor: pointer;
     transition: background-color 0.3s ease;
