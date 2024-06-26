@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { axiosRes } from "../../api/axiosDefaults";
 import styles from '../../styles/BookingForm.module.css';
+import { useRedirect } from "../../hooks/useRedirect";
 
 const BookingForm = () => {
+  useRedirect("loggedOut");
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
   const [courseId, setCourseId] = useState('');
