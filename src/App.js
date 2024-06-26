@@ -5,6 +5,7 @@ import Container from "react-bootstrap/Container";
 import { Route, Switch } from "react-router-dom";
 import "./api/axiosDefaults";
 import LandingPage from "./pages/LandingPage.js";
+import BookingForm from "./pages/bookings/BookingForm.js";
 import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
 import PostCreateForm from "./pages/posts/PostCreateForm";
@@ -29,6 +30,7 @@ function App() {
       <Container className={styles.Main}>
         <Switch>
         <Route exact path="/" component={LandingPage} />
+        <Route exact path="/bookings/create" component={BookingForm} />
           <Route
             exact
             path="/posts"
