@@ -49,6 +49,21 @@
     margin-top: 5px;
   }
 
+  .bookingButton {
+    background-color: #0d5589;
+    color: white;
+    font-size: 700;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 4px;
+  }
+  
+  .bookingButton:hover {
+    background-color: #158fe7;
+  }
+
   .cancelButton {
     background-color: red;
     color: white;
