@@ -1,9 +1,27 @@
 import React from "react";
 import styles from '../../styles/LandingPage.module.css';
 import VideoPlayer from '../../components/Video/VideoPlayer.js';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 const LandingPage = () => {
+    const currentUser = useCurrentUser();
+    const history = useHistory();
+
+    const handleCommunityClick = (e) => {
+        if (!currentUser) {
+          e.preventDefault();
+          history.push("/signin");
+        }
+      };
+
+      const getUserProfilePath = () => {
+        if (!currentUser) return "/signin";
+        // Check for various possible identifier properties
+        const userId = currentUser.id || currentUser.pk || currentUser.user_id;
+        return userId ? `/profiles/${userId}` : "/profile";
+    };
+
     return (
         <div className={styles.landingpage}>
             <VideoPlayer publicId="ke9x3yszhi9wucopgon2" />
@@ -15,7 +33,15 @@ const LandingPage = () => {
                     <p>Join our inclusive community or explore our diving courses designed for all skill sets.</p>
                 </div>
                 <div className={styles['button-container']}>
-                    <Link to="/signin" className={styles['home-btn']}>Diving Community</Link>
+          {currentUser ? (
+            <Link to={getUserProfilePath()} className={styles['home-btn']}>
+            Welcome {currentUser.username}
+            </Link>
+                    ) : (
+                        <button className={styles['home-btn']} onClick={handleCommunityClick}>
+                            Diving Community
+                        </button>
+                    )}
                     <Link to="/courses" className={styles['home-btn']}>Diving Courses</Link>
                 </div>
             </div>
