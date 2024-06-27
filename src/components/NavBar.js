@@ -122,19 +122,18 @@ const NavBar = () => {
   );
 };
 
-// Custom toggle component to style the dropdown toggle
 const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
-  <a
-    href=""
+  <button
     ref={ref}
     onClick={(e) => {
       e.preventDefault();
       onClick(e);
     }}
     className={styles.DropdownToggle}
+    aria-label="Toggle user menu"
   >
     {children}
-  </a>
+  </button>
 ));
 
 export default NavBar;
