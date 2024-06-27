@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "../../styles/CoursesPage.module.css";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const CourseBox = ({ title, imageSrc, description }) => (
   <div className={styles.courseBox}>
@@ -12,6 +13,9 @@ const CourseBox = ({ title, imageSrc, description }) => (
       <Col xs={12} md={8}>
         <p>{description}</p>
         <p>This course starts on the 10th of each month at 09:00 or 15:00 and lasts 2 weeks.</p>
+        <Link to="/bookings/create" className={styles.bookButton}>
+            Book Now
+          </Link>
       </Col>
     </Row>
   </div>
