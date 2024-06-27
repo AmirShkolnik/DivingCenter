@@ -15,7 +15,7 @@ const LandingPage = () => {
                 </div>
                 <div className={styles['button-container']}>
                     <Link to="/signin" className={styles['home-btn']}>Explore</Link>
-                    <Link to="/booking/create" className={styles['home-btn']}>Book a Course</Link>
+                    <Link to="/bookings/create" className={styles['home-btn']}>Book a Course</Link>
                 </div>
             </div>
         </div>

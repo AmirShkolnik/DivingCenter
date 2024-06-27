@@ -12,6 +12,7 @@ const BookingForm = () => {
   const [courses, setCourses] = useState([]);
   const [errors, setErrors] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [bookingId, setBookingId] = useState(null);
 
   const translateCourseName = (name) => {
     const courseNameMap = {
@@ -53,6 +54,7 @@ const BookingForm = () => {
         additional_info: additionalInfo
       });
       console.log('Booking created:', data);
+      setBookingId(data.id);
       setIsSubmitted(true);
       resetForm();
     } catch (err) {
@@ -67,6 +69,17 @@ const BookingForm = () => {
         console.log('Error message:', err.message);
         setErrors({ message: 'An error occurred while creating the booking.' });
       }
+    }
+  };
+
+  const handleCancelBooking = async () => {
+    try {
+      await axiosRes.delete(`/bookings/${bookingId}/`);
+      console.log('Booking cancelled');
+      setIsSubmitted(false);
+      setBookingId(null);
+    } catch (err) {
+      console.error('Error cancelling booking:', err);
     }
   };
 
@@ -98,6 +111,7 @@ const BookingForm = () => {
         <h2>Booking Submitted Successfully!</h2>
         <p>Your booking has been sent to the admin for review.</p>
         <button onClick={() => setIsSubmitted(false)}>Make Another Booking</button>
+        <button onClick={handleCancelBooking}>Cancel Booking</button>
       </div>
     );
   }
