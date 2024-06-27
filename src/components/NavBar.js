@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
+import Dropdown from "react-bootstrap/Dropdown";
 import logo from "../assets/logo.png";
 import styles from "../styles/NavBar.module.css";
 import { NavLink } from "react-router-dom";
@@ -32,14 +33,6 @@ const NavBar = () => {
 
   const loggedInIcons = (
     <>
-    <NavLink
-      className={styles.NavLink}
-      activeClassName={styles.Active}
-      to="/posts/create"
-    >
-      <i className="far fa-plus-square"></i>Add post
-    </NavLink>
-
       <NavLink
         className={styles.NavLink}
         activeClassName={styles.Active}
@@ -47,26 +40,29 @@ const NavBar = () => {
       >
         <i className="fas fa-stream"></i>Feed
       </NavLink>
-      <NavLink
-        className={styles.NavLink}
-        activeClassName={styles.Active}
-        to="/liked"
-      >
-        <i className="fas fa-heart"></i>Liked
-      </NavLink>
-      <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
-        <i className="fas fa-sign-out-alt"></i>Sign out
-      </NavLink>
-      <NavLink
-        className={styles.NavLink}
-        to={`/profiles/${currentUser?.profile_id}`}
-      >
-        <Avatar
-          src={currentUser?.profile_image}
-          text={currentUser?.username || "Profile"}
-          height={40}
-        />
-      </NavLink>
+      <Dropdown className={styles.Dropdown}>
+        <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
+          <Avatar
+            src={currentUser?.profile_image}
+            text={currentUser?.username || "Profile"}
+            height={40}
+          />
+        </Dropdown.Toggle>
+        <Dropdown.Menu className={styles.DropdownMenu}>
+          <Dropdown.Item as={NavLink} to={`/profiles/${currentUser?.profile_id}`} className={styles.DropdownItem}>
+            <i className="fas fa-user"></i>Profile
+          </Dropdown.Item>
+          <Dropdown.Item as={NavLink} to="/posts/create" className={styles.DropdownItem}>
+            <i className="far fa-plus-square"></i>Add post
+          </Dropdown.Item>
+          <Dropdown.Item as={NavLink} to="/liked" className={styles.DropdownItem}>
+            <i className="fas fa-heart"></i>Liked
+          </Dropdown.Item>
+          <Dropdown.Item as={NavLink} to="/" onClick={handleSignOut} className={styles.DropdownItem}>
+            <i className="fas fa-sign-out-alt"></i>Sign out
+          </Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown>
     </>
   );
 
@@ -125,5 +121,20 @@ const NavBar = () => {
     </Navbar>
   );
 };
+
+// Custom toggle component to style the dropdown toggle
+const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
+  <a
+    href=""
+    ref={ref}
+    onClick={(e) => {
+      e.preventDefault();
+      onClick(e);
+    }}
+    className={styles.DropdownToggle}
+  >
+    {children}
+  </a>
+));
 
 export default NavBar;
