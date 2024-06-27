@@ -6,8 +6,8 @@ import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import Image from "react-bootstrap/Image";
 import Container from "react-bootstrap/Container";
+import VideoPlayer from '../../components/Video/VideoPlayerSign.js';
 
 import { Link, useHistory } from "react-router-dom";
 
@@ -113,10 +113,8 @@ function SignInForm() {
         md={6}
         className={`my-auto d-none d-md-block p-2 ${styles.SignInCol}`}
       >
-        <Image
-          className={`${appStyles.FillerImage}`}
-          src={"https://codeinstitute.s3.amazonaws.com/AdvancedReact/hero.jpg"}
-        />
+         <VideoPlayer publicId="ke9x3yszhi9wucopgon2" />
+    
       </Col>
     </Row>
   );

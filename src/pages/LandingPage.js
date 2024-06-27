@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const LandingPage = () => {
     return (
         <div className={styles.landingpage}>
-            <VideoPlayer id="demo-player" publicId="ke9x3yszhi9wucopgon2" />
+            <VideoPlayer publicId="ke9x3yszhi9wucopgon2" />
             <div className={styles['bg-overlay']}></div>
             <div className={styles['content-wrapper']}>
                 <div className={styles['home-text']}>
