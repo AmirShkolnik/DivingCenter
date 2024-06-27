@@ -1,6 +1,6 @@
 import React from "react";
-import styles from '../styles/LandingPage.module.css';
-import VideoPlayer from '../components/Video/VideoPlayer.js';
+import styles from '../../styles/LandingPage.module.css';
+import VideoPlayer from '../../components/Video/VideoPlayer.js';
 import { Link } from 'react-router-dom';
 
 const LandingPage = () => {

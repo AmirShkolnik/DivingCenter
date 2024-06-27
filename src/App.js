@@ -4,7 +4,7 @@ import NavBar from "./components/NavBar";
 import Container from "react-bootstrap/Container";
 import { Route, Switch } from "react-router-dom";
 import "./api/axiosDefaults";
-import LandingPage from "./pages/LandingPage.js";
+import LandingPage from "./pages/homepage/LandingPage.js";
 import BookingForm from "./pages/bookings/BookingForm.js";
 import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
