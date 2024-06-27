@@ -1,25 +1,35 @@
 import React from "react";
 import styles from "../../styles/CoursesPage.module.css";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const CourseBox = ({ title, imageSrc, description }) => (
-  <div className={styles.courseBox}>
-    <h2>{title}</h2>
-    <Row>
-      <Col xs={12} md={4}>
-        <img src={imageSrc} alt={title} className={styles.courseImage} />
-      </Col>
-      <Col xs={12} md={8}>
-        <p>{description}</p>
-        <p>This course starts on the 10th of each month at 09:00 or 15:00 and lasts 2 weeks.</p>
-        <Link to="/bookings/create" className={styles.bookButton}>
+const CourseBox = ({ title, imageUrl, description }) => {
+  return (
+    <div className={styles.courseBox}>
+      <h2>{title}</h2>
+      <Row>
+        <Col xs={12} md={4}>
+          <img
+            src={imageUrl}
+            className={styles.courseImage}
+            alt={title}
+            onError={(e) => {
+              console.error(`Error loading image: ${imageUrl}`);
+              e.target.src = '../images/courses/4.webp';
+            }}
+          />
+        </Col>
+        <Col xs={12} md={8}>
+          <p>{description}</p>
+          <p>This course starts on the 10th of each month at 09:00 or 15:00 and lasts 2 weeks.</p>
+          <Link to="/bookings/create" className={styles.bookButton}>
             Book Now
           </Link>
-      </Col>
-    </Row>
-  </div>
-);
+        </Col>
+      </Row>
+    </div>
+  );
+};
 
 const CoursesPage = () => {
   return (
@@ -27,17 +37,17 @@ const CoursesPage = () => {
       <h1>Our Diving Courses</h1>
       <CourseBox
         title="Open Water Diver"
-        imageSrc="/path-to-open-water-image.jpg"
+        imageUrl="../images/courses/1.webp"
         description="Learn the basics of scuba diving and gain your first diving certification."
       />
       <CourseBox
         title="Advanced Open Water Diver"
-        imageSrc="/path-to-advanced-open-water-image.jpg"
+        imageUrl="../images/courses/2.webp"
         description="Expand your diving skills and explore new underwater environments."
       />
       <CourseBox
         title="Rescue Diver"
-        imageSrc="/path-to-rescue-diver-image.jpg"
+        imageUrl="../images/courses/3.webp"
         description="Learn to prevent and manage dive emergencies, minor and major."
       />
     </Container>
