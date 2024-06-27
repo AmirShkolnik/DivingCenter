@@ -31,3 +31,44 @@
     color: #c7ae6a;
     transition: color ease-in-out 0.3s;
   }
+
+  .Dropdown {
+    margin-left: 10px;
+  }
+  
+  .DropdownToggle {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 0;
+    text-decoration: none;
+  }
+  
+  .DropdownToggle:hover {
+    color: #b99a45;
+  }
+  
+  .DropdownMenu {
+    background-color: #0d5589;
+    border: 1px solid #c7ae6a;
+  }
+  
+  .DropdownItem {
+    color: white;
+    transition: color ease-in-out 0.3s;
+  }
+  
+  .DropdownItem:hover {
+    background-color: #0d5589;
+    color: #b99a45;
+  }
+  
+  .DropdownItem i {
+    color: #c7ae6a;
+    margin-right: 5px;
+  }
+  
+  .DropdownItem:hover i {
+    color: #c7ae6a;
+  }
