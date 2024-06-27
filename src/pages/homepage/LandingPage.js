@@ -35,7 +35,7 @@ const LandingPage = () => {
                 <div className={styles['button-container']}>
           {currentUser ? (
             <Link to={getUserProfilePath()} className={styles['home-btn']}>
-            Welcome {currentUser.username}
+            Welcome Back {currentUser.username}!
             </Link>
                     ) : (
                         <button className={styles['home-btn']} onClick={handleCommunityClick}>
