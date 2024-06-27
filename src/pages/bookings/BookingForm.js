@@ -13,6 +13,7 @@ const BookingForm = () => {
   const [errors, setErrors] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [bookingId, setBookingId] = useState(null);
+  const [isCanceled, setIsCanceled] = useState(false);
 
   const translateCourseName = (name) => {
     const courseNameMap = {
@@ -72,17 +73,6 @@ const BookingForm = () => {
     }
   };
 
-  const handleCancelBooking = async () => {
-    try {
-      await axiosRes.delete(`/bookings/${bookingId}/`);
-      console.log('Booking cancelled');
-      setIsSubmitted(false);
-      setBookingId(null);
-    } catch (err) {
-      console.error('Error cancelling booking:', err);
-    }
-  };
-
   const resetForm = () => {
     setDate('');
     setTime('');
@@ -104,6 +94,33 @@ const BookingForm = () => {
       setErrors({ date: 'Bookings are only available on the 10th of each month.' });
     }
   };
+
+  const handleCancelBooking = async () => {
+    try {
+      await axiosRes.delete(`/bookings/${bookingId}/`);
+      console.log('Booking cancelled');
+      setIsCanceled(true);
+      setIsSubmitted(false);
+      setBookingId(null);
+    } catch (err) {
+      setErrors({ message: 'An error occurred while cancelling the booking.' });
+    }
+  };
+
+  if (isCanceled) {
+    return (
+      <div className={styles.successMessage}>
+        <h2>Booking Cancelled Successfully!</h2>
+        <p>Your booking has been cancelled.</p>
+        <button className={styles.bookingButton} onClick={() => {
+          setIsCanceled(false);
+          resetForm();
+        }}>
+          Make a New Booking
+        </button>
+      </div>
+    );
+  }
 
   if (isSubmitted) {
     return (
