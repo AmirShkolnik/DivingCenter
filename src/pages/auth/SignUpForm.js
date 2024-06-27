@@ -4,11 +4,11 @@ import { Link, useHistory } from "react-router-dom";
 import styles from "../../styles/SignInUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
+import VideoPlayerSignUp from '../../components/Video/VideoPlayerSignUp.js';
 
 import {
   Form,
   Button,
-  Image,
   Col,
   Row,
   Container,
@@ -129,10 +129,8 @@ const SignUpForm = () => {
         md={6}
         className={`my-auto d-none d-md-block p-2 ${styles.SignUpCol}`}
       >
-        <Image
-          className={`${appStyles.FillerImage}`}
-          src={"https://codeinstitute.s3.amazonaws.com/AdvancedReact/hero2.jpg"}
-        />
+         <VideoPlayerSignUp publicId="160396821086388" />
+
       </Col>
     </Row>
   );

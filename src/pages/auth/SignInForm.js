@@ -7,7 +7,7 @@ import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
-import VideoPlayer from '../../components/Video/VideoPlayerSign.js';
+import VideoPlayerSignIn from '../../components/Video/VideoPlayerSignIn.js';
 
 import { Link, useHistory } from "react-router-dom";
 
@@ -113,7 +113,7 @@ function SignInForm() {
         md={6}
         className={`my-auto d-none d-md-block p-2 ${styles.SignInCol}`}
       >
-         <VideoPlayer publicId="ke9x3yszhi9wucopgon2" />
+         <VideoPlayerSignIn publicId="ke9x3yszhi9wucopgon2" />
     
       </Col>
     </Row>
