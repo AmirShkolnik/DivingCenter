@@ -32,9 +32,14 @@ const NavBar = () => {
     setDropdownOpen(isOpen);
   };
 
+  const handleNavItemClick = () => {
+    setExpanded(false);
+    setDropdownOpen(false);
+  };
+
   const loggedInIcons = (
     <>
-      <NavLink className={styles.NavLink} to="/feed">
+      <NavLink className={styles.NavLink} to="/feed" onClick={handleNavItemClick}>
         <i className="fas fa-stream"></i> Feed
       </NavLink>
       <NavDropdown
@@ -48,16 +53,16 @@ const NavBar = () => {
         }
         id="dropdown-custom-components"
       >
-        <NavDropdown.Item as={NavLink} to={`/profiles/${currentUser?.profile_id}`} className={styles.DropdownItem}>
+        <NavDropdown.Item as={NavLink} to={`/profiles/${currentUser?.profile_id}`} className={styles.DropdownItem} onClick={handleNavItemClick}>
           <i className="fas fa-user"></i> Profile
         </NavDropdown.Item>
-        <NavDropdown.Item as={NavLink} to="/posts/create" className={styles.DropdownItem}>
+        <NavDropdown.Item as={NavLink} to="/posts/create" className={styles.DropdownItem} onClick={handleNavItemClick}>
           <i className="far fa-plus-square"></i> Add post
         </NavDropdown.Item>
-        <NavDropdown.Item as={NavLink} to="/liked" className={styles.DropdownItem}>
+        <NavDropdown.Item as={NavLink} to="/liked" className={styles.DropdownItem} onClick={handleNavItemClick}>
           <i className="fas fa-heart"></i> Liked
         </NavDropdown.Item>
-        <NavDropdown.Item onClick={handleSignOut} className={styles.DropdownItem}>
+        <NavDropdown.Item onClick={() => { handleSignOut(); handleNavItemClick(); }} className={styles.DropdownItem}>
           <i className="fas fa-sign-out-alt"></i> Sign out
         </NavDropdown.Item>
       </NavDropdown>
@@ -66,10 +71,10 @@ const NavBar = () => {
 
   const loggedOutIcons = (
     <>
-      <NavLink className={styles.NavLink} to="/signin">
+      <NavLink className={styles.NavLink} to="/signin" onClick={handleNavItemClick}>
         <i className="fas fa-sign-in-alt"></i> Sign in
       </NavLink>
-      <NavLink to="/signup" className={styles.NavLink}>
+      <NavLink to="/signup" className={styles.NavLink} onClick={handleNavItemClick}>
         <i className="fas fa-user-plus"></i> Sign up
       </NavLink>
     </>
@@ -78,7 +83,7 @@ const NavBar = () => {
   return (
     <Navbar expanded={expanded} className={styles.NavBar} expand="md" fixed="top" ref={ref}>
       <Container>
-        <NavLink to="/">
+        <NavLink to="/" onClick={handleNavItemClick}>
           <Navbar.Brand>
             <img src={logo} alt="logo" height="45" />
           </Navbar.Brand>
@@ -93,7 +98,7 @@ const NavBar = () => {
         />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto text-left">
-            <NavLink exact className={styles.NavLink} to="/">
+            <NavLink exact className={styles.NavLink} to="/" onClick={handleNavItemClick}>
               <i className="fas fa-home"></i> Home
             </NavLink>
             {currentUser ? loggedInIcons : loggedOutIcons}
