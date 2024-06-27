@@ -2,21 +2,20 @@ import React from "react";
 import styles from "../../styles/CoursesPage.module.css";
 import { Container, Row, Col } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
-
-const isUserLoggedIn = () => {
-  return false;
-};
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 
 const CourseBox = ({ title, imageUrl, description }) => {
   const history = useHistory();
+  const currentUser = useCurrentUser();
 
   const handleBookNowClick = (e) => {
-    if (!isUserLoggedIn()) {
-      e.preventDefault();
-      alert("You must be logged in to book a course.");
-    } else {
+    e.preventDefault();
+    if (currentUser) {
       history.push("/bookings/create");
+    } else {
+      alert("You must be logged in to book a course.");
+      history.push("/signin", { from: "/bookings/create" });
     }
   };
 
