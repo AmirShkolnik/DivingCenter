@@ -48,3 +48,22 @@
     font-size: 0.8em;
     margin-top: 5px;
   }
+
+  .cancelButton {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 4px;
+  }
+  
+  .cancelButton:hover {
+    background-color: darkred;
+  }
+
+  .buttonContainer {
+    display: flex;
+    gap: 10px;
+  }

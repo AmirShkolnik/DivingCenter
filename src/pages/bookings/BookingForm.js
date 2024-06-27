@@ -110,8 +110,10 @@ const BookingForm = () => {
       <div className={styles.successMessage}>
         <h2>Booking Submitted Successfully!</h2>
         <p>Your booking has been sent to the admin for review.</p>
+        <div className={styles.buttonContainer}>
         <button onClick={() => setIsSubmitted(false)}>Make Another Booking</button>
-        <button onClick={handleCancelBooking}>Cancel Booking</button>
+        <button className={styles.cancelButton} onClick={handleCancelBooking}>Cancel Booking</button>
+      </div>
       </div>
     );
   }
