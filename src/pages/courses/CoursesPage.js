@@ -1,9 +1,25 @@
 import React from "react";
 import styles from "../../styles/CoursesPage.module.css";
 import { Container, Row, Col } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+
+const isUserLoggedIn = () => {
+  return false;
+};
+
 
 const CourseBox = ({ title, imageUrl, description }) => {
+  const history = useHistory();
+
+  const handleBookNowClick = (e) => {
+    if (!isUserLoggedIn()) {
+      e.preventDefault();
+      alert("You must be logged in to book a course.");
+    } else {
+      history.push("/bookings/create");
+    }
+  };
+
   return (
     <div className={styles.courseBox}>
       <h2>{title}</h2>
@@ -22,7 +38,7 @@ const CourseBox = ({ title, imageUrl, description }) => {
         <Col xs={12} md={8}>
           <p>{description}</p>
           <p>This course starts on the 10th of each month at 09:00 or 15:00 and lasts 2 weeks.</p>
-          <Link to="/bookings/create" className={styles.bookButton}>
+          <Link to="/bookings/create" className={styles.bookButton} onClick={handleBookNowClick}>
             Book Now
           </Link>
         </Col>
