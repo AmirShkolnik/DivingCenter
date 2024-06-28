@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import { Button } from "react-bootstrap";
 import { useSetProfileData } from "../../contexts/ProfileDataContext";
+import { toast } from 'react-toastify';
 
 const Profile = (props) => {
   const { profile, mobile, imageSize = 55 } = props;
@@ -15,6 +16,24 @@ const Profile = (props) => {
   const is_owner = currentUser?.username === owner;
 
   const { handleFollow, handleUnfollow } = useSetProfileData();
+
+  const handleFollowClick = async () => {
+    try {
+      await handleFollow(profile);
+      toast.success(`You are now following ${owner}. Refresh to see their posts!`);
+    } catch (err) {
+      toast.error("An error occurred while trying to follow. Please try again.");
+    }
+  };
+
+  const handleUnfollowClick = async () => {
+    try {
+      await handleUnfollow(profile);
+      toast.warning(`You have unfollowed ${owner}. You will no longer see their posts.`);
+    } catch (err) {
+      toast.error("An error occurred while trying to unfollow. Please try again.");
+    }
+  };
 
   return (
     <div
@@ -29,20 +48,19 @@ const Profile = (props) => {
         <strong>{owner}</strong>
       </div>
       <div className={`text-right ${!mobile && "ml-auto"}`}>
-        {!mobile &&
-          currentUser &&
+        {currentUser &&
           !is_owner &&
           (following_id ? (
             <Button
               className={`${btnStyles.Button} ${btnStyles.BlackOutline}`}
-              onClick={() => handleUnfollow(profile)}
+              onClick={handleUnfollowClick}
             >
               unfollow
             </Button>
           ) : (
             <Button
               className={`${btnStyles.Button} ${btnStyles.Black}`}
-              onClick={() => handleFollow(profile)}
+              onClick={handleFollowClick}
             >
               follow
             </Button>
