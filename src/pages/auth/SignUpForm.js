@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-
+import { toast } from 'react-toastify';
 import styles from "../../styles/SignInUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 import VideoPlayerSignUp from '../../components/Video/VideoPlayerSignUp.js';
+
 
 import {
   Form,
@@ -41,9 +42,11 @@ const SignUpForm = () => {
     event.preventDefault();
     try {
       await axios.post("/dj-rest-auth/registration/", signUpData);
+      toast.success("Sign up successful! Welcome to our diving community! Please SignIn"); // Success toast
       history.push("/signin");
     } catch (err) {
       setErrors(err.response?.data);
+      toast.error("Sign up failed. Please check your information and try again."); // Error toast
     }
   };
 
