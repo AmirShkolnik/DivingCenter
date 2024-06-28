@@ -81,3 +81,11 @@ a:hover i {
 .DropdownItem:hover i {
   color: #ffffff;
 }
+
+.Dropdown :global(.dropdown-toggle::after) {
+  display: none;
+}
+
+.DropdownArrow {
+  color: white;
+}

@@ -49,6 +49,8 @@ const NavBar = () => {
         title={
           <span className={styles.DropdownToggle}>
             <Avatar src={currentUser?.profile_image} text={currentUser?.username || "Profile"} height={40} />
+            <i className={`fas fa-caret-down ${styles.DropdownArrow}`}></i>
+    
           </span>
         }
         id="dropdown-custom-components"
