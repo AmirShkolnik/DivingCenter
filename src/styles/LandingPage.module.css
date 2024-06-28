@@ -74,6 +74,30 @@ p {
     100% { opacity: 1; transform: translateY(0); }
 }
 
+.transparentFooter {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(13, 85, 137, 0.2);
+    border-top: 1px solid rgba(199, 174, 106, 0.5);
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    z-index: 1000;
+}
+
+.transparentFooter a {
+    color: #c7ae6a;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.transparentFooter a:hover {
+    color: #b99a45;
+    opacity: 1;
+}
+
 /* Media Queries for Responsiveness */
 @media (min-width: 300px) {
     .content-wrapper {

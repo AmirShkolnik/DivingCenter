@@ -2,6 +2,7 @@ import React from "react";
 import styles from '../../styles/LandingPage.module.css';
 import VideoPlayer from '../../components/Video/VideoPlayer.js';
 import { Link, useHistory } from 'react-router-dom';
+import Footer from '../../components/Footer';
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 const LandingPage = () => {
@@ -45,6 +46,7 @@ const LandingPage = () => {
                     <Link to="/courses" className={styles['home-btn']}>Diving Courses</Link>
                 </div>
             </div>
+            <Footer className={styles.transparentFooter} />
         </div>
     );
 }
