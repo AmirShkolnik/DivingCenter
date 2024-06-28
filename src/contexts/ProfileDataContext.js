@@ -23,7 +23,7 @@ export const ProfileDataProvider = ({ children }) => {
       const { data } = await axiosRes.post("/followers/", {
         followed: clickedProfile.id,
       });
-
+  
       setProfileData((prevState) => ({
         ...prevState,
         pageProfile: {
@@ -38,15 +38,18 @@ export const ProfileDataProvider = ({ children }) => {
           ),
         },
       }));
+  
+      return followHelper(clickedProfile, clickedProfile, data.id);
     } catch (err) {
-    //  console.log(err);
+      console.log(err);
+      throw err;
     }
   };
-
+  
   const handleUnfollow = async (clickedProfile) => {
     try {
       await axiosRes.delete(`/followers/${clickedProfile.following_id}/`);
-
+  
       setProfileData((prevState) => ({
         ...prevState,
         pageProfile: {
@@ -61,8 +64,11 @@ export const ProfileDataProvider = ({ children }) => {
           ),
         },
       }));
+  
+      return unfollowHelper(clickedProfile, clickedProfile);
     } catch (err) {
-    //  console.log(err);
+      console.log(err);
+      throw err;
     }
   };
 

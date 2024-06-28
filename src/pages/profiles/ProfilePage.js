@@ -24,6 +24,7 @@ import Post from "../posts/Post";
 import { fetchMoreData } from "../../utils/utils";
 import NoResults from "../../assets/no-results.png";
 import { ProfileEditDropdown } from "../../components/MoreDropdown";
+import { toast } from 'react-toastify';
 
 function ProfilePage() {
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -37,6 +38,42 @@ function ProfilePage() {
 
   const [profile] = pageProfile.results;
   const is_owner = currentUser?.username === profile?.owner;
+
+  const handleFollowClick = async () => {
+    try {
+      const updatedProfile = await handleFollow(profile);
+      setProfileData(prevState => ({
+        ...prevState,
+        pageProfile: {
+          ...prevState.pageProfile,
+          results: prevState.pageProfile.results.map(profile => 
+            profile.id === id ? updatedProfile : profile
+          )
+        }
+      }));
+      toast.success(`You are now following ${profile?.owner}. Refresh to see their posts!`);
+    } catch (err) {
+      toast.error("An error occurred while trying to follow. Please try again.");
+    }
+  };
+  
+  const handleUnfollowClick = async () => {
+    try {
+      const updatedProfile = await handleUnfollow(profile);
+      setProfileData(prevState => ({
+        ...prevState,
+        pageProfile: {
+          ...prevState.pageProfile,
+          results: prevState.pageProfile.results.map(profile => 
+            profile.id === id ? updatedProfile : profile
+          )
+        }
+      }));
+      toast.warning(`You have unfollowed ${profile?.owner}. You will no longer see their posts.`);
+    } catch (err) {
+      toast.error("An error occurred while trying to unfollow. Please try again.");
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -93,14 +130,14 @@ function ProfilePage() {
             (profile?.following_id ? (
               <Button
                 className={`${btnStyles.Button} ${btnStyles.BlackOutline}`}
-                onClick={() => handleUnfollow(profile)}
+                onClick={handleUnfollowClick}
               >
                 unfollow
               </Button>
             ) : (
               <Button
                 className={`${btnStyles.Button} ${btnStyles.Black}`}
-                onClick={() => handleFollow(profile)}
+                onClick={handleFollowClick} 
               >
                 follow
               </Button>

@@ -101,6 +101,7 @@ function App() {
         pauseOnHover
         theme="colored"
         toastClassName={styles.customToast}
+        style={{ zIndex: 9999 }}
       />
     </>
   );
