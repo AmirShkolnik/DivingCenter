@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { axiosRes } from "../../api/axiosDefaults";
 import styles from '../../styles/BookingForm.module.css';
 import { useRedirect } from "../../hooks/useRedirect";
+import { toast } from 'react-toastify';
 
 const BookingForm = () => {
   useRedirect("loggedOut");
@@ -58,6 +59,7 @@ const BookingForm = () => {
       setBookingId(data.id);
       setIsSubmitted(true);
       resetForm();
+      toast.success('Booking submitted successfully!');
     } catch (err) {
       console.error('Error creating booking:', err);
       if (err.response) {
@@ -70,6 +72,7 @@ const BookingForm = () => {
         console.log('Error message:', err.message);
         setErrors({ message: 'An error occurred while creating the booking.' });
       }
+      toast.error('Failed to submit booking. Please try again.');
     }
   };
 
@@ -102,8 +105,10 @@ const BookingForm = () => {
       setIsCanceled(true);
       setIsSubmitted(false);
       setBookingId(null);
+      toast.info('Booking cancelled successfully');
     } catch (err) {
       setErrors({ message: 'An error occurred while cancelling the booking.' });
+      toast.error('Failed to cancel booking. Please try again.');
     }
   };
 
