@@ -8,6 +8,7 @@ import "./api/axiosDefaults";
 import LandingPage from "./pages/homepage/LandingPage.js";
 import BookingForm from "./pages/bookings/BookingForm.js";
 import CoursesPage from "./pages/courses/CoursesPage";
+import ContactForm from "./pages/contactus/ContactForm";
 import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
 import PostCreateForm from "./pages/posts/PostCreateForm";
@@ -84,6 +85,7 @@ function App() {
               path="/profiles/:id/edit"
               render={() => <ProfileEditForm />}
             />
+            <Route exact path="/contactus" component={ContactForm} />
             <Route render={() => <NotFound />} />
           </Switch>
         </Container>

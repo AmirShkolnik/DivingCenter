@@ -110,6 +110,9 @@ const NavBar = () => {
             <NavLink exact className={styles.NavLink} to="/" onClick={handleNavItemClick}>
               <i className="fas fa-home"></i> Home
             </NavLink>
+            <NavLink className={styles.NavLink} to="/contactus" onClick={handleNavItemClick}>
+            <i class="fas fa-envelope"></i> Contact Us
+            </NavLink>
             <NavLink className={styles.NavLink} to="/courses" onClick={handleNavItemClick}>
             <i class="fas fa-graduation-cap"></i> Courses
             </NavLink>
