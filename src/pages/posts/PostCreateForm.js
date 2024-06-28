@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import { toast } from 'react-toastify';
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -64,12 +65,14 @@ function PostCreateForm() {
   
     try {
       const { data } = await axiosReq.post("/posts/", formData);
+      toast.success("Post created successfully!");
       history.push(`/posts/${data.id}`);
     } catch (err) {
       console.log(err);
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }
+      toast.error("Failed to create post. Please try again.");
     }
   };
 
