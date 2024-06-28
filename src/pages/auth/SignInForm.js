@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-
 import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
@@ -8,8 +7,8 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import VideoPlayerSignIn from '../../components/Video/VideoPlayerSignIn.js';
-
 import { Link, useHistory } from "react-router-dom";
+import { toast } from 'react-toastify';
 
 import styles from "../../styles/SignInUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
@@ -38,9 +37,11 @@ function SignInForm() {
       const { data } = await axios.post("/dj-rest-auth/login/", signInData);
       setCurrentUser(data.user);
       setTokenTimestamp(data);
+      toast.success("Welcome back! You've successfully signed in."); // Add success toast
       history.goBack();
     } catch (err) {
       setErrors(err.response?.data);
+      toast.error("Sign in failed. Please check your credentials."); // Add error toast
     }
   };
 
