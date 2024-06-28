@@ -54,16 +54,19 @@ function PostCreateForm() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
-
+  
     formData.append("title", title);
     formData.append("content", content);
-    formData.append("image", imageInput.current.files[0]);
-
+    
+    if (imageInput.current.files[0]) {
+      formData.append("image", imageInput.current.files[0]);
+    }
+  
     try {
       const { data } = await axiosReq.post("/posts/", formData);
       history.push(`/posts/${data.id}`);
     } catch (err) {
-    //  console.log(err);
+      console.log(err);
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }
@@ -116,7 +119,7 @@ function PostCreateForm() {
   );
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit} encType="multipart/form-data">
       <Row>
         <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
           <Container
