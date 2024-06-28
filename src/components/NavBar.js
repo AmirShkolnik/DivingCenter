@@ -44,6 +44,9 @@ const NavBar = () => {
 
   const loggedInIcons = (
     <>
+    <NavLink className={styles.NavLink} to="/courses" onClick={handleNavItemClick}>
+    <i class="fas fa-graduation-cap"></i> Courses
+      </NavLink>
       <NavLink className={styles.NavLink} to="/feed" onClick={handleNavItemClick}>
         <i className="fas fa-stream"></i> Feed
       </NavLink>
