@@ -3,7 +3,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { useCurrentUser, useSetCurrentUser } from "../contexts/CurrentUserContext";
 import Avatar from "./Avatar";
 import axios from "axios";
@@ -18,16 +18,18 @@ const NavBar = () => {
   const setCurrentUser = useSetCurrentUser();
   const { expanded, setExpanded, ref } = useClickOutsideToggle();
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const history = useHistory();
 
   const handleSignOut = async () => {
     try {
       await axios.post("dj-rest-auth/logout/");
       setCurrentUser(null);
       removeTokenTimestamp();
-      toast.success("You have been successfully signed out."); // Add this line
+      toast.success("You have been successfully signed out.");
+      history.push('/');
     } catch (err) {
       // console.log(err);
-      toast.error("An error occurred while signing out. Please try again."); // Add this line
+      toast.error("An error occurred while signing out. Please try again.");
     }
   };
 
