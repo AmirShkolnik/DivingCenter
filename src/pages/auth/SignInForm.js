@@ -38,7 +38,12 @@ function SignInForm() {
       setCurrentUser(data.user);
       setTokenTimestamp(data);
       toast.success("Welcome back! You've successfully signed in."); // Add success toast
-      history.goBack();
+      if (data.user && data.user.profile_id) {
+        history.push(`/profiles/${data.user.profile_id}`);
+      } else {
+        // If for some reason the profile_id is not available, redirect to home
+        history.push('/');
+      }
     } catch (err) {
       setErrors(err.response?.data);
       toast.error("Sign in failed. Please check your credentials."); // Add error toast
