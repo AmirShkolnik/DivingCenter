@@ -95,7 +95,9 @@ const NavBar = () => {
             setDropdownOpen(false);
           }}
           aria-controls="basic-navbar-nav"
-        />
+        >
+          <img src="../images/courses/toggle.ico" alt="Menu" />
+        </Navbar.Toggle>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto text-left">
             <NavLink exact className={styles.NavLink} to="/" onClick={handleNavItemClick}>
