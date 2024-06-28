@@ -17,6 +17,7 @@ import {
 
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
+import { toast } from 'react-toastify';
 
 const ProfileEditForm = () => {
   const currentUser = useCurrentUser();
@@ -43,6 +44,7 @@ const ProfileEditForm = () => {
           setProfileData({ name, content, image });
         } catch (err) {
         //  console.log(err);
+          toast.error("Failed to load profile. Please try again.");
           history.push("/");
         }
       } else {
@@ -76,10 +78,12 @@ const ProfileEditForm = () => {
         ...currentUser,
         profile_image: data.image,
       }));
+      toast.success("Profile updated successfully!");
       history.goBack();
     } catch (err) {
     //  console.log(err);
       setErrors(err.response?.data);
+      toast.error("Failed to update profile. Please try again.");
     }
   };
 
