@@ -80,3 +80,18 @@ figure {
 *::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+.customToast {
+  background-color: #0d5589 !important;
+  color: #ffffff !important; /* Text color */
+}
+
+/* Customize success toast */
+.customToast.Toastify__toast--success {
+  background-color: #c7ae6a !important;
+}
+
+/* Customize error toast */
+.customToast.Toastify__toast--error {
+  background-color: #ff6b6b !important;
+}
