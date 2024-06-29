@@ -8,6 +8,7 @@ import "./api/axiosDefaults";
 import LandingPage from "./pages/homepage/LandingPage.js";
 import BookingForm from "./pages/bookings/BookingForm.js";
 import CoursesPage from "./pages/courses/CoursesPage";
+import CourseSingle from './pages/courses/CourseSingle';
 import ContactForm from "./pages/contactus/ContactForm";
 import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
@@ -86,6 +87,7 @@ function App() {
               render={() => <ProfileEditForm />}
             />
             <Route exact path="/contactus" component={ContactForm} />
+            <Route exact path="/courses/:slug" component={CourseSingle} />
             <Route render={() => <NotFound />} />
           </Switch>
         </Container>
