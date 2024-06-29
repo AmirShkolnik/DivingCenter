@@ -1,16 +1,90 @@
 .ContactForm {
-    padding: 2rem 0;
-  }
-  
-  .Title {
-    text-align: center;
-    margin-bottom: 2rem;
-    color: #333;
-  }
-  
-  .SubmitButton {
-    width: 100%;
-    margin-top: 1rem;
-  }
-  
-  /* Add any additional styles you want */
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+}
+
+.Title {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.ContactForm form > div {
+  margin-bottom: 15px;
+}
+
+.ContactForm label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.ContactForm input,
+.ContactForm textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.SubmitButton,
+.CancelButton {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.SubmitButton {
+  background-color: #0d5589;
+  color: white;
+}
+
+.SubmitButton:hover {
+  color: #b99a45;
+}
+
+.CancelButton {
+  background-color: red;
+  color: white;
+}
+
+.CancelButton:hover {
+  background-color: darkred;
+}
+
+.buttonContainer {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.error {
+  color: red;
+  font-size: 0.8em;
+  margin-top: 5px;
+}
+
+.successMessage {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.successMessage h2 {
+  color: #0d5589;
+  margin-bottom: 1rem;
+}
+
+.successMessage p {
+  margin-bottom: 1.5rem;
+}
+
+.successMessage .buttonContainer {
+  justify-content: center;
+}
