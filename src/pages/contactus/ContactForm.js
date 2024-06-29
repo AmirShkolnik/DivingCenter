@@ -52,7 +52,7 @@ const ContactForm = () => {
       return;
     }
     try {
-      const response = await axiosReq.delete(`/contactus/${messageId}/`);
+      await axiosReq.delete(`/contactus/${messageId}/`);
       // console.log('Delete response:', response);
       toast.success('Your message was deleted.');
       resetForm();
