@@ -26,7 +26,7 @@ const ContactForm = () => {
     setErrors({});
     try {
       const { data } = await axiosReq.post('/contactus/', formData);
-      console.log('Response data:', data);
+      // console.log('Response data:', data);
       setMessageId(data.id); // Ensure this is correctly set
       setIsSubmitted(true);
       toast.success('Your message has been sent successfully!');
@@ -46,14 +46,14 @@ const ContactForm = () => {
   };
 
   const handleDeleteMessage = async () => {
-    console.log('Attempting to delete message. Message ID:', messageId);
+   // console.log('Attempting to delete message. Message ID:', messageId);
     if (!messageId) {
       toast.error('No message to delete.');
       return;
     }
     try {
       const response = await axiosReq.delete(`/contactus/${messageId}/`);
-      console.log('Delete response:', response);
+      // console.log('Delete response:', response);
       toast.success('Your message was deleted.');
       resetForm();
       history.push('/');
@@ -72,7 +72,6 @@ const ContactForm = () => {
         <div className={styles.successMessage}>
           <h2>Message Sent Successfully!</h2>
           <p>Thank you for contacting us. We've received your message and will get back to you within 2 business days.</p>
-          <p>Message ID: {messageId}</p>
           <div className={styles.buttonContainer}>
             <Button className={styles.SubmitButton} onClick={resetForm}>Send Another Message</Button>
             <Button className={styles.CancelButton} onClick={handleDeleteMessage}>Cancel My Message</Button>
