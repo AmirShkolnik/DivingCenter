@@ -6,6 +6,7 @@ import { Link, useHistory } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
 import { MoreDropdown } from "../../components/MoreDropdown";
+import { toast } from 'react-toastify';
 
 const Post = (props) => {
   const {
@@ -35,9 +36,11 @@ const Post = (props) => {
   const handleDelete = async () => {
     try {
       await axiosRes.delete(`/posts/${id}/`);
+      toast.success("Post deleted successfully!");
       history.goBack();
     } catch (err) {
-    //  console.log(err);
+      toast.error("Error deleting post. Please try again.");
+      console.log(err);
     }
   };
 
@@ -52,8 +55,10 @@ const Post = (props) => {
             : post;
         }),
       }));
+      toast.success("Post liked!");
     } catch (err) {
-    //  console.log(err);
+      toast.error("Error liking post. Please try again.");
+      console.log(err);
     }
   };
 
@@ -68,8 +73,10 @@ const Post = (props) => {
             : post;
         }),
       }));
+      toast.success("Post unliked!");
     } catch (err) {
-    //  console.log(err);
+      toast.error("Error unliking post. Please try again.");
+      console.log(err);
     }
   };
 

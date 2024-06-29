@@ -21,7 +21,7 @@ const ContactForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axiosReq.post('/api/contact/', formData);
+      await axiosReq.post('/contactus/', formData);
       toast.success('Your message has been sent successfully!');
       setFormData({ name: '', email: '', subject: '', message: '' });
     } catch (err) {
