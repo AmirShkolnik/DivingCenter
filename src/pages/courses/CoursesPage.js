@@ -4,7 +4,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
-const CourseBox = ({ title, imageUrl, description }) => {
+const CourseBox = ({ title, imageUrl, description, slug }) => {
   const history = useHistory();
   const currentUser = useCurrentUser();
 
@@ -40,7 +40,7 @@ const CourseBox = ({ title, imageUrl, description }) => {
             <Link to="/bookings/create" className={styles.bookButton} onClick={handleBookNowClick}>
               Book Now
             </Link>
-            <Link to="/" className={styles.homeButton}>
+            <Link to={`/courses/${slug}`} className={styles.homeButton}>
               Learn More
             </Link>
           </div>
@@ -58,16 +58,19 @@ const CoursesPage = () => {
         title="Open Water Diver"
         imageUrl="../images/courses/1.webp"
         description="Learn the basics of scuba diving and gain your first diving certification."
+        slug="ow"
       />
       <CourseBox
         title="Advanced Open Water Diver"
         imageUrl="../images/courses/2.webp"
         description="Expand your diving skills and explore new underwater environments."
+        slug="aow"
       />
       <CourseBox
         title="Rescue Diver"
         imageUrl="../images/courses/3.webp"
         description="Learn to prevent and manage dive emergencies, minor and major."
+        slug="rd"
       />
     </Container>
   );
