@@ -1,128 +1,112 @@
-.CourseHeader {
-    margin-bottom: 2rem;
-    background-color: white;
-    padding: 2rem;
-    border: 1px solid #c7ae6a;
-    border-radius: 10px;
-    color: white;
-  }
-  
-  .CourseImage {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    border: 1px solid #c7ae6a;
-  }
+.CourseContainer {
+  background-color: white;
+  padding: 2rem;
+  border: 1px solid #c7ae6a;
+  border-radius: 10px;
+  color: #333;
+  margin-bottom: 2rem;
+}
 
-  .PlaceholderImage {
-    width: 100%;
-    height: 300px;
-    background-color: #f0f0f0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-style: italic;
-    color: #888;
-  }
-  
-  .CourseTitle {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    color: #c7ae6a;
-  }
-  
-  .CourseDescription {
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
-  }
-  
-  .CourseType {
-    font-weight: bold;
-    margin-bottom: 1rem;
-    color: #b99a45;
-  }
-  
-  .ReviewSection {
-    margin-top: 2rem;
-    background-color: #f8f9fa;
-    padding: 2rem;
-    border: 1px solid #c7ae6a;
-    border-radius: 10px;
-  }
-  
-  .ReviewForm {
-    margin-bottom: 2rem;
-    padding: 1rem;
-    border: 1px solid #c7ae6a;
-    border-radius: 5px;
-    background-color: #ffffff;
-  }
-  
-  .Review {
-    margin-bottom: 1rem;
-    padding: 1rem;
-    border: 1px solid #c7ae6a;
-    border-radius: 5px;
-    background-color: #ffffff;
-  }
+.CourseTitle {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #c7ae6a;
+}
 
-  .AddReviewButton {
-    margin-bottom: 20px;
-  }
-  
-  .Button {
-    background-color: #0d5589;
-    border: 1px solid #c7ae6a;
-    color: white;
-    transition: background-color ease-in-out 0.3s, color ease-in-out 0.3s;
-    margin-right: 10px;
-  }
-  
-  .Button:hover {
-    background-color: #b99a45;
-    color: #ffffff;
-  }
-  
-  .Red {
-    background-color: #dc3545;
-    border-color: #dc3545;
-  }
-  
-  .Red:hover {
-    background-color: #c82333;
-    border-color: #bd2130;
-  }
+.CourseImage {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  border: 1px solid #c7ae6a;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
 
-  .Blue {
-    background-color: #0d5589;
-  }
-  
-  .Blue:hover {
-    background-color: #b99a45;
-  }
-  
-  /* Star Ratings Styles */
-  .star-ratings {
-    color: #c7ae6a;
-  }
-  
-  /* Form Styles */
-  .form-control {
-    border: 1px solid #c7ae6a;
-  }
-  
-  .form-control:focus {
-    border-color: #b99a45;
-    box-shadow: 0 0 0 0.2rem rgba(185, 154, 69, 0.25);
-  }
-  
-  /* Typography */
-  h2 {
-    color: #0d5589;
-    margin-bottom: 1rem;
-  }
-  
-  p {
-    color: #333;
-  }
+.PlaceholderImage {
+  width: 100%;
+  height: 300px;
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-style: italic;
+  color: #888;
+  margin-bottom: 1rem;
+}
 
+.CourseDescription {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.CourseFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.BookingLink {
+  text-decoration: none;
+}
+
+.Button {
+  background-color: #0d5589;
+  border: 1px solid #c7ae6a;
+  color: white;
+  transition: background-color ease-in-out 0.3s, color ease-in-out 0.3s;
+}
+
+.Button:hover {
+  background-color: #b99a45;
+  color: #ffffff;
+}
+
+.Blue {
+  background-color: #0d5589;
+}
+
+.Blue:hover {
+  background-color: #b99a45;
+}
+
+.RatingContainer {
+  display: flex;
+  align-items: center;
+}
+
+.RatingContainer p {
+  margin-right: 0.5rem;
+  margin-bottom: 0;
+}
+
+/* Star Ratings Styles */
+.star-ratings {
+  color: #c7ae6a;
+}
+
+.ReviewSection {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #c7ae6a;
+}
+
+.ReviewForm {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  border: 1px solid #c7ae6a;
+  border-radius: 5px;
+  background-color: #ffffff;
+}
+
+.Review {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border: 1px solid #c7ae6a;
+  border-radius: 5px;
+  background-color: #ffffff;
+}
+
+.AddReviewButton {
+  margin-bottom: 20px;
+}
