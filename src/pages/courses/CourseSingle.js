@@ -150,11 +150,16 @@ function CourseSingle() {
               starSpacing="2px"
             />
           </div>
-          <Link to="/bookings/create" className={styles.BookingLink}>
-            <Button className={`${styles.Button} ${styles.Blue}`}>
-              Book This Course
+          <div className={styles.BookingPriceContainer}>
+            <Button className={`${styles.Button} ${styles.Price}`}>
+              {course.price_display}
             </Button>
-          </Link>
+            <Link to="/bookings/create" className={styles.BookingLink}>
+              <Button className={`${styles.Button} ${styles.Blue}`}>
+                Book This Course
+              </Button>
+            </Link>
+          </div>
         </div>
         {course.image ? (
           <Image src={course.image} alt={course.title} fluid className={styles.CourseImage} />
