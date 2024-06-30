@@ -151,14 +151,14 @@ function CourseSingle() {
             />
           </div>
           <div className={styles.BookingPriceContainer}>
-            <Button className={`${styles.Button} ${styles.Price}`}>
-              {course.price_display}
-            </Button>
             <Link to="/bookings/create" className={styles.BookingLink}>
               <Button className={`${styles.Button} ${styles.Blue}`}>
                 Book This Course
               </Button>
             </Link>
+            <span className={styles.PriceDisplay}>
+              {course.price_display || `${course.price} USD`}
+            </span>
           </div>
         </div>
         {course.image ? (
