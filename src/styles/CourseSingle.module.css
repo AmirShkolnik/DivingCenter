@@ -1,6 +1,6 @@
 .CourseHeader {
     margin-bottom: 2rem;
-    background-color: #0d5589;
+    background-color: white;
     padding: 2rem;
     border: 1px solid #c7ae6a;
     border-radius: 10px;
@@ -12,6 +12,17 @@
     height: auto;
     border-radius: 10px;
     border: 1px solid #c7ae6a;
+  }
+
+  .PlaceholderImage {
+    width: 100%;
+    height: 300px;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-style: italic;
+    color: #888;
   }
   
   .CourseTitle {
@@ -99,3 +110,4 @@
   p {
     color: #333;
   }
+
