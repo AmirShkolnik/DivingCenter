@@ -37,15 +37,15 @@
     color: #c7ae6a;
 }
 
-h1 {
+.landingpage h1 {
     font-size: 4em;
     animation-name: fade;
     animation-duration: 4s;
-    color: white;
+    color: white !important;
 }
 
-p {
-    font-size: 1.5em;
+.landingpage p {
+    font-size: 1em;
     color: white !important;
 }
 

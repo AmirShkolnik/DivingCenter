@@ -35,8 +35,8 @@ const CourseBox = ({ title, imageUrl, description }) => {
           />
         </Col>
         <Col xs={12} md={8}>
-          <p>{description}</p>
-          <p>This course starts on the 10th of each month at 09:00 or 15:00 and lasts 2 weeks.</p>
+          <p className={styles.courseDescription}>{description}</p>
+          <p className={styles.courseDescription}>This course starts on the 10th of each month at 09:00 or 15:00 and lasts 2 weeks.</p>
           <Link to="/bookings/create" className={styles.bookButton} onClick={handleBookNowClick}>
             Book Now
           </Link>
@@ -49,7 +49,7 @@ const CourseBox = ({ title, imageUrl, description }) => {
 const CoursesPage = () => {
   return (
     <Container className={styles.coursesPage}>
-      <h1>Our Diving Courses</h1>
+      <h1 className={styles.courseTitle}>Our Diving Courses</h1>
       <CourseBox
         title="Open Water Diver"
         imageUrl="../images/courses/1.webp"
