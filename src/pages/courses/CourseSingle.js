@@ -200,43 +200,46 @@ function CourseSingle() {
           </div>
         )}
         {(showReviewForm || isEditing) && (
-          <Form onSubmit={handleSubmitReview} className={styles.ReviewForm}>
-            <Form.Group>
-              <Form.Label>Your Review</Form.Label>
-              <Form.Control
-                as="textarea"
-                rows={3}
-                name="content"
-                value={review.content}
-                onChange={handleReviewChange}
-                required
-                className={styles['form-control']}
-              />
-            </Form.Group>
-            <div className={styles.RatingContainer}>
-              <Form.Label>Your Rating</Form.Label>
-              <StarRatings
-                rating={review.rating}
-                starRatedColor="#c7ae6a"
-                changeRating={handleRatingChange}
-                numberOfStars={5}
-                name='rating'
-                starDimension="30px"
-                starSpacing="5px"
-              />
-            </div>
-            <Button type="submit" className={`${styles.Button} ${styles.Blue} me-2`}>
-              {isEditing ? 'Update Review' : 'Submit Review'}
-            </Button>
-            <Button
-              variant="secondary"
-              onClick={handleCancelReview}
-              className={`${styles.Button} ${styles.DeleteRed}`}
-            >
-              Cancel
-            </Button>
-          </Form>
-        )}
+  <Form onSubmit={handleSubmitReview} className={styles.ReviewForm}>
+    <Form.Group>
+      <Form.Label>Your Review</Form.Label>
+      <Form.Control
+        as="textarea"
+        rows={3}
+        name="content"
+        value={review.content}
+        onChange={handleReviewChange}
+        required
+        className={styles['form-control']}
+      />
+    </Form.Group>
+    <div className={styles.RatingContainer}>
+      <Form.Label>Your Rating</Form.Label>
+      <StarRatings
+        rating={review.rating}
+        starRatedColor="#c7ae6a"
+        changeRating={handleRatingChange}
+        numberOfStars={5}
+        name='rating'
+        starDimension="30px"
+        starSpacing="5px"
+      />
+    </div>
+    <div className={styles.ButtonContainer}>
+      <Button type="submit" className={`${styles.Button} ${styles.Blue} me-2`}>
+        {isEditing ? 'Update Review' : 'Submit Review'}
+      </Button>
+      <Button
+        variant="secondary"
+        onClick={handleCancelReview}
+        className={`${styles.Button} ${styles.DeleteRed}`}
+      >
+        Cancel
+      </Button>
+    </div>
+  </Form>
+)}
+
         {course.reviews && course.reviews.map(review => (
           <div key={review.id} className={styles.Review}>
             <p>{review.content}</p>

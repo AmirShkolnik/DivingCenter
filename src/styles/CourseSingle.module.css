@@ -92,6 +92,7 @@
 .RatingContainer {
   display: flex;
   align-items: center;
+  margin-bottom: 1rem;
 }
 
 .RatingContainer p {
@@ -178,4 +179,20 @@
 
 .Review .Button {
   margin-right: 10px;
+}
+
+/* New styles for aligning rating and stars */
+.ReviewForm .RatingContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.ReviewForm .RatingContainer label {
+  margin-right: 1rem;
+  margin-bottom: 0;
+}
+
+.ReviewForm .ButtonContainer {
+  margin-top: 1rem;
 }
