@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 import { Container, Row, Col, Image, Button, Form } from 'react-bootstrap';
 import StarRatings from 'react-star-ratings';
@@ -7,7 +7,6 @@ import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import styles from '../../styles/CourseSingle.module.css';
 
 function CourseSingle() {
-
   const { slug } = useParams();
   const currentUser = useCurrentUser();
   const [course, setCourse] = useState(null);
@@ -16,6 +15,7 @@ function CourseSingle() {
   const [isEditing, setIsEditing] = useState(false);
   const [showReviewForm, setShowReviewForm] = useState(false);
   const [error, setError] = useState(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     const fetchCourse = async () => {
@@ -48,6 +48,7 @@ function CourseSingle() {
 
   const handleSubmitReview = async (event) => {
     event.preventDefault();
+    setIsSubmitting(true);
     try {
       let data;
       if (isEditing) {
@@ -101,6 +102,8 @@ function CourseSingle() {
         console.error('Error setting up request:', err.message);
       }
       setError(`Failed to submit review: ${err.response ? JSON.stringify(err.response.data) : err.message}`);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -126,14 +129,16 @@ function CourseSingle() {
     setShowReviewForm(true);
   };
 
+  const calculateAverageRating = useMemo(() => {
+    return (reviews) => {
+      if (!reviews || reviews.length === 0) return 0;
+      const sum = reviews.reduce((acc, review) => acc + review.rating, 0);
+      return sum / reviews.length;
+    };
+  }, []);
+
   if (error) return <div>Error: {error}</div>;
   if (!course) return <div>Loading...</div>;
-
-  const calculateAverageRating = (reviews) => {
-    if (!reviews || reviews.length === 0) return 0;
-    const sum = reviews.reduce((acc, review) => acc + review.rating, 0);
-    return sum / reviews.length;
-  };
 
   return (
     <Container>
@@ -147,7 +152,7 @@ function CourseSingle() {
         </Col>
         <Col md={6}>
           <h1 className={styles.CourseTitle}>{course.title}</h1>
-          <p className={styles.CourseDescription}>{course.description}</p>
+          <div className={styles.CourseDescription} dangerouslySetInnerHTML={{ __html: course.description }} />
           <p className={styles.CourseType}>Course Type: {course.course_type}</p>
           <StarRatings
             rating={course.average_rating || 0}
@@ -166,91 +171,91 @@ function CourseSingle() {
             <>
               {!userReview && !showReviewForm && (
                 <div className={styles.AddReviewButton}>
-                <Button onClick={handleAddReview} className={`${styles.Button} ${styles.Blue}`}>
-                  Add Review
-                </Button>
+                  <Button onClick={handleAddReview} className={`${styles.Button} ${styles.Blue}`}>
+                    Add Review
+                  </Button>
                 </div>
               )}
-          {(showReviewForm || isEditing) && (
-            <Form onSubmit={handleSubmitReview} className={styles.ReviewForm}>
-              <Form.Group>
-                <Form.Label>Your Review</Form.Label>
-                <Form.Control
-                  as="textarea"
-                  rows={3}
-                  name="content"
-                  value={review.content}
-                  onChange={handleReviewChange}
-                  required
-                  className={styles['form-control']}
-                />
-              </Form.Group>
-              <div className={styles.RatingContainer}>
-                <Form.Label>Your Rating</Form.Label>
-                <StarRatings
-                  rating={review.rating}
-                  starRatedColor="#c7ae6a"
-                  changeRating={handleRatingChange}
-                  numberOfStars={5}
-                  name='rating'
-                  starDimension="30px"
-                  starSpacing="5px"
-                />
-              </div>
-              <Button type="submit" className={`${styles.Button} ${styles.Blue}`}>
-                {isEditing ? 'Update Review' : 'Submit Review'}
-              </Button>
-              <Button
-                variant="secondary"
-                onClick={() => {
-                  setIsEditing(false);
-                  setShowReviewForm(false);
-                }}
-                className={`${styles.Button} ${styles.Red}`}
-              >
-                Cancel
-              </Button>
-            </Form>
+              {(showReviewForm || isEditing) && (
+                <Form onSubmit={handleSubmitReview} className={styles.ReviewForm}>
+                  <Form.Group>
+                    <Form.Label>Your Review</Form.Label>
+                    <Form.Control
+                      as="textarea"
+                      rows={3}
+                      name="content"
+                      value={review.content}
+                      onChange={handleReviewChange}
+                      required
+                      className={styles['form-control']}
+                    />
+                  </Form.Group>
+                  <div className={styles.RatingContainer}>
+                    <Form.Label>Your Rating</Form.Label>
+                    <StarRatings
+                      rating={review.rating}
+                      starRatedColor="#c7ae6a"
+                      changeRating={handleRatingChange}
+                      numberOfStars={5}
+                      name='rating'
+                      starDimension="30px"
+                      starSpacing="5px"
+                    />
+                  </div>
+                  <Button type="submit" className={`${styles.Button} ${styles.Blue} me-2`} disabled={isSubmitting}>
+                    {isSubmitting ? 'Submitting...' : (isEditing ? 'Update Review' : 'Submit Review')}
+                  </Button>
+                  <Button
+                    variant="secondary"
+                    onClick={() => {
+                      setIsEditing(false);
+                      setShowReviewForm(false);
+                    }}
+                    className={`${styles.Button} ${styles.Red}`}
+                  >
+                    Cancel
+                  </Button>
+                </Form>
+              )}
+            </>
           )}
-        </>
-          )}
-        {course.reviews && course.reviews.map(review => (
-          <div key={review.id} className={styles.Review}>
-            <p>{review.content}</p>
-            <StarRatings
-              rating={review.rating}
-              starRatedColor="#c7ae6a"
-              numberOfStars={5}
-              name={`rating-${review.id}`}
-              starDimension="15px"
-              starSpacing="1px"
-            />
-            <p>By: {review.user}</p>
-            {currentUser && currentUser.username === review.user && (
-              <div>
-                <Button
-                  onClick={() => {
-                    setReview({ content: review.content, rating: review.rating });
-                    setIsEditing(true);
-                    setShowReviewForm(true);
-                  }}
-                  className={`${styles.Button} ${styles.Blue}`}
-                >
-                  Edit
-                </Button>
-                <Button
-                  onClick={handleDeleteReview}
-                  className={`${styles.Button} ${styles.Blue}`}
-                >
-                  Delete
-                </Button>
-              </div>
-            )}
-          </div>
-        ))}
-      </Col>
-    </Row>
-    </Container >
+          {course.reviews && course.reviews.map(review => (
+            <div key={review.id} className={styles.Review}>
+              <p>{review.content}</p>
+              <StarRatings
+                rating={review.rating}
+                starRatedColor="#c7ae6a"
+                numberOfStars={5}
+                name={`rating-${review.id}`}
+                starDimension="15px"
+                starSpacing="1px"
+              />
+              <p>By: {review.user}</p>
+              {currentUser && currentUser.username === review.user && (
+                <div>
+                  <Button
+                    onClick={() => {
+                      setReview({ content: review.content, rating: review.rating });
+                      setIsEditing(true);
+                      setShowReviewForm(true);
+                    }}
+                    className={`${styles.Button} ${styles.Blue} me-2`}
+                  >
+                    Edit
+                  </Button>
+                  <Button
+                    onClick={handleDeleteReview}
+                    className={`${styles.Button} ${styles.Red}`}
+                  >
+                    Delete
+                  </Button>
+                </div>
+              )}
+            </div>
+          ))}
+        </Col>
+      </Row>
+    </Container>
   );
 }
 
