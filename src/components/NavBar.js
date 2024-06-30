@@ -44,9 +44,6 @@ const NavBar = () => {
 
   const loggedInIcons = (
     <>
-      <NavLink className={styles.NavLink} to="/feed" onClick={handleNavItemClick}>
-        <i className="fas fa-stream"></i> Feed
-      </NavLink>
       <NavDropdown
         className={styles.Dropdown}
         show={dropdownOpen}
@@ -62,6 +59,9 @@ const NavBar = () => {
       >
         <NavDropdown.Item as={NavLink} to={`/profiles/${currentUser?.profile_id}`} className={styles.DropdownItem} onClick={handleNavItemClick}>
           <i className="fas fa-user"></i> Profile
+        </NavDropdown.Item>
+        <NavDropdown.Item as={NavLink} to="/feed" className={styles.DropdownItem} onClick={handleNavItemClick}>
+          <i className="fas fa-stream"></i> Feed
         </NavDropdown.Item>
         <NavDropdown.Item as={NavLink} to="/posts/create" className={styles.DropdownItem} onClick={handleNavItemClick}>
           <i className="far fa-plus-square"></i> Add post
