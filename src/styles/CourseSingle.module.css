@@ -55,6 +55,7 @@
   border: 1px solid #c7ae6a;
   color: white;
   transition: background-color ease-in-out 0.3s, color ease-in-out 0.3s;
+  margin-right: 10px; 
 }
 
 .Button:hover {
@@ -145,4 +146,22 @@
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+.ReviewForm .Button {
+  margin-right: 10px;
+}
+
+.Review .Button {
+  margin-right: 10px;
+}
+
+.DeleteRed {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.DeleteRed:hover {
+  background-color: #c82333;
+  border-color: #bd2130;
 }

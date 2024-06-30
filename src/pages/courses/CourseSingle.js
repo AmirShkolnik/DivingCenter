@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Container, Image, Button, Form } from 'react-bootstrap';
+import { Container, Image, Button, Form, Alert } from 'react-bootstrap';
 import StarRatings from 'react-star-ratings';
 import { axiosReq } from '../../api/axiosDefaults';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import styles from '../../styles/CourseSingle.module.css';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function CourseSingle() {
   const { slug } = useParams();
@@ -15,10 +17,12 @@ function CourseSingle() {
   const [isEditing, setIsEditing] = useState(false);
   const [showReviewForm, setShowReviewForm] = useState(false);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchCourse = async () => {
       try {
+        setLoading(true);
         const { data } = await axiosReq.get(`/courses/${slug}/`);
         console.log('Fetched course data:', data);
         setCourse(data);
@@ -31,7 +35,10 @@ function CourseSingle() {
         }
       } catch (err) {
         console.error('Error fetching course:', err);
-        setError('Failed to load course data');
+        setError(err.response?.data?.detail || 'Failed to load course data');
+        toast.error('Failed to load course data. Please try again.');
+      } finally {
+        setLoading(false);
       }
     };
     fetchCourse();
@@ -47,6 +54,10 @@ function CourseSingle() {
 
   const handleSubmitReview = async (event) => {
     event.preventDefault();
+    if (review.rating === 0) {
+      toast.error('Please select a star rating before submitting your review.');
+      return;
+    }
     try {
       let data;
       if (isEditing) {
@@ -58,12 +69,8 @@ function CourseSingle() {
         data = response.data;
         console.log('Updated review:', data);
         setUserReview(data);
+        toast.success('Review updated successfully!');
       } else {
-        console.log('Submitting review:', {
-          content: review.content,
-          rating: review.rating,
-          course: course.id
-        });
         const response = await axiosReq.post('/reviews/', {
           content: review.content,
           rating: review.rating,
@@ -72,6 +79,7 @@ function CourseSingle() {
         data = response.data;
         console.log('Created review:', data);
         setUserReview(data);
+        toast.success('Review submitted successfully!');
       }
 
       setCourse(prevCourse => {
@@ -90,16 +98,8 @@ function CourseSingle() {
       setIsEditing(false);
     } catch (err) {
       console.error('Error submitting review:', err);
-      if (err.response) {
-        console.error('Response data:', err.response.data);
-        console.error('Response status:', err.response.status);
-        console.error('Response headers:', err.response.headers);
-      } else if (err.request) {
-        console.error('No response received:', err.request);
-      } else {
-        console.error('Error setting up request:', err.message);
-      }
-      setError(`Failed to submit review: ${err.response ? JSON.stringify(err.response.data) : err.message}`);
+      setError(err.response?.data?.detail || 'Failed to submit review');
+      toast.error('Failed to submit review. Please try again.');
     }
   };
 
@@ -113,16 +113,35 @@ function CourseSingle() {
       }));
       setUserReview(null);
       setReview({ content: '', rating: 0 });
+      toast.success('Review deleted successfully!');
     } catch (err) {
       console.error('Error deleting review:', err);
-      setError('Failed to delete review');
+      setError(err.response?.data?.detail || 'Failed to delete review');
+      toast.error('Failed to delete review. Please try again.');
     }
   };
 
   const handleAddReview = () => {
+    if (!currentUser) {
+      toast.error('Please log in to add a review.');
+      return;
+    }
     setIsEditing(false);
     setReview({ content: '', rating: 0 });
     setShowReviewForm(true);
+  };
+
+  const handleCancelReview = () => {
+    setIsEditing(false);
+    setShowReviewForm(false);
+    toast.info('Review cancelled.');
+  };
+
+  const handleEditReview = (reviewContent, reviewRating) => {
+    setReview({ content: reviewContent, rating: reviewRating });
+    setIsEditing(true);
+    setShowReviewForm(true);
+    toast.info('Editing review...');
   };
 
   const calculateAverageRating = (reviews) => {
@@ -131,11 +150,13 @@ function CourseSingle() {
     return sum / reviews.length;
   };
 
-  if (error) return <div>Error: {error}</div>;
-  if (!course) return <div>Loading...</div>;
+  if (loading) return <div>Loading...</div>;
+  if (error) return <Alert variant="danger">Error: {error}</Alert>;
+  if (!course) return <Alert variant="warning">No course data available</Alert>;
 
   return (
     <Container>
+      <ToastContainer position="top-center" autoClose={3000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
       <div className={styles.CourseContainer}>
         <h1 className={styles.CourseTitle}>{course.title}</h1>
         <div className={styles.RatingBookingContainer}>
@@ -151,14 +172,14 @@ function CourseSingle() {
             />
           </div>
           <div className={styles.BookingPriceContainer}>
+            <span className={styles.PriceDisplay}>
+              {course.price_display || `${course.price} USD`}
+            </span>
             <Link to="/bookings/create" className={styles.BookingLink}>
               <Button className={`${styles.Button} ${styles.Blue}`}>
                 Book This Course
               </Button>
             </Link>
-            <span className={styles.PriceDisplay}>
-              {course.price_display || `${course.price} USD`}
-            </span>
           </div>
         </div>
         {course.image ? (
@@ -171,57 +192,50 @@ function CourseSingle() {
       </div>
       <div className={styles.ReviewSection}>
         <h2>Reviews</h2>
-        {currentUser && (
-          <>
-            {!userReview && !showReviewForm && (
-              <div className={styles.AddReviewButton}>
-                <Button onClick={handleAddReview} className={`${styles.Button} ${styles.Blue}`}>
-                  Add Review
-                </Button>
-              </div>
-            )}
-            {(showReviewForm || isEditing) && (
-              <Form onSubmit={handleSubmitReview} className={styles.ReviewForm}>
-                <Form.Group>
-                  <Form.Label>Your Review</Form.Label>
-                  <Form.Control
-                    as="textarea"
-                    rows={3}
-                    name="content"
-                    value={review.content}
-                    onChange={handleReviewChange}
-                    required
-                    className={styles['form-control']}
-                  />
-                </Form.Group>
-                <div className={styles.RatingContainer}>
-                  <Form.Label>Your Rating</Form.Label>
-                  <StarRatings
-                    rating={review.rating}
-                    starRatedColor="#c7ae6a"
-                    changeRating={handleRatingChange}
-                    numberOfStars={5}
-                    name='rating'
-                    starDimension="30px"
-                    starSpacing="5px"
-                  />
-                </div>
-                <Button type="submit" className={`${styles.Button} ${styles.Blue} me-2`}>
-                  {isEditing ? 'Update Review' : 'Submit Review'}
-                </Button>
-                <Button
-                  variant="secondary"
-                  onClick={() => {
-                    setIsEditing(false);
-                    setShowReviewForm(false);
-                  }}
-                  className={`${styles.Button} ${styles.Red}`}
-                >
-                  Cancel
-                </Button>
-              </Form>
-            )}
-          </>
+        {!userReview && !showReviewForm && (
+          <div className={styles.AddReviewButton}>
+            <Button onClick={handleAddReview} className={`${styles.Button} ${styles.Blue}`}>
+              Add Review
+            </Button>
+          </div>
+        )}
+        {(showReviewForm || isEditing) && (
+          <Form onSubmit={handleSubmitReview} className={styles.ReviewForm}>
+            <Form.Group>
+              <Form.Label>Your Review</Form.Label>
+              <Form.Control
+                as="textarea"
+                rows={3}
+                name="content"
+                value={review.content}
+                onChange={handleReviewChange}
+                required
+                className={styles['form-control']}
+              />
+            </Form.Group>
+            <div className={styles.RatingContainer}>
+              <Form.Label>Your Rating</Form.Label>
+              <StarRatings
+                rating={review.rating}
+                starRatedColor="#c7ae6a"
+                changeRating={handleRatingChange}
+                numberOfStars={5}
+                name='rating'
+                starDimension="30px"
+                starSpacing="5px"
+              />
+            </div>
+            <Button type="submit" className={`${styles.Button} ${styles.Blue} me-2`}>
+              {isEditing ? 'Update Review' : 'Submit Review'}
+            </Button>
+            <Button
+              variant="secondary"
+              onClick={handleCancelReview}
+              className={`${styles.Button} ${styles.DeleteRed}`}
+            >
+              Cancel
+            </Button>
+          </Form>
         )}
         {course.reviews && course.reviews.map(review => (
           <div key={review.id} className={styles.Review}>
@@ -238,18 +252,14 @@ function CourseSingle() {
             {currentUser && currentUser.username === review.user && (
               <div>
                 <Button
-                  onClick={() => {
-                    setReview({ content: review.content, rating: review.rating });
-                    setIsEditing(true);
-                    setShowReviewForm(true);
-                  }}
+                  onClick={() => handleEditReview(review.content, review.rating)}
                   className={`${styles.Button} ${styles.Blue} me-2`}
                 >
                   Edit
                 </Button>
                 <Button
                   onClick={handleDeleteReview}
-                  className={`${styles.Button} ${styles.Red}`}
+                  className={`${styles.Button} ${styles.DeleteRed}`}
                 >
                   Delete
                 </Button>
