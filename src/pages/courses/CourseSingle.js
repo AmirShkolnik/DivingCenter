@@ -74,7 +74,7 @@ function CourseSingle() {
         console.log('Created review:', data);
         setUserReview(data);
       }
-      
+
       setCourse(prevCourse => {
         const updatedReviews = isEditing
           ? prevCourse.reviews.map(rev => rev.id === data.id ? data : rev)
@@ -138,13 +138,13 @@ function CourseSingle() {
   return (
     <Container>
       <Row className={styles.CourseHeader}>
-      <Col md={6}>
-  {course.image ? (
-    <Image src={course.image} alt={course.title} fluid className={styles.CourseImage} />
-  ) : (
-    <div className={styles.PlaceholderImage}>No Image Available</div>
-  )}
-</Col>
+        <Col md={6}>
+          {course.image ? (
+            <Image src={course.image} alt={course.title} fluid className={styles.CourseImage} />
+          ) : (
+            <div className={styles.PlaceholderImage}>No Image Available</div>
+          )}
+        </Col>
         <Col md={6}>
           <h1 className={styles.CourseTitle}>{course.title}</h1>
           <p className={styles.CourseDescription}>{course.description}</p>
@@ -165,90 +165,92 @@ function CourseSingle() {
           {currentUser && (
             <>
               {!userReview && !showReviewForm && (
+                <div className={styles.AddReviewButton}>
                 <Button onClick={handleAddReview} className={`${styles.Button} ${styles.Blue}`}>
                   Add Review
                 </Button>
-              )}
-              {(showReviewForm || isEditing) && (
-                <Form onSubmit={handleSubmitReview} className={styles.ReviewForm}>
-                  <Form.Group>
-                    <Form.Label>Your Review</Form.Label>
-                    <Form.Control
-                      as="textarea"
-                      rows={3}
-                      name="content"
-                      value={review.content}
-                      onChange={handleReviewChange}
-                      required
-                      className={styles['form-control']}
-                    />
-                  </Form.Group>
-                  <div className={styles.RatingContainer}>
-                    <Form.Label>Your Rating</Form.Label>
-                    <StarRatings
-                      rating={review.rating}
-                      starRatedColor="#c7ae6a"
-                      changeRating={handleRatingChange}
-                      numberOfStars={5}
-                      name='rating'
-                      starDimension="30px"
-                      starSpacing="5px"
-                    />
-                  </div>
-                  <Button type="submit" className={`${styles.Button} ${styles.Blue}`}>
-                    {isEditing ? 'Update Review' : 'Submit Review'}
-                  </Button>
-                  <Button 
-                    variant="secondary" 
-                    onClick={() => {
-                      setIsEditing(false);
-                      setShowReviewForm(false);
-                    }} 
-                    className={`${styles.Button} ${styles.Blue}`}
-                  >
-                    Cancel
-                  </Button>
-                </Form>
-              )}
-            </>
-          )}
-          {course.reviews && course.reviews.map(review => (
-            <div key={review.id} className={styles.Review}>
-              <p>{review.content}</p>
-              <StarRatings
-                rating={review.rating}
-                starRatedColor="#c7ae6a"
-                numberOfStars={5}
-                name={`rating-${review.id}`}
-                starDimension="15px"
-                starSpacing="1px"
-              />
-              <p>By: {review.user}</p>
-              {currentUser && currentUser.username === review.user && (
-                <div>
-                  <Button 
-                    onClick={() => {
-                      setReview({ content: review.content, rating: review.rating });
-                      setIsEditing(true);
-                      setShowReviewForm(true);
-                    }}
-                    className={`${styles.Button} ${styles.Blue}`}
-                  >
-                    Edit
-                  </Button>
-                  <Button 
-                    onClick={handleDeleteReview} 
-                    className={`${styles.Button} ${styles.Blue}`}
-                  >
-                    Delete
-                  </Button>
                 </div>
               )}
-            </div>
-          ))}
-        </Col>
-      </Row>
-    </Container>
+          {(showReviewForm || isEditing) && (
+            <Form onSubmit={handleSubmitReview} className={styles.ReviewForm}>
+              <Form.Group>
+                <Form.Label>Your Review</Form.Label>
+                <Form.Control
+                  as="textarea"
+                  rows={3}
+                  name="content"
+                  value={review.content}
+                  onChange={handleReviewChange}
+                  required
+                  className={styles['form-control']}
+                />
+              </Form.Group>
+              <div className={styles.RatingContainer}>
+                <Form.Label>Your Rating</Form.Label>
+                <StarRatings
+                  rating={review.rating}
+                  starRatedColor="#c7ae6a"
+                  changeRating={handleRatingChange}
+                  numberOfStars={5}
+                  name='rating'
+                  starDimension="30px"
+                  starSpacing="5px"
+                />
+              </div>
+              <Button type="submit" className={`${styles.Button} ${styles.Blue}`}>
+                {isEditing ? 'Update Review' : 'Submit Review'}
+              </Button>
+              <Button
+                variant="secondary"
+                onClick={() => {
+                  setIsEditing(false);
+                  setShowReviewForm(false);
+                }}
+                className={`${styles.Button} ${styles.Red}`}
+              >
+                Cancel
+              </Button>
+            </Form>
+          )}
+        </>
+          )}
+        {course.reviews && course.reviews.map(review => (
+          <div key={review.id} className={styles.Review}>
+            <p>{review.content}</p>
+            <StarRatings
+              rating={review.rating}
+              starRatedColor="#c7ae6a"
+              numberOfStars={5}
+              name={`rating-${review.id}`}
+              starDimension="15px"
+              starSpacing="1px"
+            />
+            <p>By: {review.user}</p>
+            {currentUser && currentUser.username === review.user && (
+              <div>
+                <Button
+                  onClick={() => {
+                    setReview({ content: review.content, rating: review.rating });
+                    setIsEditing(true);
+                    setShowReviewForm(true);
+                  }}
+                  className={`${styles.Button} ${styles.Blue}`}
+                >
+                  Edit
+                </Button>
+                <Button
+                  onClick={handleDeleteReview}
+                  className={`${styles.Button} ${styles.Blue}`}
+                >
+                  Delete
+                </Button>
+              </div>
+            )}
+          </div>
+        ))}
+      </Col>
+    </Row>
+    </Container >
   );
 }
 

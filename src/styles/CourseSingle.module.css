@@ -65,12 +65,17 @@
     border-radius: 5px;
     background-color: #ffffff;
   }
+
+  .AddReviewButton {
+    margin-bottom: 20px;
+  }
   
   .Button {
     background-color: #0d5589;
     border: 1px solid #c7ae6a;
     color: white;
     transition: background-color ease-in-out 0.3s, color ease-in-out 0.3s;
+    margin-right: 10px;
   }
   
   .Button:hover {
@@ -78,6 +83,16 @@
     color: #ffffff;
   }
   
+  .Red {
+    background-color: #dc3545;
+    border-color: #dc3545;
+  }
+  
+  .Red:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+  }
+
   .Blue {
     background-color: #0d5589;
   }
