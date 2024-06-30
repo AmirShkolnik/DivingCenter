@@ -15,7 +15,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0,0,0,0.2);
     z-index: 1;
 }
 
@@ -41,10 +41,12 @@ h1 {
     font-size: 4em;
     animation-name: fade;
     animation-duration: 4s;
+    color: white;
 }
 
 p {
     font-size: 1.5em;
+    color: white !important;
 }
 
 .button-container {
@@ -57,8 +59,8 @@ p {
     padding: 10px 20px;
     border: 2px solid #c7ae6a;
     border-radius: 0.25em;
-    background-color: rgba(255, 255, 255, 0.2);
-    color: #b99a45;
+    background-color: rgba(255, 255, 255, 0.5);
+    color: white;
     font-size: 1.2em;
     cursor: pointer;
     transition: background-color 0.3s ease;

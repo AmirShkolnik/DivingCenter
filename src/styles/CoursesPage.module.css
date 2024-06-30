@@ -10,6 +10,10 @@
     border: 0.1px solid #0d5589;
     box-shadow: 0 4px 8px rgba(185, 154, 69, 0.3);
   }
+
+  p {
+    color: #0d5589 !important;
+  }
   
   .courseImage {
     width: 100%;
@@ -20,6 +24,7 @@
   h1 {
     text-align: center;
     margin-bottom: 30px;
+    color: #000000 !important;
   }
   
   h2 {
