@@ -11,7 +11,7 @@ const Footer = ({ className }) => {
 
   return (
     <footer className={`${styles.footer} ${className}`}>
-      <p>&copy; {currentYear} Amir Shkolnik. All rights reserved.</p>
+      <p className={styles.footerText}>&copy; {currentYear} Amir Shkolnik. All rights reserved.</p>
       <div className={styles['footer-icons']}>
         {socialLinks.map((link, index) => (
           <a 
