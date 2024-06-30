@@ -110,3 +110,24 @@
 .AddReviewButton {
   margin-bottom: 20px;
 }
+
+.RatingBookingContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.RatingContainer {
+  display: flex;
+  align-items: center;
+}
+
+.RatingContainer p {
+  margin-right: 0.5rem;
+  margin-bottom: 0;
+}
+
+.BookingLink {
+  text-decoration: none;
+}

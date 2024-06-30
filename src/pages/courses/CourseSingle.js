@@ -138,16 +138,23 @@ function CourseSingle() {
     <Container>
       <div className={styles.CourseContainer}>
         <h1 className={styles.CourseTitle}>{course.title}</h1>
-        <div className={styles.RatingContainer}>
-          <p>Average Rating:</p>
-          <StarRatings
-            rating={course.average_rating || 0}
-            starRatedColor="#c7ae6a"
-            numberOfStars={5}
-            name='courseRating'
-            starDimension="20px"
-            starSpacing="2px"
-          />
+        <div className={styles.RatingBookingContainer}>
+          <div className={styles.RatingContainer}>
+            <p>Average Rating:</p>
+            <StarRatings
+              rating={course.average_rating || 0}
+              starRatedColor="#c7ae6a"
+              numberOfStars={5}
+              name='courseRating'
+              starDimension="20px"
+              starSpacing="2px"
+            />
+          </div>
+          <Link to="/bookings/create" className={styles.BookingLink}>
+            <Button className={`${styles.Button} ${styles.Blue}`}>
+              Book This Course
+            </Button>
+          </Link>
         </div>
         {course.image ? (
           <Image src={course.image} alt={course.title} fluid className={styles.CourseImage} />
@@ -156,13 +163,6 @@ function CourseSingle() {
         )}
         <div className={styles.CourseDescription} dangerouslySetInnerHTML={{ __html: course.description }} />
         <p className={styles.CourseType}>Course Type: {course.course_type}</p>
-        <div className={styles.CourseFooter}>
-          <Link to="/bookings/create" className={styles.BookingLink}>
-            <Button className={`${styles.Button} ${styles.Blue}`}>
-              Book This Course
-            </Button>
-          </Link>
-        </div>
       </div>
       <div className={styles.ReviewSection}>
         <h2>Reviews</h2>
