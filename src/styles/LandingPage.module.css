@@ -30,6 +30,8 @@
     align-items: center;
     justify-content: center;
     z-index: 2;
+    padding: 15px;
+    box-sizing: border-box;
 }
 
 .home-text {
@@ -38,7 +40,7 @@
 }
 
 .landingpage h1 {
-    font-size: 4em;
+    font-size: 2em;
     animation-name: fade;
     animation-duration: 4s;
     color: white !important;
@@ -51,8 +53,11 @@
 
 .button-container {
     display: flex;
-    gap: 20px;
+    flex-direction: column;
+    gap: 10px;
     margin-top: 20px;
+    width: 100%;
+    max-width: 300px;
 }
 
 .home-btn {
@@ -61,10 +66,11 @@
     border-radius: 0.25em;
     background-color: rgba(255, 255, 255, 0.5);
     color: white;
-    font-size: 1.2em;
+    font-size: 1em;
     cursor: pointer;
     transition: background-color 0.3s ease;
     text-decoration: none;
+    text-align: center;
 }
 
 .home-btn:hover {
@@ -101,45 +107,43 @@
 }
 
 /* Media Queries for Responsiveness */
-@media (min-width: 300px) {
-    .content-wrapper {
-        padding: 15px;
+@media (min-width: 480px) {
+    .landingpage h1 {
+        font-size: 2.5em;
     }
 
-    h1 {
-        font-size: 2em;
-    }
-
-    p {
+    .landingpage p {
         font-size: 1.1em;
     }
 
     .button-container {
-        max-width: none;
+        flex-direction: row;
         justify-content: center;
-    }
-
-    .home-btn {
-        font-size: 1em;
-        padding: 10px 18px;
+        max-width: none;
     }
 }
 
-/* Media Queries for Responsiveness */
-@media (min-width: 600px) {
-    .home-text h1 {
+@media (min-width: 768px) {
+    .landingpage h1 {
         font-size: 3em;
     }
 
-    .home-text p {
-        font-size: 1.5em;
+    .landingpage p {
+        font-size: 1.2em;
     }
 
-    .button-container {
-        flex-direction: row;
-        gap: 20px;
-        max-width: none;
-        justify-content: center;
+    .home-btn {
+        font-size: 1.1em;
+    }
+}
+
+@media (min-width: 1024px) {
+    .landingpage h1 {
+        font-size: 4em;
+    }
+
+    .landingpage p {
+        font-size: 1.5em;
     }
 
     .home-btn {
@@ -147,16 +151,12 @@
     }
 }
 
-@media (min-width: 900px) {
-    .home-text h1 {
-        font-size: 4em;
+@media (min-width: 1200px) {
+    .content-wrapper {
+        padding: 30px;
     }
 
-    .home-text p {
-        font-size: 1.5em;
-    }
-
-    .home-btn {
-        font-size: 1.2em;
+    .button-container {
+        gap: 20px;
     }
 }
