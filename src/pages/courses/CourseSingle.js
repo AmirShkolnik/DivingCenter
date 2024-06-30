@@ -7,6 +7,7 @@ import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import styles from '../../styles/CourseSingle.module.css';
 
 function CourseSingle() {
+
   const { slug } = useParams();
   const currentUser = useCurrentUser();
   const [course, setCourse] = useState(null);
@@ -48,36 +49,43 @@ function CourseSingle() {
   const handleSubmitReview = async (event) => {
     event.preventDefault();
     try {
+      let data;
       if (isEditing) {
-        const { data } = await axiosReq.put(`/reviews/${userReview.id}/`, {
+        const response = await axiosReq.put(`/reviews/${userReview.id}/`, {
           content: review.content,
           rating: review.rating,
           course: course.id
         });
+        data = response.data;
         console.log('Updated review:', data);
         setUserReview(data);
-        setCourse(prevCourse => ({
-          ...prevCourse,
-          reviews: prevCourse.reviews.map(rev => rev.id === data.id ? data : rev)
-        }));
       } else {
         console.log('Submitting review:', {
           content: review.content,
           rating: review.rating,
           course: course.id
         });
-        const { data } = await axiosReq.post('/reviews/', {
+        const response = await axiosReq.post('/reviews/', {
           content: review.content,
           rating: review.rating,
           course: course.id
         });
+        data = response.data;
         console.log('Created review:', data);
         setUserReview(data);
-        setCourse(prevCourse => ({
-          ...prevCourse,
-          reviews: [data, ...(prevCourse.reviews || [])]
-        }));
       }
+      
+      setCourse(prevCourse => {
+        const updatedReviews = isEditing
+          ? prevCourse.reviews.map(rev => rev.id === data.id ? data : rev)
+          : [data, ...(prevCourse.reviews || [])];
+        return {
+          ...prevCourse,
+          reviews: updatedReviews,
+          average_rating: calculateAverageRating(updatedReviews)
+        };
+      });
+
       setReview({ content: '', rating: 0 });
       setShowReviewForm(false);
       setIsEditing(false);
@@ -120,6 +128,12 @@ function CourseSingle() {
 
   if (error) return <div>Error: {error}</div>;
   if (!course) return <div>Loading...</div>;
+
+  const calculateAverageRating = (reviews) => {
+    if (!reviews || reviews.length === 0) return 0;
+    const sum = reviews.reduce((acc, review) => acc + review.rating, 0);
+    return sum / reviews.length;
+  };
 
   return (
     <Container>
