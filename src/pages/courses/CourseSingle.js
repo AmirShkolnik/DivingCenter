@@ -24,7 +24,7 @@ function CourseSingle() {
       try {
         setLoading(true);
         const { data } = await axiosReq.get(`/courses/${slug}/`);
-        console.log('Fetched course data:', data);
+        // console.log('Fetched course data:', data);
         setCourse(data);
         if (currentUser && data.reviews) {
           const userReview = data.reviews.find(review => review.user === currentUser.username);
@@ -67,7 +67,7 @@ function CourseSingle() {
           course: course.id
         });
         data = response.data;
-        console.log('Updated review:', data);
+        // console.log('Updated review:', data);
         setUserReview(data);
         toast.success('Review updated successfully!');
       } else {
@@ -77,7 +77,7 @@ function CourseSingle() {
           course: course.id
         });
         data = response.data;
-        console.log('Created review:', data);
+        // console.log('Created review:', data);
         setUserReview(data);
         toast.success('Review submitted successfully!');
       }
@@ -106,7 +106,7 @@ function CourseSingle() {
   const handleDeleteReview = async () => {
     try {
       await axiosReq.delete(`/reviews/${userReview.id}/`);
-      console.log('Deleted review');
+      // console.log('Deleted review');
       setCourse(prevCourse => ({
         ...prevCourse,
         reviews: prevCourse.reviews.filter(review => review.id !== userReview.id)
