@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { Container, Image, Button, Form, Alert, Spinner } from 'react-bootstrap';
 import StarRatings from 'react-star-ratings';
 import { axiosReq } from '../../api/axiosDefaults';
@@ -10,6 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function CourseSingle() {
   const { slug } = useParams();
+  const history = useHistory();
   const currentUser = useCurrentUser();
   const [course, setCourse] = useState(null);
   const [review, setReview] = useState({ content: '', rating: 0 });
@@ -145,6 +146,16 @@ function CourseSingle() {
     return sum / reviews.length;
   };
 
+  const handleBookCourse = () => {
+    if (!currentUser) {
+      toast.error('Please sign in to book this course.');
+      history.push('/signin');
+    } else {
+      toast.success('Redirecting to booking page...');
+      history.push('/bookings/create');
+    }
+  };
+
   return (
     <Container>
       <ToastContainer position="top-center" autoClose={3000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
@@ -176,11 +187,12 @@ function CourseSingle() {
                 <span className={styles.PriceDisplay}>
                   {course.price_display || `${course.price} USD`}
                 </span>
-                <Link to="/bookings/create" className={styles.BookingLink}>
-                  <Button className={`${styles.Button} ${styles.Blue}`}>
-                    Book This Course
-                  </Button>
-                </Link>
+                <Button 
+                  onClick={handleBookCourse} 
+                  className={`${styles.Button} ${styles.Blue}`}
+                >
+                  Book This Course
+                </Button>
               </div>
             </div>
             {course.image ? (
