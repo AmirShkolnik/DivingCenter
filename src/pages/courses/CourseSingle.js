@@ -138,9 +138,13 @@ function CourseSingle() {
   return (
     <Container>
       <Row className={styles.CourseHeader}>
-        <Col md={6}>
-          <Image src={course.image} alt={course.title} fluid className={styles.CourseImage} />
-        </Col>
+      <Col md={6}>
+  {course.image ? (
+    <Image src={course.image} alt={course.title} fluid className={styles.CourseImage} />
+  ) : (
+    <div className={styles.PlaceholderImage}>No Image Available</div>
+  )}
+</Col>
         <Col md={6}>
           <h1 className={styles.CourseTitle}>{course.title}</h1>
           <p className={styles.CourseDescription}>{course.description}</p>
