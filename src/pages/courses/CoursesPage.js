@@ -4,7 +4,6 @@ import { Container, Row, Col } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
-
 const CourseBox = ({ title, imageUrl, description }) => {
   const history = useHistory();
   const currentUser = useCurrentUser();
@@ -37,9 +36,14 @@ const CourseBox = ({ title, imageUrl, description }) => {
         <Col xs={12} md={8}>
           <p className={styles.courseDescription}>{description}</p>
           <p className={styles.courseDescription}>This course starts on the 10th of each month at 09:00 or 15:00 and lasts 2 weeks.</p>
-          <Link to="/bookings/create" className={styles.bookButton} onClick={handleBookNowClick}>
-            Book Now
-          </Link>
+          <div className={styles.buttonContainer}>
+            <Link to="/bookings/create" className={styles.bookButton} onClick={handleBookNowClick}>
+              Book Now
+            </Link>
+            <Link to="/" className={styles.homeButton}>
+              Learn More
+            </Link>
+          </div>
         </Col>
       </Row>
     </div>

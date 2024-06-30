@@ -47,3 +47,25 @@
 .bookButton:hover {
   background-color: #083d63;
 }
+
+.buttonContainer {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.homeButton {
+  background-color: #c7ae6a;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+}
+
+.homeButton:hover {
+  background-color: #083d63;
+  color: white;
+}
