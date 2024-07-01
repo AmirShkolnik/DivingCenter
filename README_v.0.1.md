@@ -127,40 +127,27 @@ Overall, the UX design of Diving Center aims to create an immersive and inclusiv
 
 The color scheme for Diving Center is carefully crafted to evoke a warm, inviting, and coffee-inspired atmosphere. Here's a detailed breakdown:
 
-[Colors by sarahtitus.com](https://www.sarahtitus.com/25-best-travel-destinations-color-palettes/) - Colour Scheme for Diving Center website
+[Colors by looka.com](https://looka.com/editor/188707413) - Colour Scheme for Diving Center website
 
-![Palette 1](doc/images/colors/color-scheme.png)
+![Palette](doc/colors/diving-space-colors.png)
 
-Lotus Green – #317312
-Green Scallion – #6EBB2D
-Wafer Brown – #DED6C9
-Blue Isle – #24BAEC
-Capri Blue – #166EF3
+The Diving Center's color scheme is a carefully curated palette that evokes the essence of underwater exploration and marine environments. Here's a unique description of the color scheme:
 
-![Palette 2](doc/images/colors/colors.png)
+The Diving Center's visual identity is anchored by a rich array of blues, complemented by warm golden hues and crisp neutrals. This thoughtfully designed color palette creates an immersive digital experience that mirrors the allure of the ocean depths.
 
-Dark Magic Blue – #222222
-Tamarillo Red – #891F11
-Orange Spray – #FE940A
-Lemon Pie – #FDE24D
-Empire Blue – #3A77C7
+At the heart of the scheme is **Ocean Blue (#1172B8)**, a deep, saturated hue that serves as the primary color. This shade evokes the vast expanse of the open sea, instilling a sense of adventure and exploration throughout the website.
 
+**Sunlit Waves (#158FE7)** adds a vibrant, energetic touch to the design. This bright blue, reminiscent of sun-dappled waters, is used for interactive elements and call-to-action buttons, guiding users through their journey on the site.
 
-- **Lotus Green – #317312:** This deep, rich shade is used as the primary background color for the navigation menu, creating a cozy and grounding foundation for the website.
+Providing depth and grounding is **Abyss Blue (#0D5589)**, a darker shade that anchors the design and creates a sense of the mysterious underwater world.
 
-- **Green Scallion – #6EBB2D** Reminiscent of a clear morning sky, this vibrant hue is employed for accents, buttons, and interactive elements, adding a refreshing and energizing touch to the design.
+Balancing the cool blues are warm, sandy tones. **Golden Sand (#C7AE6A)** and **Sun-Bleached Shore (#D5C28F)** add warmth and contrast, evoking images of tropical beaches and sun-soaked dive spots. These colors are used for accents and highlights, bringing a touch of sunlight to the oceanic palette.
 
-- **Blue Isle – #24BAEC** Inspired by the rich tones of freshly brewed coffee, this earthy shade is utilized for accents and highlights, evoking a sense of comfort and familiarity.
+**Treasure Gold (#B99A45)** serves as a special accent color, perhaps used for premium features or to highlight important information. It adds a touch of luxury and discovery, like finding hidden treasures beneath the waves.
 
-- **Capri Blue – #166EF3** This muted gray tone serves as a complementary color, providing a subtle backdrop for content and allowing the other colors to shine.
+The palette is completed with classic **Black (#000000)** and **White (#FFFFFF)**. These provide sharp contrast and clarity, ensuring excellent readability for text and creating clean spaces within the design.
 
-- **#FFFFFF (White):** Used for backgrounds, text, and other elements, white creates a clean and crisp canvas, ensuring excellent readability and contrast.
-
-- **#000000 (Black):** This bold and classic color is used for text, borders, and other accents, providing a strong contrast and adding depth to the overall design.
-
-The color palette is carefully curated to create a harmonious and visually appealing experience, capturing the essence of coffee culture while maintaining a modern and inviting aesthetic. The deep blues and grays establish a cozy ambiance, while the warm browns and vibrant accents evoke the rich flavors and aromas of coffee.
-
-This color scheme not only enhances the visual appeal of Diving Center but also supports usability and accessibility, guiding users through the platform and creating a welcoming environment for coffee enthusiasts to explore, connect, and indulge in their passion.
+This unique color scheme not only captures the essence of diving but also enhances usability. The contrast between the deep blues and warm golds creates visual interest and guides users through the site, while the neutral black and white ensure clarity and accessibility. Together, these colors create an immersive digital environment that beckons diving enthusiasts to explore, connect, and dive deeper into their passion.
 
 ## Fonts
 
