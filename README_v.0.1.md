@@ -103,18 +103,21 @@ Accessible across various devices and browsers, [**Diving Center**](https://divi
 
 # UX - User Experience
 
-The UX design of Diving Center revolves around creating an immersive and engaging experience for coffee enthusiasts. With a focus on community, personalization, and seamless navigation, we aim to provide a delightful journey through the world of coffee. Here's a breakdown of our user experience:
+The UX design of Diving Center revolves around creating an immersive and engaging experience for diving enthusiasts. With a focus on community, personalization, and seamless navigation, we aim to provide a delightful journey through the world of underwater exploration. Here's a breakdown of our user experience:
 
-- **Intuitive Navigation:** Our user-friendly interface ensures effortless exploration of articles, reviews, and community contributions, making it easy for users to find their desired content.
+- **Intuitive Navigation:** Our user-friendly interface ensures effortless exploration of courses, dive sites, and community contributions, making it easy for users to find their desired content.
+
 - **Responsive Design:** Whether accessing Diving Center from a desktop, tablet, or mobile device, our responsive layout adapts seamlessly, ensuring a consistent and enjoyable experience across all platforms.
-- **Engaging Content:** Our articles, reviews, and community posts are crafted to captivate and inform, offering a wealth of knowledge and insights into the art of coffee appreciation.
-- **Personalization:** Users can create personalized accounts, allowing them to save their favorite articles, follow fellow coffee enthusiasts, and curate their own collection of coffee experiences.
 
-- **Interactive Community:** We foster a vibrant community where users can share their passion, exchange ideas, and engage in discussions through comments, likes, and personal reviews of coffee shops and flavors.
+- **Engaging Content:** Our course descriptions, dive site reviews, and community posts are crafted to captivate and inform, offering a wealth of knowledge and insights into the art of diving.
 
-- **Seamless Contribution:** Our platform empowers users to contribute their own content, whether it's writing reviews, sharing personal coffee stories, or offering tips and recommendations to fellow enthusiasts.
+- **Personalization:** Users can create personalized accounts, allowing them to save their favorite courses, follow fellow divers, and curate their own collection of diving experiences.
 
-Overall, the UX design of Diving Center aims to create an immersive and inclusive environment where coffee lovers can explore, learn, and connect, all while savoring the rich flavors and experiences that the world of coffee has to offer.
+- **Interactive Community:** We foster a vibrant community where users can share their passion, exchange ideas, and engage in discussions through comments, likes, and personal reviews of dive sites and equipment.
+
+- **Seamless Contribution:** Our platform empowers users to contribute their own content, whether it's writing reviews, sharing personal diving stories, or offering tips and recommendations to fellow enthusiasts.
+
+Overall, the UX design of Diving Center aims to create an immersive and inclusive environment where diving lovers can explore, learn, and connect, all while experiencing the thrilling adventures that the underwater world has to offer.
 
 ![Articles Page](documentation/Features/articles-page.png)
 
