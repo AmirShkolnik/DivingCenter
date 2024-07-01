@@ -7,6 +7,12 @@ import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+const stripHtmlTags = (html) => {
+  const tmp = document.createElement("DIV");
+  tmp.innerHTML = html;
+  return tmp.textContent || tmp.innerText || "";
+};
+
 const CourseBox = ({ title, imageUrl, excerpt, slug, price }) => {
   const currentUser = useCurrentUser();
   const history = useHistory();
@@ -20,6 +26,8 @@ const CourseBox = ({ title, imageUrl, excerpt, slug, price }) => {
       history.push("/signin", { from: "/bookings/create" });
     }
   };
+
+  const cleanExcerpt = stripHtmlTags(excerpt);
 
   return (
     <div className={styles.courseBox}>
@@ -41,7 +49,7 @@ const CourseBox = ({ title, imageUrl, excerpt, slug, price }) => {
           )}
         </Col>
         <Col xs={12} md={8}>
-          <p className={styles.courseDescription}>{excerpt}</p>
+          <p className={styles.courseDescription}>{cleanExcerpt}</p>
           <p className={styles.courseDescription}>This course starts on the 10th of each month at 09:00 or 15:00 and lasts 2 weeks.</p>
           <p className={styles.PriceDisplay}>Price: {price}</p>
           <div className={styles.buttonContainer}>
