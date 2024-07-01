@@ -196,3 +196,80 @@
 .ReviewForm .ButtonContainer {
   margin-top: 1rem;
 }
+
+@media screen and (min-width: 280px) and (max-width: 320px) {
+  .CourseContainer {
+    padding: 1rem;
+  }
+  
+  .CourseTitle {
+    font-size: 1.8rem;
+  }
+  
+  .RatingBookingContainer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .BookingPriceContainer {
+    margin-top: 1rem;
+  }
+  
+  .Button {
+    font-size: 0.9rem;
+    padding: 0.3rem 0.6rem;
+  }
+}
+
+@media screen and (min-width: 321px) and (max-width: 480px) {
+  .CourseContainer {
+    padding: 1.5rem;
+  }
+  
+  .CourseTitle {
+    font-size: 2rem;
+  }
+  
+  .RatingBookingContainer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .BookingPriceContainer {
+    margin-top: 1rem;
+  }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  .CourseTitle {
+    font-size: 2.2rem;
+  }
+  
+  .RatingBookingContainer {
+    flex-wrap: wrap;
+  }
+  
+  .BookingPriceContainer {
+    margin-top: 1rem;
+  }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  .CourseContainer {
+    padding: 1.8rem;
+  }
+}
+
+@media only screen and (min-width: 1025px) and (max-width: 1200px) {
+  .CourseContainer {
+    padding: 2.2rem;
+  }
+}
+
+@media only screen and (min-width: 1201px) {
+  .CourseContainer {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
