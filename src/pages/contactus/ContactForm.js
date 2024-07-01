@@ -27,7 +27,7 @@ const ContactForm = () => {
     try {
       const { data } = await axiosReq.post('/contactus/', formData);
       // console.log('Response data:', data);
-      setMessageId(data.id); // Ensure this is correctly set
+      setMessageId(data.id);
       setIsSubmitted(true);
       toast.success('Your message has been sent successfully!');
     } catch (err) {
@@ -86,7 +86,7 @@ const ContactForm = () => {
       <h2 className={styles.Title}>Contact Us</h2>
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="name">
-          <Form.Label>Name</Form.Label>
+          <Form.Label>Name*</Form.Label>
           <Form.Control
             type="text"
             name="name"
@@ -97,7 +97,7 @@ const ContactForm = () => {
           {errors.name && <span className={styles.error}>{errors.name}</span>}
         </Form.Group>
         <Form.Group controlId="email">
-          <Form.Label>Email</Form.Label>
+          <Form.Label>Email*</Form.Label>
           <Form.Control
             type="email"
             name="email"
@@ -108,7 +108,7 @@ const ContactForm = () => {
           {errors.email && <span className={styles.error}>{errors.email}</span>}
         </Form.Group>
         <Form.Group controlId="subject">
-          <Form.Label>Subject</Form.Label>
+          <Form.Label>Subject*</Form.Label>
           <Form.Control
             type="text"
             name="subject"
@@ -119,7 +119,7 @@ const ContactForm = () => {
           {errors.subject && <span className={styles.error}>{errors.subject}</span>}
         </Form.Group>
         <Form.Group controlId="message">
-          <Form.Label>Message</Form.Label>
+          <Form.Label>Message*</Form.Label>
           <Form.Control
             as="textarea"
             rows={5}
