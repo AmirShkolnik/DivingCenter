@@ -52,17 +52,22 @@ function PostCreateForm() {
     }
   };
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (isSubmitting) return; // Prevent multiple submissions
+
+    setIsSubmitting(true);
     const formData = new FormData();
-  
+
     formData.append("title", title);
     formData.append("content", content);
-    
+
     if (imageInput.current.files[0]) {
       formData.append("image", imageInput.current.files[0]);
     }
-  
+
     try {
       const { data } = await axiosReq.post("/posts/", formData);
       toast.success("Post created successfully!");
@@ -73,6 +78,8 @@ function PostCreateForm() {
         setErrors(err.response?.data);
       }
       toast.error("Failed to create post. Please try again.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -85,7 +92,8 @@ function PostCreateForm() {
           name="title"
           value={title}
           onChange={handleChange}
-        />
+          disabled={isSubmitting}
+      />
       </Form.Group>
       {errors?.title?.map((message, idx) => (
         <Alert variant="warning" key={idx}>
@@ -101,6 +109,7 @@ function PostCreateForm() {
           name="content"
           value={content}
           onChange={handleChange}
+          disabled={isSubmitting}
         />
       </Form.Group>
       {errors?.content?.map((message, idx) => (
@@ -112,11 +121,16 @@ function PostCreateForm() {
       <Button
         className={`${btnStyles.Button} ${btnStyles.Blue}`}
         onClick={() => history.goBack()}
+        disabled={isSubmitting}
       >
         cancel
       </Button>
-      <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
-        create
+      <Button
+        className={`${btnStyles.Button} ${btnStyles.Blue}`}
+        type="submit"
+        disabled={isSubmitting}
+      >
+        {isSubmitting ? "Creating..." : "Create"}
       </Button>
     </div>
   );
@@ -160,7 +174,9 @@ function PostCreateForm() {
                 accept="image/*"
                 onChange={handleChangeImage}
                 ref={imageInput}
+                disabled={isSubmitting}
               />
+
             </Form.Group>
             {errors?.image?.map((message, idx) => (
               <Alert variant="warning" key={idx}>
