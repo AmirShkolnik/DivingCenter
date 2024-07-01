@@ -184,15 +184,15 @@ function CourseSingle() {
                 />
               </div>
               <div className={styles.BookingPriceContainer}>
-                <span className={styles.PriceDisplay}>
-                  {course.price_display || `${course.price} USD`}
-                </span>
                 <Button 
                   onClick={handleBookCourse} 
                   className={`${styles.Button} ${styles.Blue}`}
                 >
                   Book This Course
                 </Button>
+                <span className={styles.PriceDisplay}>
+                 Price: {course.price_display || `${course.price}`}
+                </span>
               </div>
             </div>
             {course.image ? (
