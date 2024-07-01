@@ -119,7 +119,7 @@ The UX design of Diving Center revolves around creating an immersive and engagin
 
 Overall, the UX design of Diving Center aims to create an immersive and inclusive environment where diving lovers can explore, learn, and connect, all while experiencing the thrilling adventures that the underwater world has to offer.
 
-![Articles Page](documentation/Features/articles-page.png)
+![Feed](doc/images/social/feed-ben.png)
 
 # Design
 
@@ -151,29 +151,24 @@ This unique color scheme not only captures the essence of diving but also enhanc
 
 ## Fonts
 
-The font choices for **Diving Center** are carefully curated to create a warm, inviting, and coffee-inspired atmosphere. By leveraging the power of typography, we aim to enhance the user experience and immerse our visitors in the rich world of coffee culture.
+The font choices for Diving Center are meticulously selected to evoke the essence of underwater exploration and adventure. By harnessing the power of typography, we aim to enhance the user experience and immerse our visitors in the captivating world of diving.
 
 ### Google Fonts
 
-**Diving Center** utilizes fonts from  [Google Fonts](doc/fonts/roboto-fonts.png), a library of open-source font families, ensuring easy integration and accessibility across various devices and platforms.
+**Diving Center** employs fonts from [Google Fonts](doc/fonts/dm-sans.png), specifically the DM Sans family, to create a cohesive and visually appealing design across our platform. This modern, sans-serif typeface offers excellent readability and a clean, professional appearance that aligns perfectly with our diving-themed website.
 
-#### Roboto
-- **Usage:** Body text, descriptions, and content.
+![Palette](doc/fonts/dm-sans.png)
 
-- **Characteristics:** Clean, modern, and highly legible, with a friendly and approachable design.
-
-- **Reason for Selection:** Roboto's simple yet elegant style perfectly complements the cozy and welcoming vibe of Diving Center. Its readability ensures that our content is easily consumable, allowing coffee enthusiasts to immerse themselves in the stories and experiences we share.
-
-[Roboto on Google Fonts](https://fonts.google.com/specimen/Roboto)
-
-#### Lato
+#### DM Sans
 - **Usage**: Headings, titles, and emphasis
-- **Characteristics**: A harmonious blend of soft curves and strong lines, striking a balance between warmth and sophistication.
-- **Reason for Selection**: Lato's unique character captures the essence of coffee culture – a fusion of comfort and craftsmanship. Its distinctive yet approachable style draws attention to important elements, guiding users through the platform while evoking a sense of artistry and passion.
 
-[Lato on Google Fonts](https://fonts.google.com/specimen/Lato)
+- **Characteristics**: DM Sans boasts a perfect equilibrium of fluid contours and bold strokes, embodying both approachability and professionalism in its design.
 
-By combining the friendly readability of Roboto with the warm sophistication of Lato, Diving Center creates a typographic experience that resonates with coffee lovers. Each letter, word, and line invites users to explore, savor, and connect with the rich tapestry of flavors, aromas, and stories that make the coffee world so captivating.
+- **Reason for Selection**: The distinctive character of DM Sans encapsulates the spirit of diving exploration – a fusion of adventure and expertise. Its clean yet dynamic style emphasizes key information, guiding divers through our platform while evoking a sense of aquatic wonder and technical proficiency.
+
+[DM Sans on Google Fonts](https://fonts.google.com/specimen/DM+Sans)
+
+By leveraging the crisp legibility of DM Sans, Diving Center crafts a typographic journey that resonates with underwater enthusiasts. Each character, phrase, and paragraph invites users to dive in, discover, and connect with the vast tapestry of marine life, diving techniques, and underwater narratives that make the diving world so captivating. The font's versatility allows for clear communication of both technical diving information and engaging storytelling, creating an immersive digital experience that mirrors the depth and diversity of the ocean itself.
 
 # Project Planning
 
