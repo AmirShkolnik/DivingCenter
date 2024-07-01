@@ -85,21 +85,21 @@ For our returning divers, welcome back! Sign in to reconnect with your diving bu
 
 # Overview
 
-Live Version: [**Diving Center**](https://travelspace-05a60ae0306b.herokuapp.com/)
+Live Version: [**Diving Center**](https://divingspace-900b5a3db777.herokuapp.com)
 
-![Home Page](documentation/Features/home.png)
+![Home Page](doc/images/homepage/homepage.png)
 
-**Diving Center** is a vibrant online platform celebrating the art of coffee and fostering a sense of community. It serves as a communal hub for:
+**Diving Center** is a vibrant online platform celebrating the art of scuba diving and fostering a sense of community. It serves as a communal hub for:
 
-- Joining a passionate community of coffee enthusiasts and professionals.
-- Creating personalized profiles to share coffee experiences and insights.
-- Contributing and interacting with engaging content on coffee culture.
-- Discovering the latest trends, techniques, and best practices in the world of coffee.
-- Facilitating discussions and exchanges within a supportive coffee-loving community.
+- Joining a passionate community of diving enthusiasts and professionals.
+- Creating personalized profiles to share underwater experiences and insights.
+- Contributing and interacting with engaging content on diving culture.
+- Discovering the latest trends, techniques, and best practices in the world of scuba diving.
+- Facilitating discussions and exchanges within a supportive diving community
 
-Accessible across various devices and browsers, [**Diving Center**](https://divingspace-900b5a3db777.herokuapp.com) aims to demystify the complexities of coffee, making the art of brewing and appreciation accessible to a diverse audience. Whether you're a seasoned barista, a coffee connoisseur, or a curious newcomer, the platform offers tailored resources to support your journey into the world of coffee.
+Accessible across various devices and browsers, [**Diving Center**](https://divingspace-900b5a3db777.herokuapp.com) aims to demystify the complexities of scuba diving, making the art of underwater exploration and appreciation accessible to a diverse audience. Whether you're a seasoned divemaster, a diving enthusiast, or a curious newcomer, the platform offers tailored resources to support your journey into the world of diving.
 
-[**Diving Center**](https://divingspace-900b5a3db777.herokuapp.com) envisions fostering a collaborative ecosystem where members can learn, share, and grow together in their love for coffee. By engaging with the platform, users can stay ahead of coffee trends, enhance their brewing skills, and connect with like-minded individuals. As the platform evolves, future enhancements will include advanced interactive features, further enriching the user experience and community engagement around the shared passion for coffee.
+[**Diving Center**](https://divingspace-900b5a3db777.herokuapp.com) envisions fostering a collaborative ecosystem where members can learn, share, and grow together in their love for underwater exploration. By engaging with the platform, users can stay ahead of diving trends, enhance their diving skills, and connect with like-minded enthusiasts. As the platform evolves, future enhancements will include advanced interactive features, further enriching the user experience and community engagement around the shared passion for diving adventures.
 
 # UX - User Experience
 
