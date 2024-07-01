@@ -23,7 +23,7 @@ const CourseBox = ({ title, imageUrl, excerpt, slug, price }) => {
       history.push("/bookings/create");
     } else {
       toast.error("You must be logged in to book a course.");
-      history.push("/signin", { from: "/bookings/create" });
+      history.push("/courses", { from: "/bookings/create" });
     }
   };
 
@@ -73,17 +73,17 @@ const CoursesPage = () => {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        console.log('Fetching courses...');
+        // console.log('Fetching courses...');
         const response = await axiosReq.get('/courses/');
-        console.log('API Response:', response);
+       //  console.log('API Response:', response);
         
         if (response.status === 200) {
           if (Array.isArray(response.data)) {
             setCourses(response.data);
-            console.log('Courses set:', response.data);
+           // console.log('Courses set:', response.data);
           } else if (response.data.results && Array.isArray(response.data.results)) {
             setCourses(response.data.results);
-            console.log('Courses set from results:', response.data.results);
+           // console.log('Courses set from results:', response.data.results);
           } else {
             console.error('Unexpected data structure:', response.data);
             setError('Unexpected data structure in API response');
