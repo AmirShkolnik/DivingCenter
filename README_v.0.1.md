@@ -1,25 +1,25 @@
 <p align="center">
-  <img src="src/assets/images/logo.png" alt="Travel Space">
+  <img src="doc/images/logos/logo.jpg" alt="Diving Center">
 </p>
-<h1 align="center">Travel Space</h1>
+<h1 align="center">Diving Center</h1>
 
 <h2>Welcome</h2>
 
-Link to live website: [CLICK HERE!](https://travelspace-05a60ae0306b.herokuapp.com/)
+Link to live website: [CLICK HERE!](https://divingspace-900b5a3db777.herokuapp.com)
 
-![Am I Responsive Image]()
+![Am I Responsive Image](doc/images/amiresponsive/amiresponsive.png)
 
 # Introduction
 
-## Travel Space
+## Diving Center
 
-Welcome to [**Cups of Joy**](https://cupsofjoy-c2c917eb3f59.herokuapp.com/), a vibrant online platform dedicated to celebrating the art of coffee and fostering a sense of community. Our mission is to create a warm and inviting space where coffee enthusiasts can explore the rich world of artisanal brews, share their passion, and connect with like-minded individuals.
+Welcome to [**Diving Center**](https://divingspace-900b5a3db777.herokuapp.com), a vibrant online platform dedicated to celebrating the art of coffee and fostering a sense of community. Our mission is to create a warm and inviting space where coffee enthusiasts can explore the rich world of artisanal brews, share their passion, and connect with like-minded individuals.
 
-At [**Cups of Joy**](https://cupsofjoy-c2c917eb3f59.herokuapp.com/), we believe that every cup tells a story – one of craftsmanship, culture, and the pursuit of pure indulgence. Through our engaging content, we aim to inspire and educate, unveiling the secrets behind exceptional coffee experiences. Join us on this flavorful journey as we savor the finest beans, unravel brewing techniques, and uncover the tales behind each sip.
+At [**Diving Center**](https://divingspace-900b5a3db777.herokuapp.com), we believe that every cup tells a story – one of craftsmanship, culture, and the pursuit of pure indulgence. Through our engaging content, we aim to inspire and educate, unveiling the secrets behind exceptional coffee experiences. Join us on this flavorful journey as we savor the finest beans, unravel brewing techniques, and uncover the tales behind each sip.
 
 ### Get Involved
 
-Join [**Cups of Joy**](https://cupsofjoy-c2c917eb3f59.herokuapp.com/) today and immerse yourself in a world where coffee is more than just a beverage – it's a passion, a culture, and a way of life. Our vibrant community welcomes coffee enthusiasts of all levels, from seasoned aficionados to curious explorers. Whether you're here to expand your knowledge, share your love for the perfect brew, or simply indulge in the rich aromas and flavors, our platform is your gateway to a vast and captivating landscape of coffee experiences. Let's embark on this flavorful journey together, savoring each sip, exchanging stories, and uncovering the secrets that make every cup a true masterpiece.
+Join [**Diving Center**](https://divingspace-900b5a3db777.herokuapp.com) today and immerse yourself in a world where coffee is more than just a beverage – it's a passion, a culture, and a way of life. Our vibrant community welcomes coffee enthusiasts of all levels, from seasoned aficionados to curious explorers. Whether you're here to expand your knowledge, share your love for the perfect brew, or simply indulge in the rich aromas and flavors, our platform is your gateway to a vast and captivating landscape of coffee experiences. Let's embark on this flavorful journey together, savoring each sip, exchanging stories, and uncovering the secrets that make every cup a true masterpiece.
 
 # Table of Contents
 - [Introduction](#introduction)
@@ -85,11 +85,11 @@ Join [**Cups of Joy**](https://cupsofjoy-c2c917eb3f59.herokuapp.com/) today and 
 
 # Overview
 
-Live Version: [**Travel Space**](https://travelspace-05a60ae0306b.herokuapp.com/)
+Live Version: [**Diving Center**](https://travelspace-05a60ae0306b.herokuapp.com/)
 
 ![Home Page](documentation/Features/home.png)
 
-**Travel Space** is a vibrant online platform celebrating the art of coffee and fostering a sense of community. It serves as a communal hub for:
+**Diving Center** is a vibrant online platform celebrating the art of coffee and fostering a sense of community. It serves as a communal hub for:
 
 - Joining a passionate community of coffee enthusiasts and professionals.
 - Creating personalized profiles to share coffee experiences and insights.
@@ -97,16 +97,16 @@ Live Version: [**Travel Space**](https://travelspace-05a60ae0306b.herokuapp.com/
 - Discovering the latest trends, techniques, and best practices in the world of coffee.
 - Facilitating discussions and exchanges within a supportive coffee-loving community.
 
-Accessible across various devices and browsers, [**Cups of Joy**](https://cupsofjoy-c2c917eb3f59.herokuapp.com/) aims to demystify the complexities of coffee, making the art of brewing and appreciation accessible to a diverse audience. Whether you're a seasoned barista, a coffee connoisseur, or a curious newcomer, the platform offers tailored resources to support your journey into the world of coffee.
+Accessible across various devices and browsers, [**Diving Center**](https://divingspace-900b5a3db777.herokuapp.com) aims to demystify the complexities of coffee, making the art of brewing and appreciation accessible to a diverse audience. Whether you're a seasoned barista, a coffee connoisseur, or a curious newcomer, the platform offers tailored resources to support your journey into the world of coffee.
 
-[**Cups of Joy**](https://cupsofjoy-c2c917eb3f59.herokuapp.com/) envisions fostering a collaborative ecosystem where members can learn, share, and grow together in their love for coffee. By engaging with the platform, users can stay ahead of coffee trends, enhance their brewing skills, and connect with like-minded individuals. As the platform evolves, future enhancements will include advanced interactive features, further enriching the user experience and community engagement around the shared passion for coffee.
+[**Diving Center**](https://divingspace-900b5a3db777.herokuapp.com) envisions fostering a collaborative ecosystem where members can learn, share, and grow together in their love for coffee. By engaging with the platform, users can stay ahead of coffee trends, enhance their brewing skills, and connect with like-minded individuals. As the platform evolves, future enhancements will include advanced interactive features, further enriching the user experience and community engagement around the shared passion for coffee.
 
 # UX - User Experience
 
-The UX design of Cups Of Joy revolves around creating an immersive and engaging experience for coffee enthusiasts. With a focus on community, personalization, and seamless navigation, we aim to provide a delightful journey through the world of coffee. Here's a breakdown of our user experience:
+The UX design of Diving Center revolves around creating an immersive and engaging experience for coffee enthusiasts. With a focus on community, personalization, and seamless navigation, we aim to provide a delightful journey through the world of coffee. Here's a breakdown of our user experience:
 
 - **Intuitive Navigation:** Our user-friendly interface ensures effortless exploration of articles, reviews, and community contributions, making it easy for users to find their desired content.
-- **Responsive Design:** Whether accessing Cups Of Joy from a desktop, tablet, or mobile device, our responsive layout adapts seamlessly, ensuring a consistent and enjoyable experience across all platforms.
+- **Responsive Design:** Whether accessing Diving Center from a desktop, tablet, or mobile device, our responsive layout adapts seamlessly, ensuring a consistent and enjoyable experience across all platforms.
 - **Engaging Content:** Our articles, reviews, and community posts are crafted to captivate and inform, offering a wealth of knowledge and insights into the art of coffee appreciation.
 - **Personalization:** Users can create personalized accounts, allowing them to save their favorite articles, follow fellow coffee enthusiasts, and curate their own collection of coffee experiences.
 
@@ -114,7 +114,7 @@ The UX design of Cups Of Joy revolves around creating an immersive and engaging 
 
 - **Seamless Contribution:** Our platform empowers users to contribute their own content, whether it's writing reviews, sharing personal coffee stories, or offering tips and recommendations to fellow enthusiasts.
 
-Overall, the UX design of Cups Of Joy aims to create an immersive and inclusive environment where coffee lovers can explore, learn, and connect, all while savoring the rich flavors and experiences that the world of coffee has to offer.
+Overall, the UX design of Diving Center aims to create an immersive and inclusive environment where coffee lovers can explore, learn, and connect, all while savoring the rich flavors and experiences that the world of coffee has to offer.
 
 ![Articles Page](documentation/Features/articles-page.png)
 
@@ -122,9 +122,9 @@ Overall, the UX design of Cups Of Joy aims to create an immersive and inclusive 
 
 ## Colour Scheme
 
-The color scheme for Cups Of Joy is carefully crafted to evoke a warm, inviting, and coffee-inspired atmosphere. Here's a detailed breakdown:
+The color scheme for Diving Center is carefully crafted to evoke a warm, inviting, and coffee-inspired atmosphere. Here's a detailed breakdown:
 
-[Colors by sarahtitus.com](https://www.sarahtitus.com/25-best-travel-destinations-color-palettes/) - Colour Scheme for Travel Space website
+[Colors by sarahtitus.com](https://www.sarahtitus.com/25-best-travel-destinations-color-palettes/) - Colour Scheme for Diving Center website
 
 ![Palette 1](doc/images/colors/color-scheme.png)
 
@@ -157,22 +157,22 @@ Empire Blue – #3A77C7
 
 The color palette is carefully curated to create a harmonious and visually appealing experience, capturing the essence of coffee culture while maintaining a modern and inviting aesthetic. The deep blues and grays establish a cozy ambiance, while the warm browns and vibrant accents evoke the rich flavors and aromas of coffee.
 
-This color scheme not only enhances the visual appeal of Cups Of Joy but also supports usability and accessibility, guiding users through the platform and creating a welcoming environment for coffee enthusiasts to explore, connect, and indulge in their passion.
+This color scheme not only enhances the visual appeal of Diving Center but also supports usability and accessibility, guiding users through the platform and creating a welcoming environment for coffee enthusiasts to explore, connect, and indulge in their passion.
 
 ## Fonts
 
-The font choices for **Cups Of Joy** are carefully curated to create a warm, inviting, and coffee-inspired atmosphere. By leveraging the power of typography, we aim to enhance the user experience and immerse our visitors in the rich world of coffee culture.
+The font choices for **Diving Center** are carefully curated to create a warm, inviting, and coffee-inspired atmosphere. By leveraging the power of typography, we aim to enhance the user experience and immerse our visitors in the rich world of coffee culture.
 
 ### Google Fonts
 
-**Travel Space** utilizes fonts from  [Google Fonts](doc/fonts/roboto-fonts.png), a library of open-source font families, ensuring easy integration and accessibility across various devices and platforms.
+**Diving Center** utilizes fonts from  [Google Fonts](doc/fonts/roboto-fonts.png), a library of open-source font families, ensuring easy integration and accessibility across various devices and platforms.
 
 #### Roboto
 - **Usage:** Body text, descriptions, and content.
 
 - **Characteristics:** Clean, modern, and highly legible, with a friendly and approachable design.
 
-- **Reason for Selection:** Roboto's simple yet elegant style perfectly complements the cozy and welcoming vibe of Cups Of Joy. Its readability ensures that our content is easily consumable, allowing coffee enthusiasts to immerse themselves in the stories and experiences we share.
+- **Reason for Selection:** Roboto's simple yet elegant style perfectly complements the cozy and welcoming vibe of Diving Center. Its readability ensures that our content is easily consumable, allowing coffee enthusiasts to immerse themselves in the stories and experiences we share.
 
 [Roboto on Google Fonts](https://fonts.google.com/specimen/Roboto)
 
@@ -183,14 +183,14 @@ The font choices for **Cups Of Joy** are carefully curated to create a warm, inv
 
 [Lato on Google Fonts](https://fonts.google.com/specimen/Lato)
 
-By combining the friendly readability of Roboto with the warm sophistication of Lato, Cups Of Joy creates a typographic experience that resonates with coffee lovers. Each letter, word, and line invites users to explore, savor, and connect with the rich tapestry of flavors, aromas, and stories that make the coffee world so captivating.
+By combining the friendly readability of Roboto with the warm sophistication of Lato, Diving Center creates a typographic experience that resonates with coffee lovers. Each letter, word, and line invites users to explore, savor, and connect with the rich tapestry of flavors, aromas, and stories that make the coffee world so captivating.
 
 # Project Planning
 
 ## Strategy Plane
 
 **Project Overview:**  
-Cups Of Joy is an immersive online platform dedicated to celebrating the rich culture of coffee. It serves as a vibrant community hub where coffee enthusiasts can explore captivating articles, engage in discussions, contribute reviews, and share their personal coffee journeys. With personalized accounts, users can curate their favorite content, follow fellow connoisseurs, and actively participate by writing reviews, sharing stories, and offering recommendations. Whether you're a seasoned barista or a curious newcomer, Cups Of Joy invites you to indulge in the magic of coffee, connect with like-minded individuals, and embark on a flavorful adventure through the vast landscape of artisanal brews.
+Diving Center is an immersive online platform dedicated to celebrating the rich culture of coffee. It serves as a vibrant community hub where coffee enthusiasts can explore captivating articles, engage in discussions, contribute reviews, and share their personal coffee journeys. With personalized accounts, users can curate their favorite content, follow fellow connoisseurs, and actively participate by writing reviews, sharing stories, and offering recommendations. Whether you're a seasoned barista or a curious newcomer, Diving Center invites you to indulge in the magic of coffee, connect with like-minded individuals, and embark on a flavorful adventure through the vast landscape of artisanal brews.
 
 **Site Goals:**
 - Create an engaging platform where coffee lovers can explore and learn about the world of coffee through informative articles and reviews.
@@ -204,17 +204,17 @@ Cups Of Joy is an immersive online platform dedicated to celebrating the rich cu
 - Continuously enhance the platform based on user feedback and evolving trends in the coffee industry, ensuring a dynamic and up-to-date experience.
 
 ## Agile Methodologies - Project Management:  
-Cups Of Joy embraces Agile methodologies, enabling iterative development and continuous enhancement. Through GitHub Projects, tasks are efficiently managed, and progress is tracked using a Kanban-style board, ensuring a seamless workflow and timely delivery of new features.ard.
+Diving Center embraces Agile methodologies, enabling iterative development and continuous enhancement. Through GitHub Projects, tasks are efficiently managed, and progress is tracked using a Kanban-style board, ensuring a seamless workflow and timely delivery of new features.ard.
 
 ### Story Points Allocation
 
 **Story Points Distribution**
-Story points were meticulously assigned to each user story, quantifying the effort and complexity involved in developing features for Cups Of Joy. This approach facilitated effective workload estimation and task prioritization, ensuring a smooth development process.
+Story points were meticulously assigned to each user story, quantifying the effort and complexity involved in developing features for Diving Center. This approach facilitated effective workload estimation and task prioritization, ensuring a smooth development process.
 
 **Allocation Guidelines:**
 - **Must-have Stories**: Core functionalities like creating user accounts, writing reviews, and sharing content were given the highest priority, ensuring the platform's primary purpose was met.
 - **Should-have Stories**: Features that improve the overall user experience, such as personalization options and community engagement tools, were considered important but not critical. These were prioritized after the essential features were implemented.
-- **Could-have Stories**: Additional features like integration with external coffee communities or advanced analytics were considered desirable but not essential for the initial launch of Cups Of Joy.
+- **Could-have Stories**: Additional features like integration with external coffee communities or advanced analytics were considered desirable but not essential for the initial launch of Diving Center.
 
 ### Sprint Planning Example
 Here is an example of how story points are managed and allocated across different categories in sprints:
@@ -238,7 +238,7 @@ Here is an example of how story points are managed and allocated across differen
 
 ### MoSCoW Prioritization:
 
-Cups Of Joy follows the MoSCoW prioritization method to ensure a structured and efficient development approach:
+Diving Center follows the MoSCoW prioritization method to ensure a structured and efficient development approach:
 
 - **Must Haves**: Fundamental features enabling users to read articles, create accounts, save favorites, and contribute reviews and comments about coffee shops and flavors.
 - **Should Haves**: Enhancing the platform with personalization options, advanced search capabilities, and community engagement tools like following fellow enthusiasts.
@@ -251,11 +251,11 @@ Cups Of Joy follows the MoSCoW prioritization method to ensure a structured and 
 
 **User stories** are a brief statement of intent that captures what a user does or needs to do as part of their job function. They are written in non-technical language and focus on the value or outcome that the user
 
-[Cups Of Joy Kanban Board Link](https://github.com/users/AmirShkolnik/projects/8)
+[Diving Center Kanban Board Link](https://github.com/users/AmirShkolnik/projects/8)
 
 ![Kanban Board](documentation/Features/kanban-board.png)
 
-[Cups Of Joy User Stories Link](https://github.com/AmirShkolnik/Cups-of-Joy/issues?q=is%3Aissue+is%3Aclosed)
+[Diving Center User Stories Link](https://github.com/AmirShkolnik/Cups-of-Joy/issues?q=is%3Aissue+is%3Aclosed)
 
 ![issues](documentation/Features/issues.png)
 
@@ -284,22 +284,22 @@ Cups Of Joy follows the MoSCoW prioritization method to ensure a structured and 
 | EPIC 4: User Account                               | User Registration                        | As   a visitor, I want to have the option to sign up for an account, so that I can   access additional features and personalized content.                                         | **Must Have**    | Community   Engagement       |
 | EPIC 4: User Account                               | User Management                          | As an admin, I want to manage registered users from the admin   back office, so that I can oversee and maintain user accounts effectively.                                        | **Must Have**    | Core Features Development    |
 
-[Cups Of Joy GitHub Link](https://github.com/AmirShkolnik/Cups-of-Joy)
+[Diving Center GitHub Link](https://github.com/AmirShkolnik/Cups-of-Joy)
 
 #### Milestones
 
 **A milestone**, is a major checkpoint or goal in a project's timeline that signifies the completion of a key phase or the achievement of a significant objective.
 
-[Cups Of Joy Milestones Link](https://github.com/AmirShkolnik/Cups-of-Joy/milestones)
+[Diving Center Milestones Link](https://github.com/AmirShkolnik/Cups-of-Joy/milestones)
 
-![Cups Of Joy Milestones](documentation/Features/milestone.png)
+![Diving Center Milestones](documentation/Features/milestone.png)
 
 #### Epics
 
 **An epic** is a large feature or goal that is divided into smaller tasks or user stories to be completed over multiple sprints.
 
 ##### EPIC 1: Website Content Creation and Publishing
-- **Goal:** This epic focuses on creating engaging and informative website content to attract, educate, and retain visitors on the Cups of Joy platform.
+- **Goal:** This epic focuses on creating engaging and informative website content to attract, educate, and retain visitors on the Diving Center platform.
 ![Epic 1](documentation/Features/epic-1.png)
 - **Associated User Stories:**
   - Manage and Publish Articles
@@ -349,7 +349,7 @@ Every epic represents a major feature area, guiding development from initial set
 
 **Purpose:**
 
-The purpose of the "Cups of Joy" website is to provide a comprehensive platform for coffee enthusiasts and casual drinkers alike. For random visitors, it serves as a valuable resource for exploring the world of coffee, discovering new cafes, and gaining insights into the coffee culture. For registered users, the website offers a personalized experience, enabling them to contribute to the community, share their experiences, and connect with like-minded individuals.
+The purpose of the "Diving Center" website is to provide a comprehensive platform for coffee enthusiasts and casual drinkers alike. For random visitors, it serves as a valuable resource for exploring the world of coffee, discovering new cafes, and gaining insights into the coffee culture. For registered users, the website offers a personalized experience, enabling them to contribute to the community, share their experiences, and connect with like-minded individuals.
 
 **Goals:**
 
@@ -594,11 +594,11 @@ I've used [dbdiagram](https://dbdiagram.io/home) to design my site's ERD.
 
 ![Entity Relationship Diagram](documentation/erd/entity-relationship-diagram.png)
 
-The Entity Relationship Diagram (ERD) is a visual representation of the database structure for the Cups Of Joy project. It illustrates the relationships between different entities (tables) and their attributes (columns). The ERD helps in understanding the data organization and facilitates efficient database design.
+The Entity Relationship Diagram (ERD) is a visual representation of the database structure for the Diving Center project. It illustrates the relationships between different entities (tables) and their attributes (columns). The ERD helps in understanding the data organization and facilitates efficient database design.
 
 #### Tables Overview
 
-In the Cups Of Joy project, the ERD consists of the following entities:
+In the Diving Center project, the ERD consists of the following entities:
 
 ### Entities
 
@@ -627,17 +627,17 @@ The relationships between these entities are as follows:
 - **Review** has a many-to-one relationship with **User** and **Post**, indicating that a review is associated with one user and one post.
 - **Comment** has a many-to-one relationship with **User** and **Post**, indicating that a comment is associated with one user and one post.
 
-The ERD provides a clear understanding of the data structure and relationships within the Cups Of Joy project, facilitating efficient database design and development.
+The ERD provides a clear understanding of the data structure and relationships within the Diving Center project, facilitating efficient database design and development.
 
 ### Security
 
-The "Cups of Joy" coffee project takes keeping your information safe very seriously. The developers have put in place strong protections to guard against bad people trying to access or misuse your data.
+The "Diving Center" coffee project takes keeping your information safe very seriously. The developers have put in place strong protections to guard against bad people trying to access or misuse your data.
 
 Only authorized users with the proper permissions can view or make changes to sensitive information within the application. The code that runs the app is also written in a secure way to prevent any vulnerabilities or weaknesses that could be exploited by hackers.
 
 One such protection is against Cross-Site Request Forgery (CSRF) attacks. CSRF protection ensures that unauthorized commands are not executed on behalf of authenticated users without their knowledge. This safeguard prevents malicious sites from tricking users into performing unwanted actions, thereby keeping your data secure.
 
-The team behind "Cups of Joy" understands how important it is to protect the privacy and personal details of all users. That's why they have made data security one of their top priorities throughout the development process.
+The team behind "Diving Center" understands how important it is to protect the privacy and personal details of all users. That's why they have made data security one of their top priorities throughout the development process.
 
 #### CRUD functunalities
 
@@ -654,7 +654,7 @@ This way, Django's tools work together to keep the website secure and prevent pe
 
 #### Authentication and Authorization
 
- The "Cups of Joy" coffee project makes it very simple for new users to create accounts and existing users to log in. This is possible thanks to a special tool called "Django Allauth." With "Django Allauth," signing up and logging in happens smoothly and without any problems. Users don't have to worry about complicated steps or confusing instructions. They can easily become part of the "Cups of Joy" community and start exploring all the fun features right away!
+ The "Diving Center" coffee project makes it very simple for new users to create accounts and existing users to log in. This is possible thanks to a special tool called "Django Allauth." With "Django Allauth," signing up and logging in happens smoothly and without any problems. Users don't have to worry about complicated steps or confusing instructions. They can easily become part of the "Diving Center" community and start exploring all the fun features right away!
 
 #### Data Validation and Sanitization
 
@@ -682,11 +682,11 @@ When the project is ready to be used by people, the important information is sto
 
 ![responsiveness](documentation/amireponsive/cupsofjoy.png)
 
-The "Cups of Joy" website works well on different devices like phones, tablets, and computers. This was done by using special code called Bootstrap. Bootstrap helps make websites look good on any screen size without needing too much extra code.
+The "Diving Center" website works well on different devices like phones, tablets, and computers. This was done by using special code called Bootstrap. Bootstrap helps make websites look good on any screen size without needing too much extra code.
 
 Instead of writing many lines of code for different screen sizes, Bootstrap has a simple way to make the website adjust itself automatically. This means the website will look great whether you're using a small phone screen or a big computer monitor.
 
-By using Bootstrap's smart design, the "Cups of Joy" website can be easily viewed and used on any device. This was an excellent chance to practice using Bootstrap and make the website work smoothly everywhere with just a little bit of code.
+By using Bootstrap's smart design, the "Diving Center" website can be easily viewed and used on any device. This was an excellent chance to practice using Bootstrap and make the website work smoothly everywhere with just a little bit of code.
 
 # Features
 
@@ -730,7 +730,7 @@ Features descriptions, feedback messages and images
 
 ### CRUD Functionality
 
-The table below describes the CRUD operations that can be performed on Cups Of Joy main features by a registered, logged-in user and admin.
+The table below describes the CRUD operations that can be performed on Diving Center main features by a registered, logged-in user and admin.
 
 | Feature               | Create                    | Read                        | Update               | Delete                 |
 |-----------------------|---------------------------|-----------------------------|----------------------|------------------------|
@@ -743,7 +743,7 @@ The table below describes the CRUD operations that can be performed on Cups Of J
 
 ## Future Features
 
-Here are some future feature suggestions for the "Cups of Joy" project:
+Here are some future feature suggestions for the "Diving Center" project:
 
 ### Search Bar Enhancements
 
@@ -896,11 +896,11 @@ For all testing and validation, please refer to the [TESTING.md](TESTING.md) fil
 
 # Deployment
 
-The "Cups of Joy" project leverages a combination of platforms and services to facilitate its deployment and management.
+The "Diving Center" project leverages a combination of platforms and services to facilitate its deployment and management.
 
 For hosting and running the application, Heroku, a cloud platform as a service (PaaS), is utilized. It enables seamless deployment, automatic scaling, and management tools for monitoring and maintaining the application. The Code Institute (CI) database systems are employed to store and manage the application's data during development and deployment phases.
 
-Additionally, Cloudinary, a cloud-based service, is integrated to handle image and video management, providing an end-to-end solution for storing, optimizing, and delivering media assets for the "Cups of Joy" platform.
+Additionally, Cloudinary, a cloud-based service, is integrated to handle image and video management, providing an end-to-end solution for storing, optimizing, and delivering media assets for the "Diving Center" platform.
 The respective URLs for these platforms and services are as follows:
 
 ## GitHub
@@ -914,13 +914,13 @@ The respective URLs for these platforms and services are as follows:
 - **Application Hosting:** For hosting and running the application, Heroku, a cloud platform as a service (PaaS), is utilized. It enables seamless deployment, automatic scaling, and management tools for monitoring and maintaining the application.
 [Heroku](https://www.heroku.com)
   - **Setting up on Heroku:**
-Here's a simplified 10-step explanation on how to use Heroku's cloud server to deploy your "Cups of Joy" coffee project, written in easy-to-understand language for non-coders:
+Here's a simplified 10-step explanation on how to use Heroku's cloud server to deploy your "Diving Center" coffee project, written in easy-to-understand language for non-coders:
 
 1. **Sign up for Heroku**: Go to heroku.com and create an account.
 
 2. **Create a new app**: After logging in, click on the "New" button in the top right corner and select "Create New App". Give your app a unique name and choose your preferred region.
 
-3. **Connect to GitHub**: In the "Deploy" section, select "GitHub" as the deployment method. Search for your "Cups of Joy" repository and connect it to Heroku.
+3. **Connect to GitHub**: In the "Deploy" section, select "GitHub" as the deployment method. Search for your "Diving Center" repository and connect it to Heroku.
 
 4. **Set up environment variables**: In the "Settings" section, click on "Reveal Config Vars". Here, you'll need to add some important variables:
    - `SECRET_KEY`: A secret key for your Django project (you can generate one online).
@@ -931,7 +931,7 @@ Here's a simplified 10-step explanation on how to use Heroku's cloud server to d
 
 6. **Deploy your app**: If you didn't enable automatic deploys, you can manually deploy your app by scrolling down to the "Manual Deploy" section and clicking "Deploy Branch".
 
-7. **Open your app**: After a successful deployment, Heroku will provide you with a unique URL where your "Cups of Joy" app is now live! You can click the "View" button to open it.
+7. **Open your app**: After a successful deployment, Heroku will provide you with a unique URL where your "Diving Center" app is now live! You can click the "View" button to open it.
 
 8. **Set up a database**: If your app requires a database, you'll need to provision one. Heroku recommends using Heroku Postgres, which you can set up through the "Resources" section of your app's dashboard.
 
@@ -939,7 +939,7 @@ Here's a simplified 10-step explanation on how to use Heroku's cloud server to d
 
 10. **Monitor your app**: Heroku provides tools to monitor your app's performance, logs, and other metrics. You can access these through the "More" menu in your app's dashboard.
 
-By following these steps, you'll be able to deploy your "Cups of Joy" coffee project to Heroku's cloud server, making it accessible to anyone with the app's URL. Remember to consult Heroku's documentation or seek help if you encounter any issues during the deployment process.
+By following these steps, you'll be able to deploy your "Diving Center" coffee project to Heroku's cloud server, making it accessible to anyone with the app's URL. Remember to consult Heroku's documentation or seek help if you encounter any issues during the deployment process.
 
 Citations:
 [1] https://developer.mozilla.org/en-US/docs/Web/JavaScript
@@ -1002,7 +1002,7 @@ By adopting this approach, the project benefits from a dedicated and optimized i
 
 5. **Open a Terminal or Command Prompt**: In your code editor or operating system, open a terminal or command prompt window. This will allow you to execute Git commands.
 
-6. **Navigate to Your Desired Directory**: Using the terminal or command prompt, navigate to the directory or folder where you want to clone the "Cups of Joy" repository. You can use the `cd` command followed by the path to change directories.
+6. **Navigate to Your Desired Directory**: Using the terminal or command prompt, navigate to the directory or folder where you want to clone the "Diving Center" repository. You can use the `cd` command followed by the path to change directories.
 
 7. **Execute the Clone Command**: Once you're in the desired directory, execute the following Git command, replacing `<repository_url>` with the URL you copied earlier:
 
@@ -1018,15 +1018,15 @@ By adopting this approach, the project benefits from a dedicated and optimized i
 
 ## Forking the Repository
 
-Here's an original step-by-step guide for forking the "Cups of Joy" project from the GitHub repository located at https://github.com/AmirShkolnik/Cups-of-Joy:
+Here's an original step-by-step guide for forking the "Diving Center" project from the GitHub repository located at https://github.com/AmirShkolnik/Cups-of-Joy:
 
-1. **Navigate to the Repository**: Open your web browser and visit the "Cups of Joy" repository at https://github.com/AmirShkolnik/Cups-of-Joy.
+1. **Navigate to the Repository**: Open your web browser and visit the "Diving Center" repository at https://github.com/AmirShkolnik/Cups-of-Joy.
 
 2. **Locate the Fork Button**: On the top-right corner of the repository page, you'll find a button labeled "Fork". This button allows you to create a copy of the repository under your own GitHub account.
 
 3. **Create Your Fork**: Click on the "Fork" button. GitHub will prompt you to select the destination account for your forked repository. Choose your personal GitHub account or an organization you have access to. click the green button "Create fork". 
 
-4. **Wait for the Forking Process**: GitHub will initiate the forking process, creating a complete copy of the "Cups of Joy" repository under your chosen account or organization. This process may take a few moments, depending on the size of the repository.
+4. **Wait for the Forking Process**: GitHub will initiate the forking process, creating a complete copy of the "Diving Center" repository under your chosen account or organization. This process may take a few moments, depending on the size of the repository.
 
 5. **Navigate to Your Forked Repository**: Once the forking process is complete, you'll be automatically redirected to the forked repository's page within your account or organization. The URL will reflect the new location of your forked repository.
 
