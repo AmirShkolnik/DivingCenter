@@ -53,10 +53,10 @@ const CourseBox = ({ title, imageUrl, excerpt, slug, price }) => {
           <p className={styles.courseDescription}>This course starts on the 10th of each month at 09:00 or 15:00 and lasts 2 weeks.</p>
           <p className={styles.PriceDisplay}>Price: {price}</p>
           <div className={styles.buttonContainer}>
-            <Button onClick={handleBookNowClick} className={`${styles.Button} ${styles.Blue}`}>
+            <Button onClick={handleBookNowClick} className={styles.bookButton}>
               Book Now
             </Button>
-            <Link to={`/courses/${slug}`} className={`${styles.Button} ${styles.homeButton}`}>
+            <Link to={`/courses/${slug}`} className={styles.homeButton}>
               Learn More
             </Link>
           </div>

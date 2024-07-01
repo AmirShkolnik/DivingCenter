@@ -42,10 +42,12 @@
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  text-decoration: none;
 }
 
 .bookButton:hover {
   background-color: #083d63;
+  color: #c7ae6a;
 }
 
 .buttonContainer {
@@ -66,6 +68,6 @@
 }
 
 .homeButton:hover {
-  background-color: #083d63;
+  background-color: #c7ae6a;
   color: white;
 }
