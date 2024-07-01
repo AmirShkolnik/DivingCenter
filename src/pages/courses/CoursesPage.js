@@ -50,7 +50,6 @@ const CourseBox = ({ title, imageUrl, excerpt, slug, price }) => {
         </Col>
         <Col xs={12} md={8}>
           <p className={styles.courseDescription}>{cleanExcerpt}</p>
-          <p className={styles.courseDescription}>This course starts on the 10th of each month at 09:00 or 15:00 and lasts 2 weeks.</p>
           <p className={styles.PriceDisplay}>Price: {price}</p>
           <div className={styles.buttonContainer}>
             <Button onClick={handleBookNowClick} className={styles.bookButton}>
