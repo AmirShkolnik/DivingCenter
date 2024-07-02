@@ -35,10 +35,23 @@ const BookingPage = () => {
     }
   }, []);
 
+  const fetchCourses = useCallback(async () => {
+    try {
+      const { data } = await axiosRes.get('/diving-courses/');
+      setCourses(data.results || data);
+    } catch (err) {
+      console.error('Error fetching courses:', err);
+      toast.error('Failed to fetch courses. Please try again.');
+    }
+  }, []);
+
   useEffect(() => {
-    fetchBookings();
-    fetchCourses();
-  }, [fetchBookings, location.state]);
+    const fetchData = async () => {
+      await fetchBookings();
+      await fetchCourses();
+    };
+    fetchData();
+  }, [fetchBookings, fetchCourses]);
 
   useEffect(() => {
     if (location.state && location.state.refresh) {
@@ -46,15 +59,6 @@ const BookingPage = () => {
       history.replace(location.pathname, {});
     }
   }, [location, fetchBookings, history]);
-
-  const fetchCourses = async () => {
-    try {
-      const { data } = await axiosRes.get('/diving-courses/');
-      setCourses(data.results || data);
-    } catch (err) {
-      console.error('Error fetching courses:', err);
-    }
-  };
 
   const handleEdit = (booking) => {
     setEditingBooking({ ...booking });

@@ -25,17 +25,13 @@ const BookingForm = () => {
   };
 
   useEffect(() => {
-    const token = localStorage.getItem('authToken');
-    console.log('Stored token:', token);
-  }, []);
-  
-  useEffect(() => {
     const fetchCourses = async () => {
       try {
         const { data } = await axiosRes.get('/diving-courses/');
         setCourses(data.results || data);
       } catch (err) {
         console.error('Error fetching courses:', err);
+        toast.error('Failed to fetch courses. Please try again.');
       }
     };
     fetchCourses();
@@ -51,25 +47,23 @@ const BookingForm = () => {
       const { data } = await axiosRes.post('/bookings/', {
         date: formattedDate,
         time: formattedTime,
-        course: courseId,
-        additional_info: additionalInfo
+        course: parseInt(courseId),
+        additional_info: additionalInfo  // Make sure this matches the backend field name
       });
       console.log('Booking created:', data);
       toast.success('Booking submitted successfully!');
-      history.push('/bookings', { refresh: true });
+      history.push('/bookings');
     } catch (err) {
       console.error('Error creating booking:', err);
-      if (err.response) {
-        console.log('Error response:', err.response.data);
+      if (err.response && err.response.data) {
         setErrors(err.response.data);
-      } else if (err.request) {
-        console.log('Error request:', err.request);
-        setErrors({ message: 'No response received from the server.' });
+        Object.values(err.response.data).forEach(error => {
+          toast.error(Array.isArray(error) ? error[0] : error);
+        });
       } else {
-        console.log('Error message:', err.message);
         setErrors({ message: 'An error occurred while creating the booking.' });
+        toast.error('Failed to submit booking. Please try again.');
       }
-      toast.error('Failed to submit booking. Please try again.');
     }
   };
 
@@ -126,15 +120,11 @@ const BookingForm = () => {
           required
         >
           <option value="">Select a course</option>
-          {courses.length > 0 ? (
-            courses.map((course) => (
-              <option key={course.id} value={course.id}>
-                {translateCourseName(course.name)}
-              </option>
-            ))
-          ) : (
-            <option disabled>No courses available</option>
-          )}
+          {courses.map((course) => (
+            <option key={course.id} value={course.id}>
+              {translateCourseName(course.name)}
+            </option>
+          ))}
         </select>
         {errors.course && <span className={styles.error}>{errors.course}</span>}
       </div>
@@ -147,10 +137,7 @@ const BookingForm = () => {
           rows="4"
         ></textarea>
       </div>
-      <button
-        className={styles.Button}
-        type="submit"
-      >
+      <button className={styles.Button} type="submit">
         Book Now
       </button>
     </form>
