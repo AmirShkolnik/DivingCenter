@@ -56,7 +56,7 @@ const BookingForm = () => {
       });
       console.log('Booking created:', data);
       toast.success('Booking submitted successfully!');
-      history.push('/bookings');
+      history.push('/bookings', { refresh: true });
     } catch (err) {
       console.error('Error creating booking:', err);
       if (err.response) {
