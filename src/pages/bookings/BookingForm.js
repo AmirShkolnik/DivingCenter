@@ -15,6 +15,7 @@ const BookingForm = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [bookingId, setBookingId] = useState(null);
   const [isCanceled, setIsCanceled] = useState(false);
+  const [showConfirmation, setShowConfirmation] = useState(false);
 
   const translateCourseName = (name) => {
     const courseNameMap = {
@@ -98,7 +99,11 @@ const BookingForm = () => {
     }
   };
 
-  const handleCancelBooking = async () => {
+const handleCancelBooking = () => {
+    setShowConfirmation(true);
+  };
+
+  const confirmCancelBooking = async () => {
     try {
       await axiosRes.delete(`/bookings/${bookingId}/`);
       console.log('Booking cancelled');
@@ -109,6 +114,8 @@ const BookingForm = () => {
     } catch (err) {
       setErrors({ message: 'An error occurred while cancelling the booking.' });
       toast.error('Failed to cancel booking. Please try again.');
+    } finally {
+      setShowConfirmation(false);
     }
   };
 
@@ -136,6 +143,13 @@ const BookingForm = () => {
         <button className={styles.bookingButton} onClick={() => setIsSubmitted(false)}>Make Another Booking</button>
         <button className={styles.cancelButton} onClick={handleCancelBooking}>Cancel Booking</button>
       </div>
+      {showConfirmation && (
+          <div className={styles.confirmationDialog}>
+            <p>Are you sure you want to cancel this booking?</p>
+            <button onClick={confirmCancelBooking}>Yes, Cancel</button>
+            <button onClick={() => setShowConfirmation(false)}>No, Keep Booking</button>
+          </div>
+        )}
       </div>
     );
   }
