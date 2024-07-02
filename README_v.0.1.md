@@ -189,7 +189,7 @@ Diving Center is an immersive online platform dedicated to the thrilling world o
 - Continuously enhance the platform based on user feedback and evolving trends in the diving industry, ensuring a dynamic and up-to-date experience that meets the needs of our diverse diving community.
 
 ## Agile Methodologies - Project Management:  
-Diving Center embraces Agile methodologies, enabling iterative development and continuous enhancement. Through GitHub Projects, tasks are efficiently managed, and progress is tracked using a Kanban-style board, ensuring a seamless workflow and timely delivery of new features.ard.
+Diving Center embraces Agile methodologies, enabling iterative development and continuous enhancement. Through GitHub Projects, tasks are efficiently managed, and progress is tracked using a Kanban-style board, ensuring a seamless workflow and timely delivery of new features.
 
 ### Story Points Allocation
 
@@ -222,13 +222,37 @@ Here is an example of how story points are managed and allocated across differen
     - Should-have: 48 points
 
 ### MoSCoW Prioritization:
-
 Diving Center follows the MoSCoW prioritization method to ensure a structured and efficient development approach:
 
-- **Must Haves**: Fundamental features enabling users to read articles, create accounts, save favorites, and contribute reviews and comments about coffee shops and flavors.
-- **Should Haves**: Enhancing the platform with personalization options, advanced search capabilities, and community engagement tools like following fellow enthusiasts.
-- **Could Haves**: Additional functionalities such as integration with external coffee communities, gamification elements to encourage participation, and advanced analytics.
-- **Won't Haves**: Features deemed non-essential for the initial launch, like a dedicated e-commerce platform or third-party advertising integrations.
+**Must Haves:**
+
+- Fundamental features enabling users to browse diving courses, create accounts, book - courses, and contribute reviews about dive sites and experiences.
+- Course catalog with detailed descriptions, difficulty levels, and prerequisites.
+- User profiles to track diving certifications and course progress.
+- Basic community features allowing divers to connect and share experiences.
+
+**Should Haves:**
+
+- Enhancing the platform with personalization options, such as recommended courses based on skill level and interests.
+- Advanced search capabilities for courses and dive sites.
+- Community engagement tools like following fellow divers and creating dive groups.
+- Interactive dive log feature for users to record and share their diving adventures.
+
+**Could Haves:**
+
+- Integration with external diving communities and certification bodies.
+- Gamification elements to encourage participation and course completion.
+- Advanced analytics for users to track their diving progress and skills development.
+- Virtual reality (VR) previews of dive sites and underwater environments.
+
+**Won't Haves:**
+
+Features deemed non-essential for the initial launch, such as:
+
+- A dedicated e-commerce platform for diving equipment.
+- Third-party advertising integrations.
+- Real-time underwater communication tools.
+- Dive travel booking services.
 
 ### User Stories, Milestones and Epics
 
