@@ -175,18 +175,18 @@ By leveraging the crisp legibility of DM Sans, Diving Center crafts a typographi
 ## Strategy Plane
 
 **Project Overview:**  
-Diving Center is an immersive online platform dedicated to celebrating the rich culture of coffee. It serves as a vibrant community hub where coffee enthusiasts can explore captivating articles, engage in discussions, contribute reviews, and share their personal coffee journeys. With personalized accounts, users can curate their favorite content, follow fellow connoisseurs, and actively participate by writing reviews, sharing stories, and offering recommendations. Whether you're a seasoned barista or a curious newcomer, Diving Center invites you to indulge in the magic of coffee, connect with like-minded individuals, and embark on a flavorful adventure through the vast landscape of artisanal brews.
+Diving Center is an immersive online platform dedicated to the thrilling world of scuba diving. It serves as a vibrant community hub where diving enthusiasts can explore captivating courses, engage in discussions, contribute reviews, and share their underwater adventures. With personalized accounts, users can track their diving progress, connect with fellow divers, and actively participate by writing reviews, sharing experiences, and offering recommendations. Whether you're a seasoned diver or a curious beginner, Diving Center invites you to plunge into the wonders of the underwater world, connect with like-minded individuals, and embark on exciting aquatic adventures.
 
 **Site Goals:**
-- Create an engaging platform where coffee lovers can explore and learn about the world of coffee through informative articles and reviews.
+- Create an engaging platform where diving enthusiasts can explore and learn about various diving courses, techniques, and locations through informative content and user reviews.
 
-- Build a vibrant community that encourages members to share their passion, experiences, and knowledge about coffee.
+- Build a vibrant community that encourages members to share their passion, experiences, and knowledge about diving, fostering a supportive environment for divers of all levels.
 
-- Offer a user-friendly interface that is accessible and easy to navigate, ensuring a seamless experience for both desktop and mobile users.
+- Offer a user-friendly interface that is accessible and easy to navigate, ensuring a seamless experience for both desktop and mobile users, with a focus on intuitive course booking and community interaction.
 
-- Enable personalized features that allow members to create accounts, save their favorite content, follow other coffee enthusiasts, and contribute their own reviews and stories.
+- Enable personalized features that allow members to create accounts, track their diving progress, save favorite dive sites, follow other divers, and contribute their own reviews and stories.
 
-- Continuously enhance the platform based on user feedback and evolving trends in the coffee industry, ensuring a dynamic and up-to-date experience.
+- Continuously enhance the platform based on user feedback and evolving trends in the diving industry, ensuring a dynamic and up-to-date experience that meets the needs of our diverse diving community.
 
 ## Agile Methodologies - Project Management:  
 Diving Center embraces Agile methodologies, enabling iterative development and continuous enhancement. Through GitHub Projects, tasks are efficiently managed, and progress is tracked using a Kanban-style board, ensuring a seamless workflow and timely delivery of new features.ard.
