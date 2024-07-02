@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { axiosRes } from "../../api/axiosDefaults";
-import styles from '../../styles/BookingForm.module.css';
+import styles from '../../styles/BookingPage.module.css';
 import { useRedirect } from "../../hooks/useRedirect";
 import { toast } from 'react-toastify';
 import { useHistory, useLocation } from 'react-router-dom';

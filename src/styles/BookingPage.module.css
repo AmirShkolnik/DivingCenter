@@ -1,0 +1,123 @@
+.bookingPage {
+    padding: 20px 0;
+  }
+  
+  .bookingTitle {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #0d5589;
+    font-weight: bold;
+    font-size: 2.5em;
+  }
+  
+  .bookingItem {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 0.1px solid #0d5589;
+    box-shadow: 0 4px 8px rgba(185, 154, 69, 0.3);
+  }
+  
+  .bookingItem h3 {
+    margin-bottom: 15px;
+    color: #0d5589;
+  }
+  
+  .bookingInfo {
+    color: #000000;
+    margin-bottom: 10px;
+  }
+  
+  .bookingButton, .cancelButton {
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    border: none;
+    margin-right: 10px;
+  }
+  
+  .bookingButton {
+    background-color: #0d5589;
+    color: white;
+  }
+  
+  .bookingButton:hover {
+    background-color: #083d63;
+    color: #c7ae6a;
+  }
+  
+  .cancelButton {
+    background-color: #c7ae6a;
+    color: #083d63;
+  }
+  
+  .cancelButton:hover {
+    background-color: #b39a5a;
+    color: white;
+  }
+  
+  .confirmationDialog {
+    background-color: #f8f9fa;
+    border: 1px solid #0d5589;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .cancelConfirmButton, .keepBookingButton {
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border: none;
+    margin: 0 10px;
+  }
+  
+  .cancelConfirmButton {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .cancelConfirmButton:hover {
+    background-color: #c82333;
+  }
+  
+  .keepBookingButton {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .keepBookingButton:hover {
+    background-color: #218838;
+  }
+  
+  form {
+    margin-top: 20px;
+  }
+  
+  form div {
+    margin-bottom: 15px;
+  }
+  
+  form label {
+    display: block;
+    margin-bottom: 5px;
+    color: #0d5589;
+  }
+  
+  form input[type="date"],
+  form select,
+  form textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #0d5589;
+    border-radius: 4px;
+  }
+  
+  form textarea {
+    resize: vertical;
+  }
