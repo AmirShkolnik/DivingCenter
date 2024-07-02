@@ -19,26 +19,23 @@ const BookingPage = () => {
   const fetchBookings = useCallback(async () => {
     try {
       const response = await axiosRes.get('/bookings/');
-      console.log('Bookings API response:', response);
-      const { data } = response;
-      console.log('Bookings data:', data);
+      const data = response.data.results; // Access the results array
+      console.log('Fetched bookings:', data); // Log the response data
+
+      // Ensure bookings is always an array
       setBookings(Array.isArray(data) ? data : []);
-      setLoading(false);
     } catch (err) {
       console.error('Error fetching bookings:', err);
-      if (err.response) {
-        console.error('Error response:', err.response.data);
-        console.error('Error status:', err.response.status);
-      }
       toast.error('Failed to fetch bookings. Please try again.');
+    } finally {
       setLoading(false);
     }
   }, []);
 
   const fetchCourses = useCallback(async () => {
     try {
-      const { data } = await axiosRes.get('/diving-courses/');
-      setCourses(data.results || data);
+      const response = await axiosRes.get('/diving-courses/');
+      setCourses(response.data.results || response.data);
     } catch (err) {
       console.error('Error fetching courses:', err);
       toast.error('Failed to fetch courses. Please try again.');
@@ -47,6 +44,7 @@ const BookingPage = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
       await fetchBookings();
       await fetchCourses();
     };
@@ -71,8 +69,8 @@ const BookingPage = () => {
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axiosRes.put(`/bookings/${editingBooking.id}/`, editingBooking);
-      setBookings(bookings.map(booking => booking.id === data.id ? data : booking));
+      const response = await axiosRes.put(`/bookings/${editingBooking.id}/`, editingBooking);
+      setBookings(bookings.map(booking => booking.id === response.data.id ? response.data : booking));
       setEditingBooking(null);
       toast.success('Booking updated successfully!');
     } catch (err) {
@@ -104,7 +102,7 @@ const BookingPage = () => {
     return <div>Loading bookings...</div>;
   }
 
-  if (bookings.length === 0) {
+  if (!Array.isArray(bookings) || bookings.length === 0) {
     return (
       <div className={styles.bookingForm}>
         <h2>Your Bookings</h2>
