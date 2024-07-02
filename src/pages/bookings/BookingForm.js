@@ -146,8 +146,8 @@ const handleCancelBooking = () => {
       {showConfirmation && (
           <div className={styles.confirmationDialog}>
             <p>Are you sure you want to cancel this booking?</p>
-            <button onClick={confirmCancelBooking}>Yes, Cancel</button>
-            <button onClick={() => setShowConfirmation(false)}>No, Keep Booking</button>
+            <button className={styles.cancelConfirmButton} onClick={confirmCancelBooking}>Yes, Cancel</button>
+            <button className={styles.keepBookingButton} onClick={() => setShowConfirmation(false)}>No, Keep Booking</button>
           </div>
         )}
       </div>
