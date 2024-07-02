@@ -5,7 +5,11 @@
 
 <h2>Welcome</h2>
 
-Link to live website: [CLICK HERE!](https://divingspace-900b5a3db777.herokuapp.com)
+Visit the live website: [Diving Center](https://divingspace-900b5a3db777.herokuapp.com)
+
+Explore the Diving Center Code: [Diving Center GitHub](https://github.com/AmirShkolnik/DivingCenter)
+
+Explore the Diving Center API: [Api GitHub](https://github.com/AmirShkolnik/pp5_api)
 
 ![Am I Responsive Image](doc/images/amiresponsive/amiresponsive.png)
 
@@ -293,64 +297,102 @@ Features deemed non-essential for the initial launch, such as:
 | EPIC 4: User Account                               | User Registration                        | As   a visitor, I want to have the option to sign up for an account, so that I can   access additional features and personalized content.                                         | **Must Have**    | Community   Engagement       |
 | EPIC 4: User Account                               | User Management                          | As an admin, I want to manage registered users from the admin   back office, so that I can oversee and maintain user accounts effectively.                                        | **Must Have**    | Core Features Development    |
 
-[Diving Center GitHub Link](https://github.com/AmirShkolnik/Cups-of-Joy)
+Click to explore the [Diving Center GitHub Link](https://github.com/AmirShkolnik/DivingCenter)
+
+Click to exploer the [Diving Center API - DataBase](https://github.com/AmirShkolnik/pp5_api)
 
 #### Milestones
 
 **A milestone**, is a major checkpoint or goal in a project's timeline that signifies the completion of a key phase or the achievement of a significant objective.
 
-[Diving Center Milestones Link](https://github.com/AmirShkolnik/Cups-of-Joy/milestones)
-
-![Diving Center Milestones](documentation/Features/milestone.png)
+##### Milestone 1: Core Platform Development (Weeks 1-4)
+- Set up project infrastructure
+- Implement basic user authentication (sign up, sign in, log out)
+- Create landing page with essential information and navigation
+##### Milestone 2: Course Management System (Weeks 5-8)
+- Develop course catalog with filtering and search capabilities
+- Implement course detail pages with descriptions and pricing
+- Create booking system for courses
+##### Milestone 3: Community Features Implementation (Weeks 9-12)
+- Develop user profiles and customization options
+- Create user feed for community engagement
+- Implement review and rating system for courses
+##### Milestone 4: Content and Administration Tools (Weeks 13-16)
+- Develop admin panel for course management
+- Implement content management system for dynamic page content
+- Create moderation tools for community content
+##### Milestone 5: User Experience Enhancement (Weeks 17-20)
+- Refine responsive design for all device types
+- Implement advanced search and recommendation features
+- Enhance navigation and user flow throughout the site
+##### Milestone 6: Platform Optimization and Launch Preparation (Weeks 21-24)
+- Conduct performance optimization and load testing
+- Implement analytics and monitoring systems
+- Prepare marketing materials and launch strategy
 
 #### Epics
 
 **An epic** is a large feature or goal that is divided into smaller tasks or user stories to be completed over multiple sprints.
 
-##### EPIC 1: Website Content Creation and Publishing
-- **Goal:** This epic focuses on creating engaging and informative website content to attract, educate, and retain visitors on the Diving Center platform.
-![Epic 1](documentation/Features/epic-1.png)
+##### EPIC 1: User Authentication and Profile Management
+- **Goal:** Implement a secure and user-friendly authentication system and profile management features to enable personalized experiences for divers.
 - **Associated User Stories:**
-  - Manage and Publish Articles
-  - Moderate User-Submitted Reviews
-  - Like, Save Favorite Articles and Reviews
-  - Write Article Comments
-  - Moderate Article Comments
-  - Write Coffee Shop Reviews
-  - Moderate Coffee Shop Reviews
-  
+  - Create an account to access personalized features
+  - Log in securely to access personal information and bookings
+  - Edit profile information to keep details up to date
+  - Reset password to regain account access
+  - Manage user accounts to assist with account-related issues
+  - View user profiles to understand the user base better
 
-##### EPIC 2: Website Usability and Navigation
-- **Goal:** The Website Usability and Navigation epic aims to deliver an intuitive and enjoyable experience through optimized design, layout, and navigation elements for all user roles.
-![Epic 2](documentation/Features/epic-2.png)
+##### EPIC 2: Course Catalog and Booking System
+- **Goal:** Develop a comprehensive course catalog with an efficient booking system to facilitate easy course discovery and registration for users.
 - **Associated User Stories:**
-  - Intuitive Website Navigation
-  - Account Features Navigation
-  - Administrative Dashboard Access
-  - Search Function
-  - Filter Coffee Shop Reviews
-  
+  - Browse available diving courses to find interesting options
+  - View detailed course information to make informed decisions
+  - Book courses online to secure spots conveniently
+  - View booked courses to track upcoming diving activities
+  - Add new courses to the catalog to keep offerings up to date
+  - Manage course bookings to ensure proper resource allocation
 
-##### EPIC 3: Content Discovery and Exploration
-- **Goal:** This epic enables easy content discovery and exploration for all users, including browsing articles, reviews, likes, and comments, through user-friendly features that surface relevant and engaging information.
-![Epic 3](documentation/Features/epic-3.png)
+##### EPIC 3: Community Engagement and Social Features
+- **Goal:** Create a vibrant online community for divers to connect, share experiences, and engage with each other.
 - **Associated User Stories:**
-  - Browse and Read Articles
-  - View Coffee Shop Reviews
-  - Favorite and Manage Articles
-  - Read Article Comments
-  - View Article Likes
-  - Like and Unlike Articles
-  - Read Coffee Shop Reviews
-  
+  - Post reviews for completed courses to share experiences
+  - Read reviews from other divers to make informed course decisions
+  - Participate in discussion forums to engage with other diving enthusiasts
+  - Share diving experiences through a personal feed to connect with other divers
+  - Moderate user-generated content to maintain a positive community environment
+  - Create and manage community events to foster user engagement
 
-##### EPIC 4: User Account
-- **Goal:** The User Account epic covers account creation, management, and personalization features.
-![Epic 4](documentation/Features/epic-4.png)
+##### EPIC 4: Content Management and Administration
+- **Goal:** Implement a robust content management system to allow easy updates and maintenance of the website's content.
 - **Associated User Stories:**
-  - Create and Manage User Profile
-  - User Registration
-  - User Management
+  - Update course information easily to keep the catalog current
+  - Manage static page content to maintain accurate information
+  - Create and publish blog posts to share diving-related news and tips
+  - Access up-to-date information about courses and center policies
+  - Manage user-generated content to align with community guidelines
+  - Analyze website usage statistics to make data-driven decisions
+
+##### EPIC 5: User Experience and Interface Design
+- **Goal:** Create an intuitive, responsive, and visually appealing interface that enhances user engagement and satisfaction.
+- **Associated User Stories:**
+  - Implement responsive design for comfortable access on any device
+  - Provide intuitive navigation to easily find information
+  - Create visually appealing course presentations for quick understanding
+  - Develop a user-friendly admin interface for efficient management
+  - Ensure fast-loading pages for frustration-free browsing
+  - Include clear call-to-action buttons for easy next steps
+
+##### EPIC 6: Performance Optimization and Scalability
+- **Goal:** Ensure the website performs efficiently and can handle increasing user loads as the diving center grows.
+- **Associated User Stories:**
+  - Optimize website loading speed for quick information access
+  - Ensure responsive booking system during peak times
+  - Implement efficient content management system for large data handling
+  - Monitor website performance to identify and address issues promptly
+  - Secure personal data storage and processing for user trust
+  - Enable easy scaling of server resources to accommodate growth
   
 Every epic represents a major feature area, guiding development from initial setup to a full-fledged, engaging community platform
 
