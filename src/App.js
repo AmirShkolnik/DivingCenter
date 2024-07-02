@@ -7,6 +7,7 @@ import { Route, Switch } from "react-router-dom";
 import "./api/axiosDefaults";
 import LandingPage from "./pages/homepage/LandingPage.js";
 import BookingForm from "./pages/bookings/BookingForm.js";
+import BookingPage from './pages/bookings/BookingPage';
 import CoursesPage from "./pages/courses/CoursesPage";
 import CourseSingle from './pages/courses/CourseSingle';
 import ContactForm from "./pages/contactus/ContactForm";
@@ -37,6 +38,7 @@ function App() {
           <Switch>
             <Route exact path="/" component={LandingPage} />
             <Route exact path="/bookings/create" component={BookingForm} />
+            <Route exact path="/bookings" component={BookingPage} />
             <Route exact path="/courses" component={CoursesPage} />
             <Route
               exact

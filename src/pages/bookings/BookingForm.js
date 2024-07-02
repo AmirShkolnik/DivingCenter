@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { axiosRes } from "../../api/axiosDefaults";
 import styles from '../../styles/BookingForm.module.css';
 import { useRedirect } from "../../hooks/useRedirect";
@@ -6,6 +7,7 @@ import { toast } from 'react-toastify';
 
 const BookingForm = () => {
   useRedirect("loggedOut");
+  const history = useHistory();
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
   const [courseId, setCourseId] = useState('');
@@ -16,6 +18,7 @@ const BookingForm = () => {
   const [bookingId, setBookingId] = useState(null);
   const [isCanceled, setIsCanceled] = useState(false);
   const [showConfirmation, setShowConfirmation] = useState(false);
+  
 
   const translateCourseName = (name) => {
     const courseNameMap = {
@@ -140,7 +143,12 @@ const handleCancelBooking = () => {
         <h2>Booking Submitted Successfully!</h2>
         <p>Your booking has been sent to the admin for review.</p>
         <div className={styles.buttonContainer}>
-        <button className={styles.bookingButton} onClick={() => setIsSubmitted(false)}>Make Another Booking</button>
+        <button 
+          className={styles.bookingButton} 
+          onClick={() => history.push('/bookings')}
+        >
+          View My Bookings
+        </button>
         <button className={styles.cancelButton} onClick={handleCancelBooking}>Cancel Booking</button>
       </div>
       {showConfirmation && (
