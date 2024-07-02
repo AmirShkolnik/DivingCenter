@@ -60,6 +60,9 @@ const NavBar = () => {
         <NavDropdown.Item as={NavLink} to={`/profiles/${currentUser?.profile_id}`} className={styles.DropdownItem} onClick={handleNavItemClick}>
           <i className="fas fa-user"></i> Profile
         </NavDropdown.Item>
+        <NavDropdown.Item as={NavLink} to="/bookings" className={styles.DropdownItem} onClick={handleNavItemClick}>
+        <i class="fas fa-plane-departure"></i> My Bookings
+        </NavDropdown.Item>
         <NavDropdown.Item as={NavLink} to="/feed" className={styles.DropdownItem} onClick={handleNavItemClick}>
           <i className="fas fa-stream"></i> Feed
         </NavDropdown.Item>
