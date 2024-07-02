@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { axiosRes } from "../../api/axiosDefaults";
 import styles from '../../styles/BookingForm.module.css';
 import { useRedirect } from "../../hooks/useRedirect";
 import { toast } from 'react-toastify';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 
 const BookingPage = () => {
   useRedirect("loggedOut");
@@ -14,17 +14,9 @@ const BookingPage = () => {
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
   const history = useHistory();
+  const location = useLocation();
 
-  useEffect(() => {
-    fetchBookings();
-    fetchCourses();
-  }, []);
-
-  useEffect(() => {
-    console.log('Current bookings:', bookings);
-  }, [bookings]);
-
-  const fetchBookings = async () => {
+  const fetchBookings = useCallback(async () => {
     try {
       const response = await axiosRes.get('/bookings/');
       console.log('Bookings API response:', response);
@@ -41,7 +33,19 @@ const BookingPage = () => {
       toast.error('Failed to fetch bookings. Please try again.');
       setLoading(false);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    fetchBookings();
+    fetchCourses();
+  }, [fetchBookings, location.state]);
+
+  useEffect(() => {
+    if (location.state && location.state.refresh) {
+      fetchBookings();
+      history.replace(location.pathname, {});
+    }
+  }, [location, fetchBookings, history]);
 
   const fetchCourses = async () => {
     try {
