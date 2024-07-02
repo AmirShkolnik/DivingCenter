@@ -14,11 +14,6 @@ const BookingForm = () => {
   const [additionalInfo, setAdditionalInfo] = useState('');
   const [courses, setCourses] = useState([]);
   const [errors, setErrors] = useState({});
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [bookingId, setBookingId] = useState(null);
-  const [isCanceled, setIsCanceled] = useState(false);
-  const [showConfirmation, setShowConfirmation] = useState(false);
-  
 
   const translateCourseName = (name) => {
     const courseNameMap = {
@@ -60,10 +55,8 @@ const BookingForm = () => {
         additional_info: additionalInfo
       });
       console.log('Booking created:', data);
-      setBookingId(data.id);
-      setIsSubmitted(true);
-      resetForm();
       toast.success('Booking submitted successfully!');
+      history.push('/bookings');
     } catch (err) {
       console.error('Error creating booking:', err);
       if (err.response) {
@@ -80,13 +73,6 @@ const BookingForm = () => {
     }
   };
 
-  const resetForm = () => {
-    setDate('');
-    setTime('');
-    setCourseId('');
-    setAdditionalInfo('');
-  };
-
   const isTenthOfMonth = (date) => {
     const selectedDate = new Date(date);
     return selectedDate.getDate() === 10;
@@ -101,66 +87,6 @@ const BookingForm = () => {
       setErrors({ date: 'Bookings are only available on the 10th of each month.' });
     }
   };
-
-const handleCancelBooking = () => {
-    setShowConfirmation(true);
-  };
-
-  const confirmCancelBooking = async () => {
-    try {
-      await axiosRes.delete(`/bookings/${bookingId}/`);
-      console.log('Booking cancelled');
-      setIsCanceled(true);
-      setIsSubmitted(false);
-      setBookingId(null);
-      toast.info('Booking cancelled successfully');
-    } catch (err) {
-      setErrors({ message: 'An error occurred while cancelling the booking.' });
-      toast.error('Failed to cancel booking. Please try again.');
-    } finally {
-      setShowConfirmation(false);
-    }
-  };
-
-  if (isCanceled) {
-    return (
-      <div className={styles.successMessage}>
-        <h2>Booking Cancelled Successfully!</h2>
-        <p>Your booking has been cancelled.</p>
-        <button className={styles.bookingButton} onClick={() => {
-          setIsCanceled(false);
-          resetForm();
-        }}>
-          Make a New Booking
-        </button>
-      </div>
-    );
-  }
-
-  if (isSubmitted) {
-    return (
-      <div className={styles.successMessage}>
-        <h2>Booking Submitted Successfully!</h2>
-        <p>Your booking has been sent to the admin for review.</p>
-        <div className={styles.buttonContainer}>
-        <button 
-          className={styles.bookingButton} 
-          onClick={() => history.push('/bookings')}
-        >
-          View My Bookings
-        </button>
-        <button className={styles.cancelButton} onClick={handleCancelBooking}>Cancel Booking</button>
-      </div>
-      {showConfirmation && (
-          <div className={styles.confirmationDialog}>
-            <p>Are you sure you want to cancel this booking?</p>
-            <button className={styles.cancelConfirmButton} onClick={confirmCancelBooking}>Yes, Cancel</button>
-            <button className={styles.keepBookingButton} onClick={() => setShowConfirmation(false)}>No, Keep Booking</button>
-          </div>
-        )}
-      </div>
-    );
-  }
 
   return (
     <form onSubmit={handleSubmit} className={styles.bookingForm}>
