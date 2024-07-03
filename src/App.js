@@ -34,93 +34,97 @@ function App() {
 
   return (
     <CurrentUserProvider>
-     <ProfileDataProvider>
-    <div className={styles.App}>
-      <NavBar />
-      <div className={styles.MainWrapper}>
-        <Container className={styles.Main}>
-          <Switch>
-            <Route exact path="/" component={LandingPage} />
-            <Route
-              exact
-              path="/bookings/create"
-              render={() => (
-                currentUser ? <BookingForm /> : <Redirect to="/signin" />
-              )}
-            />
-            <Route exact path="/bookings" component={BookingPage} />
-            <Route exact path="/courses" component={CoursesPage} />
-            <Route
-              exact
-              path="/posts"
-              render={() => (
-                <PostsPage message="No results found. Adjust the search keyword." />
-              )}
-            />
-            <Route
-              exact
-              path="/feed"
-              render={() => (
-                <PostsPage
-                  message="No results found. Adjust the search keyword or follow a user."
-                  filter={`owner__followed__owner__profile=${profile_id}&`}
+      <ProfileDataProvider>
+        <div className={styles.App}>
+          <NavBar />
+          <div className={styles.MainWrapper}>
+            <Container className={styles.Main}>
+              <Switch>
+                <Route exact path="/" component={LandingPage} />
+                <Route
+                  exact
+                  path="/bookings/create"
+                  render={() => (
+                    currentUser ? <BookingForm /> : <Redirect to="/signin" />
+                  )}
                 />
-              )}
-            />
-            <Route
-              exact
-              path="/liked"
-              render={() => (
-                <PostsPage
-                  message="No results found. Adjust the search keyword or like a post."
-                  filter={`likes__owner__profile=${profile_id}&ordering=-likes__created_at&`}
+                <Route exact path="/bookings" component={BookingPage} />
+                <Route exact path="/courses" component={CoursesPage} />
+                <Route
+                  exact
+                  path="/posts"
+                  render={() => (
+                    <PostsPage message="No results found. Adjust the search keyword." />
+                  )}
                 />
-              )}
-            />
-            <Route exact path="/signin" render={() => <SignInForm />} />
-            <Route exact path="/signup" render={() => <SignUpForm />} />
-            <Route exact path="/posts/create" render={() => <PostCreateForm />} />
-            <Route exact path="/posts/:id" render={() => <PostPage />} />
-            <Route exact path="/posts/:id/edit" render={() => <PostEditForm />} />
-            <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
-            <Route
-              exact
-              path="/profiles/:id/edit/username"
-              render={() => <UsernameForm />}
-            />
-            <Route
-              exact
-              path="/profiles/:id/edit/password"
-              render={() => <UserPasswordForm />}
-            />
-            <Route
-              exact
-              path="/profiles/:id/edit"
-              render={() => <ProfileEditForm />}
-            />
-            <Route exact path="/contactus" component={ContactForm} />
-            <Route exact path="/courses/:slug" component={CourseSingle} />
-            <Route render={() => <NotFound />} />
-          </Switch>
-        </Container>
-      </div>
-      <Footer />
-      <ToastContainer
-        position="top-center"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="colored"
-        toastClassName={styles.customToast}
-        style={{ zIndex: 9999 }}
-      />
-    </div>
-     </ProfileDataProvider>
+                <Route
+                  exact
+                  path="/feed"
+                  render={() => (
+                    <PostsPage
+                      message="No results found. Adjust the search keyword or follow a user."
+                      filter={`owner__followed__owner__profile=${profile_id}&`}
+                    />
+                  )}
+                />
+                <Route
+                  exact
+                  path="/liked"
+                  render={() => (
+                    <PostsPage
+                      message="No results found. Adjust the search keyword or like a post."
+                      filter={`likes__owner__profile=${profile_id}&ordering=-likes__created_at&`}
+                    />
+                  )}
+                />
+                <Route exact path="/signin" render={() => <SignInForm />} />
+                <Route exact path="/signup" render={() => <SignUpForm />} />
+                <Route
+                  exact
+                  path="/posts/create"
+                  render={() => (currentUser ? <PostCreateForm /> : <Redirect to="/signin" />)}
+                />
+                <Route exact path="/posts/:id" render={() => <PostPage />} />
+                <Route exact path="/posts/:id/edit" render={() => <PostEditForm />} />
+                <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
+                <Route
+                  exact
+                  path="/profiles/:id/edit/username"
+                  render={() => <UsernameForm />}
+                />
+                <Route
+                  exact
+                  path="/profiles/:id/edit/password"
+                  render={() => <UserPasswordForm />}
+                />
+                <Route
+                  exact
+                  path="/profiles/:id/edit"
+                  render={() => <ProfileEditForm />}
+                />
+                <Route exact path="/contactus" component={ContactForm} />
+                <Route exact path="/courses/:slug" component={CourseSingle} />
+                <Route render={() => <NotFound />} />
+              </Switch>
+            </Container>
+          </div>
+          <Footer />
+          <ToastContainer
+            position="top-center"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="colored"
+            toastClassName={styles.customToast}
+            style={{ zIndex: 9999 }}
+          />
+        </div>
+      </ProfileDataProvider>
     </CurrentUserProvider>
   );
 }

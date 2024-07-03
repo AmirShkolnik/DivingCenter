@@ -1,5 +1,4 @@
 import React, { useRef, useState } from "react";
-import { toast } from 'react-toastify';
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -22,7 +21,8 @@ import { axiosReq } from "../../api/axiosDefaults";
 import { useRedirect } from "../../hooks/useRedirect";
 
 function PostCreateForm() {
-  useRedirect("loggedOut");
+  console.log("PostCreateForm component rendered");
+  useRedirect("loggedIn");
   const [errors, setErrors] = useState({});
 
   const [postData, setPostData] = useState({
@@ -52,34 +52,22 @@ function PostCreateForm() {
     }
   };
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (isSubmitting) return; // Prevent multiple submissions
-
-    setIsSubmitting(true);
     const formData = new FormData();
 
     formData.append("title", title);
     formData.append("content", content);
-
-    if (imageInput.current.files[0]) {
-      formData.append("image", imageInput.current.files[0]);
-    }
+    formData.append("image", imageInput.current.files[0]);
 
     try {
       const { data } = await axiosReq.post("/posts/", formData);
-      toast.success("Post created successfully!");
       history.push(`/posts/${data.id}`);
     } catch (err) {
       console.log(err);
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }
-      toast.error("Failed to create post. Please try again.");
-    } finally {
-      setIsSubmitting(false);
     }
   };
 
@@ -92,8 +80,7 @@ function PostCreateForm() {
           name="title"
           value={title}
           onChange={handleChange}
-          disabled={isSubmitting}
-      />
+        />
       </Form.Group>
       {errors?.title?.map((message, idx) => (
         <Alert variant="warning" key={idx}>
@@ -109,7 +96,6 @@ function PostCreateForm() {
           name="content"
           value={content}
           onChange={handleChange}
-          disabled={isSubmitting}
         />
       </Form.Group>
       {errors?.content?.map((message, idx) => (
@@ -121,22 +107,17 @@ function PostCreateForm() {
       <Button
         className={`${btnStyles.Button} ${btnStyles.Blue}`}
         onClick={() => history.goBack()}
-        disabled={isSubmitting}
       >
         cancel
       </Button>
-      <Button
-        className={`${btnStyles.Button} ${btnStyles.Blue}`}
-        type="submit"
-        disabled={isSubmitting}
-      >
-        {isSubmitting ? "Creating..." : "Create"}
+      <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
+        create
       </Button>
     </div>
   );
 
   return (
-    <Form onSubmit={handleSubmit} encType="multipart/form-data">
+    <Form onSubmit={handleSubmit}>
       <Row>
         <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
           <Container
@@ -174,9 +155,7 @@ function PostCreateForm() {
                 accept="image/*"
                 onChange={handleChangeImage}
                 ref={imageInput}
-                disabled={isSubmitting}
               />
-
             </Form.Group>
             {errors?.image?.map((message, idx) => (
               <Alert variant="warning" key={idx}>

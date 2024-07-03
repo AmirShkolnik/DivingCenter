@@ -25,6 +25,7 @@ const NavBar = () => {
       await axios.post("dj-rest-auth/logout/");
       setCurrentUser(null);
       removeTokenTimestamp();
+      localStorage.removeItem('authToken');
       toast.success("You have been successfully signed out.");
       history.push('/');
     } catch (err) {
@@ -52,7 +53,7 @@ const NavBar = () => {
           <span className={styles.DropdownToggle}>
             <Avatar src={currentUser?.profile_image} text={currentUser?.username || "Profile"} height={40} />
             <i className={`fas fa-caret-down ${styles.DropdownArrow}`}></i>
-    
+
           </span>
         }
         id="dropdown-custom-components"
@@ -61,13 +62,13 @@ const NavBar = () => {
           <i className="fas fa-user"></i> Profile
         </NavDropdown.Item>
         <NavDropdown.Item as={NavLink} to="/bookings" className={styles.DropdownItem} onClick={handleNavItemClick}>
-        <i class="fas fa-plane-departure"></i> My Bookings
+          <i className="fas fa-plane-departure"></i> My Bookings
         </NavDropdown.Item>
         <NavDropdown.Item as={NavLink} to="/feed" className={styles.DropdownItem} onClick={handleNavItemClick}>
           <i className="fas fa-stream"></i> Feed
         </NavDropdown.Item>
         <NavDropdown.Item as={NavLink} to="/posts/create" className={styles.DropdownItem} onClick={handleNavItemClick}>
-          <i className="far fa-plus-square"></i> Add post
+        <i className="far fa-plus-square"></i> Add post
         </NavDropdown.Item>
         <NavDropdown.Item as={NavLink} to="/liked" className={styles.DropdownItem} onClick={handleNavItemClick}>
           <i className="fas fa-heart"></i> Liked
@@ -114,10 +115,10 @@ const NavBar = () => {
               <i className="fas fa-home"></i> Home
             </NavLink>
             <NavLink className={styles.NavLink} to="/contactus" onClick={handleNavItemClick}>
-            <i class="fas fa-envelope"></i> Contact Us
+              <i className="fas fa-envelope"></i> Contact Us
             </NavLink>
             <NavLink className={styles.NavLink} to="/courses" onClick={handleNavItemClick}>
-            <i class="fas fa-graduation-cap"></i> Courses
+              <i className="fas fa-graduation-cap"></i> Courses
             </NavLink>
             {currentUser ? loggedInIcons : loggedOutIcons}
           </Nav>
