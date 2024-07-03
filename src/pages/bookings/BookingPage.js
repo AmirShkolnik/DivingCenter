@@ -104,8 +104,8 @@ const BookingPage = () => {
 
   if (!Array.isArray(bookings) || bookings.length === 0) {
     return (
-      <div className={styles.bookingForm}>
-        <h2>Your Bookings</h2>
+      <div className={styles.bookingPage}>
+        <h2 className={styles.bookingTitle}>Your Bookings</h2>
         <p>You have no bookings. Would you like to create one?</p>
         <button onClick={() => history.push('/bookings/create')} className={styles.bookingButton}>
           Create a Booking
@@ -115,8 +115,8 @@ const BookingPage = () => {
   }
 
   return (
-    <div className={styles.bookingForm}>
-      <h2>Your Bookings</h2>
+    <div className={styles.bookingPage}>
+      <h2 className={styles.bookingTitle}>Your Bookings</h2>
       {bookings.map(booking => (
         <div key={booking.id} className={styles.bookingItem}>
           {editingBooking && editingBooking.id === booking.id ? (
