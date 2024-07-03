@@ -306,16 +306,16 @@ function CourseSingle() {
         <Alert variant="warning">No course data available</Alert>
       )}
       
-      <Modal show={showDeleteConfirmation} onHide={() => setShowDeleteConfirmation(false)} className={styles.modal}>
-        <Modal.Header closeButton className={styles.modalHeader}>
-          <Modal.Title className={styles.modalTitle}>Confirm Delete</Modal.Title>
+      <Modal show={showDeleteConfirmation} onHide={() => setShowDeleteConfirmation(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Confirm Delete</Modal.Title>
         </Modal.Header>
-        <Modal.Body className={styles.modalBody}>Are you sure you want to delete your review?</Modal.Body>
-        <Modal.Footer className={styles.modalFooter}>
-          <Button variant="secondary" onClick={() => setShowDeleteConfirmation(false)} className={styles.modalSecondaryButton}>
+        <Modal.Body>Are you sure you want to delete your review?</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowDeleteConfirmation(false)}>
             Cancel
           </Button>
-          <Button variant="danger" onClick={handleDeleteReview} className={styles.modalDangerButton}>
+          <Button variant="danger" onClick={handleDeleteReview}>
             Delete
           </Button>
         </Modal.Footer>

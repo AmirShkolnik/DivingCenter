@@ -54,9 +54,9 @@ function SignInForm() {
     <Row className={styles.Row}>
       <Col className="my-auto p-0 p-md-2" md={6}>
         <Container className={`${appStyles.Content} p-4 `}>
-          <h1 className={styles.Header}>Sign In</h1>
+          <h1 className={styles.Header}>Welcome back to our diving community!</h1>
           <p className={styles.SubHeader}>
-            Welcome back to our diving community! Sign in to access your account, 
+            Sign in to access your account, 
             connect with fellow divers, and continue your underwater adventures. 
             Your next diving experience is just a login away!
           </p>
