@@ -118,12 +118,28 @@ const BookingPage = () => {
       <p className={styles.motivationDescription}>
         Thank you for booking with us! We are thrilled to be part of your adventure. Remember, every dive is an opportunity to explore and discover new wonders beneath the waves. Happy diving!
       </p>
-      <img
-        src="../images/courses/2.webp"
-        alt="Underwater adventure"
-        className={styles.placeholderImage}
-        onError={(e) => e.target.src = '../images/courses/4.webp'}
-      />
+      
+      <div className={styles.imageRow}>
+        <img
+          src="/images/courses/1.webp"
+          alt="Diving scene 1"
+          className={styles.rowImage}
+          onError={(e) => e.target.src = '/images/courses/fallback1.webp'}
+        />
+        <img
+          src="/images/courses/2.webp"
+          alt="Diving scene 2"
+          className={styles.rowImage}
+          onError={(e) => e.target.src = '/images/courses/fallback2.webp'}
+        />
+        <img
+          src="/images/courses/3.webp"
+          alt="Diving scene 3"
+          className={styles.rowImage}
+          onError={(e) => e.target.src = '/images/courses/fallback3.webp'}
+        />
+      </div>
+
       {bookings.map(booking => (
         <div key={booking.id} className={styles.bookingItem}>
           {editingBooking && editingBooking.id === booking.id ? (

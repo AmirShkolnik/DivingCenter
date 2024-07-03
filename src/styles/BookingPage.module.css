@@ -158,3 +158,16 @@ form textarea {
 form textarea {
   resize: vertical;
 }
+
+.imageRow {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.rowImage {
+  width: 32%;
+  height: auto;
+  object-fit: cover;
+}
+
