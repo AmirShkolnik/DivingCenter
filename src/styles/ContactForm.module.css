@@ -30,6 +30,7 @@
 }
 
 .SubmitButton,
+.EditButton,
 .CancelButton {
   width: 100%;
   padding: 10px;
@@ -41,12 +42,14 @@
   font-weight: 700;
 }
 
-.SubmitButton {
+.SubmitButton,
+.EditButton {
   background-color: #0d5589;
   color: white;
 }
 
-.SubmitButton:hover {
+.SubmitButton:hover,
+.EditButton:hover {
   color: #b99a45;
 }
 
@@ -87,4 +90,81 @@
 
 .successMessage .buttonContainer {
   justify-content: center;
+}
+
+.thankYouImage {
+  max-width: 100%;
+  height: auto;
+  margin: 20px 0;
+  border-radius: 8px;
+}
+
+.placeholder {
+  font-style: italic;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.ConfirmModal .modal-content {
+  background-color: #f5f5f5;
+  border-radius: 8px;
+}
+
+.ConfirmModal .modal-header {
+  background-color: #0d5589;
+  color: white;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.ConfirmModal .modal-title {
+  font-weight: bold;
+}
+
+.ConfirmModal .modal-body {
+  padding: 20px;
+  font-size: 16px;
+}
+
+.ConfirmModal .modal-footer {
+  border-top: none;
+  padding: 15px;
+}
+
+.ConfirmModal .btn-secondary {
+  background-color: #0d5589;
+  color: white;
+  border: none;
+}
+
+.ConfirmModal .btn-secondary:hover {
+  color: #b99a45;
+}
+
+.ConfirmModal .btn-danger {
+  background-color: red;
+  color: white;
+  border: none;
+}
+
+.ConfirmModal .btn-danger:hover {
+  background-color: darkred;
+}
+
+.btn_secondary {
+  background-color: #0d5589 !important;
+  color: white !important;
+}
+
+.btn_secondary:hover {
+  color: #b99a45 !important;
+}
+
+.btn_danger {
+  background-color: red !important;
+  color: white !important;
+}
+
+.btn_danger:hover {
+  background-color: darkred !important;
 }
