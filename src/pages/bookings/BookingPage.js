@@ -19,10 +19,8 @@ const BookingPage = () => {
   const fetchBookings = useCallback(async () => {
     try {
       const response = await axiosRes.get('/bookings/');
-      const data = response.data.results; // Access the results array
-      console.log('Fetched bookings:', data); // Log the response data
-
-      // Ensure bookings is always an array
+      const data = response.data.results;
+      console.log('Fetched bookings:', data);
       setBookings(Array.isArray(data) ? data : []);
     } catch (err) {
       console.error('Error fetching bookings:', err);
@@ -80,11 +78,13 @@ const BookingPage = () => {
   };
 
   const handleDelete = (bookingId) => {
+    console.log('handleDelete called with bookingId:', bookingId); // Debugging log
     setDeletingBookingId(bookingId);
     setShowConfirmation(true);
   };
 
   const confirmDelete = async () => {
+    console.log('confirmDelete called with deletingBookingId:', deletingBookingId); // Debugging log
     try {
       await axiosRes.delete(`/bookings/${deletingBookingId}/`);
       setBookings(bookings.filter(booking => booking.id !== deletingBookingId));
