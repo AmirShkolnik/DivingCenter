@@ -181,11 +181,14 @@ const BookingPage = () => {
         </div>
       ))}
       {showConfirmation && (
-        <div className={styles.confirmationDialog}>
-          <p>Are you sure you want to delete this booking?</p>
-          <button onClick={confirmDelete} className={styles.cancelConfirmButton}>Yes, Delete</button>
-          <button onClick={() => setShowConfirmation(false)} className={styles.keepBookingButton}>No, Keep Booking</button>
-        </div>
+        <>
+          <div className={styles.overlay}></div>
+          <div className={styles.confirmationDialog}>
+            <p>Are you sure you want to delete this booking?</p>
+            <button onClick={confirmDelete} className={styles.cancelConfirmButton}>Yes, Delete</button>
+            <button onClick={() => setShowConfirmation(false)} className={styles.keepBookingButton}>No, Keep Booking</button>
+          </div>
+        </>
       )}
     </div>
   );
