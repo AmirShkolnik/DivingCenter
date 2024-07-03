@@ -197,6 +197,52 @@
   margin-top: 1rem;
 }
 
+/* Modal Styles */
+.modal {
+  color: #333;
+}
+
+.modalHeader {
+  background-color: #0d5589;
+  color: white;
+  border-bottom: 1px solid #c7ae6a;
+}
+
+.modalTitle {
+  color: white;
+}
+
+.modalBody {
+  background-color: #ffffff;
+  color: #333;
+}
+
+.modalFooter {
+  background-color: #f1f1f1;
+  border-top: 1px solid #c7ae6a;
+}
+
+.modalSecondaryButton {
+  background-color: #0d5589;
+  border-color: #0d5589;
+  color: white;
+}
+
+.modalSecondaryButton:hover {
+  background-color: #b99a45;
+  border-color: #b99a45;
+}
+
+.modalDangerButton {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.modalDangerButton:hover {
+  background-color: #c82333;
+  border-color: #bd2130;
+}
+
 @media screen and (min-width: 280px) and (max-width: 320px) {
   .CourseContainer {
     padding: 1rem;

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
-import { Container, Image, Button, Form, Alert, Spinner } from 'react-bootstrap';
+import { Container, Button, Form, Alert, Spinner, Modal } from 'react-bootstrap';
 import StarRatings from 'react-star-ratings';
-import { axiosReq } from '../../api/axiosDefaults';
+import { axiosReq, axiosRes } from '../../api/axiosDefaults';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import styles from '../../styles/CourseSingle.module.css';
 import { toast, ToastContainer } from 'react-toastify';
@@ -19,11 +19,15 @@ function CourseSingle() {
   const [showReviewForm, setShowReviewForm] = useState(false);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
 
   useEffect(() => {
     const fetchCourse = async () => {
       try {
-        const { data } = await axiosReq.get(`/courses/${slug}/`);
+        const token = localStorage.getItem("authToken");
+        const { data } = await axiosReq.get(`/courses/${slug}/`, {
+          headers: { Authorization: `Bearer ${token}` }
+        });
         setCourse(data);
         if (currentUser && data.reviews) {
           const userReview = data.reviews.find(review => review.user === currentUser.username);
@@ -34,22 +38,20 @@ function CourseSingle() {
         }
       } catch (err) {
         console.error('Error fetching course:', err);
-        setError(err.response?.data?.detail || 'Failed to load course data');
-        toast.error('Failed to load course data. Please try again.');
+        if (err.response?.status === 401) {
+          toast.error('Your session has expired. Please log in again.');
+          localStorage.removeItem("authToken");
+          history.push('/signin');
+        } else {
+          setError(err.response?.data?.detail || 'Failed to load course data');
+          toast.error('Failed to load course data. Please try again.');
+        }
       } finally {
         setLoading(false);
       }
     };
     fetchCourse();
-  }, [slug, currentUser]);
-
-  const handleReviewChange = (event) => {
-    setReview({ ...review, [event.target.name]: event.target.value });
-  };
-
-  const handleRatingChange = (newRating) => {
-    setReview({ ...review, rating: newRating });
-  };
+  }, [slug, currentUser, history]);
 
   const handleSubmitReview = async (event) => {
     event.preventDefault();
@@ -58,21 +60,26 @@ function CourseSingle() {
       return;
     }
     try {
+      const token = localStorage.getItem("authToken");
       let data;
       if (isEditing) {
-        const response = await axiosReq.put(`/reviews/${userReview.id}/`, {
+        const response = await axiosRes.put(`/reviews/${userReview.id}/`, {
           content: review.content,
           rating: review.rating,
           course: course.id
+        }, {
+          headers: { Authorization: `Bearer ${token}` }
         });
         data = response.data;
         setUserReview(data);
         toast.success('Review updated successfully!');
       } else {
-        const response = await axiosReq.post('/reviews/', {
+        const response = await axiosRes.post('/reviews/', {
           content: review.content,
           rating: review.rating,
           course: course.id
+        }, {
+          headers: { Authorization: `Bearer ${token}` }
         });
         data = response.data;
         setUserReview(data);
@@ -95,42 +102,53 @@ function CourseSingle() {
       setIsEditing(false);
     } catch (err) {
       console.error('Error submitting review:', err);
-      setError(err.response?.data?.detail || 'Failed to submit review');
-      toast.error('Failed to submit review. Please try again.');
+      if (err.response?.status === 401) {
+        toast.error('Your session has expired. Please log in again.');
+        localStorage.removeItem("authToken");
+        history.push('/signin');
+      } else {
+        setError(err.response?.data?.detail || 'Failed to submit review');
+        toast.error('Failed to submit review. Please try again.');
+      }
     }
   };
 
   const handleDeleteReview = async () => {
     try {
-      await axiosReq.delete(`/reviews/${userReview.id}/`);
+      const token = localStorage.getItem("authToken");
+      await axiosRes.delete(`/reviews/${userReview.id}/`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
       setCourse(prevCourse => ({
         ...prevCourse,
         reviews: prevCourse.reviews.filter(review => review.id !== userReview.id)
       }));
       setUserReview(null);
       setReview({ content: '', rating: 0 });
+      setShowDeleteConfirmation(false);
       toast.success('Review deleted successfully!');
     } catch (err) {
       console.error('Error deleting review:', err);
-      setError(err.response?.data?.detail || 'Failed to delete review');
-      toast.error('Failed to delete review. Please try again.');
+      if (err.response?.status === 401) {
+        toast.error('Your session has expired. Please log in again.');
+        localStorage.removeItem("authToken");
+        history.push('/signin');
+      } else {
+        setError(err.response?.data?.detail || 'Failed to delete review');
+        toast.error('Failed to delete review. Please try again.');
+      }
     }
   };
 
   const handleAddReview = () => {
     if (!currentUser) {
       toast.error('Please log in to add a review.');
+      history.push('/signin');
       return;
     }
     setIsEditing(false);
     setReview({ content: '', rating: 0 });
     setShowReviewForm(true);
-  };
-
-  const handleCancelReview = () => {
-    setIsEditing(false);
-    setShowReviewForm(false);
-    toast.info('Review cancelled.');
   };
 
   const handleEditReview = (reviewContent, reviewRating) => {
@@ -144,16 +162,6 @@ function CourseSingle() {
     if (!reviews || reviews.length === 0) return 0;
     const sum = reviews.reduce((acc, review) => acc + review.rating, 0);
     return sum / reviews.length;
-  };
-
-  const handleBookCourse = () => {
-    if (!currentUser) {
-      toast.error('Please sign in to book this course.');
-      history.push('/signin');
-    } else {
-      toast.success('Redirecting to booking page...');
-      history.push('/bookings/create');
-    }
   };
 
   return (
@@ -185,7 +193,15 @@ function CourseSingle() {
               </div>
               <div className={styles.BookingPriceContainer}>
                 <Button 
-                  onClick={handleBookCourse} 
+                  onClick={() => {
+                    if (!currentUser) {
+                      toast.error('Please sign in to book this course.');
+                      history.push('/signin');
+                    } else {
+                      toast.success('Redirecting to booking page...');
+                      history.push('/bookings/create');
+                    }
+                  }} 
                   className={`${styles.Button} ${styles.Blue}`}
                 >
                   Book This Course
@@ -195,10 +211,8 @@ function CourseSingle() {
                 </span>
               </div>
             </div>
-            {course.image ? (
-              <Image src={course.image} alt={course.title} fluid className={styles.CourseImage} />
-            ) : (
-              <div className={styles.PlaceholderImage}>No Image Available</div>
+            {course.image && (
+              <img src={course.image} alt={course.title} className={styles.CourseImage} />
             )}
             <div className={styles.CourseDescription} dangerouslySetInnerHTML={{ __html: course.description }} />
             <p className={styles.CourseType}>Course Type: {course.course_type}</p>
@@ -221,7 +235,7 @@ function CourseSingle() {
                     rows={3}
                     name="content"
                     value={review.content}
-                    onChange={handleReviewChange}
+                    onChange={(e) => setReview({...review, content: e.target.value})}
                     required
                     className={styles['form-control']}
                   />
@@ -231,7 +245,7 @@ function CourseSingle() {
                   <StarRatings
                     rating={review.rating}
                     starRatedColor="#c7ae6a"
-                    changeRating={handleRatingChange}
+                    changeRating={(newRating) => setReview({...review, rating: newRating})}
                     numberOfStars={5}
                     name='rating'
                     starDimension="30px"
@@ -244,7 +258,11 @@ function CourseSingle() {
                   </Button>
                   <Button
                     variant="secondary"
-                    onClick={handleCancelReview}
+                    onClick={() => {
+                      setIsEditing(false);
+                      setShowReviewForm(false);
+                      toast.info('Review cancelled.');
+                    }}
                     className={`${styles.Button} ${styles.DeleteRed}`}
                   >
                     Cancel
@@ -273,7 +291,7 @@ function CourseSingle() {
                       Edit
                     </Button>
                     <Button
-                      onClick={handleDeleteReview}
+                      onClick={() => setShowDeleteConfirmation(true)}
                       className={`${styles.Button} ${styles.DeleteRed}`}
                     >
                       Delete
@@ -287,6 +305,21 @@ function CourseSingle() {
       ) : (
         <Alert variant="warning">No course data available</Alert>
       )}
+      
+      <Modal show={showDeleteConfirmation} onHide={() => setShowDeleteConfirmation(false)} className={styles.modal}>
+        <Modal.Header closeButton className={styles.modalHeader}>
+          <Modal.Title className={styles.modalTitle}>Confirm Delete</Modal.Title>
+        </Modal.Header>
+        <Modal.Body className={styles.modalBody}>Are you sure you want to delete your review?</Modal.Body>
+        <Modal.Footer className={styles.modalFooter}>
+          <Button variant="secondary" onClick={() => setShowDeleteConfirmation(false)} className={styles.modalSecondaryButton}>
+            Cancel
+          </Button>
+          <Button variant="danger" onClick={handleDeleteReview} className={styles.modalDangerButton}>
+            Delete
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </Container>
   );
 }
