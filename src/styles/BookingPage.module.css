@@ -10,6 +10,20 @@
   font-size: 2.5em;
 }
 
+.motivationDescription {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #0d5589;
+  font-size: 1.2em;
+}
+
+.placeholderImage {
+  display: block;
+  margin: 0 auto 30px auto;
+  max-width: 100%;
+  border-radius: 8px;
+}
+
 .bookingItem {
   background-color: #f8f9fa;
   border-radius: 8px;
@@ -56,7 +70,7 @@
 
 .cancelButton:hover {
   background-color: #c82333;
-  color: #c7ae6a;
+  color: white;
 }
 
 .confirmationDialog {
@@ -69,7 +83,7 @@
   border: 0.1px solid #0d5589;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(185, 154, 69, 0.3);
-  z-index: 1000; 
+  z-index: 1000;
   text-align: center;
 }
 
@@ -80,7 +94,7 @@
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 999; /* Ensure it is below the confirmation dialog but above other content */
+  z-index: 999;
 }
 
 .confirmationDialog p {
@@ -109,7 +123,7 @@
 }
 
 .keepBookingButton {
-  background-color: #083d63;
+  background-color:  #083d63;
   color: white;
 }
 

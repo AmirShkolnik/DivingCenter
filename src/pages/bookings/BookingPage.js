@@ -78,13 +78,11 @@ const BookingPage = () => {
   };
 
   const handleDelete = (bookingId) => {
-    console.log('handleDelete called with bookingId:', bookingId); // Debugging log
     setDeletingBookingId(bookingId);
     setShowConfirmation(true);
   };
 
   const confirmDelete = async () => {
-    console.log('confirmDelete called with deletingBookingId:', deletingBookingId); // Debugging log
     try {
       await axiosRes.delete(`/bookings/${deletingBookingId}/`);
       setBookings(bookings.filter(booking => booking.id !== deletingBookingId));
@@ -117,6 +115,15 @@ const BookingPage = () => {
   return (
     <div className={styles.bookingPage}>
       <h2 className={styles.bookingTitle}>Your Bookings</h2>
+      <p className={styles.motivationDescription}>
+        Thank you for booking with us! We are thrilled to be part of your adventure. Remember, every dive is an opportunity to explore and discover new wonders beneath the waves. Happy diving!
+      </p>
+      <img
+        src="../images/courses/2.webp"
+        alt="Underwater adventure"
+        className={styles.placeholderImage}
+        onError={(e) => e.target.src = '../images/courses/4.webp'}
+      />
       {bookings.map(booking => (
         <div key={booking.id} className={styles.bookingItem}>
           {editingBooking && editingBooking.id === booking.id ? (
