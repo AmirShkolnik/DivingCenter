@@ -1,35 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { toast } from 'react-toastify';
 import styles from "../../styles/SignInUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 import VideoPlayerSignUp from '../../components/Video/VideoPlayerSignUp.js';
-
-
-import {
-  Form,
-  Button,
-  Col,
-  Row,
-  Container,
-  Alert,
-} from "react-bootstrap";
+import { Form, Button, Col, Row, Container, Alert, Spinner } from "react-bootstrap";
 import axios from "axios";
-import { useRedirect } from "../../hooks/useRedirect";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 const SignUpForm = () => {
-  useRedirect("loggedIn");
+  const history = useHistory();
+  const currentUser = useCurrentUser();
   const [signUpData, setSignUpData] = useState({
     username: "",
     password1: "",
     password2: "",
   });
   const { username, password1, password2 } = signUpData;
-
   const [errors, setErrors] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
-  const history = useHistory();
+  useEffect(() => {
+    if (currentUser === null) {
+      setIsLoading(false);
+    } else if (currentUser) {
+      history.push("/");
+    }
+  }, [currentUser, history]);
 
   const handleChange = (event) => {
     setSignUpData({
@@ -42,13 +40,30 @@ const SignUpForm = () => {
     event.preventDefault();
     try {
       await axios.post("/dj-rest-auth/registration/", signUpData);
-      toast.success("Sign up successful! Welcome to our diving community! Please SignIn"); // Success toast
+      toast.success("Sign up successful! Welcome to our diving community! Please Sign In");
       history.push("/signin");
     } catch (err) {
-      setErrors(err.response?.data);
-      toast.error("Sign up failed. Please check your information and try again."); // Error toast
+      setErrors(err.response?.data || {});
+      toast.error("Sign up failed. Please check your information and try again.");
     }
   };
+
+  if (isLoading) {
+    return (
+      <Container className="d-flex justify-content-center align-items-center" style={{ height: "100vh" }}>
+        <Spinner animation="border" />
+      </Container>
+    );
+  }
+
+  if (currentUser) {
+    return (
+      <Container>
+        <p>You are already logged in!</p>
+        <Link to="/">Go to home page</Link>
+      </Container>
+    );
+  }
 
   return (
     <Row className={styles.Row}>
@@ -138,7 +153,6 @@ const SignUpForm = () => {
         className={`my-auto d-none d-md-block p-2 ${styles.SignUpCol}`}
       >
          <VideoPlayerSignUp publicId="160396821086388" />
-
       </Col>
     </Row>
   );
