@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Container, Row, Col, Spinner, Alert, Button } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
 import { axiosReq } from '../../api/axiosDefaults';
@@ -13,19 +13,18 @@ const stripHtmlTags = (html) => {
   return tmp.textContent || tmp.innerText || "";
 };
 
-const CourseBox = ({ title, imageUrl, excerpt, slug, price }) => {
-  const currentUser = useCurrentUser();
+const CourseBox = ({ title, imageUrl, excerpt, slug, price, currentUser }) => {
   const history = useHistory();
 
-  const handleBookNowClick = (e) => {
+  const handleBookNowClick = useCallback((e) => {
     e.preventDefault();
     if (currentUser) {
       history.push("/bookings/create");
     } else {
       toast.error("You must be logged in to book a course.");
-      history.push("/courses", { from: "/bookings/create" });
+      history.push("/signin");
     }
-  };
+  }, [currentUser, history]);
 
   const cleanExcerpt = stripHtmlTags(excerpt);
 
@@ -69,39 +68,47 @@ const CoursesPage = () => {
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const currentUser = useCurrentUser();
 
   useEffect(() => {
+    let isMounted = true;
     const fetchCourses = async () => {
       try {
-        // console.log('Fetching courses...');
         const response = await axiosReq.get('/courses/');
-       //  console.log('API Response:', response);
         
-        if (response.status === 200) {
-          if (Array.isArray(response.data)) {
-            setCourses(response.data);
-           // console.log('Courses set:', response.data);
-          } else if (response.data.results && Array.isArray(response.data.results)) {
-            setCourses(response.data.results);
-           // console.log('Courses set from results:', response.data.results);
+        if (isMounted) {
+          if (response.status === 200) {
+            if (Array.isArray(response.data)) {
+              setCourses(response.data);
+            } else if (response.data.results && Array.isArray(response.data.results)) {
+              setCourses(response.data.results);
+            } else {
+              console.error('Unexpected data structure:', response.data);
+              setError('Unexpected data structure in API response');
+            }
           } else {
-            console.error('Unexpected data structure:', response.data);
-            setError('Unexpected data structure in API response');
+            console.error('Unexpected API response status:', response.status);
+            setError('Unexpected API response status');
           }
-        } else {
-          console.error('Unexpected API response status:', response.status);
-          setError('Unexpected API response status');
         }
       } catch (err) {
-        console.error('Error fetching courses:', err);
-        setError(err.response?.data?.detail || 'Failed to load courses');
-        toast.error('Failed to load courses. Please try again.');
+        if (isMounted) {
+          console.error('Error fetching courses:', err);
+          setError(err.response?.data?.detail || 'Failed to load courses');
+          toast.error('Failed to load courses. Please try again.');
+        }
       } finally {
-        setLoading(false);
+        if (isMounted) {
+          setLoading(false);
+        }
       }
     };
 
     fetchCourses();
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   if (loading) {
@@ -128,7 +135,6 @@ const CoursesPage = () => {
     <Container className={styles.coursesPage}>
       <ToastContainer position="top-center" autoClose={3000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
       <h1 className={styles.courseTitle}>Our Diving Courses</h1>
-      {console.log('Rendering courses:', courses)}
       {courses && courses.length > 0 ? (
         courses.map((course) => (
           <CourseBox
@@ -138,6 +144,7 @@ const CoursesPage = () => {
             excerpt={course.excerpt}
             slug={course.slug}
             price={course.price_display || `${course.price} $`}
+            currentUser={currentUser}
           />
         ))
       ) : (

@@ -1,17 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import { axiosRes } from "../../api/axiosDefaults";
 import styles from '../../styles/BookingForm.module.css';
-import { useRedirect } from "../../hooks/useRedirect";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { toast } from 'react-toastify';
 
 const BookingForm = () => {
-  useRedirect("loggedOut");
   const history = useHistory();
-  const [date, setDate] = useState('');
-  const [time, setTime] = useState('');
-  const [courseId, setCourseId] = useState('');
-  const [additionalInfo, setAdditionalInfo] = useState('');
+  const currentUser = useCurrentUser();
+  const [formData, setFormData] = useState({
+    date: '',
+    time: '',
+    courseId: '',
+    additionalInfo: ''
+  });
   const [courses, setCourses] = useState([]);
   const [errors, setErrors] = useState({});
 
@@ -24,35 +26,61 @@ const BookingForm = () => {
     return courseNameMap[name] || name;
   };
 
-  useEffect(() => {
-    const fetchCourses = async () => {
-      try {
-        const { data } = await axiosRes.get('/diving-courses/');
-        setCourses(data.results || data);
-      } catch (err) {
-        console.error('Error fetching courses:', err);
-        toast.error('Failed to fetch courses. Please try again.');
-      }
-    };
-    fetchCourses();
+  const fetchCourses = useCallback(async () => {
+    try {
+      const { data } = await axiosRes.get('/diving-courses/');
+      setCourses(data.results || data);
+    } catch (err) {
+      console.error('Error fetching courses:', err);
+      toast.error('Failed to fetch courses. Please try again.');
+    }
   }, []);
+
+  useEffect(() => {
+    let isMounted = true;
+    if (isMounted) {
+      fetchCourses();
+    }
+    return () => {
+      isMounted = false;
+    };
+  }, [fetchCourses]);
+
+  useEffect(() => {
+    if (!currentUser) {
+      history.push('/signin');
+    }
+  }, [currentUser, history]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+    if (name === 'date') {
+      const selectedDate = new Date(value);
+      if (selectedDate.getDate() !== 10) {
+        setErrors(prev => ({ ...prev, date: 'Bookings are only available on the 10th of each month.' }));
+      } else {
+        setErrors(prev => ({ ...prev, date: undefined }));
+      }
+    }
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     setErrors({});
     try {
-      const formattedDate = new Date(date).toISOString().split('T')[0];
-      const formattedTime = time + ':00';
+      const formattedDate = new Date(formData.date).toISOString().split('T')[0];
+      const formattedTime = formData.time + ':00';
   
       const { data } = await axiosRes.post('/bookings/', {
         date: formattedDate,
         time: formattedTime,
-        course: parseInt(courseId),
-        additional_info: additionalInfo  // Make sure this matches the backend field name
+        course: parseInt(formData.courseId),
+        additional_info: formData.additionalInfo
       });
       console.log('Booking created:', data);
       toast.success('Booking submitted successfully!');
-      history.push('/bookings');
+      history.push('/bookings', { refresh: true });
     } catch (err) {
       console.error('Error creating booking:', err);
       if (err.response && err.response.data) {
@@ -67,20 +95,9 @@ const BookingForm = () => {
     }
   };
 
-  const isTenthOfMonth = (date) => {
-    const selectedDate = new Date(date);
-    return selectedDate.getDate() === 10;
-  };
-
-  const handleDateChange = (e) => {
-    const selectedDate = e.target.value;
-    if (isTenthOfMonth(selectedDate)) {
-      setDate(selectedDate);
-      setErrors((prevErrors) => ({ ...prevErrors, date: undefined }));
-    } else {
-      setErrors({ date: 'Bookings are only available on the 10th of each month.' });
-    }
-  };
+  if (!currentUser) {
+    return null; // or a loading spinner
+  }
 
   return (
     <form onSubmit={handleSubmit} className={styles.bookingForm}>
@@ -91,8 +108,9 @@ const BookingForm = () => {
         <input
           type="date"
           id="date"
-          value={date}
-          onChange={handleDateChange}
+          name="date"
+          value={formData.date}
+          onChange={handleChange}
           required
         />
         {errors.date && <span className={styles.error}>{errors.date}</span>}
@@ -101,8 +119,9 @@ const BookingForm = () => {
         <label htmlFor="time">Time (09:00 or 15:00):</label>
         <select
           id="time"
-          value={time}
-          onChange={(e) => setTime(e.target.value)}
+          name="time"
+          value={formData.time}
+          onChange={handleChange}
           required
         >
           <option value="">Select a time</option>
@@ -112,11 +131,12 @@ const BookingForm = () => {
         {errors.time && <span className={styles.error}>{errors.time}</span>}
       </div>
       <div>
-        <label htmlFor="course">Diving Course:</label>
+        <label htmlFor="courseId">Diving Course:</label>
         <select
-          id="course"
-          value={courseId}
-          onChange={(e) => setCourseId(e.target.value)}
+          id="courseId"
+          name="courseId"
+          value={formData.courseId}
+          onChange={handleChange}
           required
         >
           <option value="">Select a course</option>
@@ -132,8 +152,9 @@ const BookingForm = () => {
         <label htmlFor="additionalInfo">Additional Information:</label>
         <textarea
           id="additionalInfo"
-          value={additionalInfo}
-          onChange={(e) => setAdditionalInfo(e.target.value)}
+          name="additionalInfo"
+          value={formData.additionalInfo}
+          onChange={handleChange}
           rows="4"
         ></textarea>
       </div>

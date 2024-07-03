@@ -3,7 +3,7 @@ import styles from "./App.module.css";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import Container from "react-bootstrap/Container";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import "./api/axiosDefaults";
 import LandingPage from "./pages/homepage/LandingPage.js";
 import BookingForm from "./pages/bookings/BookingForm.js";
@@ -37,7 +37,13 @@ function App() {
         <Container className={styles.Main}>
           <Switch>
             <Route exact path="/" component={LandingPage} />
-            <Route exact path="/bookings/create" component={BookingForm} />
+            <Route
+              exact
+              path="/bookings/create"
+              render={() => (
+                currentUser ? <BookingForm /> : <Redirect to="/signin" />
+              )}
+            />
             <Route exact path="/bookings" component={BookingPage} />
             <Route exact path="/courses" component={CoursesPage} />
             <Route

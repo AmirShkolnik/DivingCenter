@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { axiosRes } from "../../api/axiosDefaults";
 import styles from '../../styles/BookingPage.module.css';
-import { useRedirect } from "../../hooks/useRedirect";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { toast } from 'react-toastify';
 import { useHistory, useLocation } from 'react-router-dom';
 import { Spinner } from 'react-bootstrap';
 
 const BookingPage = () => {
-  useRedirect("loggedOut");
+  const currentUser = useCurrentUser();
   const [bookings, setBookings] = useState([]);
   const [editingBooking, setEditingBooking] = useState(null);
   const [showConfirmation, setShowConfirmation] = useState(false);
@@ -42,13 +42,17 @@ const BookingPage = () => {
   }, []);
 
   useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      await fetchBookings();
-      await fetchCourses();
-    };
-    fetchData();
-  }, [fetchBookings, fetchCourses]);
+    if (!currentUser) {
+      history.push('/signin');
+    } else {
+      const fetchData = async () => {
+        setLoading(true);
+        await fetchBookings();
+        await fetchCourses();
+      };
+      fetchData();
+    }
+  }, [currentUser, history, fetchBookings, fetchCourses]);
 
   useEffect(() => {
     if (location.state && location.state.refresh) {
@@ -97,11 +101,16 @@ const BookingPage = () => {
     }
   };
 
+  if (!currentUser) {
+    return null; // or a loading spinner
+  }
+
   if (loading) {
     return (
       <div className={styles.spinnerContainer}>
         <Spinner animation="border" role="status">
-            </Spinner>
+          <span className="sr-only">Loading...</span>
+        </Spinner>
       </div>
     );
   }
