@@ -4,6 +4,7 @@ import styles from '../../styles/BookingPage.module.css';
 import { useRedirect } from "../../hooks/useRedirect";
 import { toast } from 'react-toastify';
 import { useHistory, useLocation } from 'react-router-dom';
+import { Spinner } from 'react-bootstrap';
 
 const BookingPage = () => {
   useRedirect("loggedOut");
@@ -97,7 +98,12 @@ const BookingPage = () => {
   };
 
   if (loading) {
-    return <div>Loading bookings...</div>;
+    return (
+      <div className={styles.spinnerContainer}>
+        <Spinner animation="border" role="status">
+            </Spinner>
+      </div>
+    );
   }
 
   if (!Array.isArray(bookings) || bookings.length === 0) {
