@@ -11,7 +11,6 @@ export const useSetProfileData = () => useContext(SetProfileDataContext);
 
 export const ProfileDataProvider = ({ children }) => {
   const [profileData, setProfileData] = useState({
-    // we will use the pageProfile later!
     pageProfile: { results: [] },
     popularProfiles: { results: [] },
   });
@@ -41,7 +40,7 @@ export const ProfileDataProvider = ({ children }) => {
   
       return followHelper(clickedProfile, clickedProfile, data.id);
     } catch (err) {
-      console.log(err);
+      console.error("Follow error:", err);
       throw err;
     }
   };
@@ -67,7 +66,7 @@ export const ProfileDataProvider = ({ children }) => {
   
       return unfollowHelper(clickedProfile, clickedProfile);
     } catch (err) {
-      console.log(err);
+      console.error("Unfollow error:", err);
       throw err;
     }
   };
@@ -83,7 +82,7 @@ export const ProfileDataProvider = ({ children }) => {
           popularProfiles: data,
         }));
       } catch (err) {
-      //  console.log(err);
+        console.error("Error fetching popular profiles:", err);
       }
     };
 

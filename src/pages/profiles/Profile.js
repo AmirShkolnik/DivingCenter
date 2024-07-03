@@ -22,7 +22,8 @@ const Profile = (props) => {
       await handleFollow(profile);
       toast.success(`You are now following ${owner}. Refresh to see their posts!`);
     } catch (err) {
-      toast.error("An error occurred while trying to follow. Please try again.");
+      console.error("Follow error:", err);
+      toast.error(err.response?.data?.detail || "An error occurred while trying to follow. Please try again.");
     }
   };
 
@@ -31,14 +32,13 @@ const Profile = (props) => {
       await handleUnfollow(profile);
       toast.warning(`You have unfollowed ${owner}. You will no longer see their posts.`);
     } catch (err) {
-      toast.error("An error occurred while trying to unfollow. Please try again.");
+      console.error("Unfollow error:", err);
+      toast.error(err.response?.data?.detail || "An error occurred while trying to unfollow. Please try again.");
     }
   };
 
   return (
-    <div
-      className={`my-3 d-flex align-items-center ${mobile && "flex-column"}`}
-    >
+    <div className={`my-3 d-flex align-items-center ${mobile && "flex-column"}`}>
       <div>
         <Link className="align-self-center" to={`/profiles/${id}`}>
           <Avatar src={image} height={imageSize} />

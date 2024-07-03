@@ -3,7 +3,6 @@ import { Container, Row, Col, Spinner, Alert, Button } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
 import { axiosReq } from '../../api/axiosDefaults';
 import styles from '../../styles/CoursesPage.module.css';
-import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -13,18 +12,23 @@ const stripHtmlTags = (html) => {
   return tmp.textContent || tmp.innerText || "";
 };
 
-const CourseBox = ({ title, imageUrl, excerpt, slug, price, currentUser }) => {
+const isAuthenticated = () => {
+  const token = localStorage.getItem('authToken');
+  return !!token;
+};
+
+const CourseBox = ({ title, imageUrl, excerpt, slug, price, isUserAuthenticated }) => {
   const history = useHistory();
 
   const handleBookNowClick = useCallback((e) => {
     e.preventDefault();
-    if (currentUser) {
+    if (isUserAuthenticated) {
       history.push("/bookings/create");
     } else {
       toast.error("You must be logged in to book a course.");
       history.push("/signin");
     }
-  }, [currentUser, history]);
+  }, [isUserAuthenticated, history]);
 
   const cleanExcerpt = stripHtmlTags(excerpt);
 
@@ -68,7 +72,7 @@ const CoursesPage = () => {
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const currentUser = useCurrentUser();
+  const isUserAuthenticated = isAuthenticated();
 
   useEffect(() => {
     let isMounted = true;
@@ -144,7 +148,7 @@ const CoursesPage = () => {
             excerpt={course.excerpt}
             slug={course.slug}
             price={course.price_display || `${course.price} $`}
-            currentUser={currentUser}
+            isUserAuthenticated={isUserAuthenticated}
           />
         ))
       ) : (

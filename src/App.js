@@ -25,12 +25,16 @@ import ProfileEditForm from "./pages/profiles/ProfileEditForm";
 import NotFound from "./components/NotFound";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { CurrentUserProvider } from "./contexts/CurrentUserContext";
+import { ProfileDataProvider } from "./contexts/ProfileDataContext";
 
 function App() {
   const currentUser = useCurrentUser();
   const profile_id = currentUser?.profile_id || "";
 
   return (
+    <CurrentUserProvider>
+     <ProfileDataProvider>
     <div className={styles.App}>
       <NavBar />
       <div className={styles.MainWrapper}>
@@ -116,6 +120,8 @@ function App() {
         style={{ zIndex: 9999 }}
       />
     </div>
+     </ProfileDataProvider>
+    </CurrentUserProvider>
   );
 }
 

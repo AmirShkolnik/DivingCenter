@@ -94,7 +94,13 @@ const BookingPage = () => {
       toast.success('Booking deleted successfully!');
     } catch (err) {
       console.error('Error deleting booking:', err);
-      toast.error('Failed to delete booking. Please try again.');
+      if (err.response && err.response.status === 401) {
+        toast.error('Unauthorized. Please log in again.');
+        // Redirect to login page or refresh token
+        history.push('/signin');
+      } else {
+        toast.error('Failed to delete booking. Please try again.');
+      }
     } finally {
       setShowConfirmation(false);
       setDeletingBookingId(null);

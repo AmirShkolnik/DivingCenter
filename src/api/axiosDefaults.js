@@ -6,30 +6,32 @@ axios.defaults.withCredentials = true;
 export const axiosReq = axios.create();
 export const axiosRes = axios.create();
 
-axiosReq.interceptors.request.use(
-  (config) => {
-    const token = localStorage.getItem('authToken');
-    if (token) {
-      config.headers.Authorization = `Token ${token}`;
+const setAuthorizationHeader = (config) => {
+  const token = localStorage.getItem('authToken');
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+};
+
+axiosReq.interceptors.request.use(setAuthorizationHeader);
+axiosRes.interceptors.request.use(setAuthorizationHeader);
+
+axiosReq.interceptors.response.use(
+  (response) => response,
+  async (error) => {
+    if (error.response?.status === 401) {
+      // Handle token refresh or logout here
     }
-    if (config.data instanceof FormData) {
-      config.headers['Content-Type'] = 'multipart/form-data';
-    } else {
-      config.headers['Content-Type'] = 'application/json';
-    }
-    return config;
-  },
-  (error) => {
     return Promise.reject(error);
   }
 );
 
 axiosRes.interceptors.response.use(
   (response) => response,
-  (error) => {
-    const originalRequest = error.config;
-    if (error.response.status === 401 && !originalRequest._retry) {
-      originalRequest._retry = true;
+  async (error) => {
+    if (error.response?.status === 401) {
+      // Handle token refresh or logout here
     }
     return Promise.reject(error);
   }
