@@ -98,7 +98,7 @@ const CoursesPage = () => {
       } catch (err) {
         if (isMounted) {
           console.error('Error fetching courses:', err);
-          setError(err.response?.data?.detail || 'Failed to load courses');
+          setError('Failed to load courses');
           toast.error('Failed to load courses. Please try again.');
         }
       } finally {
@@ -107,9 +107,9 @@ const CoursesPage = () => {
         }
       }
     };
-
+  
     fetchCourses();
-
+  
     return () => {
       isMounted = false;
     };

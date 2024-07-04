@@ -18,11 +18,28 @@ const setAuthorizationHeader = (config) => {
 axiosReq.interceptors.request.use(setAuthorizationHeader);
 axiosRes.interceptors.request.use(setAuthorizationHeader);
 
+const handleTokenRefresh = async () => {
+  try {
+    const response = await axios.post("/dj-rest-auth/token/refresh/");
+    localStorage.setItem('authToken', response.data.access);
+    return response.data.access;
+  } catch (error) {
+    localStorage.removeItem('authToken');
+    throw error;
+  }
+};
+
 axiosReq.interceptors.response.use(
   (response) => response,
   async (error) => {
     if (error.response?.status === 401) {
-      // Handle token refresh or logout here
+      try {
+        const newToken = await handleTokenRefresh();
+        error.config.headers.Authorization = `Bearer ${newToken}`;
+        return axiosReq(error.config);
+      } catch (refreshError) {
+        return Promise.reject(refreshError);
+      }
     }
     return Promise.reject(error);
   }
@@ -32,7 +49,13 @@ axiosRes.interceptors.response.use(
   (response) => response,
   async (error) => {
     if (error.response?.status === 401) {
-      // Handle token refresh or logout here
+      try {
+        const newToken = await handleTokenRefresh();
+        error.config.headers.Authorization = `Bearer ${newToken}`;
+        return axiosRes(error.config);
+      } catch (refreshError) {
+        return Promise.reject(refreshError);
+      }
     }
     return Promise.reject(error);
   }

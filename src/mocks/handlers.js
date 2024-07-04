@@ -12,7 +12,7 @@ export const handlers = [
         "first_name": "",
         "last_name": "",
         "profile_id": 6,
-        "profile_image": "https://res.cloudinary.com/duk6bc8tg/image/upload/v1/media/images/pexels-mastercowley-1300402_lkvzt2"
+        "profile_image": "https://res.cloudinary.com/duk6bc8tg/image/upload/v1719329423/default_profile_ameb12.jpg"
       })
     );
   }),
