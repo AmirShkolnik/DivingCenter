@@ -24,10 +24,7 @@ function CourseSingle() {
   useEffect(() => {
     const fetchCourse = async () => {
       try {
-        const token = localStorage.getItem("authToken");
-        const { data } = await axiosReq.get(`/courses/${slug}/`, {
-          headers: { Authorization: `Bearer ${token}` }
-        });
+        const { data } = await axiosReq.get(`/courses/${slug}/`);
         setCourse(data);
         if (currentUser && data.reviews) {
           const userReview = data.reviews.find(review => review.user === currentUser.username);
@@ -38,20 +35,14 @@ function CourseSingle() {
         }
       } catch (err) {
         console.error('Error fetching course:', err);
-        if (err.response?.status === 401) {
-          toast.error('Your session has expired. Please log in again.');
-          localStorage.removeItem("authToken");
-          history.push('/signin');
-        } else {
-          setError(err.response?.data?.detail || 'Failed to load course data');
-          toast.error('Failed to load course data. Please try again.');
-        }
+        setError(err.response?.data?.detail || 'Failed to load course data');
+        toast.error('Failed to load course data. Please try again.');
       } finally {
         setLoading(false);
       }
     };
     fetchCourse();
-  }, [slug, currentUser, history]);
+  }, [slug, currentUser]);
 
   const handleSubmitReview = async (event) => {
     event.preventDefault();
@@ -60,15 +51,12 @@ function CourseSingle() {
       return;
     }
     try {
-      const token = localStorage.getItem("authToken");
       let data;
       if (isEditing) {
         const response = await axiosRes.put(`/reviews/${userReview.id}/`, {
           content: review.content,
           rating: review.rating,
           course: course.id
-        }, {
-          headers: { Authorization: `Bearer ${token}` }
         });
         data = response.data;
         setUserReview(data);
@@ -78,8 +66,6 @@ function CourseSingle() {
           content: review.content,
           rating: review.rating,
           course: course.id
-        }, {
-          headers: { Authorization: `Bearer ${token}` }
         });
         data = response.data;
         setUserReview(data);
@@ -102,23 +88,14 @@ function CourseSingle() {
       setIsEditing(false);
     } catch (err) {
       console.error('Error submitting review:', err);
-      if (err.response?.status === 401) {
-        toast.error('Your session has expired. Please log in again.');
-        localStorage.removeItem("authToken");
-        history.push('/signin');
-      } else {
-        setError(err.response?.data?.detail || 'Failed to submit review');
-        toast.error('Failed to submit review. Please try again.');
-      }
+      setError(err.response?.data?.detail || 'Failed to submit review');
+      toast.error('Failed to submit review. Please try again.');
     }
   };
 
   const handleDeleteReview = async () => {
     try {
-      const token = localStorage.getItem("authToken");
-      await axiosRes.delete(`/reviews/${userReview.id}/`, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
+      await axiosRes.delete(`/reviews/${userReview.id}/`);
       setCourse(prevCourse => ({
         ...prevCourse,
         reviews: prevCourse.reviews.filter(review => review.id !== userReview.id)
@@ -129,14 +106,8 @@ function CourseSingle() {
       toast.success('Review deleted successfully!');
     } catch (err) {
       console.error('Error deleting review:', err);
-      if (err.response?.status === 401) {
-        toast.error('Your session has expired. Please log in again.');
-        localStorage.removeItem("authToken");
-        history.push('/signin');
-      } else {
-        setError(err.response?.data?.detail || 'Failed to delete review');
-        toast.error('Failed to delete review. Please try again.');
-      }
+      setError(err.response?.data?.detail || 'Failed to delete review');
+      toast.error('Failed to delete review. Please try again.');
     }
   };
 
@@ -164,70 +135,73 @@ function CourseSingle() {
     return sum / reviews.length;
   };
 
+  if (loading) {
+    return (
+      <Container className="text-center">
+        <Spinner animation="border" role="status">
+          <span className="sr-only">Loading...</span>
+        </Spinner>
+      </Container>
+    );
+  }
+
+  if (error) {
+    return <Alert variant="danger">Error: {error}</Alert>;
+  }
+
   return (
     <Container>
       <ToastContainer position="top-center" autoClose={3000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
-      {loading ? (
-        <div className="text-center">
-          <Spinner animation="border" role="status">
-            <span className="sr-only">Loading...</span>
-          </Spinner>
-        </div>
-      ) : error ? (
-        <Alert variant="danger">Error: {error}</Alert>
-      ) : course ? (
+      {course && (
         <>
-          <div className={styles.CourseContainer}>
-            <h1 className={styles.CourseTitle}>{course.title}</h1>
-            <div className={styles.RatingBookingContainer}>
-              <div className={styles.RatingContainer}>
-                <p>Average Rating:</p>
-                <StarRatings
-                  rating={course.average_rating || 0}
-                  starRatedColor="#c7ae6a"
-                  numberOfStars={5}
-                  name='courseRating'
-                  starDimension="20px"
-                  starSpacing="2px"
-                />
-              </div>
-              <div className={styles.BookingPriceContainer}>
-                <Button 
-                  onClick={() => {
-                    if (!currentUser) {
-                      toast.error('Please sign in to book this course.');
-                      history.push('/signin');
-                    } else {
-                      toast.success('Redirecting to booking page...');
-                      history.push('/bookings/create');
-                    }
-                  }} 
-                  className={`${styles.Button} ${styles.Blue}`}
-                >
-                  Book This Course
-                </Button>
-                <span className={styles.PriceDisplay}>
-                 Price: {course.price_display || `${course.price}`}
-                </span>
-              </div>
+          <h1>{course.title}</h1>
+          <div className={styles.RatingBookingContainer}>
+            <div className={styles.RatingContainer}>
+              <p>Average Rating:</p>
+              <StarRatings
+                rating={course.average_rating || 0}
+                starRatedColor="#c7ae6a"
+                numberOfStars={5}
+                name='courseRating'
+                starDimension="20px"
+                starSpacing="2px"
+              />
             </div>
-            {course.image && (
-              <img src={course.image} alt={course.title} className={styles.CourseImage} />
-            )}
-            <div className={styles.CourseDescription} dangerouslySetInnerHTML={{ __html: course.description }} />
-            <p className={styles.CourseType}>Course Type: {course.course_type}</p>
+            <div className={styles.BookingPriceContainer}>
+              <Button 
+                onClick={() => {
+                  if (!currentUser) {
+                    toast.error('Please sign in to book this course.');
+                    history.push('/signin');
+                  } else {
+                    toast.success('Redirecting to booking page...');
+                    history.push('/bookings/create');
+                  }
+                }} 
+                className={`${styles.Button} ${styles.Blue}`}
+              >
+                Book This Course
+              </Button>
+              <span className={styles.PriceDisplay}>
+                Price: {course.price_display || `${course.price}`}
+              </span>
+            </div>
           </div>
+          {course.image && (
+            <img src={course.image} alt={course.title} className={styles.CourseImage} />
+          )}
+          <div className={styles.CourseDescription} dangerouslySetInnerHTML={{ __html: course.description }} />
+          <p className={styles.CourseType}>Course Type: {course.course_type}</p>
+
           <div className={styles.ReviewSection}>
             <h2>Reviews</h2>
             {!userReview && !showReviewForm && (
-              <div className={styles.AddReviewButton}>
-                <Button onClick={handleAddReview} className={`${styles.Button} ${styles.Blue}`}>
-                  Add Review
-                </Button>
-              </div>
+              <Button onClick={handleAddReview} className={`${styles.Button} ${styles.Blue}`}>
+                Add Review
+              </Button>
             )}
             {(showReviewForm || isEditing) && (
-              <Form onSubmit={handleSubmitReview} className={styles.ReviewForm}>
+              <Form onSubmit={handleSubmitReview}>
                 <Form.Group>
                   <Form.Label>Your Review</Form.Label>
                   <Form.Control
@@ -237,7 +211,6 @@ function CourseSingle() {
                     value={review.content}
                     onChange={(e) => setReview({...review, content: e.target.value})}
                     required
-                    className={styles['form-control']}
                   />
                 </Form.Group>
                 <div className={styles.RatingContainer}>
@@ -252,22 +225,20 @@ function CourseSingle() {
                     starSpacing="5px"
                   />
                 </div>
-                <div className={styles.ButtonContainer}>
-                  <Button type="submit" className={`${styles.Button} ${styles.Blue} me-2`}>
-                    {isEditing ? 'Update Review' : 'Submit Review'}
-                  </Button>
-                  <Button
-                    variant="secondary"
-                    onClick={() => {
-                      setIsEditing(false);
-                      setShowReviewForm(false);
-                      toast.info('Review cancelled.');
-                    }}
-                    className={`${styles.Button} ${styles.DeleteRed}`}
-                  >
-                    Cancel
-                  </Button>
-                </div>
+                <Button type="submit" className={`${styles.Button} ${styles.Blue}`}>
+                  {isEditing ? 'Update Review' : 'Submit Review'}
+                </Button>
+                <Button
+                  variant="secondary"
+                  onClick={() => {
+                    setIsEditing(false);
+                    setShowReviewForm(false);
+                    toast.info('Review cancelled.');
+                  }}
+                  className={`${styles.Button} ${styles.DeleteRed}`}
+                >
+                  Cancel
+                </Button>
               </Form>
             )}
             {course.reviews && course.reviews.map(review => (
@@ -286,7 +257,7 @@ function CourseSingle() {
                   <div>
                     <Button
                       onClick={() => handleEditReview(review.content, review.rating)}
-                      className={`${styles.Button} ${styles.Blue} me-2`}
+                      className={`${styles.Button} ${styles.Blue}`}
                     >
                       Edit
                     </Button>
@@ -302,8 +273,6 @@ function CourseSingle() {
             ))}
           </div>
         </>
-      ) : (
-        <Alert variant="warning">No course data available</Alert>
       )}
       
       <Modal show={showDeleteConfirmation} onHide={() => setShowDeleteConfirmation(false)}>
