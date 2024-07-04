@@ -9,14 +9,20 @@ export const useRedirect = (userAuthStatus) => {
     const handleMount = async () => {
       try {
         const token = localStorage.getItem('authToken');
-        if (token) {
+        const expiry = localStorage.getItem('tokenExpiry');
+        if (token && expiry && new Date().getTime() < parseInt(expiry)) {
+          // Token is still valid
+          if (userAuthStatus === "loggedOut") {
+            history.push("/");
+          }
+        } else if (token) {
+          // Token exists but might be expired, try to refresh
           await axios.post("/dj-rest-auth/token/refresh/");
-          // User is logged in
           if (userAuthStatus === "loggedOut") {
             history.push("/");
           }
         } else {
-          // User is not logged in
+          // No token, user is not logged in
           if (userAuthStatus === "loggedIn") {
             history.push("/signin");
           }
