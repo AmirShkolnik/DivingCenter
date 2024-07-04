@@ -20,7 +20,7 @@ const Profile = (props) => {
   const handleFollowClick = async () => {
     try {
       await handleFollow(profile);
-      toast.success(`You are now following ${owner}. Refresh to see their posts!`);
+      toast.success(`You are now following ${owner}.`);
     } catch (err) {
       console.error("Follow error:", err);
       toast.error(err.response?.data?.detail || "An error occurred while trying to follow. Please try again.");
