@@ -193,7 +193,7 @@ function CourseSingle() {
           <div className={styles.ReviewSection}>
             <h2>Reviews</h2>
             {!userReview && !showReviewForm && (
-              <Button onClick={handleAddReview} className={`${styles.Button} ${styles.Blue}`}>
+              <Button onClick={handleAddReview} className={`${styles.ReviewButton} ${styles.Blue}`}>
                 Add Review
               </Button>
             )}
