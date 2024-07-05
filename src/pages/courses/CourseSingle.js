@@ -5,8 +5,7 @@ import StarRatings from 'react-star-ratings';
 import { axiosReq, axiosRes } from '../../api/axiosDefaults';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import styles from '../../styles/CourseSingle.module.css';
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 
 function CourseSingle() {
   const { slug } = useParams();
@@ -151,7 +150,6 @@ function CourseSingle() {
 
   return (
     <Container>
-      <ToastContainer position="top-center" autoClose={3000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
       {course && (
         <>
           <h1>{course.title}</h1>
@@ -171,10 +169,9 @@ function CourseSingle() {
               <Button 
                 onClick={() => {
                   if (!currentUser) {
-                    toast.error('Please sign in to book this course.');
+                    toast.warning('Please sign in to book this course.');
                     history.push('/signin');
                   } else {
-                    toast.success('Redirecting to booking page...');
                     history.push('/bookings/create');
                   }
                 }} 

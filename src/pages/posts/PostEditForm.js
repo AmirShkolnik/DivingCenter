@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { toast } from 'react-toastify';
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -14,7 +15,6 @@ import btnStyles from "../../styles/Button.module.css";
 
 import { useHistory, useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
-import { toast } from 'react-toastify';
 
 function PostEditForm() {
   const [errors, setErrors] = useState({});
@@ -38,8 +38,7 @@ function PostEditForm() {
 
         is_owner ? setPostData({ title, content, image }) : history.push("/");
       } catch (err) {
-      //  console.log(err);
-      toast.error("Failed to load post. Please try again.");
+        console.log(err);
       }
     };
 
@@ -60,6 +59,7 @@ function PostEditForm() {
         ...postData,
         image: URL.createObjectURL(event.target.files[0]),
       });
+      toast.info('Image selected. Remember to save your changes!');
     }
   };
 
@@ -79,11 +79,11 @@ function PostEditForm() {
       toast.success("Post updated successfully!");
       history.push(`/posts/${id}`);
     } catch (err) {
-    //  console.log(err);
+      console.log(err);
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
+        toast.error("Failed to update post. Please check your inputs.");
       }
-      toast.error("Failed to update post. Please try again.");
     }
   };
 
@@ -122,7 +122,10 @@ function PostEditForm() {
 
       <Button
         className={`${btnStyles.Button} ${btnStyles.Blue}`}
-        onClick={() => history.goBack()}
+        onClick={() => {
+          history.goBack();
+          toast.info("Edit cancelled");
+        }}
       >
         cancel
       </Button>

@@ -3,8 +3,8 @@ import { Container, Row, Col, Spinner, Alert, Button } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
 import { axiosReq } from '../../api/axiosDefaults';
 import styles from '../../styles/CoursesPage.module.css';
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
+import { useCurrentUser } from '../../contexts/CurrentUserContext';
 
 const stripHtmlTags = (html) => {
   const tmp = document.createElement("DIV");
@@ -12,23 +12,18 @@ const stripHtmlTags = (html) => {
   return tmp.textContent || tmp.innerText || "";
 };
 
-const isAuthenticated = () => {
-  const token = localStorage.getItem('authToken');
-  return !!token;
-};
-
-const CourseBox = ({ title, imageUrl, excerpt, slug, price, isUserAuthenticated }) => {
+const CourseBox = ({ title, imageUrl, excerpt, slug, price, currentUser }) => {
   const history = useHistory();
 
   const handleBookNowClick = useCallback((e) => {
     e.preventDefault();
-    if (isUserAuthenticated) {
+    if (currentUser) {
       history.push("/bookings/create");
     } else {
-      toast.error("You must be logged in to book a course.");
+      toast.warning('Please sign in to book a course.');
       history.push("/signin");
     }
-  }, [isUserAuthenticated, history]);
+  }, [currentUser, history]);
 
   const cleanExcerpt = stripHtmlTags(excerpt);
 
@@ -69,10 +64,10 @@ const CourseBox = ({ title, imageUrl, excerpt, slug, price, isUserAuthenticated 
 };
 
 const CoursesPage = () => {
+  const currentUser = useCurrentUser();
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const isUserAuthenticated = isAuthenticated();
 
   useEffect(() => {
     let isMounted = true;
@@ -89,6 +84,7 @@ const CoursesPage = () => {
             } else {
               console.error('Unexpected data structure:', response.data);
               setError('Unexpected data structure in API response');
+              toast.error('Error loading courses. Please try again later.');
             }
           } else {
             console.error('Unexpected API response status:', response.status);
@@ -99,7 +95,7 @@ const CoursesPage = () => {
         if (isMounted) {
           console.error('Error fetching courses:', err);
           setError('Failed to load courses');
-          toast.error('Failed to load courses. Please try again.');
+          toast.error('Failed to load courses. Please check your internet connection and try again.');
         }
       } finally {
         if (isMounted) {
@@ -137,8 +133,7 @@ const CoursesPage = () => {
 
   return (
     <Container className={styles.coursesPage}>
-      <ToastContainer position="top-center" autoClose={3000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
-      <h1 className={styles.courseTitle}>Our Diving Courses</h1>
+       <h1 className={styles.courseTitle}>Our Diving Courses</h1>
       {courses && courses.length > 0 ? (
         courses.map((course) => (
           <CourseBox
@@ -148,7 +143,7 @@ const CoursesPage = () => {
             excerpt={course.excerpt}
             slug={course.slug}
             price={course.price_display || `${course.price} $`}
-            isUserAuthenticated={isUserAuthenticated}
+            currentUser={currentUser}
           />
         ))
       ) : (

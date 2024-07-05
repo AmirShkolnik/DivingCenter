@@ -108,3 +108,15 @@ figure {
 .customToast.Toastify__toast--error {
   background-color: #ff6b6b !important;
 }
+
+.customToastProgress {
+  background-color: #b99a45 !important;
+}
+
+.Toastify__toast--success .customToastProgress {
+  background-color: #4caf50 !important;
+}
+
+.Toastify__toast--error .customToastProgress {
+  background-color: #f44336 !important;
+}

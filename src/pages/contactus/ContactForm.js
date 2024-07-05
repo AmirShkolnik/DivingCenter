@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form, Button, Modal } from 'react-bootstrap';
 import { axiosReq } from '../../api/axiosDefaults';
 import { toast } from 'react-toastify';
 import { useHistory } from 'react-router-dom';
 import styles from '../../styles/ContactForm.module.css';
+import Asset from '../../components/Asset';
 
 const ContactForm = () => {
   const history = useHistory();
@@ -18,6 +19,12 @@ const ContactForm = () => {
   const [errors, setErrors] = useState({});
   const [messageId, setMessageId] = useState(null);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const [hasLoaded, setHasLoaded] = useState(false);
+
+  useEffect(() => {
+    setHasLoaded(true);
+  }, []);
+
   const handleDeleteMessage = async () => {
     if (!messageId) {
       toast.error('No message to delete.');
@@ -82,6 +89,10 @@ const ContactForm = () => {
     setIsSubmitted(false);
   };
 
+  if (!hasLoaded) {
+    return <Asset spinner />;
+  }
+
   if (isSubmitted) {
     return (
       <div className={styles.ContactForm}>
@@ -103,31 +114,31 @@ const ContactForm = () => {
         </div>
 
         <Modal
-  show={showConfirmModal}
-  onHide={() => setShowConfirmModal(false)}
-  className={styles.ConfirmModal}
->
-  <Modal.Header closeButton>
-    <Modal.Title>Confirm Cancellation</Modal.Title>
-  </Modal.Header>
-  <Modal.Body>Are you sure you want to cancel your message?</Modal.Body>
-  <Modal.Footer>
-    <Button 
-      variant="secondary" 
-      onClick={() => setShowConfirmModal(false)}
-      className={styles.btn_secondary}
-    >
-      No, Keep My Message
-    </Button>
-    <Button 
-      variant="danger" 
-      onClick={handleDeleteMessage}
-      className={styles.btn_danger}
-    >
-      Yes, Delete My Message
-    </Button>
-  </Modal.Footer>
-</Modal>
+          show={showConfirmModal}
+          onHide={() => setShowConfirmModal(false)}
+          className={styles.ConfirmModal}
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>Confirm Cancellation</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>Are you sure you want to cancel your message?</Modal.Body>
+          <Modal.Footer>
+            <Button 
+              variant="secondary" 
+              onClick={() => setShowConfirmModal(false)}
+              className={styles.btn_secondary}
+            >
+              No, Keep My Message
+            </Button>
+            <Button 
+              variant="danger" 
+              onClick={handleDeleteMessage}
+              className={styles.btn_danger}
+            >
+              Yes, Delete My Message
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </div>
     );
   }
@@ -204,7 +215,6 @@ const ContactForm = () => {
               </Button>
             </>
           )}
-
         </div>
       </Form>
     </div>

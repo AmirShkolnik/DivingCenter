@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
-import { axiosRes } from "../../api/axiosDefaults";
+import { axiosReq } from "../../api/axiosDefaults";
 import styles from '../../styles/BookingForm.module.css';
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { toast } from 'react-toastify';
+import Asset from "../../components/Asset";
 
 const BookingForm = () => {
   const history = useHistory();
@@ -16,6 +17,13 @@ const BookingForm = () => {
   });
   const [courses, setCourses] = useState([]);
   const [errors, setErrors] = useState({});
+  const [hasLoaded, setHasLoaded] = useState(false);
+
+  useEffect(() => {
+    if (!currentUser) {
+      history.push('/signin');
+    }
+  }, [currentUser, history]);
 
   const translateCourseName = (name) => {
     const courseNameMap = {
@@ -28,29 +36,26 @@ const BookingForm = () => {
 
   const fetchCourses = useCallback(async () => {
     try {
-      const { data } = await axiosRes.get('/diving-courses/');
+      const { data } = await axiosReq.get('/diving-courses/');
       setCourses(data.results || data);
     } catch (err) {
       console.error('Error fetching courses:', err);
-      toast.error('Failed to fetch courses. Please try again.');
+      if (err.response?.status === 401) {
+        toast.error('Your session has expired. Please sign in again.');
+        history.push('/signin');
+      } else {
+        toast.error('Failed to fetch courses. Please try again.');
+      }
+    } finally {
+      setHasLoaded(true);
     }
-  }, []);
+  }, [history]);
 
   useEffect(() => {
-    let isMounted = true;
-    if (isMounted) {
+    if (currentUser) {
       fetchCourses();
     }
-    return () => {
-      isMounted = false;
-    };
-  }, [fetchCourses]);
-
-  useEffect(() => {
-    if (!currentUser) {
-      history.push('/signin');
-    }
-  }, [currentUser, history]);
+  }, [currentUser, fetchCourses]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -72,7 +77,7 @@ const BookingForm = () => {
       const formattedDate = new Date(formData.date).toISOString().split('T')[0];
       const formattedTime = formData.time + ':00';
   
-      const { data } = await axiosRes.post('/bookings/', {
+      const { data } = await axiosReq.post('/bookings/', {
         date: formattedDate,
         time: formattedTime,
         course: parseInt(formData.courseId),
@@ -83,7 +88,10 @@ const BookingForm = () => {
       history.push('/bookings', { refresh: true });
     } catch (err) {
       console.error('Error creating booking:', err);
-      if (err.response && err.response.data) {
+      if (err.response?.status === 401) {
+        toast.error('Your session has expired. Please sign in again.');
+        history.push('/signin');
+      } else if (err.response && err.response.data) {
         setErrors(err.response.data);
         Object.values(err.response.data).forEach(error => {
           toast.error(Array.isArray(error) ? error[0] : error);
@@ -95,8 +103,8 @@ const BookingForm = () => {
     }
   };
 
-  if (!currentUser) {
-    return null; // or a loading spinner
+  if (!hasLoaded) {
+    return <Asset spinner />;
   }
 
   return (

@@ -96,7 +96,6 @@ const BookingPage = () => {
       console.error('Error deleting booking:', err);
       if (err.response && err.response.status === 401) {
         toast.error('Unauthorized. Please log in again.');
-        // Redirect to login page or refresh token
         history.push('/signin');
       } else {
         toast.error('Failed to delete booking. Please try again.');
@@ -108,7 +107,7 @@ const BookingPage = () => {
   };
 
   if (!currentUser) {
-    return null; // or a loading spinner
+    return null;
   }
 
   if (loading) {

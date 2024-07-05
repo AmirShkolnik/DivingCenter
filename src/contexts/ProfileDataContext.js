@@ -11,6 +11,7 @@ export const useSetProfileData = () => useContext(SetProfileDataContext);
 
 export const ProfileDataProvider = ({ children }) => {
   const [profileData, setProfileData] = useState({
+    // we will use the pageProfile later!
     pageProfile: { results: [] },
     popularProfiles: { results: [] },
   });
@@ -22,7 +23,7 @@ export const ProfileDataProvider = ({ children }) => {
       const { data } = await axiosRes.post("/followers/", {
         followed: clickedProfile.id,
       });
-  
+
       setProfileData((prevState) => ({
         ...prevState,
         pageProfile: {
@@ -37,18 +38,15 @@ export const ProfileDataProvider = ({ children }) => {
           ),
         },
       }));
-  
-      return followHelper(clickedProfile, clickedProfile, data.id);
     } catch (err) {
-      console.error("Follow error:", err);
-      throw err;
+      console.log(err);
     }
   };
-  
+
   const handleUnfollow = async (clickedProfile) => {
     try {
       await axiosRes.delete(`/followers/${clickedProfile.following_id}/`);
-  
+
       setProfileData((prevState) => ({
         ...prevState,
         pageProfile: {
@@ -63,11 +61,8 @@ export const ProfileDataProvider = ({ children }) => {
           ),
         },
       }));
-  
-      return unfollowHelper(clickedProfile, clickedProfile);
     } catch (err) {
-      console.error("Unfollow error:", err);
-      throw err;
+      console.log(err);
     }
   };
 
@@ -82,7 +77,7 @@ export const ProfileDataProvider = ({ children }) => {
           popularProfiles: data,
         }));
       } catch (err) {
-        console.error("Error fetching popular profiles:", err);
+        console.log(err);
       }
     };
 
