@@ -24,6 +24,7 @@ import { useRedirect } from "../../hooks/useRedirect";
 function PostCreateForm() {
   useRedirect("loggedOut");
   const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [postData, setPostData] = useState({
     title: "",
@@ -48,13 +49,15 @@ function PostCreateForm() {
       setPostData({
         ...postData,
         image: URL.createObjectURL(event.target.files[0]),
-    });
-    toast.info('Image uploaded successfully');
-  }
-};
+      });
+      toast.info('Image uploaded successfully');
+    }
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (isSubmitting) return; // Prevent multiple submissions
+    setIsSubmitting(true);
     const formData = new FormData();
 
     formData.append("title", title);
@@ -71,6 +74,8 @@ function PostCreateForm() {
         setErrors(err.response?.data);
         toast.error('Failed to create post. Please try again.');
       }
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -109,15 +114,19 @@ function PostCreateForm() {
 
       <Button
         className={`${btnStyles.Button} ${btnStyles.Blue}`}
-        onClick={() => {history.goBack();
+        onClick={() => {
+          history.goBack();
           toast.info('Post creation cancelled');
         }}
-        
       >
         cancel
       </Button>
-      <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
-        create
+      <Button 
+        className={`${btnStyles.Button} ${btnStyles.Blue}`} 
+        type="submit"
+        disabled={isSubmitting}
+      >
+        {isSubmitting ? 'Creating...' : 'Create'}
       </Button>
     </div>
   );
