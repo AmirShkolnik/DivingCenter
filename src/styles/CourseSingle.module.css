@@ -71,6 +71,16 @@
   color: #ffffff;
 }
 
+.ButtonContainer {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.ButtonContainer .Button {
+  margin-right: 10px;
+}
+
 .ReviewButton {
   background-color: #0d5589;
   border: 1px solid #c7ae6a;

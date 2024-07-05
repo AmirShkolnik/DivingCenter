@@ -222,6 +222,7 @@ function CourseSingle() {
                     starSpacing="5px"
                   />
                 </div>
+              <div className={styles.ButtonContainer}>
                 <Button type="submit" className={`${styles.Button} ${styles.Blue}`}>
                   {isEditing ? 'Update Review' : 'Submit Review'}
                 </Button>
@@ -236,6 +237,7 @@ function CourseSingle() {
                 >
                   Cancel
                 </Button>
+              </div>
               </Form>
             )}
             {course.reviews && course.reviews.map(review => (
