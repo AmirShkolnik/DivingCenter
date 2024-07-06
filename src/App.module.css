@@ -120,3 +120,85 @@ figure {
 .Toastify__toast--error .customToastProgress {
   background-color: #f44336 !important;
 }
+
+@media only screen and (min-width: 1201px) {
+  .Main {
+    padding-top: 100px;
+  }
+  
+  .Content {
+    padding: 20px;
+  }
+}
+
+@media only screen and (min-width: 1025px) and (max-width: 1200px) {
+  .Main {
+    padding-top: 90px;
+  }
+  
+  .Content {
+    padding: 15px;
+  }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  .Main {
+    padding-top: 85px;
+  }
+  
+  .Content {
+    padding: 12px;
+  }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  .Main {
+    padding-top: 80px;
+  }
+  
+  .Content {
+    padding: 10px;
+  }
+  
+  .Image {
+    max-height: 35vh;
+  }
+}
+
+@media screen and (min-width: 321px) and (max-width: 480px) {
+  .Main {
+    padding-top: 75px;
+  }
+  
+  .Content {
+    padding: 8px;
+  }
+  
+  .Image {
+    max-height: 30vh;
+  }
+  
+  i {
+    font-size: 1.4rem;
+    padding: 5px;
+  }
+}
+
+@media screen and (min-width: 280px) and (max-width: 320px) {
+  .Main {
+    padding-top: 70px;
+  }
+  
+  .Content {
+    padding: 6px;
+  }
+  
+  .Image {
+    max-height: 25vh;
+  }
+  
+  i {
+    font-size: 1.2rem;
+    padding: 4px;
+  }
+}

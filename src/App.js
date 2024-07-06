@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./App.module.css";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
+import NotFound from "./components/NotFound";
 import Container from "react-bootstrap/Container";
 import { Route, Switch, Redirect } from "react-router-dom";
 import "./api/axiosDefaults";
@@ -103,8 +104,8 @@ function App() {
           <Route exact path="/courses" component={CoursesPage} />
           <Route exact path="/courses/:slug" component={CourseSingle} />
           <Route exact path="/contactus" component={ContactForm} />
+          <Route component={NotFound} />
 
-          <Route render={() => <p>Page not found!</p>} />
         </Switch>
       </Container>
     </div>
