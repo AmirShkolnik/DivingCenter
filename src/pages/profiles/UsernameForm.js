@@ -1,19 +1,17 @@
 import React, { useEffect, useState } from "react";
-
 import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
-
+import { toast } from 'react-toastify';
 import { useHistory, useParams } from "react-router-dom";
 import { axiosRes } from "../../api/axiosDefaults";
 import {
   useCurrentUser,
   useSetCurrentUser,
 } from "../../contexts/CurrentUserContext";
-
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 
@@ -32,6 +30,7 @@ const UsernameForm = () => {
       setUsername(currentUser.username);
     } else {
       history.push("/");
+      toast.error("You don't have permission to edit this profile.");
     }
   }, [currentUser, history, id]);
 
@@ -45,11 +44,18 @@ const UsernameForm = () => {
         ...prevUser,
         username,
       }));
+      toast.success("Username updated successfully!");
       history.goBack();
     } catch (err) {
-    //  console.log(err);
+      console.log(err);
       setErrors(err.response?.data);
+      toast.error("Failed to update username. Please try again.");
     }
+  };
+
+  const handleCancel = () => {
+    history.goBack();
+    toast.info("Username change cancelled.");
   };
 
   return (
@@ -73,7 +79,7 @@ const UsernameForm = () => {
             ))}
             <Button
               className={`${btnStyles.Button} ${btnStyles.Blue}`}
-              onClick={() => history.goBack()}
+              onClick={handleCancel}
             >
               cancel
             </Button>
