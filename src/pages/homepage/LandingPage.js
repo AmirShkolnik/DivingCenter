@@ -1,26 +1,39 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from '../../styles/LandingPage.module.css';
 import VideoPlayer from '../../components/Video/VideoPlayer.js';
 import { Link, useHistory } from 'react-router-dom';
 import Footer from '../../components/Footer';
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import { useCurrentUser, useSetCurrentUser } from "../../contexts/CurrentUserContext";
+import { removeTokenTimestamp } from "../../utils/utils";
 
 const LandingPage = () => {
     const currentUser = useCurrentUser();
+    const setCurrentUser = useSetCurrentUser();
     const history = useHistory();
+
+    useEffect(() => {
+        const checkTokenValidity = () => {
+            const refreshTokenTimestamp = localStorage.getItem("refreshTokenTimestamp");
+            if (refreshTokenTimestamp && Date.now() > refreshTokenTimestamp * 1000) {
+                // Token has expired
+                setCurrentUser(null);
+                removeTokenTimestamp();
+            }
+        };
+
+        checkTokenValidity();
+    }, [setCurrentUser]);
 
     const handleCommunityClick = (e) => {
         if (!currentUser) {
-          e.preventDefault();
-          history.push("/signin");
+            e.preventDefault();
+            history.push("/signin");
         }
-      };
+    };
 
-      const getUserProfilePath = () => {
+    const getUserProfilePath = () => {
         if (!currentUser) return "/signin";
-        // Check for various possible identifier properties
-        const userId = currentUser.id || currentUser.pk || currentUser.user_id;
-        return userId ? `/profiles/${userId}` : "/profile";
+        return `/profiles/${currentUser?.profile_id}`;
     };
 
     return (
@@ -34,10 +47,10 @@ const LandingPage = () => {
                     <p>Join our inclusive community or explore our diving courses designed for all skill sets</p>
                 </div>
                 <div className={styles['button-container']}>
-          {currentUser ? (
-            <Link to={getUserProfilePath()} className={styles['home-btn']}>
-            Welcome Back {currentUser.username}!
-            </Link>
+                    {currentUser ? (
+                        <Link to={getUserProfilePath()} className={styles['home-btn']}>
+                            Welcome Back {currentUser.username}!
+                        </Link>
                     ) : (
                         <button className={styles['home-btn']} onClick={handleCommunityClick}>
                             Diving Community

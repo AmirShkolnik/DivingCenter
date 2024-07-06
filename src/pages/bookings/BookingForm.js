@@ -52,9 +52,15 @@ const BookingForm = () => {
   }, [history]);
 
   useEffect(() => {
+    let isMounted = true;
     if (currentUser) {
-      fetchCourses();
+      fetchCourses().then(() => {
+        if (isMounted) setHasLoaded(true);
+      });
     }
+    return () => {
+      isMounted = false;
+    };
   }, [currentUser, fetchCourses]);
 
   const handleChange = (e) => {
