@@ -25,7 +25,6 @@ const NavBar = () => {
       await axios.post("dj-rest-auth/logout/");
       setCurrentUser(null);
       removeTokenTimestamp();
-      localStorage.removeItem('authToken');
       toast.success("You have been successfully signed out.");
       history.push('/');
     } catch (err) {
