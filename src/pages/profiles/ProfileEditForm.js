@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useHistory, useParams } from "react-router-dom";
-
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
@@ -8,13 +7,11 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
-
 import { axiosReq } from "../../api/axiosDefaults";
 import {
   useCurrentUser,
   useSetCurrentUser,
 } from "../../contexts/CurrentUserContext";
-
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 import { toast } from 'react-toastify';
@@ -43,7 +40,6 @@ const ProfileEditForm = () => {
           const { name, content, image } = data;
           setProfileData({ name, content, image });
         } catch (err) {
-        //  console.log(err);
           toast.error("Failed to load profile. Please try again.");
           history.push("/");
         }
@@ -81,9 +77,18 @@ const ProfileEditForm = () => {
       toast.success("Profile updated successfully!");
       history.goBack();
     } catch (err) {
-    //  console.log(err);
       setErrors(err.response?.data);
       toast.error("Failed to update profile. Please try again.");
+    }
+  };
+
+  const handleImageChange = (event) => {
+    if (event.target.files.length) {
+      setProfileData({
+        ...profileData,
+        image: URL.createObjectURL(event.target.files[0]),
+      });
+      toast.info("Image selected. Don't forget to save your changes!");
     }
   };
 
@@ -107,7 +112,10 @@ const ProfileEditForm = () => {
       ))}
       <Button
         className={`${btnStyles.Button} ${btnStyles.Blue}`}
-        onClick={() => history.goBack()}
+        onClick={() => {
+          history.goBack();
+          toast.info("Changes discarded.");
+        }}
       >
         cancel
       </Button>
@@ -145,14 +153,7 @@ const ProfileEditForm = () => {
                 id="image-upload"
                 ref={imageFile}
                 accept="image/*"
-                onChange={(e) => {
-                  if (e.target.files.length) {
-                    setProfileData({
-                      ...profileData,
-                      image: URL.createObjectURL(e.target.files[0]),
-                    });
-                  }
-                }}
+                onChange={handleImageChange}
               />
             </Form.Group>
             <div className="d-md-none">{textFields}</div>
