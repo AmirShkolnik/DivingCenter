@@ -68,7 +68,6 @@ const ContactForm = () => {
       toast.success(isEditing ? 'Your message has been updated successfully!' : 'Your message has been sent successfully!');
     } catch (err) {
       toast.error('An error occurred. Please try again.');
-      console.log(err);
       if (err.response?.data) {
         setErrors(err.response.data);
       }
