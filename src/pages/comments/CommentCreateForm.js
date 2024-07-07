@@ -56,7 +56,6 @@ function CommentCreateForm(props) {
         draggable: true,
         progress: undefined,
       });
-    //  console.log(err);
     }
   };
 
