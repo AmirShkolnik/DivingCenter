@@ -33,7 +33,6 @@ function CourseSingle() {
           }
         }
       } catch (err) {
-        console.error('Error fetching course:', err);
         setError(err.response?.data?.detail || 'Failed to load course data');
         toast.error('Failed to load course data. Please try again.');
       } finally {
@@ -86,7 +85,6 @@ function CourseSingle() {
       setShowReviewForm(false);
       setIsEditing(false);
     } catch (err) {
-      console.error('Error submitting review:', err);
       setError(err.response?.data?.detail || 'Failed to submit review');
       toast.error('Failed to submit review. Please try again.');
     }
@@ -104,7 +102,6 @@ function CourseSingle() {
       setShowDeleteConfirmation(false);
       toast.success('Review deleted successfully!');
     } catch (err) {
-      console.error('Error deleting review:', err);
       setError(err.response?.data?.detail || 'Failed to delete review');
       toast.error('Failed to delete review. Please try again.');
     }
