@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Form, Button, Modal } from 'react-bootstrap';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 import { axiosReq } from '../../api/axiosDefaults';
 import { toast } from 'react-toastify';
 import { useHistory } from 'react-router-dom';
