@@ -39,7 +39,6 @@ const BookingForm = () => {
       const { data } = await axiosReq.get('/diving-courses/');
       setCourses(data.results || data);
     } catch (err) {
-      console.error('Error fetching courses:', err);
       if (err.response?.status === 401) {
         toast.error('Your session has expired. Please sign in again.');
         history.push('/signin');
@@ -89,11 +88,9 @@ const BookingForm = () => {
         course: parseInt(formData.courseId),
         additional_info: formData.additionalInfo
       });
-      console.log('Booking created:', data);
       toast.success('Booking submitted successfully!');
       history.push('/bookings', { refresh: true });
     } catch (err) {
-      console.error('Error creating booking:', err);
       if (err.response?.status === 401) {
         toast.error('Your session has expired. Please sign in again.');
         history.push('/signin');
