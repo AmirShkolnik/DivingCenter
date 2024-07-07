@@ -1,5 +1,11 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Container, Row, Col, Spinner, Alert, Button } from 'react-bootstrap';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Spinner from 'react-bootstrap/Spinner';
+import Alert from 'react-bootstrap/Alert';
+import Button from 'react-bootstrap/Button';
+
 import { Link, useHistory } from 'react-router-dom';
 import { axiosReq } from '../../api/axiosDefaults';
 import styles from '../../styles/CoursesPage.module.css';
@@ -38,7 +44,6 @@ const CourseBox = ({ title, imageUrl, excerpt, slug, price, currentUser }) => {
               className={styles.courseImage}
               alt={title}
               onError={(e) => {
-                console.error(`Error loading image: ${imageUrl}`);
                 e.target.src = '../images/courses/4.webp';
               }}
             />
@@ -82,18 +87,15 @@ const CoursesPage = () => {
             } else if (response.data.results && Array.isArray(response.data.results)) {
               setCourses(response.data.results);
             } else {
-              console.error('Unexpected data structure:', response.data);
               setError('Unexpected data structure in API response');
               toast.error('Error loading courses. Please try again later.');
             }
           } else {
-            console.error('Unexpected API response status:', response.status);
             setError('Unexpected API response status');
           }
         }
       } catch (err) {
         if (isMounted) {
-          console.error('Error fetching courses:', err);
           setError('Failed to load courses');
           toast.error('Failed to load courses. Please check your internet connection and try again.');
         }
