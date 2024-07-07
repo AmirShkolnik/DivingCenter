@@ -39,10 +39,9 @@ const ContactForm = () => {
       setShowConfirmModal(false);
       history.push('/');
     } catch (err) {
-      console.error('Error deleting message:', err);
       toast.error('An error occurred while deleting your message. Please try again.');
       if (err.response) {
-        console.error('Error response:', err.response.data);
+        // Handle error response if necessary
       }
     }
   };
@@ -79,7 +78,7 @@ const ContactForm = () => {
     setIsSubmitted(false);
     setIsEditing(false);
     setMessageId(null);
-  };  
+  };
 
   const handleCancelMessage = () => {
     setShowConfirmModal(true);
