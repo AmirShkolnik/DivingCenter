@@ -21,10 +21,8 @@ const BookingPage = () => {
     try {
       const response = await axiosRes.get('/bookings/');
       const data = response.data.results;
-      console.log('Fetched bookings:', data);
       setBookings(Array.isArray(data) ? data : []);
     } catch (err) {
-      console.error('Error fetching bookings:', err);
       toast.error('Failed to fetch bookings. Please try again.');
     } finally {
       setLoading(false);
@@ -36,7 +34,6 @@ const BookingPage = () => {
       const response = await axiosRes.get('/diving-courses/');
       setCourses(response.data.results || response.data);
     } catch (err) {
-      console.error('Error fetching courses:', err);
       toast.error('Failed to fetch courses. Please try again.');
     }
   }, []);
@@ -77,7 +74,6 @@ const BookingPage = () => {
       setEditingBooking(null);
       toast.success('Booking updated successfully!');
     } catch (err) {
-      console.error('Error updating booking:', err);
       toast.error('Failed to update booking. Please try again.');
     }
   };
@@ -93,7 +89,6 @@ const BookingPage = () => {
       setBookings(bookings.filter(booking => booking.id !== deletingBookingId));
       toast.success('Booking deleted successfully!');
     } catch (err) {
-      console.error('Error deleting booking:', err);
       if (err.response && err.response.status === 401) {
         toast.error('Unauthorized. Please log in again.');
         history.push('/signin');
