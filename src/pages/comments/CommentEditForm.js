@@ -41,7 +41,6 @@ function CommentEditForm(props) {
         progress: undefined,
       });
     } catch (err) {
-      console.log(err);
       toast.error("Error updating comment. Please try again.", {
         position: "top-center",
         autoClose: 3000,
