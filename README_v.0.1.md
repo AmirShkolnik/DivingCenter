@@ -473,65 +473,92 @@ Overall, the website's purpose is to create a mutually beneficial environment fo
 
 **Features:**
 
-- Comprehensive directory of coffee shops with detailed information and user-generated reviews.
-- User registration and profile management for personalized experiences.
-- Ability for registered users to contribute reviews, ratings, and comments on coffee shops.
-- Content management system for admins to publish articles, guides, and resources related to coffee.
-- Interactive features like forums, events, and meetups for the coffee community.
-Search and filtering capabilities to easily find relevant coffee shops and content.
+- Seamless User Experience:
+  - Create an account, log in securely, and manage your profile with ease.
+  - Browse a user-friendly course catalog with detailed information.
+  - Book courses directly through the website with a responsive booking system.
+  - Navigate intuitively and access updated information effortlessly.
+  - Experience fast loading pages for a smooth browsing experience.
+- Streamlined Administration:
+  - Manage user accounts and update course information efficiently through a user-friendly admin interface.
+  - Manage static content on the website to ensure accurate and up-to-date information.
+  - Monitor website performance to identify and address any issues promptly.
+
+- Engaging Community Features:
+  - Participate in discussions and share your diving experiences through community events (managed by admins).
+  - Post and read course reviews to make informed decisions about your diving education.
+  - Stay informed with the latest diving news and tips through blog posts published by admins.
 
 
 ## Structural Plane
 
 **Information Architecture:**
 
-**Home Page**
-- Welcome message
-- Quick links to articles, reviews about us and Registration/sign-in pages
+1. Home Page
+   - Welcome message and site introduction
+   - Quick links to course catalog, community social page, and user registration/login
 
-**Articles Page**
-- List of articles
-- Links to individual article pages
-- Display number of likes
+2. Course Catalog
+   - List of available diving courses
+   - Course categories (e.g., beginner, advanced, specialties)
+   - Links to individual course pages
 
-**Single Article Page**
-- Article title, author, date
-- Article content (text, images, etc.)
-- Comments section
-- Like and favourites for registered users
+3. Individual Course Page
+   - Course title, level, and duration
+   - Detailed course description and requirements
+   - Instructor information
+   - User reviews and ratings
+   - Course booking option
 
-**Single Review Page**
-- Review title, author, date
-- Review content (text, images etc.)
+4. Community Hub
+   - Discussion social page
+   - Recent topics and popular threads
+   - User-generated content (experiences, tips, photos)
+   - Latest community posts and reviews
 
-**Reviews List Page**
-- List of all reviews
-- Links to individual review pages
+5. User Reviews
+   - Can add review with rating system for courses
+   - Can create, read, update and delete
 
-**About & Contact Pages**
-- Information about the website and its purpose
-- Contact form
+7. User Profiles
+   - Personal information and diving experience
+   - Activity feed (recent reviews, forum posts, etc.)
+   - Can see own booking
+   - Can follow/unfollow other divers
+   - Can create, read, update profile
 
-**Registration and Sign-In Page**
-- User registration form
-- User sign-in form
+8. Post Page
+   - Can add posts
+   - Can add images
+   - Can create, read, update and delete
 
-**User Profile**
-- User information (name, avatar, bio)
-- Saved articles and reviews
-- User comments and contributions
-- Personalization settings
 
-**Navigation**
-- Primary Navigation: Links to category pages, about page, contact page
-- Registered Users: Links to user profile, favorites, reviews, comments
-- Secondary Navigation: Links to registration/sign-in, user profile
-- Footer Navigation: Links to home page, reviews, about us, social media
+9. My Dashboard (for registered users)
+   - Overview of booked courses
+   - Can see feed
+   - Can see list of liked posts
 
-**Interaction Design**
-- Responsive design for optimal viewing across devices
-- Interactive elements (buttons, links, forms) with visual cues (icons, color changes)
-- Intuitive navigation and user flows
+10. Contact Page
+    - Contact form
+    - Can create, read, update and delete
+
+11. Booking Form
+    - Can book diving course
+    - Can create, read, update and delete
+
+12. Registration and Login
+    - User registration form
+    - Login page
+    - Password recovery option
+
+13. Navigation
+    - Primary Navigation: Home, Courses, Community, Dive Sites, Reviews
+    - User Menu: My Dashboard, Profile, Messages, Settings (for logged-in users)
+    - Secondary Navigation: About Us, Contact, FAQ
+    - Footer: Terms of Service, Privacy Policy, Social Media Links
+
+14. Search Functionality
+    - Global search bar for posts in the feed
 
 ## Skeleton & Surface Planes
 
@@ -846,35 +873,63 @@ The table below describes the CRUD operations that can be performed on Diving Ce
 
 Here are some future feature suggestions for the "Diving Center" project:
 
-### Search Bar Enhancements
+### About Us Page / Section
+   - Information about the Diving Center platform
+   - Mission statement and community guidelines
+   - Team and instructor profiles
 
-- **Description:** Implement an advanced search bar that allows users to filter coffee shops based on various criteria such as location, price range, amenities, and user ratings.
-- **Benefit:** An enhanced search bar will provide users with a more personalized and efficient way to find their desired coffee shops, improving the overall user experience and increasing engagement with the platform.
+### Discussion forums
+### Community events calendar
 
-### Interactive Maps Integration
+### Dive Site Directory
+  - List of dive sites with brief descriptions
+  - Map integration for location visualization
+  - User reviews and ratings for each site
+  - Option to save favorite dive sites (for registered users)
 
-- **Description:** Integrate interactive maps that display the locations of coffee shops, along with additional information such as operating hours, contact details, and user reviews.
-- **Benefit:** Interactive maps will make it easier for users to visualize the locations of coffee shops and plan their visits accordingly, enhancing the overall usability and convenience of the platform.
+### My Dashboard (for registered users)
+  - Personal diving log
+  - Progress tracking for ongoing courses
+  - Notifications and messages
 
-### Comprehensive Review Rating System
+### User Reviews
+  - Option to sort and filter reviews
+  - Links to full review pages
 
-- **Description:** Implement a comprehensive review rating system that allows users to rate coffee shops based on various aspects such as ambiance, service, coffee quality, and value for money.
-- **Benefit:** A comprehensive review rating system will provide users with more detailed and insightful information about coffee shops, helping them make informed decisions and encouraging more engagement with the platform.
+### FAQ section
+  - Support resources
 
-### Social Engagement Features
+### Search Functionality
+  - Global search bar for courses, dive sites, and community content
+  - Advanced search options with filters
 
-- **Description:** Introduce features that allow users to like, comment on, and favorite reviews, as well as share their experiences on social media platforms.
-- **Benefit:** Social engagement features will foster a sense of community among users, encourage user-generated content, and increase the platform's visibility and reach on social media.
+### Virtual Dive Tour Integration
+- **Description:** Implement virtual reality (VR) or augmented reality (AR) tours of popular dive sites.
+- **Benefit:** Allows users to preview dive locations before booking, enhancing decision-making and excitement for upcoming dives.
 
-### Community Forum and Discussion Boards
+### AI-Powered Dive Buddy Matching
+- **Description:** Develop an AI system that matches divers based on experience level, interests, and availability.
+- **Benefit:** Facilitates connections between divers, enhancing safety and social aspects of diving experiences.
 
-- **Description:** Develop a dedicated forum or discussion board where users can share their thoughts, experiences, and recommendations related to coffee shops and the coffee culture.
-- **Benefit:** A community forum will create a space for users to connect, engage in discussions, and share their passion for coffee, fostering a strong sense of community and increasing user loyalty to the platform.
+### Interactive Dive Log with Environmental Data
+- **Description:** Create an advanced digital dive log that incorporates real-time environmental data such as water temperature, visibility, and marine life sightings.
+- **Benefit:** Provides divers with a comprehensive record of their dives and contributes to citizen science efforts in marine conservation.
 
-### Personalized Newsletter and Updates
+### Gear Maintenance Tracker
+- **Description:** Implement a feature that helps divers track the maintenance schedule of their equipment.
+- **Benefit:** Improves safety by ensuring gear is properly maintained and reminds users when servicing is due.
 
-- **Description:** Implement a personalized newsletter and update system that delivers relevant information, such as new coffee shop openings, special events, and promotions, based on users' preferences and location.
-- **Benefit:** A personalized newsletter will keep users informed and engaged with the latest happenings in the coffee scene, ensuring they stay up-to-date and increasing their likelihood of returning to the platform.
+### Dive Site Conditions Forecasting
+- **Description:** Integrate weather and ocean condition forecasting specifically tailored for dive sites.
+- **Benefit:** Helps divers plan their trips more effectively and enhances safety by providing up-to-date environmental information.
+
+### Underwater Photography Workshop and Gallery
+- **Description:** Offer online workshops for underwater photography and create a platform for users to showcase their best shots.
+- **Benefit:** Enhances skills of diving enthusiasts and provides a space for creative expression within the community.
+
+### Eco-Friendly Dive Challenge
+- **Description:** Create a gamified system that rewards divers for eco-friendly practices such as participating in underwater cleanups or using reef-safe sunscreen.
+- **Benefit:** Promotes environmental consciousness among divers and contributes to marine conservation efforts.
 
 # Technology Used
 
