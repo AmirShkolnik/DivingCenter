@@ -125,7 +125,7 @@ Overall, the UX design of Diving Center aims to create an immersive and inclusiv
 
 ## Colour Scheme
 
-The color scheme for Diving Center is carefully crafted to evoke a warm, inviting, and coffee-inspired atmosphere. Here's a detailed breakdown:
+The color scheme for Diving Center is carefully crafted to evoke a warm, inviting, and diving-inspired atmosphere. Here's a detailed breakdown:
 
 [Colors by looka.com](https://looka.com/editor/188707413) - Colour Scheme for Diving Center website
 
@@ -199,7 +199,8 @@ Story points were meticulously assigned to each user story, quantifying the effo
 **Allocation Guidelines:**
 - **Must-have Stories**: Core functionalities like creating user accounts, writing reviews, and sharing content were given the highest priority, ensuring the platform's primary purpose was met.
 - **Should-have Stories**: Features that improve the overall user experience, such as personalization options and community engagement tools, were considered important but not critical. These were prioritized after the essential features were implemented.
-- **Could-have Stories**: Additional features like integration with external coffee communities or advanced analytics were considered desirable but not essential for the initial launch of Diving Center.
+- **Could-have Stories**: Additional features like integration with external diving communities or advanced analytics were considered desirable but not essential for the initial launch of Diving Center.
+- **Won't-have Stories**: These are requirements that are recognized as potentially useful but have been agreed to be excluded from the current delivery timeframe. They may be considered for future releases.
 
 ### Sprint Planning Example
 Here is an example of how story points are managed and allocated across different categories in sprints:
@@ -429,26 +430,46 @@ Every epic represents a major feature area, guiding development from initial set
 
 **Purpose:**
 
-The purpose of the "Diving Center" website is to provide a comprehensive platform for coffee enthusiasts and casual drinkers alike. For random visitors, it serves as a valuable resource for exploring the world of coffee, discovering new cafes, and gaining insights into the coffee culture. For registered users, the website offers a personalized experience, enabling them to contribute to the community, share their experiences, and connect with like-minded individuals.
+The Diving Center website aims to be a one-stop shop for all things scuba diving, catering to both experienced divers and those curious about getting started. Here's a breakdown of its purpose:
+
+#### For Divers:
+
+- Streamlined Course Booking: Simplifies finding and booking diving courses that suit your interests and experience level.
+
+- Community Hub: Provides a platform to connect with fellow divers, share experiences, and learn from each other through reviews, discussions, and potentially even future social features.
+
+- Informative Content: Offers valuable resources like course details, blog posts, and potentially an interactive dive log (future feature) to enhance your diving journey.
+
+#### For the Diving Center:
+
+- Enhanced User Engagement: Creates a user-friendly platform to attract new customers and retain existing ones through a seamless booking system and engaging features.
+
+- Efficient Management: Provides an admin interface to manage courses, user accounts, website content, and potentially even analyze user data to optimize course offerings (future feature).
+
+- Community Building: Fosters a community of divers around the diving center, potentially leading to increased brand loyalty and customer base.
+
+Overall, the website's purpose is to create a mutually beneficial environment for both divers and the diving center by simplifying course booking, fostering a community, and providing valuable resources.
 
 **Goals:**
 
-- Create a vibrant online community for coffee lovers to connect, share, and learn.
-- Establish a trusted source of information and reviews for coffee shops and cafes.
-- Foster a collaborative environment where users can contribute content and engage in discussions.
+- Establish a user-friendly platform for divers to explore and book diving courses.
+- Enhance user experience through informative content and interactive features.
+- Foster a community of diving enthusiasts for knowledge sharing and engagement.
+- Streamline course management and user administration for efficient business operations.
 
 **Target Audience:**
 
-- Coffee enthusiasts who are passionate about exploring different brews and roasts.
-- Casual coffee drinkers seeking recommendations and insights into local cafes.
-- Travelers and tourists looking for highly-rated coffee shops in various locations.
-- Coffee shop owners and baristas interested in connecting with their customer base.
+- Scuba divers of all experience levels
+- Potential new divers interested in learning
 
 **User Needs:**
-- Access to comprehensive and up-to-date information about coffee shops, including menus, pricing, and ambiance.
-- Ability to read and contribute reviews, ratings, and comments about coffee shops and their offerings.
-- Personalized features for registered users, such as saving favorite cafes, creating lists, and managing their contributions.
-- Engaging content and resources related to coffee culture, brewing methods, and industry trends.
+- User Authentication and Profile Management: Securely create, manage, and access user accounts.
+- Course Catalog and Booking System: Browse courses, view details, and book online conveniently.
+- Community Engagement and Social Features: Share experiences, read reviews, and participate in discussions.
+- Content Management and Administration: Easily manage website content, user accounts, and course information.
+- User Experience and Interface Design: Enjoy a responsive, intuitive, and visually appealing website.
+- Performance Optimization and Scalability: Experience fast loading times and a reliable booking system.
+- Secure Data Storage: Trust that personal information is stored and processed securely.
 
 **Features:**
 
