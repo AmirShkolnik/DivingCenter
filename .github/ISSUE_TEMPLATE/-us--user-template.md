@@ -1,6 +1,6 @@
 ---
-name: "[US] Template"
-about: Kanban Board for the Diving Center project
+name: "[US] User Template"
+about: As a user
 title: "[US]"
 labels: ''
 assignees: AmirShkolnik
