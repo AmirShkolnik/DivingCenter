@@ -44,10 +44,6 @@ For our returning divers, welcome back! Sign in to reconnect with your diving bu
       - [Users Stories](#users-stories)
       - [Milestones](#milestones)
       - [Epics](#epics)
-        - [EPIC 1: Website Content Creation and Publishing](#epic-1-website-content-creation-and-publishing)
-        - [EPIC 2: Website Usability and Navigation](#epic-2-website-usability-and-navigation)
-        - [EPIC 3: Content Discovery and Exploration](#epic-3-content-discovery-and-exploration)
-        - [EPIC 4: User Account](#epic-4-user-account)
   - [Scope Plane](#scope-plane)
   - [Structural Plane](#structural-plane)
   - [Skeleton \& Surface Planes](#skeleton--surface-planes)
@@ -214,12 +210,12 @@ Here is an example of how story points are managed and allocated across differen
 - **Could-have Points**: 10 (10% of the total)
 
 **Example Milestones:**
-- **Milestone 1: Core Functionality**
+- **Milestone 1: Core Features Development**
   - Total Story Points: 60
   - Breakdown:
     - Must-have: 36 points
     - Should-have: 24 points
-- **Milestone 2: Enhanced User Experience**
+- **Milestone 2: User Experience Enhancements**
   - Total Story Points: 80
   - Breakdown:
     - Must-have: 32 points
@@ -264,13 +260,13 @@ Features deemed non-essential for the initial launch, such as:
 
 **User stories** are a brief statement of intent that captures what a user does or needs to do as part of their job function. They are written in non-technical language and focus on the value or outcome that the user
 
-[Diving Center Kanban Board Link](https://github.com/users/AmirShkolnik/projects/8)
+[Diving Center Kanban Board Link](https://github.com/users/AmirShkolnik/projects/9)
 
-![Kanban Board](documentation/Features/kanban-board.png)
+![Kanban Board](doc/images/kanban/kanban-board.png)
 
-[Diving Center User Stories Link](https://github.com/AmirShkolnik/Cups-of-Joy/issues?q=is%3Aissue+is%3Aclosed)
+[Diving Center User Stories Link](https://github.com/AmirShkolnik/DivingCenter/issues)
 
-![issues](documentation/Features/issues.png)
+![issues](doc/images/kanban/issues.png)
 
 | Epic | Title | User Story | MoSCoW Priority | Milestone |
 |------|-------|------------|-----------------|-----------|
@@ -309,11 +305,15 @@ Features deemed non-essential for the initial launch, such as:
 | EPIC 6: Performance Optimization and Scalability | Monitor Website Performance | As an admin, I want to monitor website performance so that I can identify and address issues promptly. | Should Have | Performance Optimization |
 | EPIC 6: Performance Optimization and Scalability | Secure Data Storage | As a user, I want my personal data to be securely stored and processed so that I can trust the platform with my information. | Must Have | Core Features Development |
 | EPIC 6: Performance Optimization and Scalability | Scalable Server Resources | As an admin, I want the ability to scale server resources easily so that I can accommodate growing user numbers without service interruptions. | Should Have | Performance Optimization |
+| EPIC 7: Advanced Platform Features and Integrations | Browse and Purchase Diving Equipment | As a user, I want to browse and purchase diving equipment through the platform so that I can easily acquire the gear I need for my diving activities. | Could Have | Advanced Features Integration |
+| EPIC 7: Advanced Platform Features and Integrations | View Relevant Third-Party Advertisements | As a user, I want to view relevant third-party advertisements while browsing the platform so that I can discover new products or services related to diving. | Won't Have | Advanced Features Integration |
+| EPIC 7: Advanced Platform Features and Integrations | View Relevant Third-Party Advertisements | As an admin and business owner I can add relevant third-party advertisements so that I can monitize my website. | Won't Have | Advanced Features Integration |
+| EPIC 7: Advanced Platform Features and Integrations | Use Real-Time Underwater Communication Tools | As a diver, I want to use real-time underwater communication tools so that I can stay connected with my diving partners during underwater activities. | Won't Have | Advanced Features Integration |
+| EPIC 7: Advanced Platform Features and Integrations | Book Dive Travel Packages | As a user, I want to book dive travel packages through the platform so that I can plan and organize my diving trips conveniently. | Won't Have | Advanced Features Integration |
+| EPIC 7: Advanced Platform Features and Integrations | Access Personalized Diving Recommendations | As a user, I want to receive personalized recommendations for courses, equipment, and dive sites based on my preferences and experience level so that I can enhance my diving journey. | Won't Have | Advanced Features Integration |
+| EPIC 7: Advanced Platform Features and Integrations | Maintain Interactive Dive Log | As a user, I want to maintain an interactive digital dive log so that I can record and share my diving experiences easily. | Won't Have | Advanced Features Integration |
 
 This table provides a comprehensive overview of the user stories for the Diving Center website, organized by epics and prioritized using the MoSCoW method. The milestones are assigned based on the nature of each user story and its priority.
-
-Citations:
-[1] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/13580946/e27f5c7a-c14b-4bf1-82a8-772613df9c79/paste.txt
 
 Click to explore the [Diving Center GitHub Link](https://github.com/AmirShkolnik/DivingCenter)
 
@@ -323,30 +323,29 @@ Click to exploer the [Diving Center API - DataBase](https://github.com/AmirShkol
 
 **A milestone**, is a major checkpoint or goal in a project's timeline that signifies the completion of a key phase or the achievement of a significant objective.
 
-##### Milestone 1: Core Platform Development (Weeks 1-4)
-- Set up project infrastructure
-- Implement basic user authentication (sign up, sign in, log out)
-- Create landing page with essential information and navigation
-##### Milestone 2: Course Management System (Weeks 5-8)
-- Develop course catalog with filtering and search capabilities
-- Implement course detail pages with descriptions and pricing
-- Create booking system for courses
-##### Milestone 3: Community Features Implementation (Weeks 9-12)
-- Develop user profiles and customization options
-- Create user feed for community engagement
-- Implement review and rating system for courses
-##### Milestone 4: Content and Administration Tools (Weeks 13-16)
-- Develop admin panel for course management
-- Implement content management system for dynamic page content
-- Create moderation tools for community content
-##### Milestone 5: User Experience Enhancement (Weeks 17-20)
-- Refine responsive design for all device types
-- Implement advanced search and recommendation features
-- Enhance navigation and user flow throughout the site
-##### Milestone 6: Platform Optimization and Launch Preparation (Weeks 21-24)
-- Conduct performance optimization and load testing
-- Implement analytics and monitoring systems
-- Prepare marketing materials and launch strategy
+##### Milestone 1: Core Platform and features Development
+- Establishing the Foundation
+  - This milestone focuses on implementing the essential features of the platform, including user authentication, course catalog, and basic community features. It lays the groundwork for a functional and secure website.
+
+##### Milestone 2: Content Management System
+- Empowering Efficient Management
+  - This phase focuses on creating robust admin tools for managing user-generated content, courses, and overall site maintenance, ensuring the platform remains current and well-moderated.
+
+##### Milestone 3: Community Engagement
+- Fostering a Vibrant Diving Community
+  - This milestone centers on developing and launching features that encourage user interaction and content creation, such as forums, review systems, and experience sharing functionalities.
+
+##### Milestone 4: User Experience Enhancement
+- Crafting an Intuitive Interface
+    - This phase involves refining the user interface and experience, ensuring the platform is user-friendly, responsive, and accessible across various devices. It includes implementing personalized dashboards and easy navigation.
+
+##### Milestone 5: Platform Optimization and Launch Preparation
+- Enhancing Speed and Reliability
+    - This milestone involves optimizing the website's performance, including improving load times, enhancing data handling, and ensuring the platform can handle increased user traffic efficiently.
+
+##### Milestone 6: Advanced Features Integration
+- Elevating the Platform Experience
+    - This final phase introduces advanced features like personalized recommendations, interactive dive logs, and integration with external diving resources, further enriching the user experience and platform capabilities.
 
 #### Epics
 
@@ -411,6 +410,18 @@ Click to exploer the [Diving Center API - DataBase](https://github.com/AmirShkol
   - Monitor website performance to identify and address issues promptly
   - Secure personal data storage and processing for user trust
   - Enable easy scaling of server resources to accommodate growth
+
+###### EPIC 7: Advanced Platform Features and Integrations
+
+- **Goal:**
+To enhance the Diving Center platform with advanced features and integrations that elevate the user experience, provide additional services, and create new revenue streams. These features, while not essential for the initial launch, will significantly expand the platform's capabilities and appeal to a broader range of diving enthusiasts.
+
+- **Associated User Stories:**
+
+- Browse and Purchase Diving Equipment (e-commerse)
+- View Relevant Third-Party Advertisements
+- Use Real-Time Underwater Communication Tools
+-Book Dive Travel Packages
   
 Every epic represents a major feature area, guiding development from initial setup to a full-fledged, engaging community platform
 

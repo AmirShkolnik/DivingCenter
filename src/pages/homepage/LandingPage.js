@@ -15,7 +15,6 @@ const LandingPage = () => {
         const checkTokenValidity = () => {
             const refreshTokenTimestamp = localStorage.getItem("refreshTokenTimestamp");
             if (refreshTokenTimestamp && Date.now() > refreshTokenTimestamp * 1000) {
-                // Token has expired
                 setCurrentUser(null);
                 removeTokenTimestamp();
             }
