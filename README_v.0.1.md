@@ -300,6 +300,12 @@ Features deemed non-essential for the initial launch, such as:
 | EPIC 7: Advanced Platform Features and Integrations | Book Dive Travel Packages | As a user, I want to book dive travel packages through the platform so that I can plan and organize my diving trips conveniently. | Won't Have | Advanced Features Integration |
 | EPIC 7: Advanced Platform Features and Integrations | Access Personalized Diving Recommendations | As a user, I want to receive personalized recommendations for courses, equipment, and dive sites based on my preferences and experience level so that I can enhance my diving journey. | Won't Have | Advanced Features Integration |
 | EPIC 7: Advanced Platform Features and Integrations | Maintain Interactive Dive Log | As a user, I want to maintain an interactive digital dive log so that I can record and share my diving experiences easily. | Won't Have | Advanced Features Integration |
+| EPIC 8: Contact and Support | Submit Contact Form | As a user, I want to submit a contact form without logging in so that I can easily reach out to the admin with questions or concerns. | Must Have | Core Features Development |
+| EPIC 8: Contact and Support | Edit Contact Message | As a user, I want to edit my contact message immediately after sending it so that I can correct any mistakes or add additional information. | Should Have | User Experience Enhancements |
+| EPIC 8: Contact and Support | Delete Contact Message | As a user, I want to delete my contact message immediately after sending it so that I can retract my inquiry if needed. | Should Have | User Experience Enhancements |
+| EPIC 8: Contact and Support | View Sent Message | As a user, I want to view my sent message immediately after submitting it so that I can review what I've sent. | Should Have | User Experience Enhancements |
+| EPIC 8: Contact and Support | Manage Contact Messages | As an admin, I want to view, update, and delete contact messages in the backend so that I can effectively manage and respond to user inquiries. | Must Have | Content Administration |
+| EPIC 8: Contact and Support | Respond to Contact Messages | As an admin, I want to respond to contact messages directly through the admin interface so that I can provide timely support to users. | Must Have | Content Administration |
 
 This table provides a comprehensive overview of the user stories for the Diving Center website, organized by epics and prioritized using the MoSCoW method. The milestones are assigned based on the nature of each user story and its priority.
 
