@@ -415,7 +415,21 @@ To enhance the Diving Center platform with advanced features and integrations th
 - Browse and Purchase Diving Equipment (e-commerse)
 - View Relevant Third-Party Advertisements
 - Use Real-Time Underwater Communication Tools
--Book Dive Travel Packages
+- Book Dive Travel Packages
+
+###### EPIC 8: Contact and Support
+
+- **Goal:**
+To provide an efficient and user-friendly communication channel between users and administrators, enabling seamless support and feedback mechanisms for the Diving Center platform.
+
+- **Associated User Stories:**
+
+- Submit Contact Form
+- Edit Contact Message
+- Delete Contact Message
+- View Sent Message
+- Manage Contact Messages (Admin)
+- Respond to Contact Messages (Admin)
   
 Every epic represents a major feature area, guiding development from initial setup to a full-fledged, engaging community platform
 
