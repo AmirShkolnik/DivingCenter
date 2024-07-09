@@ -9,7 +9,7 @@ Visit the live website: [Diving Center](https://divingspace-900b5a3db777.herokua
 
 Explore the Diving Center Code: [Diving Center GitHub](https://github.com/AmirShkolnik/DivingCenter)
 
-Explore the Diving Center API: [Api GitHub](https://github.com/AmirShkolnik/pp5_api)
+Explore the Diving Center API: [Api GitHub](https://github.com/AmirShkolnik/DivingCenter_API)
 
 ![Am I Responsive Image](doc/images/amiresponsive/amiresponsive.png)
 
@@ -311,7 +311,7 @@ This table provides a comprehensive overview of the user stories for the Diving 
 
 Click to explore the [Diving Center GitHub Link](https://github.com/AmirShkolnik/DivingCenter)
 
-Click to exploer the [Diving Center API - DataBase](https://github.com/AmirShkolnik/pp5_api)
+Click to exploer the [Diving Center API - DataBase](https://github.com/AmirShkolnik/DivingCenter_API)
 
 #### Milestones
 
