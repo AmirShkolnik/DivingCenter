@@ -48,19 +48,6 @@ For our returning divers, welcome back! Sign in to reconnect with your diving bu
   - [Structural Plane](#structural-plane)
   - [Skeleton \& Surface Planes](#skeleton--surface-planes)
     - [Wireframes](#wireframes)
-      - [Home Page Wireframes](#home-page-wireframes)
-      - [Articles Page Wireframes](#articles-page-wireframes)
-      - [Reviews Page Wireframes](#reviews-page-wireframes)
-      - [About \& Contact Page Wireframes](#about--contact-page-wireframes)
-      - [Single Article Page Wireframes](#single-article-page-wireframes)
-      - [Register Page Wireframes](#register-page-wireframes)
-      - [Login Page Wireframes](#login-page-wireframes)
-      - [Logout Page Wireframes](#logout-page-wireframes)
-      - [My Favourites Page Wireframes](#my-reviews-page-wireframes)
-      - [My Reviews Page Wireframes](#my-likes-page-wireframes)
-      - [My Comments Page Wireframes](#my-comments-page-wireframes)
-      - [Single Review Page Wireframes](#single-review-page-wireframes)
-      - [Add \& Edit Review Page Wireframes](#add--edit-review-page-wireframes)
     - [Database Schema - Entity Relationship Diagram](#database-schema---entity-relationship-diagram)
       - [Database Schema](#database-schema)
       - [Entity Relationship Diagram (ERD)](#entity-relationship-diagram-erd)
@@ -568,147 +555,156 @@ Overall, the website's purpose is to create a mutually beneficial environment fo
 
 I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wireframes.
 
-![wireframes](documentation/wireframes/home.png)
-
 #### Home Page Wireframes
 <details>
-<summary>Click to View Home Page wireframes</summary>
+<summary>Click to View Home Page Wireframes</summary>
 
 **Desktop, Mobile and Tablet**
 
-![wireframes](documentation/wireframes/home.png)
+![wireframes](doc/images/wireframes/home-page.png)
 
 </details>
 
-#### Articles Page Wireframes
+#### Contact Us Page Wireframes
 <details>
 
-<summary>Click to View Articles Page wireframes</summary>
+<summary>Click to View Contact Us Page Wireframes</summary>
 
 **Desktop, Mobile and Tablet**
 
-![wireframes](documentation/wireframes/articles-list-page.png)
+![wireframes](doc/images/wireframes/contact-us.png)
 
 </details>
 
-#### Reviews Page Wireframes
+#### Courses Page Wireframes
 <details>
 
-<summary>Click to View Reviews Page wireframes</summary>
+<summary>Click to View Courses Page Wireframes</summary>
 
 **Desktop, Mobile and Tablet**
 
-![wireframes](documentation/wireframes/reviews-list-page.png)
+![wireframes](doc/images/wireframes/courses-page.png)
 
 </details>
 
-#### About & Contact Page Wireframes
+#### Single Course Page Wireframes
 <details>
 
-<summary>Click to View About & Contact Page wireframes</summary>
+<summary>Click to View Single course Page Wireframes</summary>
 
 **Desktop, Mobile and Tablet**
 
-![wireframes](documentation/wireframes/about-us.png)
+![wireframes](doc/images/wireframes/course.png)
 
 </details>
 
-#### Single Article Page Wireframes
+#### Booking Page Wireframes
 <details>
 
-<summary>Click to View Single Article Page wireframes</summary>
+<summary>Click to View Booking Page Wireframes</summary>
 
 **Desktop, Mobile and Tablet**
 
-![wireframes](documentation/wireframes/single-article.png)
+![wireframes](doc/images/wireframes/booking.png)
 
 </details>
 
-#### Register Page Wireframes
+#### My Booking Page Wireframes
 <details>
 
-<summary>Click to View Register Page wireframes</summary>
+<summary>Click to View My Booking Page Wireframes</summary>
 
 **Desktop, Mobile and Tablet**
 
-![wireframes](documentation/wireframes/sign-up.png)
+![wireframes](doc/images/wireframes/my-booking.png)
 
 </details>
 
-#### Login Page Wireframes
+#### Sign Up Page Wireframes
 <details>
 
-<summary>Click to View Login Page wireframes</summary>
+<summary>Click to View Sign Up Page Wireframes</summary>
 
 **Desktop, Mobile and Tablet**
 
-![wireframes](documentation/wireframes/sign-in.png)
+![wireframes](doc/images/wireframes/sign-up.png)
 
 </details>
 
-#### Logout Page Wireframes
+#### Sign In Page Wireframes
 <details>
 
-<summary>Click to View Logout Page wireframes</summary>
+<summary>Click to View Sign In Page wireframes</summary>
 
 **Desktop, Mobile and Tablet**
 
-![wireframes](documentation/wireframes/sign-out.png)
+![wireframes](doc/images/wireframes/sign-in.png)
 
 </details>
 
-#### My Favourites Page Wireframes
+#### Add Post Wireframes
 <details>
 
-<summary>Click to View My Favourites Page wireframes</summary>
+<summary>Click to View Add Post Wireframes</summary>
 
 **Desktop, Mobile and Tablet**
 
-![wireframes](documentation/wireframes/my-favourites.png)
+![wireframes](doc/images/wireframes/add-post.png)
 
 </details>
 
-#### My Reviews Page Wireframes
+#### Post Page Wireframes
 <details>
 
-<summary>Click to View My Reviews Page wireframes</summary>
+<summary>Click to View Post Page Wireframes</summary>
 
 **Desktop, Mobile and Tablet**
 
-![wireframes](documentation/wireframes/my-reviews.png)
+![wireframes](doc/images/wireframes/post.png)
 
 </details>
 
-#### My Comments Page Wireframes
+#### Feed Wireframes
 <details>
 
-<summary>Click to View My Comments Page wireframes</summary>
+<summary>Click to View Feed wireframes</summary>
 
 **Desktop, Mobile and Tablet**
 
-![wireframes](documentation/wireframes/my-comments.png)
+![wireframes](doc/images/wireframes/feed.png)
 
 </details>
 
-#### Single Review Page Wireframes
+#### Liked Wireframes
 <details>
 
-<summary>Click to View Single Review Page wireframes</summary>
+<summary>Click to View Liked wireframes</summary>
 
 **Desktop, Mobile and Tablet**
 
-![wireframes](documentation/wireframes/single-review.png)
+![wireframes](doc/images/wireframes/liked.png)
 
 </details>
 
-#### Add & Edit Review Page Wireframes
+#### Profile Page Wireframes
+<details>
+
+<summary>Click to View Profile Page wireframes</summary>
+
+**Desktop, Mobile and Tablet**
+
+![wireframes](doc/images/wireframes/profile-page.png)
+
+</details>
+
+#### NavBar and Footer Wireframes
 <details>
 
 <summary>Click to View Add and Edit Review Page wireframes</summary>
 
 **Desktop, Mobile and Tablet**
 
-![wireframes](documentation/wireframes/add-review.png)
+![wireframes](doc/images/wireframes/navbar-footer.png)
 
 </details>
 
