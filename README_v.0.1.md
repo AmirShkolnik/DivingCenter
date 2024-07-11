@@ -76,7 +76,7 @@ Live Version: [**Diving Center**](https://divingspace-900b5a3db777.herokuapp.com
 
 ![Home Page](doc/images/homepage/homepage.png)
 
-**Diving Center** is a vibrant online platform celebrating the art of scuba diving and fostering a sense of community. It serves as a communal hub for:
+The **Diving Center** is like a cool online clubhouse for scuba divers! Here, everyone can share their love of diving and be friends. It's a fun place for:
 
 - Joining a passionate community of diving enthusiasts and professionals.
 - Creating personalized profiles to share underwater experiences and insights.
