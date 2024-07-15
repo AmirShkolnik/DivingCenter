@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { axiosRes } from "../../api/axiosDefaults";
+import { axiosReq } from "../../api/axiosDefaults";
 import styles from '../../styles/BookingPage.module.css';
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { toast } from 'react-toastify';
@@ -19,9 +19,8 @@ const BookingPage = () => {
 
   const fetchBookings = useCallback(async () => {
     try {
-      const response = await axiosRes.get('/bookings/');
-      const data = response.data.results;
-      setBookings(Array.isArray(data) ? data : []);
+      const response = await axiosReq.get('/bookings/');
+      setBookings(response.data.results || []);
     } catch (err) {
       toast.error('Failed to fetch bookings. Please try again.');
     } finally {
@@ -31,8 +30,8 @@ const BookingPage = () => {
 
   const fetchCourses = useCallback(async () => {
     try {
-      const response = await axiosRes.get('/courses/');
-      setCourses(response.data.results || response.data);
+      const response = await axiosReq.get('/courses/');
+      setCourses(response.data.results || []);
     } catch (err) {
       toast.error('Failed to fetch courses. Please try again.');
     }
@@ -69,12 +68,25 @@ const BookingPage = () => {
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
-      const response = await axiosRes.put(`/bookings/${editingBooking.id}/`, editingBooking);
+      const { id, date, time, course, additional_info } = editingBooking;
+      const formattedDate = new Date(date).toISOString().split('T')[0];
+      const response = await axiosReq.put(`/bookings/${id}/`, {
+        date: formattedDate,
+        time,
+        course,
+        additional_info
+      });
       setBookings(bookings.map(booking => booking.id === response.data.id ? response.data : booking));
       setEditingBooking(null);
       toast.success('Booking updated successfully!');
     } catch (err) {
-      toast.error('Failed to update booking. Please try again.');
+      if (err.response && err.response.data) {
+        Object.values(err.response.data).forEach(error => {
+          toast.error(Array.isArray(error) ? error[0] : error);
+        });
+      } else {
+        toast.error('Failed to update booking. Please try again.');
+      }
     }
   };
 
@@ -85,7 +97,7 @@ const BookingPage = () => {
 
   const confirmDelete = async () => {
     try {
-      await axiosRes.delete(`/bookings/${deletingBookingId}/`);
+      await axiosReq.delete(`/bookings/${deletingBookingId}/`);
       setBookings(bookings.filter(booking => booking.id !== deletingBookingId));
       toast.success('Booking deleted successfully!');
     } catch (err) {
@@ -115,7 +127,7 @@ const BookingPage = () => {
     );
   }
 
-  if (!Array.isArray(bookings) || bookings.length === 0) {
+  if (bookings.length === 0) {
     return (
       <div className={styles.bookingPage}>
         <h2 className={styles.bookingTitle}>Your Bookings</h2>
@@ -177,8 +189,8 @@ const BookingPage = () => {
                   onChange={(e) => setEditingBooking({...editingBooking, time: e.target.value})}
                   required
                 >
-                  <option value="09:00:00">09:00</option>
-                  <option value="15:00:00">15:00</option>
+                  <option value="09:00">09:00</option>
+                  <option value="15:00">15:00</option>
                 </select>
               </div>
               <div>
@@ -190,7 +202,7 @@ const BookingPage = () => {
                   required
                 >
                   {courses.map(course => (
-                    <option key={course.id} value={course.id}>{course.name}</option>
+                    <option key={course.id} value={course.id}>{course.title}</option>
                   ))}
                 </select>
               </div>

@@ -25,31 +25,35 @@ const BookingForm = () => {
     }
   }, [currentUser, history]);
 
-  const fetchCourses = useCallback(async () => {
+  const fetchCourses = useCallback(async (abortController) => {
     try {
-      const { data } = await axiosReq.get('/courses/');
+      const { data } = await axiosReq.get('/courses/', {
+        signal: abortController.signal
+      });
       setCourses(data.results || data);
     } catch (err) {
+      if (err.name === 'AbortError') {
+        // Request was aborted, do nothing
+        return;
+      }
       if (err.response?.status === 401) {
         toast.error('Your session has expired. Please sign in again.');
         history.push('/signin');
       } else {
         toast.error('Failed to fetch courses. Please try again.');
       }
-    } finally {
-      setHasLoaded(true);
     }
   }, [history]);
 
   useEffect(() => {
-    let isMounted = true;
+    const abortController = new AbortController();
     if (currentUser) {
-      fetchCourses().then(() => {
-        if (isMounted) setHasLoaded(true);
+      fetchCourses(abortController).then(() => {
+        setHasLoaded(true);
       });
     }
     return () => {
-      isMounted = false;
+      abortController.abort();
     };
   }, [currentUser, fetchCourses]);
 
