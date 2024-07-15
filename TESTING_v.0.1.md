@@ -642,6 +642,10 @@ Below is a table summarizing the JavaScript validation results for specific file
 |-----------|-----------------|----------|----------|--------|
 | BookingForm | State updates on unmounted component | Implemented AbortController for API calls | [React useEffect Cleanup](https://reactjs.org/docs/hooks-effect.html#effects-with-cleanup) | ✅ |
 | BookingForm | Course dropdown not displaying options | Updated API call to fetch courses and modified rendering of course options | [React Select Component](https://react-select.com/home) | ✅ |
+| BookingForm | Potential memory leaks | Added isMounted state variable to prevent updates after unmounting | [React State and Lifecycle](https://reactjs.org/docs/state-and-lifecycle.html) | ✅ |
+| BookingForm | Improper cleanup in useEffect | Added proper cleanup function to abort fetch and set isMounted to false | [React useEffect Hook](https://reactjs.org/docs/hooks-effect.html) | ✅ |
+| BookingForm | Generic error messages | Improved error handling with specific messages from backend | [Handling Errors in React](https://www.pluralsight.com/guides/centralized-error-handing-with-react-and-redux) | ✅ |
+| BookingForm | Incomplete course information in dropdown | Updated dropdown to display both course title and type | [React Select Component](https://react-select.com/home) | ✅ |
 | BookingPage | Unable to edit existing bookings | Refactored edit functionality to properly handle course selection and date formatting | [React Forms](https://reactjs.org/docs/forms.html) | ✅ |
 | BookingPage | Incorrect error handling for API responses | Improved error handling to display specific error messages from the backend | [Axios Error Handling](https://axios-http.com/docs/handling_errors) | ✅ |
 
