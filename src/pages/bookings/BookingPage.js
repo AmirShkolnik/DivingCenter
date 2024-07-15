@@ -31,7 +31,7 @@ const BookingPage = () => {
 
   const fetchCourses = useCallback(async () => {
     try {
-      const response = await axiosRes.get('/diving-courses/');
+      const response = await axiosRes.get('/courses/');
       setCourses(response.data.results || response.data);
     } catch (err) {
       toast.error('Failed to fetch courses. Please try again.');

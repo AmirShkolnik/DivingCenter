@@ -12,8 +12,8 @@ const BookingForm = () => {
   const [formData, setFormData] = useState({
     date: '',
     time: '',
-    courseId: '',
-    additionalInfo: ''
+    course: '',
+    additional_info: ''
   });
   const [courses, setCourses] = useState([]);
   const [errors, setErrors] = useState({});
@@ -25,18 +25,9 @@ const BookingForm = () => {
     }
   }, [currentUser, history]);
 
-  const translateCourseName = (name) => {
-    const courseNameMap = {
-      'OW': 'Open Water',
-      'AOW': 'Advanced Open Water',
-      'RD': 'Rescue Diver'
-    };
-    return courseNameMap[name] || name;
-  };
-
   const fetchCourses = useCallback(async () => {
     try {
-      const { data } = await axiosReq.get('/diving-courses/');
+      const { data } = await axiosReq.get('/courses/');
       setCourses(data.results || data);
     } catch (err) {
       if (err.response?.status === 401) {
@@ -67,7 +58,12 @@ const BookingForm = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
     if (name === 'date') {
       const selectedDate = new Date(value);
-      if (selectedDate.getDate() !== 10) {
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      
+      if (selectedDate < today) {
+        setErrors(prev => ({ ...prev, date: 'Cannot book a date in the past.' }));
+      } else if (selectedDate.getDate() !== 10) {
         setErrors(prev => ({ ...prev, date: 'Bookings are only available on the 10th of each month.' }));
       } else {
         setErrors(prev => ({ ...prev, date: undefined }));
@@ -80,26 +76,24 @@ const BookingForm = () => {
     setErrors({});
     try {
       const formattedDate = new Date(formData.date).toISOString().split('T')[0];
-      const formattedTime = formData.time + ':00';
-  
+      
       await axiosReq.post('/bookings/', {
         date: formattedDate,
-        time: formattedTime,
-        course: parseInt(formData.courseId),
-        additional_info: formData.additionalInfo
+        time: formData.time,
+        course: parseInt(formData.course),
+        additional_info: formData.additional_info
       });
       
       toast.success('Booking submitted successfully!');
       history.push('/bookings', { refresh: true });
     } catch (err) {
-      
       if (err.response?.status === 401) {
         toast.error('Your session has expired. Please sign in again.');
         history.push('/signin');
       } else if (err.response && err.response.data) {
         setErrors(err.response.data);
-        Object.values(err.response.data).forEach(error => {
-          toast.error(Array.isArray(error) ? error[0] : error);
+        Object.entries(err.response.data).forEach(([key, value]) => {
+          toast.error(`${key}: ${Array.isArray(value) ? value[0] : value}`);
         });
       } else {
         setErrors({ message: 'An error occurred while creating the booking.' });
@@ -111,6 +105,8 @@ const BookingForm = () => {
   if (!hasLoaded) {
     return <Asset spinner />;
   }
+
+  const today = new Date().toISOString().split('T')[0];
 
   return (
     <form onSubmit={handleSubmit} className={styles.bookingForm}>
@@ -124,6 +120,7 @@ const BookingForm = () => {
           name="date"
           value={formData.date}
           onChange={handleChange}
+          min={today}
           required
         />
         {errors.date && <span className={styles.error}>{errors.date}</span>}
@@ -144,29 +141,29 @@ const BookingForm = () => {
         {errors.time && <span className={styles.error}>{errors.time}</span>}
       </div>
       <div>
-        <label htmlFor="courseId">Diving Course:</label>
+        <label htmlFor="course">Diving Course:</label>
         <select
-          id="courseId"
-          name="courseId"
-          value={formData.courseId}
+          id="course"
+          name="course"
+          value={formData.course}
           onChange={handleChange}
           required
         >
           <option value="">Select a course</option>
           {courses.map((course) => (
             <option key={course.id} value={course.id}>
-              {translateCourseName(course.name)}
+              {course.title} - {course.course_type}
             </option>
           ))}
         </select>
         {errors.course && <span className={styles.error}>{errors.course}</span>}
       </div>
       <div>
-        <label htmlFor="additionalInfo">Additional Information:</label>
+        <label htmlFor="additional_info">Additional Information:</label>
         <textarea
-          id="additionalInfo"
-          name="additionalInfo"
-          value={formData.additionalInfo}
+          id="additional_info"
+          name="additional_info"
+          value={formData.additional_info}
           onChange={handleChange}
           rows="4"
         ></textarea>
