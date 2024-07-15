@@ -18,11 +18,13 @@ const BookingForm = () => {
   const [courses, setCourses] = useState([]);
   const [errors, setErrors] = useState({});
   const [hasLoaded, setHasLoaded] = useState(false);
+  const [isMounted, setIsMounted] = useState(true);
 
   useEffect(() => {
     if (!currentUser) {
       history.push('/signin');
     }
+    return () => setIsMounted(false);
   }, [currentUser, history]);
 
   const fetchCourses = useCallback(async (abortController) => {
@@ -30,32 +32,36 @@ const BookingForm = () => {
       const { data } = await axiosReq.get('/courses/', {
         signal: abortController.signal
       });
-      setCourses(data.results || data);
+      if (isMounted) {
+        setCourses(data.results || data);
+      }
     } catch (err) {
       if (err.name === 'AbortError') {
         // Request was aborted, do nothing
         return;
       }
-      if (err.response?.status === 401) {
+      if (err.response?.status === 401 && isMounted) {
         toast.error('Your session has expired. Please sign in again.');
         history.push('/signin');
-      } else {
+      } else if (isMounted) {
         toast.error('Failed to fetch courses. Please try again.');
       }
     }
-  }, [history]);
+  }, [history, isMounted]);
 
   useEffect(() => {
     const abortController = new AbortController();
     if (currentUser) {
-      fetchCourses(abortController).then(() => {
-        setHasLoaded(true);
+      fetchCourses(abortController).finally(() => {
+        if (isMounted) {
+          setHasLoaded(true);
+        }
       });
     }
     return () => {
       abortController.abort();
     };
-  }, [currentUser, fetchCourses]);
+  }, [currentUser, fetchCourses, isMounted]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
