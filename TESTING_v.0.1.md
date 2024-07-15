@@ -636,6 +636,16 @@ Below is a table summarizing the JavaScript validation results for specific file
 
 ## Bugs
 
+## Frontend Bugs
+
+| Component | Bug Description | Solution | Resource | Solved |
+|-----------|-----------------|----------|----------|--------|
+| BookingForm | State updates on unmounted component | Implemented AbortController for API calls | [React useEffect Cleanup](https://reactjs.org/docs/hooks-effect.html#effects-with-cleanup) | ✅ |
+| BookingForm | Course dropdown not displaying options | Updated API call to fetch courses and modified rendering of course options | [React Select Component](https://react-select.com/home) | ✅ |
+| BookingPage | Unable to edit existing bookings | Refactored edit functionality to properly handle course selection and date formatting | [React Forms](https://reactjs.org/docs/forms.html) | ✅ |
+| BookingPage | Incorrect error handling for API responses | Improved error handling to display specific error messages from the backend | [Axios Error Handling](https://axios-http.com/docs/handling_errors) | ✅ |
+
+
 ### Solved Bugs  
   
 As this was my first Django/Database project, most of the bugs that I encountered were learning and teething issues. The below bugs are bugs that I spent a longer length of time investigating or required the assistance of Tutor Support.
