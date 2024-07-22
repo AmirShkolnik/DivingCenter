@@ -41,7 +41,7 @@ const ContactForm = () => {
     } catch (err) {
       toast.error('An error occurred while deleting your message. Please try again.');
       if (err.response) {
-        // Handle error response if necessary
+
       }
     }
   };

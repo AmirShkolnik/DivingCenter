@@ -38,7 +38,6 @@ const ContactForm = () => {
             toast.error('Unable to delete message. Please try submitting a new message.');
             return;
         }
-        console.log('Deleting message with ID:', messageId, 'and token:', deletionToken);
         await axiosReq.delete(`/contactus/${messageId}/?deletion_token=${deletionToken}`);
         toast.success('Your message was deleted.');
         resetForm();

@@ -37,7 +37,7 @@ const BookingForm = () => {
       }
     } catch (err) {
       if (err.name === 'AbortError') {
-        // Request was aborted, do nothing
+
         return;
       }
       if (err.response?.status === 401 && isMounted) {

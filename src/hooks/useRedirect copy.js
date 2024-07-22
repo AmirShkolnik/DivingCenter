@@ -14,8 +14,6 @@ export const useRedirect = (userAuthStatus) => {
         history.push("/");
       }
     };
-
-    // Only redirect if currentUser is not undefined
     if (currentUser !== undefined) {
       handleRedirect();
     }

@@ -56,7 +56,7 @@ function PostCreateForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (isSubmitting) return; // Prevent multiple submissions
+    if (isSubmitting) return;
     setIsSubmitting(true);
     const formData = new FormData();
 
@@ -69,7 +69,6 @@ function PostCreateForm() {
       toast.success('Post created successfully!');
       history.push(`/posts/${data.id}`);
     } catch (err) {
-      console.log(err);
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
         toast.error('Failed to create post. Please try again.');

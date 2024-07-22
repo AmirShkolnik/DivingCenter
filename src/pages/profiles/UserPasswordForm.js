@@ -35,7 +35,6 @@ const UserPasswordForm = () => {
 
   useEffect(() => {
     if (currentUser?.profile_id?.toString() !== id) {
-      // redirect user if they are not the owner of this profile
       history.push("/");
       toast.error("You don't have permission to access this page.");
     }
@@ -48,7 +47,7 @@ const UserPasswordForm = () => {
       toast.success("Password changed successfully!");
       history.goBack();
     } catch (err) {
-      console.log(err);
+
       setErrors(err.response?.data);
       toast.error("Failed to change password. Please check the errors and try again.");
     }
