@@ -21,12 +21,7 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": [
-    "react",
-    "react-hooks",
-    "jsx-a11y",
-    "import"
-  ],
+  "plugins": ["react", "react-hooks", "jsx-a11y", "import"],
   "rules": {
     // Customize your rules here
     "react/prop-types": "off",
