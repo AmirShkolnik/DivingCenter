@@ -1,11 +1,11 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
-import reportWebVitals from "./reportWebVitals";
-import { BrowserRouter as Router } from "react-router-dom";
-import { CurrentUserProvider } from "./contexts/CurrentUserContext";
-import { ProfileDataProvider } from "./contexts/ProfileDataContext";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { CurrentUserProvider } from './contexts/CurrentUserContext';
+import { ProfileDataProvider } from './contexts/ProfileDataContext';
 import 'react-toastify/dist/ReactToastify.css';
 
 ReactDOM.render(
@@ -16,6 +16,6 @@ ReactDOM.render(
       </ProfileDataProvider>
     </CurrentUserProvider>
   </Router>,
-  document.getElementById("root")
+  document.getElementById('root')
 );
 reportWebVitals();

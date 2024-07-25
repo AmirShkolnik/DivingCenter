@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { axiosReq } from "../../api/axiosDefaults";
+import { axiosReq } from '../../api/axiosDefaults';
 import styles from '../../styles/BookingPage.module.css';
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import { toast } from 'react-toastify';
 import { useHistory, useLocation } from 'react-router-dom';
 import { Spinner } from 'react-bootstrap';
@@ -67,11 +67,12 @@ const BookingPage = () => {
   };
 
   const checkExistingBooking = (date, time, course, currentBookingId) => {
-    return bookings.some(booking => 
-      booking.date === date &&
-      booking.time === time &&
-      booking.course === course &&
-      booking.id !== currentBookingId
+    return bookings.some(
+      (booking) =>
+        booking.date === date &&
+        booking.time === time &&
+        booking.course === course &&
+        booking.id !== currentBookingId
     );
   };
 
@@ -81,7 +82,9 @@ const BookingPage = () => {
     const formattedDate = new Date(date).toISOString().split('T')[0];
 
     if (checkExistingBooking(formattedDate, time, course, id)) {
-      toast.warning('You already have a booking for this course, date, and time. Please try again.');
+      toast.warning(
+        'You already have a booking for this course, date, and time. Please try again.'
+      );
     } else {
       setShowUpdateConfirmation(true);
     }
@@ -95,14 +98,18 @@ const BookingPage = () => {
         date: formattedDate,
         time,
         course,
-        additional_info: editingBooking.additional_info
+        additional_info: editingBooking.additional_info,
       });
-      setBookings(bookings.map(booking => booking.id === response.data.id ? response.data : booking));
+      setBookings(
+        bookings.map((booking) =>
+          booking.id === response.data.id ? response.data : booking
+        )
+      );
       setEditingBooking(null);
       toast.success('Booking updated successfully!');
     } catch (err) {
       if (err.response && err.response.data) {
-        Object.values(err.response.data).forEach(error => {
+        Object.values(err.response.data).forEach((error) => {
           toast.error(Array.isArray(error) ? error[0] : error);
         });
       } else {
@@ -121,7 +128,9 @@ const BookingPage = () => {
   const confirmDelete = async () => {
     try {
       await axiosReq.delete(`/bookings/${deletingBookingId}/`);
-      setBookings(bookings.filter(booking => booking.id !== deletingBookingId));
+      setBookings(
+        bookings.filter((booking) => booking.id !== deletingBookingId)
+      );
       toast.success('Booking deleted successfully!');
     } catch (err) {
       if (err.response && err.response.status === 401) {
@@ -155,7 +164,10 @@ const BookingPage = () => {
       <div className={styles.bookingPage}>
         <h2 className={styles.bookingTitle}>Your Bookings</h2>
         <p>You have no bookings. Would you like to create one?</p>
-        <button onClick={() => history.push('/bookings/create')} className={styles.bookingButton}>
+        <button
+          onClick={() => history.push('/bookings/create')}
+          className={styles.bookingButton}
+        >
           Create a Booking
         </button>
       </div>
@@ -166,10 +178,12 @@ const BookingPage = () => {
     <div className={styles.bookingPage}>
       <h2 className={styles.bookingTitle}>Your Bookings</h2>
       <p className={styles.motivationDescription}>
-        Thank you for booking with us! We are thrilled to be part of your adventure. Remember, every dive is an opportunity to explore and discover new wonders beneath the waves. Happy diving!
+        Thank you for booking with us! We are thrilled to be part of your
+        adventure. Remember, every dive is an opportunity to explore and
+        discover new wonders beneath the waves. Happy diving!
       </p>
 
-      {bookings.map(booking => (
+      {bookings.map((booking) => (
         <div key={booking.id} className={styles.bookingItem}>
           {editingBooking && editingBooking.id === booking.id ? (
             <form onSubmit={handleUpdate}>
@@ -179,7 +193,12 @@ const BookingPage = () => {
                   type="date"
                   id="date"
                   value={editingBooking.date.split('T')[0]}
-                  onChange={(e) => setEditingBooking({ ...editingBooking, date: e.target.value })}
+                  onChange={(e) =>
+                    setEditingBooking({
+                      ...editingBooking,
+                      date: e.target.value,
+                    })
+                  }
                   required
                 />
               </div>
@@ -188,7 +207,12 @@ const BookingPage = () => {
                 <select
                   id="time"
                   value={editingBooking.time}
-                  onChange={(e) => setEditingBooking({ ...editingBooking, time: e.target.value })}
+                  onChange={(e) =>
+                    setEditingBooking({
+                      ...editingBooking,
+                      time: e.target.value,
+                    })
+                  }
                   required
                 >
                   <option value="09:00">09:00</option>
@@ -200,11 +224,18 @@ const BookingPage = () => {
                 <select
                   id="course"
                   value={editingBooking.course}
-                  onChange={(e) => setEditingBooking({ ...editingBooking, course: e.target.value })}
+                  onChange={(e) =>
+                    setEditingBooking({
+                      ...editingBooking,
+                      course: e.target.value,
+                    })
+                  }
                   required
                 >
-                  {courses.map(course => (
-                    <option key={course.id} value={course.id}>{course.title}</option>
+                  {courses.map((course) => (
+                    <option key={course.id} value={course.id}>
+                      {course.title}
+                    </option>
                   ))}
                 </select>
               </div>
@@ -213,12 +244,25 @@ const BookingPage = () => {
                 <textarea
                   id="additionalInfo"
                   value={editingBooking.additional_info}
-                  onChange={(e) => setEditingBooking({ ...editingBooking, additional_info: e.target.value })}
+                  onChange={(e) =>
+                    setEditingBooking({
+                      ...editingBooking,
+                      additional_info: e.target.value,
+                    })
+                  }
                   rows="4"
                 ></textarea>
               </div>
-              <button type="submit" className={styles.bookingButton}>Update</button>
-              <button type="button" onClick={handleCancelEdit} className={styles.cancelButton}>Cancel</button>
+              <button type="submit" className={styles.bookingButton}>
+                Update
+              </button>
+              <button
+                type="button"
+                onClick={handleCancelEdit}
+                className={styles.cancelButton}
+              >
+                Cancel
+              </button>
             </form>
           ) : (
             <>
@@ -226,8 +270,18 @@ const BookingPage = () => {
               <p>Time: {booking.time}</p>
               <p>Course: {booking.course_name}</p>
               <p>Additional Info: {booking.additional_info}</p>
-              <button onClick={() => handleEdit(booking)} className={styles.bookingButton}>Edit</button>
-              <button onClick={() => handleDelete(booking.id)} className={styles.cancelButton}>Delete</button>
+              <button
+                onClick={() => handleEdit(booking)}
+                className={styles.bookingButton}
+              >
+                Edit
+              </button>
+              <button
+                onClick={() => handleDelete(booking.id)}
+                className={styles.cancelButton}
+              >
+                Delete
+              </button>
             </>
           )}
         </div>
@@ -237,8 +291,18 @@ const BookingPage = () => {
           <div className={styles.overlay}></div>
           <div className={styles.confirmationDialog}>
             <p>Are you sure you want to delete this booking?</p>
-            <button onClick={confirmDelete} className={styles.cancelConfirmButton}>Yes, Delete</button>
-            <button onClick={() => setShowConfirmation(false)} className={styles.keepBookingButton}>No, Keep Booking</button>
+            <button
+              onClick={confirmDelete}
+              className={styles.cancelConfirmButton}
+            >
+              Yes, Delete
+            </button>
+            <button
+              onClick={() => setShowConfirmation(false)}
+              className={styles.keepBookingButton}
+            >
+              No, Keep Booking
+            </button>
           </div>
         </>
       )}
@@ -247,11 +311,29 @@ const BookingPage = () => {
           <div className={styles.overlay}></div>
           <div className={styles.confirmationDialog}>
             <p>
-              Changing the time, date, or course type might result in losing your original spot. We will contact you within 48 hours if there are any issues. If you have any questions, please use the
-              <a href="/contactus" target="_blank" rel="noopener noreferrer" className={styles.contactUsLink}> Contact Us</a> form.
+              Changing the time, date, or course type might result in losing
+              your original spot. We will contact you within 48 hours if there
+              are any issues. If you have any questions, please use the
+              <a
+                href="/contactus"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.contactUsLink}
+              >
+                {' '}
+                Contact Us
+              </a>{' '}
+              form.
             </p>
-            <button onClick={confirmUpdate} className={styles.confirmButton}>Yes, Update</button>
-            <button onClick={() => setShowUpdateConfirmation(false)} className={styles.cancelButton}>Cancel</button>
+            <button onClick={confirmUpdate} className={styles.confirmButton}>
+              Yes, Update
+            </button>
+            <button
+              onClick={() => setShowUpdateConfirmation(false)}
+              className={styles.cancelButton}
+            >
+              Cancel
+            </button>
           </div>
         </>
       )}

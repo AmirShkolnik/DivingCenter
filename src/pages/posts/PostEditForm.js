@@ -1,28 +1,28 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from 'react';
 import { toast } from 'react-toastify';
 
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Container from "react-bootstrap/Container";
-import Alert from "react-bootstrap/Alert";
-import Image from "react-bootstrap/Image";
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+import Alert from 'react-bootstrap/Alert';
+import Image from 'react-bootstrap/Image';
 
-import styles from "../../styles/PostCreateEditForm.module.css";
-import appStyles from "../../App.module.css";
-import btnStyles from "../../styles/Button.module.css";
+import styles from '../../styles/PostCreateEditForm.module.css';
+import appStyles from '../../App.module.css';
+import btnStyles from '../../styles/Button.module.css';
 
-import { useHistory, useParams } from "react-router";
-import { axiosReq } from "../../api/axiosDefaults";
+import { useHistory, useParams } from 'react-router';
+import { axiosReq } from '../../api/axiosDefaults';
 
 function PostEditForm() {
   const [errors, setErrors] = useState({});
 
   const [postData, setPostData] = useState({
-    title: "",
-    content: "",
-    image: "",
+    title: '',
+    content: '',
+    image: '',
   });
   const { title, content, image } = postData;
 
@@ -36,10 +36,8 @@ function PostEditForm() {
         const { data } = await axiosReq.get(`/posts/${id}/`);
         const { title, content, image, is_owner } = data;
 
-        is_owner ? setPostData({ title, content, image }) : history.push("/");
-      } catch (err) {
-
-      }
+        is_owner ? setPostData({ title, content, image }) : history.push('/');
+      } catch (err) {}
     };
 
     handleMount();
@@ -67,22 +65,21 @@ function PostEditForm() {
     event.preventDefault();
     const formData = new FormData();
 
-    formData.append("title", title);
-    formData.append("content", content);
+    formData.append('title', title);
+    formData.append('content', content);
 
     if (imageInput?.current?.files[0]) {
-      formData.append("image", imageInput.current.files[0]);
+      formData.append('image', imageInput.current.files[0]);
     }
 
     try {
       await axiosReq.put(`/posts/${id}/`, formData);
-      toast.success("Post updated successfully!");
+      toast.success('Post updated successfully!');
       history.push(`/posts/${id}`);
     } catch (err) {
-
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
-        toast.error("Failed to update post. Please check your inputs.");
+        toast.error('Failed to update post. Please check your inputs.');
       }
     }
   };
@@ -124,7 +121,7 @@ function PostEditForm() {
         className={`${btnStyles.Button} ${btnStyles.Blue}`}
         onClick={() => {
           history.goBack();
-          toast.info("Edit cancelled");
+          toast.info('Edit cancelled');
         }}
       >
         cancel

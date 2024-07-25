@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import Form from "react-bootstrap/Form";
-import { axiosRes } from "../../api/axiosDefaults";
-import styles from "../../styles/CommentCreateEditForm.module.css";
+import React, { useState } from 'react';
+import Form from 'react-bootstrap/Form';
+import { axiosRes } from '../../api/axiosDefaults';
+import styles from '../../styles/CommentCreateEditForm.module.css';
 import { toast } from 'react-toastify';
 
 function CommentEditForm(props) {
@@ -25,14 +25,14 @@ function CommentEditForm(props) {
             ? {
                 ...comment,
                 content: formContent.trim(),
-                updated_at: "now",
+                updated_at: 'now',
               }
             : comment;
         }),
       }));
       setShowEditForm(false);
-      toast.success("Comment updated successfully!", {
-        position: "top-center",
+      toast.success('Comment updated successfully!', {
+        position: 'top-center',
         autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -41,8 +41,8 @@ function CommentEditForm(props) {
         progress: undefined,
       });
     } catch (err) {
-      toast.error("Error updating comment. Please try again.", {
-        position: "top-center",
+      toast.error('Error updating comment. Please try again.', {
+        position: 'top-center',
         autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -55,8 +55,8 @@ function CommentEditForm(props) {
 
   const handleCancel = () => {
     setShowEditForm(false);
-    toast.info("Comment edit cancelled", {
-      position: "top-center",
+    toast.info('Comment edit cancelled', {
+      position: 'top-center',
       autoClose: 3000,
       hideProgressBar: false,
       closeOnClick: true,
@@ -78,11 +78,7 @@ function CommentEditForm(props) {
         />
       </Form.Group>
       <div className="text-right">
-        <button
-          className={styles.Button}
-          onClick={handleCancel}
-          type="button"
-        >
+        <button className={styles.Button} onClick={handleCancel} type="button">
           cancel
         </button>
         <button

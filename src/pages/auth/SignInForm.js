@@ -1,31 +1,31 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useState } from 'react';
+import axios from 'axios';
 
-import Form from "react-bootstrap/Form";
-import Alert from "react-bootstrap/Alert";
-import Button from "react-bootstrap/Button";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-import Container from "react-bootstrap/Container";
+import Form from 'react-bootstrap/Form';
+import Alert from 'react-bootstrap/Alert';
+import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import Container from 'react-bootstrap/Container';
 
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory } from 'react-router-dom';
 
-import styles from "../../styles/SignInUpForm.module.css";
-import btnStyles from "../../styles/Button.module.css";
-import appStyles from "../../App.module.css";
-import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
-import { useRedirect } from "../../hooks/useRedirect";
+import styles from '../../styles/SignInUpForm.module.css';
+import btnStyles from '../../styles/Button.module.css';
+import appStyles from '../../App.module.css';
+import { useSetCurrentUser } from '../../contexts/CurrentUserContext';
+import { useRedirect } from '../../hooks/useRedirect';
 import VideoPlayerSignIn from '../../components/Video/VideoPlayerSignIn.js';
 import { toast } from 'react-toastify';
-import { setTokenTimestamp } from "../../utils/utils";
+import { setTokenTimestamp } from '../../utils/utils';
 
 function SignInForm() {
   const setCurrentUser = useSetCurrentUser();
-  useRedirect("loggedIn");
+  useRedirect('loggedIn');
 
   const [signInData, setSignInData] = useState({
-    username: "",
-    password: "",
+    username: '',
+    password: '',
   });
   const { username, password } = signInData;
 
@@ -36,14 +36,14 @@ function SignInForm() {
     event.preventDefault();
 
     try {
-      const { data } = await axios.post("/dj-rest-auth/login/", signInData);
+      const { data } = await axios.post('/dj-rest-auth/login/', signInData);
       setCurrentUser(data.user);
       setTokenTimestamp(data);
-      toast.success("Successfully signed in!");
+      toast.success('Successfully signed in!');
       history.push(`/profiles/${data.user.profile_id}`);
     } catch (err) {
       setErrors(err.response?.data);
-      toast.error("Sign in failed. Please check your credentials.");
+      toast.error('Sign in failed. Please check your credentials.');
     }
   };
 
@@ -58,11 +58,13 @@ function SignInForm() {
     <Row className={styles.Row}>
       <Col className="my-auto p-0 p-md-2" md={6}>
         <Container className={`${appStyles.Content} p-4 `}>
-        <h1 className={styles.Header}>Welcome back to our diving community!</h1>
+          <h1 className={styles.Header}>
+            Welcome back to our diving community!
+          </h1>
           <p className={styles.SubHeader}>
-            Sign in to access your account, 
-            connect with fellow divers, and continue your underwater adventures. 
-            Your next diving experience is just a login away!
+            Sign in to access your account, connect with fellow divers, and
+            continue your underwater adventures. Your next diving experience is
+            just a login away!
           </p>
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="username">

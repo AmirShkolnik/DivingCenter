@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-import { Media } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import Avatar from "../../components/Avatar";
-import { MoreDropdown } from "../../components/MoreDropdown";
-import CommentEditForm from "./CommentEditForm";
+import React, { useState } from 'react';
+import { Media } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import Avatar from '../../components/Avatar';
+import { MoreDropdown } from '../../components/MoreDropdown';
+import CommentEditForm from './CommentEditForm';
 
-import styles from "../../styles/Comment.module.css";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { axiosRes } from "../../api/axiosDefaults";
+import styles from '../../styles/Comment.module.css';
+import { useCurrentUser } from '../../contexts/CurrentUserContext';
+import { axiosRes } from '../../api/axiosDefaults';
 import { toast } from 'react-toastify';
 
 const Comment = (props) => {
@@ -42,8 +42,8 @@ const Comment = (props) => {
         ...prevComments,
         results: prevComments.results.filter((comment) => comment.id !== id),
       }));
-      toast.success("Comment deleted successfully!", {
-        position: "top-center",
+      toast.success('Comment deleted successfully!', {
+        position: 'top-center',
         autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -52,8 +52,8 @@ const Comment = (props) => {
         progress: undefined,
       });
     } catch (err) {
-      toast.error("Error deleting comment. Please try again.", {
-        position: "top-center",
+      toast.error('Error deleting comment. Please try again.', {
+        position: 'top-center',
         autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,

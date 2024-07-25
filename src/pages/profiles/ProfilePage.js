@@ -1,29 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-import Container from "react-bootstrap/Container";
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import Container from 'react-bootstrap/Container';
 
-import Asset from "../../components/Asset";
+import Asset from '../../components/Asset';
 
-import styles from "../../styles/ProfilePage.module.css";
-import appStyles from "../../App.module.css";
-import btnStyles from "../../styles/Button.module.css";
+import styles from '../../styles/ProfilePage.module.css';
+import appStyles from '../../App.module.css';
+import btnStyles from '../../styles/Button.module.css';
 
-import PopularProfiles from "./PopularProfiles";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { useParams } from "react-router";
-import { axiosReq } from "../../api/axiosDefaults";
+import PopularProfiles from './PopularProfiles';
+import { useCurrentUser } from '../../contexts/CurrentUserContext';
+import { useParams } from 'react-router';
+import { axiosReq } from '../../api/axiosDefaults';
 import {
   useProfileData,
   useSetProfileData,
-} from "../../contexts/ProfileDataContext";
-import { Button, Image } from "react-bootstrap";
-import InfiniteScroll from "react-infinite-scroll-component";
-import Post from "../posts/Post";
-import { fetchMoreData } from "../../utils/utils";
-import NoResults from "../../assets/no-results.png";
-import { ProfileEditDropdown } from "../../components/MoreDropdown";
+} from '../../contexts/ProfileDataContext';
+import { Button, Image } from 'react-bootstrap';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import Post from '../posts/Post';
+import { fetchMoreData } from '../../utils/utils';
+import NoResults from '../../assets/no-results.png';
+import { ProfileEditDropdown } from '../../components/MoreDropdown';
 import { toast } from 'react-toastify';
 
 function ProfilePage() {
@@ -42,36 +42,44 @@ function ProfilePage() {
   const handleFollowClick = async () => {
     try {
       const updatedProfile = await handleFollow(profile);
-      setProfileData(prevState => ({
+      setProfileData((prevState) => ({
         ...prevState,
         pageProfile: {
           ...prevState.pageProfile,
-          results: prevState.pageProfile.results.map(profile => 
+          results: prevState.pageProfile.results.map((profile) =>
             profile.id === id ? updatedProfile : profile
-          )
-        }
+          ),
+        },
       }));
-      toast.success(`You are now following ${profile?.owner}. Refresh to see their posts!`);
+      toast.success(
+        `You are now following ${profile?.owner}. Refresh to see their posts!`
+      );
     } catch (err) {
-      toast.error("An error occurred while trying to follow. Please try again.");
+      toast.error(
+        'An error occurred while trying to follow. Please try again.'
+      );
     }
   };
-  
+
   const handleUnfollowClick = async () => {
     try {
       const updatedProfile = await handleUnfollow(profile);
-      setProfileData(prevState => ({
+      setProfileData((prevState) => ({
         ...prevState,
         pageProfile: {
           ...prevState.pageProfile,
-          results: prevState.pageProfile.results.map(profile => 
+          results: prevState.pageProfile.results.map((profile) =>
             profile.id === id ? updatedProfile : profile
-          )
-        }
+          ),
+        },
       }));
-      toast.warning(`You have unfollowed ${profile?.owner}. You will no longer see their posts.`);
+      toast.warning(
+        `You have unfollowed ${profile?.owner}. You will no longer see their posts.`
+      );
     } catch (err) {
-      toast.error("An error occurred while trying to unfollow. Please try again.");
+      toast.error(
+        'An error occurred while trying to unfollow. Please try again.'
+      );
     }
   };
 
@@ -89,9 +97,7 @@ function ProfilePage() {
         }));
         setProfilePosts(profilePosts);
         setHasLoaded(true);
-      } catch (err) {
-
-      }
+      } catch (err) {}
     };
     fetchData();
   }, [id, setProfileData]);
@@ -137,7 +143,7 @@ function ProfilePage() {
             ) : (
               <Button
                 className={`${btnStyles.Button} ${btnStyles.Black}`}
-                onClick={handleFollowClick} 
+                onClick={handleFollowClick}
               >
                 follow
               </Button>

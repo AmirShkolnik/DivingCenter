@@ -1,11 +1,11 @@
-import React from "react";
-import styles from "../../styles/Profile.module.css";
-import btnStyles from "../../styles/Button.module.css";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { Link } from "react-router-dom";
-import Avatar from "../../components/Avatar";
-import { Button } from "react-bootstrap";
-import { useSetProfileData } from "../../contexts/ProfileDataContext";
+import React from 'react';
+import styles from '../../styles/Profile.module.css';
+import btnStyles from '../../styles/Button.module.css';
+import { useCurrentUser } from '../../contexts/CurrentUserContext';
+import { Link } from 'react-router-dom';
+import Avatar from '../../components/Avatar';
+import { Button } from 'react-bootstrap';
+import { useSetProfileData } from '../../contexts/ProfileDataContext';
 import { toast } from 'react-toastify';
 
 const Profile = (props) => {
@@ -22,23 +22,33 @@ const Profile = (props) => {
       await handleFollow(profile);
       toast.success(`You are now following ${owner}.`);
     } catch (err) {
-      console.error("Follow error:", err);
-      toast.error(err.response?.data?.detail || "An error occurred while trying to follow. Please try again.");
+      console.error('Follow error:', err);
+      toast.error(
+        err.response?.data?.detail ||
+          'An error occurred while trying to follow. Please try again.'
+      );
     }
   };
 
   const handleUnfollowClick = async () => {
     try {
       await handleUnfollow(profile);
-      toast.warning(`You have unfollowed ${owner}. You will no longer see their posts.`);
+      toast.warning(
+        `You have unfollowed ${owner}. You will no longer see their posts.`
+      );
     } catch (err) {
-      console.error("Unfollow error:", err);
-      toast.error(err.response?.data?.detail || "An error occurred while trying to unfollow. Please try again.");
+      console.error('Unfollow error:', err);
+      toast.error(
+        err.response?.data?.detail ||
+          'An error occurred while trying to unfollow. Please try again.'
+      );
     }
   };
 
   return (
-    <div className={`my-3 d-flex align-items-center ${mobile && "flex-column"}`}>
+    <div
+      className={`my-3 d-flex align-items-center ${mobile && 'flex-column'}`}
+    >
       <div>
         <Link className="align-self-center" to={`/profiles/${id}`}>
           <Avatar src={image} height={imageSize} />
@@ -47,7 +57,7 @@ const Profile = (props) => {
       <div className={`mx-2 ${styles.WordBreak}`}>
         <strong>{owner}</strong>
       </div>
-      <div className={`text-right ${!mobile && "ml-auto"}`}>
+      <div className={`text-right ${!mobile && 'ml-auto'}`}>
         {currentUser &&
           !is_owner &&
           (following_id ? (

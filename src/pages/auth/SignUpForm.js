@@ -1,21 +1,29 @@
-import React, { useState, useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import styles from "../../styles/SignInUpForm.module.css";
-import btnStyles from "../../styles/Button.module.css";
-import appStyles from "../../App.module.css";
+import styles from '../../styles/SignInUpForm.module.css';
+import btnStyles from '../../styles/Button.module.css';
+import appStyles from '../../App.module.css';
 import VideoPlayerSignUp from '../../components/Video/VideoPlayerSignUp.js';
-import { Form, Button, Col, Row, Container, Alert, Spinner } from "react-bootstrap";
-import axios from "axios";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import {
+  Form,
+  Button,
+  Col,
+  Row,
+  Container,
+  Alert,
+  Spinner,
+} from 'react-bootstrap';
+import axios from 'axios';
+import { useCurrentUser } from '../../contexts/CurrentUserContext';
 
 const SignUpForm = () => {
   const history = useHistory();
   const currentUser = useCurrentUser();
   const [signUpData, setSignUpData] = useState({
-    username: "",
-    password1: "",
-    password2: "",
+    username: '',
+    password1: '',
+    password2: '',
   });
   const { username, password1, password2 } = signUpData;
   const [errors, setErrors] = useState({});
@@ -25,7 +33,7 @@ const SignUpForm = () => {
     if (currentUser === null) {
       setIsLoading(false);
     } else if (currentUser) {
-      history.push("/");
+      history.push('/');
     }
   }, [currentUser, history]);
 
@@ -39,18 +47,25 @@ const SignUpForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.post("/dj-rest-auth/registration/", signUpData);
-      toast.success("Sign up successful! Welcome to our diving community! Please Sign In");
-      history.push("/signin");
+      await axios.post('/dj-rest-auth/registration/', signUpData);
+      toast.success(
+        'Sign up successful! Welcome to our diving community! Please Sign In'
+      );
+      history.push('/signin');
     } catch (err) {
       setErrors(err.response?.data || {});
-      toast.error("Sign up failed. Please check your information and try again.");
+      toast.error(
+        'Sign up failed. Please check your information and try again.'
+      );
     }
   };
 
   if (isLoading) {
     return (
-      <Container className="d-flex justify-content-center align-items-center" style={{ height: "100vh" }}>
+      <Container
+        className="d-flex justify-content-center align-items-center"
+        style={{ height: '100vh' }}
+      >
         <Spinner animation="border" />
       </Container>
     );
@@ -71,9 +86,10 @@ const SignUpForm = () => {
         <Container className={`${appStyles.Content} p-4 `}>
           <h1 className={styles.Header}>Join Our Diving Community</h1>
           <p className={styles.SubHeader}>
-            Dive into a world of adventure! Sign up now to connect with fellow divers, 
-            share your underwater experiences, and discover new diving spots. 
-            Whether you're a beginner or an experienced diver, there's a place for you in our community.
+            Dive into a world of adventure! Sign up now to connect with fellow
+            divers, share your underwater experiences, and discover new diving
+            spots. Whether you're a beginner or an experienced diver, there's a
+            place for you in our community.
           </p>
 
           <Form onSubmit={handleSubmit}>
@@ -152,7 +168,7 @@ const SignUpForm = () => {
         md={6}
         className={`my-auto d-none d-md-block p-2 ${styles.SignUpCol}`}
       >
-         <VideoPlayerSignUp publicId="160396821086388" />
+        <VideoPlayerSignUp publicId="160396821086388" />
       </Col>
     </Row>
   );

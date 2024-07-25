@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from 'react';
 
 const useClickOutsideToggle = () => {
   const [expanded, setExpanded] = useState(false);
@@ -6,14 +6,18 @@ const useClickOutsideToggle = () => {
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (ref.current && !ref.current.contains(event.target) && !event.target.closest('.dropdown-menu')) {
+      if (
+        ref.current &&
+        !ref.current.contains(event.target) &&
+        !event.target.closest('.dropdown-menu')
+      ) {
         setExpanded(false);
       }
     };
 
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside);
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
 

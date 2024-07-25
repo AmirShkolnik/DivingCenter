@@ -15,14 +15,14 @@ jest.mock('@cloudinary/react', () => ({
 describe('VideoPlayer', () => {
   test('renders without crashing', () => {
     render(<VideoPlayer />);
-    
+
     // Check if the VideoPlayer component renders
     expect(screen.getByTestId('mock-advanced-video')).toBeInTheDocument();
   });
 
   test('renders the AdvancedVideo component with correct props', () => {
     render(<VideoPlayer id="video123" publicId="public123" />);
-    
+
     // Check if the AdvancedVideo component is rendered
     const videoElement = screen.getByTestId('mock-advanced-video');
     expect(videoElement).toBeInTheDocument();
@@ -33,7 +33,7 @@ describe('VideoPlayer', () => {
 
   test('applies the correct styles', () => {
     const { container } = render(<VideoPlayer />);
-    
+
     // Check container styles
     const videoContainer = container.querySelector('div');
     expect(videoContainer).toHaveStyle({
@@ -41,7 +41,7 @@ describe('VideoPlayer', () => {
       top: '0',
       left: '0',
       width: '100%',
-      overflow: 'hidden'
+      overflow: 'hidden',
     });
 
     // Check AdvancedVideo styles
@@ -50,7 +50,7 @@ describe('VideoPlayer', () => {
       width: '100%',
       height: '100%',
       objectFit: 'cover',
-      objectPosition: 'center'
+      objectPosition: 'center',
     });
   });
 });

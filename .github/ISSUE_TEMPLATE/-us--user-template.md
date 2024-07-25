@@ -1,21 +1,20 @@
 ---
-name: "[US] User Template"
+name: '[US] User Template'
 about: As a user
-title: "[US]"
+title: '[US]'
 labels: ''
 assignees: AmirShkolnik
-
 ---
 
 **Statement:**
 As a <role>, I can <capability>, so that <receive benefit>.
 
 **Acceptance Criteria**:
+
+- [ ]:
+- [ ]:
+- [ ]: **Tasks**:
 - [ ]:
 - [ ]:
 - [ ]:
-**Tasks**:
-- [ ]:
-- [ ]:
-- [ ]:
-**Belonging to**:  [EPIC -  xxx]()
+  **Belonging to**: [EPIC - xxx]()

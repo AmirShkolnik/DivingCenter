@@ -1,8 +1,8 @@
-import React from "react";
-import { createContext, useContext, useEffect, useState } from "react";
-import { axiosReq, axiosRes } from "../api/axiosDefaults";
-import { useCurrentUser } from "../contexts/CurrentUserContext";
-import { followHelper, unfollowHelper } from "../utils/utils";
+import React from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
+import { axiosReq, axiosRes } from '../api/axiosDefaults';
+import { useCurrentUser } from '../contexts/CurrentUserContext';
+import { followHelper, unfollowHelper } from '../utils/utils';
 
 const ProfileDataContext = createContext();
 const SetProfileDataContext = createContext();
@@ -20,7 +20,7 @@ export const ProfileDataProvider = ({ children }) => {
 
   const handleFollow = async (clickedProfile) => {
     try {
-      const { data } = await axiosRes.post("/followers/", {
+      const { data } = await axiosRes.post('/followers/', {
         followed: clickedProfile.id,
       });
 
@@ -38,8 +38,7 @@ export const ProfileDataProvider = ({ children }) => {
           ),
         },
       }));
-    } catch (err) {
-    }
+    } catch (err) {}
   };
 
   const handleUnfollow = async (clickedProfile) => {
@@ -60,22 +59,20 @@ export const ProfileDataProvider = ({ children }) => {
           ),
         },
       }));
-    } catch (err) {
-    }
+    } catch (err) {}
   };
 
   useEffect(() => {
     const handleMount = async () => {
       try {
         const { data } = await axiosReq.get(
-          "/profiles/?ordering=-followers_count"
+          '/profiles/?ordering=-followers_count'
         );
         setProfileData((prevState) => ({
           ...prevState,
           popularProfiles: data,
         }));
-      } catch (err) {
-      }
+      } catch (err) {}
     };
 
     handleMount();

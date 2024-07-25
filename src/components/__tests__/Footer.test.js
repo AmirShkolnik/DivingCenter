@@ -9,19 +9,27 @@ describe('Footer', () => {
     const { container } = render(<Footer className="test-class" />);
 
     // Check for the current year
-    expect(screen.getByText(`© ${currentYear} Amir Shkolnik. All rights reserved.`)).toBeInTheDocument();
+    expect(
+      screen.getByText(`© ${currentYear} Amir Shkolnik. All rights reserved.`)
+    ).toBeInTheDocument();
 
     // Check for social links
     const githubLink = screen.getByLabelText('GitHub');
     const linkedinLink = screen.getByLabelText('LinkedIn');
 
     expect(githubLink).toBeInTheDocument();
-    expect(githubLink).toHaveAttribute('href', 'https://github.com/AmirShkolnik');
+    expect(githubLink).toHaveAttribute(
+      'href',
+      'https://github.com/AmirShkolnik'
+    );
     expect(githubLink).toHaveAttribute('target', '_blank');
     expect(githubLink).toHaveAttribute('rel', 'noopener noreferrer');
 
     expect(linkedinLink).toBeInTheDocument();
-    expect(linkedinLink).toHaveAttribute('href', 'https://www.linkedin.com/in/amirshkolnik/');
+    expect(linkedinLink).toHaveAttribute(
+      'href',
+      'https://www.linkedin.com/in/amirshkolnik/'
+    );
     expect(linkedinLink).toHaveAttribute('target', '_blank');
     expect(linkedinLink).toHaveAttribute('rel', 'noopener noreferrer');
 

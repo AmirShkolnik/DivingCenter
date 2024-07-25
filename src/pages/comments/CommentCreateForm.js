@@ -1,17 +1,17 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-import Form from "react-bootstrap/Form";
-import InputGroup from "react-bootstrap/InputGroup";
+import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
 
-import styles from "../../styles/CommentCreateEditForm.module.css";
-import Avatar from "../../components/Avatar";
-import { axiosRes } from "../../api/axiosDefaults";
+import styles from '../../styles/CommentCreateEditForm.module.css';
+import Avatar from '../../components/Avatar';
+import { axiosRes } from '../../api/axiosDefaults';
 
 function CommentCreateForm(props) {
   const { post, setPost, setComments, profileImage, profile_id } = props;
-  const [content, setContent] = useState("");
+  const [content, setContent] = useState('');
 
   const handleChange = (event) => {
     setContent(event.target.value);
@@ -20,7 +20,7 @@ function CommentCreateForm(props) {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const { data } = await axiosRes.post("/comments/", {
+      const { data } = await axiosRes.post('/comments/', {
         content,
         post,
       });
@@ -36,9 +36,9 @@ function CommentCreateForm(props) {
           },
         ],
       }));
-      setContent("");
-      toast.success("Comment posted successfully!", {
-        position: "top-center",
+      setContent('');
+      toast.success('Comment posted successfully!', {
+        position: 'top-center',
         autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -47,8 +47,8 @@ function CommentCreateForm(props) {
         progress: undefined,
       });
     } catch (err) {
-      toast.error("Error posting comment. Please try again.", {
-        position: "top-center",
+      toast.error('Error posting comment. Please try again.', {
+        position: 'top-center',
         autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,

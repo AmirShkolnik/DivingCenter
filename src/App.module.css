@@ -1,5 +1,5 @@
 .App {
-  font-family: "DM Sans", sans-serif;
+  font-family: 'DM Sans', sans-serif;
   background-color: #f8f8f8;
   min-height: 100vh;
   display: flex;
@@ -58,7 +58,7 @@ a:hover i {
   transition: color ease-in-out 0.3s;
 }
 
-input[type="file"] {
+input[type='file'] {
   display: none;
 }
 
@@ -125,7 +125,7 @@ figure {
   .Main {
     padding-top: 100px;
   }
-  
+
   .Content {
     padding: 20px;
   }
@@ -135,7 +135,7 @@ figure {
   .Main {
     padding-top: 90px;
   }
-  
+
   .Content {
     padding: 15px;
   }
@@ -145,7 +145,7 @@ figure {
   .Main {
     padding-top: 85px;
   }
-  
+
   .Content {
     padding: 12px;
   }
@@ -155,11 +155,11 @@ figure {
   .Main {
     padding-top: 80px;
   }
-  
+
   .Content {
     padding: 10px;
   }
-  
+
   .Image {
     max-height: 35vh;
   }
@@ -169,15 +169,15 @@ figure {
   .Main {
     padding-top: 75px;
   }
-  
+
   .Content {
     padding: 8px;
   }
-  
+
   .Image {
     max-height: 30vh;
   }
-  
+
   i {
     font-size: 1.4rem;
     padding: 5px;
@@ -188,15 +188,15 @@ figure {
   .Main {
     padding-top: 70px;
   }
-  
+
   .Content {
     padding: 6px;
   }
-  
+
   .Image {
     max-height: 25vh;
   }
-  
+
   i {
     font-size: 1.2rem;
     padding: 4px;

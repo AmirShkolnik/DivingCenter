@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
-import { Container, Button, Form, Alert, Spinner, Modal } from 'react-bootstrap';
+import {
+  Container,
+  Button,
+  Form,
+  Alert,
+  Spinner,
+  Modal,
+} from 'react-bootstrap';
 import StarRatings from 'react-star-ratings';
 import { axiosReq, axiosRes } from '../../api/axiosDefaults';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
@@ -26,10 +33,15 @@ function CourseSingle() {
         const { data } = await axiosReq.get(`/courses/${slug}/`);
         setCourse(data);
         if (currentUser && data.reviews) {
-          const userReview = data.reviews.find(review => review.user === currentUser.username);
+          const userReview = data.reviews.find(
+            (review) => review.user === currentUser.username
+          );
           if (userReview) {
             setUserReview(userReview);
-            setReview({ content: userReview.content, rating: userReview.rating });
+            setReview({
+              content: userReview.content,
+              rating: userReview.rating,
+            });
           }
         }
       } catch (err) {
@@ -54,7 +66,7 @@ function CourseSingle() {
         const response = await axiosRes.put(`/reviews/${userReview.id}/`, {
           content: review.content,
           rating: review.rating,
-          course: course.id
+          course: course.id,
         });
         data = response.data;
         setUserReview(data);
@@ -63,21 +75,21 @@ function CourseSingle() {
         const response = await axiosRes.post('/reviews/', {
           content: review.content,
           rating: review.rating,
-          course: course.id
+          course: course.id,
         });
         data = response.data;
         setUserReview(data);
         toast.success('Review submitted successfully!');
       }
 
-      setCourse(prevCourse => {
+      setCourse((prevCourse) => {
         const updatedReviews = isEditing
-          ? prevCourse.reviews.map(rev => rev.id === data.id ? data : rev)
+          ? prevCourse.reviews.map((rev) => (rev.id === data.id ? data : rev))
           : [data, ...(prevCourse.reviews || [])];
         return {
           ...prevCourse,
           reviews: updatedReviews,
-          average_rating: calculateAverageRating(updatedReviews)
+          average_rating: calculateAverageRating(updatedReviews),
         };
       });
 
@@ -93,9 +105,11 @@ function CourseSingle() {
   const handleDeleteReview = async () => {
     try {
       await axiosRes.delete(`/reviews/${userReview.id}/`);
-      setCourse(prevCourse => ({
+      setCourse((prevCourse) => ({
         ...prevCourse,
-        reviews: prevCourse.reviews.filter(review => review.id !== userReview.id)
+        reviews: prevCourse.reviews.filter(
+          (review) => review.id !== userReview.id
+        ),
       }));
       setUserReview(null);
       setReview({ content: '', rating: 0 });
@@ -157,13 +171,13 @@ function CourseSingle() {
                 rating={course.average_rating || 0}
                 starRatedColor="#c7ae6a"
                 numberOfStars={5}
-                name='courseRating'
+                name="courseRating"
                 starDimension="20px"
                 starSpacing="2px"
               />
             </div>
             <div className={styles.BookingPriceContainer}>
-              <Button 
+              <Button
                 onClick={() => {
                   if (!currentUser) {
                     toast.warning('Please sign in to book this course.');
@@ -171,7 +185,7 @@ function CourseSingle() {
                   } else {
                     history.push('/bookings/create');
                   }
-                }} 
+                }}
                 className={`${styles.Button} ${styles.Blue}`}
               >
                 Book This Course
@@ -182,15 +196,25 @@ function CourseSingle() {
             </div>
           </div>
           {course.image && (
-            <img src={course.image} alt={course.title} className={styles.CourseImage} />
+            <img
+              src={course.image}
+              alt={course.title}
+              className={styles.CourseImage}
+            />
           )}
-          <div className={styles.CourseDescription} dangerouslySetInnerHTML={{ __html: course.description }} />
+          <div
+            className={styles.CourseDescription}
+            dangerouslySetInnerHTML={{ __html: course.description }}
+          />
           <p className={styles.CourseType}>Course Type: {course.course_type}</p>
 
           <div className={styles.ReviewSection}>
             <h2>Reviews</h2>
             {!userReview && !showReviewForm && (
-              <Button onClick={handleAddReview} className={`${styles.ReviewButton} ${styles.Blue}`}>
+              <Button
+                onClick={handleAddReview}
+                className={`${styles.ReviewButton} ${styles.Blue}`}
+              >
                 Add Review
               </Button>
             )}
@@ -203,7 +227,9 @@ function CourseSingle() {
                     rows={3}
                     name="content"
                     value={review.content}
-                    onChange={(e) => setReview({...review, content: e.target.value})}
+                    onChange={(e) =>
+                      setReview({ ...review, content: e.target.value })
+                    }
                     required
                   />
                 </Form.Group>
@@ -212,72 +238,86 @@ function CourseSingle() {
                   <StarRatings
                     rating={review.rating}
                     starRatedColor="#c7ae6a"
-                    changeRating={(newRating) => setReview({...review, rating: newRating})}
+                    changeRating={(newRating) =>
+                      setReview({ ...review, rating: newRating })
+                    }
                     numberOfStars={5}
-                    name='rating'
+                    name="rating"
                     starDimension="30px"
                     starSpacing="5px"
                   />
                 </div>
-              <div className={styles.ButtonContainer}>
-                <Button type="submit" className={`${styles.Button} ${styles.Blue}`}>
-                  {isEditing ? 'Update Review' : 'Submit Review'}
-                </Button>
-                <Button
-                  variant="secondary"
-                  onClick={() => {
-                    setIsEditing(false);
-                    setShowReviewForm(false);
-                    toast.info('Review cancelled.');
-                  }}
-                  className={`${styles.Button} ${styles.DeleteRed}`}
-                >
-                  Cancel
-                </Button>
-              </div>
+                <div className={styles.ButtonContainer}>
+                  <Button
+                    type="submit"
+                    className={`${styles.Button} ${styles.Blue}`}
+                  >
+                    {isEditing ? 'Update Review' : 'Submit Review'}
+                  </Button>
+                  <Button
+                    variant="secondary"
+                    onClick={() => {
+                      setIsEditing(false);
+                      setShowReviewForm(false);
+                      toast.info('Review cancelled.');
+                    }}
+                    className={`${styles.Button} ${styles.DeleteRed}`}
+                  >
+                    Cancel
+                  </Button>
+                </div>
               </Form>
             )}
-            {course.reviews && course.reviews.map(review => (
-              <div key={review.id} className={styles.Review}>
-                <p>{review.content}</p>
-                <StarRatings
-                  rating={review.rating}
-                  starRatedColor="#c7ae6a"
-                  numberOfStars={5}
-                  name={`rating-${review.id}`}
-                  starDimension="15px"
-                  starSpacing="1px"
-                />
-                <p>By: {review.user}</p>
-                {currentUser && currentUser.username === review.user && (
-                  <div>
-                    <Button
-                      onClick={() => handleEditReview(review.content, review.rating)}
-                      className={`${styles.Button} ${styles.Blue}`}
-                    >
-                      Edit
-                    </Button>
-                    <Button
-                      onClick={() => setShowDeleteConfirmation(true)}
-                      className={`${styles.Button} ${styles.DeleteRed}`}
-                    >
-                      Delete
-                    </Button>
-                  </div>
-                )}
-              </div>
-            ))}
+            {course.reviews &&
+              course.reviews.map((review) => (
+                <div key={review.id} className={styles.Review}>
+                  <p>{review.content}</p>
+                  <StarRatings
+                    rating={review.rating}
+                    starRatedColor="#c7ae6a"
+                    numberOfStars={5}
+                    name={`rating-${review.id}`}
+                    starDimension="15px"
+                    starSpacing="1px"
+                  />
+                  <p>By: {review.user}</p>
+                  {currentUser && currentUser.username === review.user && (
+                    <div>
+                      <Button
+                        onClick={() =>
+                          handleEditReview(review.content, review.rating)
+                        }
+                        className={`${styles.Button} ${styles.Blue}`}
+                      >
+                        Edit
+                      </Button>
+                      <Button
+                        onClick={() => setShowDeleteConfirmation(true)}
+                        className={`${styles.Button} ${styles.DeleteRed}`}
+                      >
+                        Delete
+                      </Button>
+                    </div>
+                  )}
+                </div>
+              ))}
           </div>
         </>
       )}
-      
-      <Modal show={showDeleteConfirmation} onHide={() => setShowDeleteConfirmation(false)}>
+
+      <Modal
+        show={showDeleteConfirmation}
+        onHide={() => setShowDeleteConfirmation(false)}
+      >
         <Modal.Header closeButton>
           <Modal.Title>Confirm Delete</Modal.Title>
         </Modal.Header>
         <Modal.Body>Are you sure you want to delete your review?</Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={() => setShowDeleteConfirmation(false)}>
+          <Button
+            variant="secondary"
+            onClick={() => setShowDeleteConfirmation(false)}
+          >
             Cancel
           </Button>
           <Button variant="danger" onClick={handleDeleteReview}>

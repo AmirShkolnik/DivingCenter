@@ -1,16 +1,19 @@
-import React, { useState } from "react";
-import Navbar from "react-bootstrap/Navbar";
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import NavDropdown from "react-bootstrap/NavDropdown";
-import { NavLink, useHistory } from "react-router-dom";
-import { useCurrentUser, useSetCurrentUser } from "../contexts/CurrentUserContext";
-import Avatar from "./Avatar";
-import axios from "axios";
-import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
-import { removeTokenTimestamp } from "../utils/utils";
-import logo from "../assets/logo.png";
-import styles from "../styles/NavBar.module.css";
+import React, { useState } from 'react';
+import Navbar from 'react-bootstrap/Navbar';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import { NavLink, useHistory } from 'react-router-dom';
+import {
+  useCurrentUser,
+  useSetCurrentUser,
+} from '../contexts/CurrentUserContext';
+import Avatar from './Avatar';
+import axios from 'axios';
+import useClickOutsideToggle from '../hooks/useClickOutsideToggle';
+import { removeTokenTimestamp } from '../utils/utils';
+import logo from '../assets/logo.png';
+import styles from '../styles/NavBar.module.css';
 import { toast } from 'react-toastify';
 
 const NavBar = () => {
@@ -22,13 +25,13 @@ const NavBar = () => {
 
   const handleSignOut = async () => {
     try {
-      await axios.post("dj-rest-auth/logout/");
+      await axios.post('dj-rest-auth/logout/');
       setCurrentUser(null);
       removeTokenTimestamp();
-      toast.success("You have been successfully signed out.");
+      toast.success('You have been successfully signed out.');
       history.push('/');
     } catch (err) {
-      toast.error("An error occurred while signing out. Please try again.");
+      toast.error('An error occurred while signing out. Please try again.');
     }
   };
 
@@ -49,29 +52,63 @@ const NavBar = () => {
         onToggle={handleDropdownToggle}
         title={
           <span className={styles.DropdownToggle}>
-            <Avatar src={currentUser?.profile_image} text={currentUser?.username || "Profile"} height={40} />
+            <Avatar
+              src={currentUser?.profile_image}
+              text={currentUser?.username || 'Profile'}
+              height={40}
+            />
             <i className={`fas fa-caret-down ${styles.DropdownArrow}`}></i>
-
           </span>
         }
         id="dropdown-custom-components"
       >
-        <NavDropdown.Item as={NavLink} to={`/profiles/${currentUser?.profile_id}`} className={styles.DropdownItem} onClick={handleNavItemClick}>
+        <NavDropdown.Item
+          as={NavLink}
+          to={`/profiles/${currentUser?.profile_id}`}
+          className={styles.DropdownItem}
+          onClick={handleNavItemClick}
+        >
           <i className="fas fa-user"></i> Profile
         </NavDropdown.Item>
-        <NavDropdown.Item as={NavLink} to="/bookings" className={styles.DropdownItem} onClick={handleNavItemClick}>
+        <NavDropdown.Item
+          as={NavLink}
+          to="/bookings"
+          className={styles.DropdownItem}
+          onClick={handleNavItemClick}
+        >
           <i className="fas fa-plane-departure"></i> My Bookings
         </NavDropdown.Item>
-        <NavDropdown.Item as={NavLink} to="/feed" className={styles.DropdownItem} onClick={handleNavItemClick}>
+        <NavDropdown.Item
+          as={NavLink}
+          to="/feed"
+          className={styles.DropdownItem}
+          onClick={handleNavItemClick}
+        >
           <i className="fas fa-stream"></i> Feed
         </NavDropdown.Item>
-        <NavDropdown.Item as={NavLink} to="/posts/create" className={styles.DropdownItem} onClick={handleNavItemClick}>
-        <i className="far fa-plus-square"></i> Add post
+        <NavDropdown.Item
+          as={NavLink}
+          to="/posts/create"
+          className={styles.DropdownItem}
+          onClick={handleNavItemClick}
+        >
+          <i className="far fa-plus-square"></i> Add post
         </NavDropdown.Item>
-        <NavDropdown.Item as={NavLink} to="/liked" className={styles.DropdownItem} onClick={handleNavItemClick}>
+        <NavDropdown.Item
+          as={NavLink}
+          to="/liked"
+          className={styles.DropdownItem}
+          onClick={handleNavItemClick}
+        >
           <i className="fas fa-heart"></i> Liked
         </NavDropdown.Item>
-        <NavDropdown.Item onClick={() => { handleSignOut(); handleNavItemClick(); }} className={styles.DropdownItem}>
+        <NavDropdown.Item
+          onClick={() => {
+            handleSignOut();
+            handleNavItemClick();
+          }}
+          className={styles.DropdownItem}
+        >
           <i className="fas fa-sign-out-alt"></i> Sign out
         </NavDropdown.Item>
       </NavDropdown>
@@ -80,17 +117,31 @@ const NavBar = () => {
 
   const loggedOutIcons = (
     <>
-      <NavLink className={styles.NavLink} to="/signin" onClick={handleNavItemClick}>
+      <NavLink
+        className={styles.NavLink}
+        to="/signin"
+        onClick={handleNavItemClick}
+      >
         <i className="fas fa-sign-in-alt"></i> Sign in
       </NavLink>
-      <NavLink to="/signup" className={styles.NavLink} onClick={handleNavItemClick}>
+      <NavLink
+        to="/signup"
+        className={styles.NavLink}
+        onClick={handleNavItemClick}
+      >
         <i className="fas fa-user-plus"></i> Sign up
       </NavLink>
     </>
   );
 
   return (
-    <Navbar expanded={expanded} className={styles.NavBar} expand="md" fixed="top" ref={ref}>
+    <Navbar
+      expanded={expanded}
+      className={styles.NavBar}
+      expand="md"
+      fixed="top"
+      ref={ref}
+    >
       <Container>
         <NavLink to="/" onClick={handleNavItemClick}>
           <Navbar.Brand>
@@ -109,13 +160,26 @@ const NavBar = () => {
         </Navbar.Toggle>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto text-left">
-            <NavLink exact className={styles.NavLink} to="/" onClick={handleNavItemClick}>
+            <NavLink
+              exact
+              className={styles.NavLink}
+              to="/"
+              onClick={handleNavItemClick}
+            >
               <i className="fas fa-home"></i> Home
             </NavLink>
-            <NavLink className={styles.NavLink} to="/contactus" onClick={handleNavItemClick}>
+            <NavLink
+              className={styles.NavLink}
+              to="/contactus"
+              onClick={handleNavItemClick}
+            >
               <i className="fas fa-envelope"></i> Contact Us
             </NavLink>
-            <NavLink className={styles.NavLink} to="/courses" onClick={handleNavItemClick}>
+            <NavLink
+              className={styles.NavLink}
+              to="/courses"
+              onClick={handleNavItemClick}
+            >
               <i className="fas fa-graduation-cap"></i> Courses
             </NavLink>
             {currentUser ? loggedInIcons : loggedOutIcons}

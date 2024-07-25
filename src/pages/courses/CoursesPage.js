@@ -13,23 +13,26 @@ import { toast } from 'react-toastify';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 
 const stripHtmlTags = (html) => {
-  const tmp = document.createElement("DIV");
+  const tmp = document.createElement('DIV');
   tmp.innerHTML = html;
-  return tmp.textContent || tmp.innerText || "";
+  return tmp.textContent || tmp.innerText || '';
 };
 
 const CourseBox = ({ title, imageUrl, excerpt, slug, price, currentUser }) => {
   const history = useHistory();
 
-  const handleBookNowClick = useCallback((e) => {
-    e.preventDefault();
-    if (currentUser) {
-      history.push("/bookings/create");
-    } else {
-      toast.warning('Please sign in to book a course.');
-      history.push("/signin");
-    }
-  }, [currentUser, history]);
+  const handleBookNowClick = useCallback(
+    (e) => {
+      e.preventDefault();
+      if (currentUser) {
+        history.push('/bookings/create');
+      } else {
+        toast.warning('Please sign in to book a course.');
+        history.push('/signin');
+      }
+    },
+    [currentUser, history]
+  );
 
   const cleanExcerpt = stripHtmlTags(excerpt);
 
@@ -79,12 +82,15 @@ const CoursesPage = () => {
     const fetchCourses = async () => {
       try {
         const response = await axiosReq.get('/courses/');
-        
+
         if (isMounted) {
           if (response.status === 200) {
             if (Array.isArray(response.data)) {
               setCourses(response.data);
-            } else if (response.data.results && Array.isArray(response.data.results)) {
+            } else if (
+              response.data.results &&
+              Array.isArray(response.data.results)
+            ) {
               setCourses(response.data.results);
             } else {
               setError('Unexpected data structure in API response');
@@ -97,7 +103,9 @@ const CoursesPage = () => {
       } catch (err) {
         if (isMounted) {
           setError('Failed to load courses');
-          toast.error('Failed to load courses. Please check your internet connection and try again.');
+          toast.error(
+            'Failed to load courses. Please check your internet connection and try again.'
+          );
         }
       } finally {
         if (isMounted) {
@@ -105,9 +113,9 @@ const CoursesPage = () => {
         }
       }
     };
-  
+
     fetchCourses();
-  
+
     return () => {
       isMounted = false;
     };
@@ -135,7 +143,7 @@ const CoursesPage = () => {
 
   return (
     <Container className={styles.coursesPage}>
-       <h1 className={styles.courseTitle}>Our Diving Courses</h1>
+      <h1 className={styles.courseTitle}>Our Diving Courses</h1>
       {courses && courses.length > 0 ? (
         courses.map((course) => (
           <CourseBox

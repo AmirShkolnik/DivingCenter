@@ -29,35 +29,40 @@ const ContactForm = () => {
 
   const handleDeleteMessage = async () => {
     if (!messageId) {
-        toast.error('No message to delete.');
-        return;
+      toast.error('No message to delete.');
+      return;
     }
     try {
-        const deletionToken = localStorage.getItem(`deletion_token_${messageId}`);
-        if (!deletionToken) {
-            toast.error('Unable to delete message. Please try submitting a new message.');
-            return;
-        }
-        await axiosReq.delete(`/contactus/${messageId}/?deletion_token=${deletionToken}`);
-        toast.success('Your message was deleted.');
-        resetForm();
-        setShowConfirmModal(false);
-        history.push('/');
+      const deletionToken = localStorage.getItem(`deletion_token_${messageId}`);
+      if (!deletionToken) {
+        toast.error(
+          'Unable to delete message. Please try submitting a new message.'
+        );
+        return;
+      }
+      await axiosReq.delete(
+        `/contactus/${messageId}/?deletion_token=${deletionToken}`
+      );
+      toast.success('Your message was deleted.');
+      resetForm();
+      setShowConfirmModal(false);
+      history.push('/');
     } catch (err) {
-        console.error('Error deleting message:', err);
-        if (err.response) {
-            console.error('Error response:', err.response.data);
-        }
-        if (err.response && err.response.status === 403) {
-            toast.error('Unable to delete message. The deletion token may be invalid or expired.');
-        } else {
-            toast.error('An error occurred while deleting your message. Please try again.');
-        }
+      console.error('Error deleting message:', err);
+      if (err.response) {
+        console.error('Error response:', err.response.data);
+      }
+      if (err.response && err.response.status === 403) {
+        toast.error(
+          'Unable to delete message. The deletion token may be invalid or expired.'
+        );
+      } else {
+        toast.error(
+          'An error occurred while deleting your message. Please try again.'
+        );
+      }
     }
-};
-
-
-  
+  };
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -78,7 +83,11 @@ const ContactForm = () => {
       localStorage.setItem(`deletion_token_${data.id}`, data.deletion_token);
       setIsSubmitted(true);
       setIsEditing(false);
-      toast.success(isEditing ? 'Your message has been updated successfully!' : 'Your message has been sent successfully!');
+      toast.success(
+        isEditing
+          ? 'Your message has been updated successfully!'
+          : 'Your message has been sent successfully!'
+      );
     } catch (err) {
       toast.error('An error occurred. Please try again.');
       if (err.response?.data) {
@@ -102,7 +111,6 @@ const ContactForm = () => {
     setIsEditing(true);
     setIsSubmitted(false);
   };
-  
 
   if (!hasLoaded) {
     return <Asset spinner />;
@@ -113,18 +121,29 @@ const ContactForm = () => {
       <div className={styles.ContactForm}>
         <div className={styles.successMessage}>
           <h2>Message Sent Successfully!</h2>
-          <p>Thank you for contacting us. We've received your message and will get back to you within 2 business days.</p>
+          <p>
+            Thank you for contacting us. We've received your message and will
+            get back to you within 2 business days.
+          </p>
           <img
             src="../images/courses/5.webp"
             alt="Thank you"
             className={styles.thankYouImage}
           />
           <p className={styles.placeholder}>
-            Your inquiry is important to us. While you wait for our response, feel free to explore our courses and diving resources.
+            Your inquiry is important to us. While you wait for our response,
+            feel free to explore our courses and diving resources.
           </p>
           <div className={styles.buttonContainer}>
-            <Button className={styles.EditButton} onClick={handleEditMessage}>Edit My Message</Button>
-            <Button className={styles.CancelButton} onClick={handleCancelMessage}>Cancel My Message</Button>
+            <Button className={styles.EditButton} onClick={handleEditMessage}>
+              Edit My Message
+            </Button>
+            <Button
+              className={styles.CancelButton}
+              onClick={handleCancelMessage}
+            >
+              Cancel My Message
+            </Button>
           </div>
         </div>
 
@@ -138,15 +157,15 @@ const ContactForm = () => {
           </Modal.Header>
           <Modal.Body>Are you sure you want to cancel your message?</Modal.Body>
           <Modal.Footer>
-            <Button 
-              variant="secondary" 
+            <Button
+              variant="secondary"
               onClick={() => setShowConfirmModal(false)}
               className={styles.btn_secondary}
             >
               No, Keep My Message
             </Button>
-            <Button 
-              variant="danger" 
+            <Button
+              variant="danger"
               onClick={handleDeleteMessage}
               className={styles.btn_danger}
             >
@@ -160,7 +179,9 @@ const ContactForm = () => {
 
   return (
     <div className={styles.ContactForm}>
-      <h2 className={styles.Title}>{isEditing ? 'Edit Your Message' : 'Contact Us'}</h2>
+      <h2 className={styles.Title}>
+        {isEditing ? 'Edit Your Message' : 'Contact Us'}
+      </h2>
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="name">
           <Form.Label>Name*</Form.Label>
@@ -193,7 +214,9 @@ const ContactForm = () => {
             onChange={handleChange}
             required
           />
-          {errors.subject && <span className={styles.error}>{errors.subject}</span>}
+          {errors.subject && (
+            <span className={styles.error}>{errors.subject}</span>
+          )}
         </Form.Group>
         <Form.Group controlId="message">
           <Form.Label>Message*</Form.Label>
@@ -205,15 +228,20 @@ const ContactForm = () => {
             onChange={handleChange}
             required
           />
-          {errors.message && <span className={styles.error}>{errors.message}</span>}
+          {errors.message && (
+            <span className={styles.error}>{errors.message}</span>
+          )}
         </Form.Group>
         <div className={styles.buttonContainer}>
           {isEditing ? (
             <>
-              <Button className={styles.CancelButton} onClick={() => {
-                setIsEditing(false);
-                setIsSubmitted(true);
-              }}>
+              <Button
+                className={styles.CancelButton}
+                onClick={() => {
+                  setIsEditing(false);
+                  setIsSubmitted(true);
+                }}
+              >
                 Cancel Edit
               </Button>
               <Button type="submit" className={styles.SubmitButton}>
@@ -222,7 +250,10 @@ const ContactForm = () => {
             </>
           ) : (
             <>
-              <Button className={styles.CancelButton} onClick={() => history.push('/')}>
+              <Button
+                className={styles.CancelButton}
+                onClick={() => history.push('/')}
+              >
                 Cancel
               </Button>
               <Button type="submit" className={styles.SubmitButton}>

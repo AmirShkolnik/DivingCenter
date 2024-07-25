@@ -1,14 +1,14 @@
-import React from "react";
-import styles from "../../styles/Post.module.css";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import React from 'react';
+import styles from '../../styles/Post.module.css';
+import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import Card from 'react-bootstrap/Card';
 import Media from 'react-bootstrap/Media';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
-import { Link, useHistory } from "react-router-dom";
-import Avatar from "../../components/Avatar";
-import { axiosRes } from "../../api/axiosDefaults";
-import { MoreDropdown } from "../../components/MoreDropdown";
+import { Link, useHistory } from 'react-router-dom';
+import Avatar from '../../components/Avatar';
+import { axiosRes } from '../../api/axiosDefaults';
+import { MoreDropdown } from '../../components/MoreDropdown';
 import { toast } from 'react-toastify';
 
 const Post = (props) => {
@@ -39,16 +39,16 @@ const Post = (props) => {
   const handleDelete = async () => {
     try {
       await axiosRes.delete(`/posts/${id}/`);
-      toast.success("Post deleted successfully!");
+      toast.success('Post deleted successfully!');
       history.goBack();
     } catch (err) {
-      toast.error("Error deleting post. Please try again.");
+      toast.error('Error deleting post. Please try again.');
     }
   };
 
   const handleLike = async () => {
     try {
-      const { data } = await axiosRes.post("/likes/", { post: id });
+      const { data } = await axiosRes.post('/likes/', { post: id });
       setPosts((prevPosts) => ({
         ...prevPosts,
         results: prevPosts.results.map((post) => {
@@ -57,9 +57,9 @@ const Post = (props) => {
             : post;
         }),
       }));
-      toast.success("Post liked!");
+      toast.success('Post liked!');
     } catch (err) {
-      toast.error("Error liking post. Please try again.");
+      toast.error('Error liking post. Please try again.');
     }
   };
 
@@ -74,9 +74,9 @@ const Post = (props) => {
             : post;
         }),
       }));
-      toast.success("Post unliked!");
+      toast.success('Post unliked!');
     } catch (err) {
-      toast.error("Error unliking post. Please try again.");
+      toast.error('Error unliking post. Please try again.');
     }
   };
 

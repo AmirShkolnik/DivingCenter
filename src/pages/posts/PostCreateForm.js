@@ -1,35 +1,35 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState } from 'react';
 import { toast } from 'react-toastify';
 
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Container from "react-bootstrap/Container";
-import Alert from "react-bootstrap/Alert";
-import Image from "react-bootstrap/Image";
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+import Alert from 'react-bootstrap/Alert';
+import Image from 'react-bootstrap/Image';
 
-import Asset from "../../components/Asset";
+import Asset from '../../components/Asset';
 
-import Upload from "../../assets/upload.png";
+import Upload from '../../assets/upload.png';
 
-import styles from "../../styles/PostCreateEditForm.module.css";
-import appStyles from "../../App.module.css";
-import btnStyles from "../../styles/Button.module.css";
+import styles from '../../styles/PostCreateEditForm.module.css';
+import appStyles from '../../App.module.css';
+import btnStyles from '../../styles/Button.module.css';
 
-import { useHistory } from "react-router";
-import { axiosReq } from "../../api/axiosDefaults";
-import { useRedirect } from "../../hooks/useRedirect";
+import { useHistory } from 'react-router';
+import { axiosReq } from '../../api/axiosDefaults';
+import { useRedirect } from '../../hooks/useRedirect';
 
 function PostCreateForm() {
-  useRedirect("loggedOut");
+  useRedirect('loggedOut');
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [postData, setPostData] = useState({
-    title: "",
-    content: "",
-    image: "",
+    title: '',
+    content: '',
+    image: '',
   });
   const { title, content, image } = postData;
 
@@ -60,12 +60,12 @@ function PostCreateForm() {
     setIsSubmitting(true);
     const formData = new FormData();
 
-    formData.append("title", title);
-    formData.append("content", content);
-    formData.append("image", imageInput.current.files[0]);
+    formData.append('title', title);
+    formData.append('content', content);
+    formData.append('image', imageInput.current.files[0]);
 
     try {
-      const { data } = await axiosReq.post("/posts/", formData);
+      const { data } = await axiosReq.post('/posts/', formData);
       toast.success('Post created successfully!');
       history.push(`/posts/${data.id}`);
     } catch (err) {
@@ -120,8 +120,8 @@ function PostCreateForm() {
       >
         cancel
       </Button>
-      <Button 
-        className={`${btnStyles.Button} ${btnStyles.Blue}`} 
+      <Button
+        className={`${btnStyles.Button} ${btnStyles.Blue}`}
         type="submit"
         disabled={isSubmitting}
       >
