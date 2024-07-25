@@ -10,12 +10,11 @@ test("renders NavBar", () => {
     </Router>
   );
 
-  // screen.debug();
   const signInLink = screen.getByRole("link", { name: "Sign in" });
   expect(signInLink).toBeInTheDocument();
 });
 
-test("renders link to the user profile for a logged in user", async () => {
+test("renders user profile dropdown for a logged in user", async () => {
   render(
     <Router>
       <CurrentUserProvider>
@@ -24,8 +23,10 @@ test("renders link to the user profile for a logged in user", async () => {
     </Router>
   );
 
-  const profileAvatar = await screen.findByText("Profile");
-  expect(profileAvatar).toBeInTheDocument();
+  const userAvatar = await screen.findByAltText("avatar");
+  const userName = await screen.findByText("Ben");
+  expect(userAvatar).toBeInTheDocument();
+  expect(userName).toBeInTheDocument();
 });
 
 test("renders Sign in and Sign up buttons again on log out", async () => {
@@ -37,11 +38,17 @@ test("renders Sign in and Sign up buttons again on log out", async () => {
     </Router>
   );
 
-  const signOutLink = await screen.findByRole("link", { name: "Sign out" });
-  fireEvent.click(signOutLink);
+  // Open the dropdown
+  const dropdownToggle = await screen.findByRole("button", { name: /Ben/i });
+  fireEvent.click(dropdownToggle);
 
-  const signInLink = await screen.findByRole("link", { name: "Sign in" });
-  const signUpLink = await screen.findByRole("link", { name: "Sign up" });
+  // Find and click the sign out option
+  const signOutOption = await screen.findByText(/sign out/i);
+  fireEvent.click(signOutOption);
+
+  // Check for Sign in and Sign up links
+  const signInLink = await screen.findByRole("link", { name: /sign in/i });
+  const signUpLink = await screen.findByRole("link", { name: /sign up/i });
 
   expect(signInLink).toBeInTheDocument();
   expect(signUpLink).toBeInTheDocument();

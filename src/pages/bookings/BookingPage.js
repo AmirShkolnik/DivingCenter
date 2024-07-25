@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { axiosRes } from "../../api/axiosDefaults";
+import { axiosReq } from "../../api/axiosDefaults";
 import styles from '../../styles/BookingPage.module.css';
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { toast } from 'react-toastify';
@@ -14,16 +14,16 @@ const BookingPage = () => {
   const [deletingBookingId, setDeletingBookingId] = useState(null);
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [showUpdateConfirmation, setShowUpdateConfirmation] = useState(false);
   const history = useHistory();
   const location = useLocation();
 
   const fetchBookings = useCallback(async () => {
     try {
-      const response = await axiosRes.get('/bookings/');
-      const data = response.data.results;
-      setBookings(Array.isArray(data) ? data : []);
+      const response = await axiosReq.get('/bookings/');
+      setBookings(response.data.results || []);
     } catch (err) {
-      toast.error('Failed to fetch bookings. Please try again.');
+      toast.error('Failed to load bookings. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -31,10 +31,10 @@ const BookingPage = () => {
 
   const fetchCourses = useCallback(async () => {
     try {
-      const response = await axiosRes.get('/diving-courses/');
-      setCourses(response.data.results || response.data);
+      const response = await axiosReq.get('/courses/');
+      setCourses(response.data.results || []);
     } catch (err) {
-      toast.error('Failed to fetch courses. Please try again.');
+      toast.error('Failed to load courses. Please try again.');
     }
   }, []);
 
@@ -66,15 +66,50 @@ const BookingPage = () => {
     setEditingBooking(null);
   };
 
+  const checkExistingBooking = (date, time, course, currentBookingId) => {
+    return bookings.some(booking => 
+      booking.date === date &&
+      booking.time === time &&
+      booking.course === course &&
+      booking.id !== currentBookingId
+    );
+  };
+
   const handleUpdate = async (e) => {
     e.preventDefault();
+    const { id, date, time, course } = editingBooking;
+    const formattedDate = new Date(date).toISOString().split('T')[0];
+
+    if (checkExistingBooking(formattedDate, time, course, id)) {
+      toast.warning('You already have a booking for this course, date, and time. Please try again.');
+    } else {
+      setShowUpdateConfirmation(true);
+    }
+  };
+
+  const confirmUpdate = async () => {
     try {
-      const response = await axiosRes.put(`/bookings/${editingBooking.id}/`, editingBooking);
+      const { id, date, time, course } = editingBooking;
+      const formattedDate = new Date(date).toISOString().split('T')[0];
+      const response = await axiosReq.put(`/bookings/${id}/`, {
+        date: formattedDate,
+        time,
+        course,
+        additional_info: editingBooking.additional_info
+      });
       setBookings(bookings.map(booking => booking.id === response.data.id ? response.data : booking));
       setEditingBooking(null);
       toast.success('Booking updated successfully!');
     } catch (err) {
-      toast.error('Failed to update booking. Please try again.');
+      if (err.response && err.response.data) {
+        Object.values(err.response.data).forEach(error => {
+          toast.error(Array.isArray(error) ? error[0] : error);
+        });
+      } else {
+        toast.error('Failed to update booking. Please try again.');
+      }
+    } finally {
+      setShowUpdateConfirmation(false);
     }
   };
 
@@ -85,7 +120,7 @@ const BookingPage = () => {
 
   const confirmDelete = async () => {
     try {
-      await axiosRes.delete(`/bookings/${deletingBookingId}/`);
+      await axiosReq.delete(`/bookings/${deletingBookingId}/`);
       setBookings(bookings.filter(booking => booking.id !== deletingBookingId));
       toast.success('Booking deleted successfully!');
     } catch (err) {
@@ -115,7 +150,7 @@ const BookingPage = () => {
     );
   }
 
-  if (!Array.isArray(bookings) || bookings.length === 0) {
+  if (bookings.length === 0) {
     return (
       <div className={styles.bookingPage}>
         <h2 className={styles.bookingTitle}>Your Bookings</h2>
@@ -133,27 +168,6 @@ const BookingPage = () => {
       <p className={styles.motivationDescription}>
         Thank you for booking with us! We are thrilled to be part of your adventure. Remember, every dive is an opportunity to explore and discover new wonders beneath the waves. Happy diving!
       </p>
-      
-      <div className={styles.imageRow}>
-        <img
-          src="/images/courses/1.webp"
-          alt="Diving scene 1"
-          className={styles.rowImage}
-          onError={(e) => e.target.src = '/images/courses/fallback1.webp'}
-        />
-        <img
-          src="/images/courses/2.webp"
-          alt="Diving scene 2"
-          className={styles.rowImage}
-          onError={(e) => e.target.src = '/images/courses/fallback2.webp'}
-        />
-        <img
-          src="/images/courses/3.webp"
-          alt="Diving scene 3"
-          className={styles.rowImage}
-          onError={(e) => e.target.src = '/images/courses/fallback3.webp'}
-        />
-      </div>
 
       {bookings.map(booking => (
         <div key={booking.id} className={styles.bookingItem}>
@@ -164,8 +178,8 @@ const BookingPage = () => {
                 <input
                   type="date"
                   id="date"
-                  value={editingBooking.date}
-                  onChange={(e) => setEditingBooking({...editingBooking, date: e.target.value})}
+                  value={editingBooking.date.split('T')[0]}
+                  onChange={(e) => setEditingBooking({ ...editingBooking, date: e.target.value })}
                   required
                 />
               </div>
@@ -174,11 +188,11 @@ const BookingPage = () => {
                 <select
                   id="time"
                   value={editingBooking.time}
-                  onChange={(e) => setEditingBooking({...editingBooking, time: e.target.value})}
+                  onChange={(e) => setEditingBooking({ ...editingBooking, time: e.target.value })}
                   required
                 >
-                  <option value="09:00:00">09:00</option>
-                  <option value="15:00:00">15:00</option>
+                  <option value="09:00">09:00</option>
+                  <option value="15:00">15:00</option>
                 </select>
               </div>
               <div>
@@ -186,11 +200,11 @@ const BookingPage = () => {
                 <select
                   id="course"
                   value={editingBooking.course}
-                  onChange={(e) => setEditingBooking({...editingBooking, course: e.target.value})}
+                  onChange={(e) => setEditingBooking({ ...editingBooking, course: e.target.value })}
                   required
                 >
                   {courses.map(course => (
-                    <option key={course.id} value={course.id}>{course.name}</option>
+                    <option key={course.id} value={course.id}>{course.title}</option>
                   ))}
                 </select>
               </div>
@@ -199,7 +213,7 @@ const BookingPage = () => {
                 <textarea
                   id="additionalInfo"
                   value={editingBooking.additional_info}
-                  onChange={(e) => setEditingBooking({...editingBooking, additional_info: e.target.value})}
+                  onChange={(e) => setEditingBooking({ ...editingBooking, additional_info: e.target.value })}
                   rows="4"
                 ></textarea>
               </div>
@@ -225,6 +239,19 @@ const BookingPage = () => {
             <p>Are you sure you want to delete this booking?</p>
             <button onClick={confirmDelete} className={styles.cancelConfirmButton}>Yes, Delete</button>
             <button onClick={() => setShowConfirmation(false)} className={styles.keepBookingButton}>No, Keep Booking</button>
+          </div>
+        </>
+      )}
+      {showUpdateConfirmation && (
+        <>
+          <div className={styles.overlay}></div>
+          <div className={styles.confirmationDialog}>
+            <p>
+              Changing the time, date, or course type might result in losing your original spot. We will contact you within 48 hours if there are any issues. If you have any questions, please use the
+              <a href="/contactus" target="_blank" rel="noopener noreferrer" className={styles.contactUsLink}> Contact Us</a> form.
+            </p>
+            <button onClick={confirmUpdate} className={styles.confirmButton}>Yes, Update</button>
+            <button onClick={() => setShowUpdateConfirmation(false)} className={styles.cancelButton}>Cancel</button>
           </div>
         </>
       )}

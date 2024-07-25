@@ -29,22 +29,35 @@ const ContactForm = () => {
 
   const handleDeleteMessage = async () => {
     if (!messageId) {
-      toast.error('No message to delete.');
-      return;
+        toast.error('No message to delete.');
+        return;
     }
     try {
-      await axiosReq.delete(`/contactus/${messageId}/delete/`);
-      toast.success('Your message was deleted.');
-      resetForm();
-      setShowConfirmModal(false);
-      history.push('/');
+        const deletionToken = localStorage.getItem(`deletion_token_${messageId}`);
+        if (!deletionToken) {
+            toast.error('Unable to delete message. Please try submitting a new message.');
+            return;
+        }
+        await axiosReq.delete(`/contactus/${messageId}/?deletion_token=${deletionToken}`);
+        toast.success('Your message was deleted.');
+        resetForm();
+        setShowConfirmModal(false);
+        history.push('/');
     } catch (err) {
-      toast.error('An error occurred while deleting your message. Please try again.');
-      if (err.response) {
-        // Handle error response if necessary
-      }
+        console.error('Error deleting message:', err);
+        if (err.response) {
+            console.error('Error response:', err.response.data);
+        }
+        if (err.response && err.response.status === 403) {
+            toast.error('Unable to delete message. The deletion token may be invalid or expired.');
+        } else {
+            toast.error('An error occurred while deleting your message. Please try again.');
+        }
     }
-  };
+};
+
+
+  
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -62,6 +75,7 @@ const ContactForm = () => {
       }
       const { data } = response;
       setMessageId(data.id);
+      localStorage.setItem(`deletion_token_${data.id}`, data.deletion_token);
       setIsSubmitted(true);
       setIsEditing(false);
       toast.success(isEditing ? 'Your message has been updated successfully!' : 'Your message has been sent successfully!');
@@ -88,6 +102,7 @@ const ContactForm = () => {
     setIsEditing(true);
     setIsSubmitted(false);
   };
+  
 
   if (!hasLoaded) {
     return <Asset spinner />;

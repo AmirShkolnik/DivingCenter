@@ -5,6 +5,7 @@ import styles from '../../styles/BookingForm.module.css';
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { toast } from 'react-toastify';
 import Asset from "../../components/Asset";
+import { debounce } from 'lodash';
 
 const BookingForm = () => {
   const history = useHistory();
@@ -12,62 +13,69 @@ const BookingForm = () => {
   const [formData, setFormData] = useState({
     date: '',
     time: '',
-    courseId: '',
-    additionalInfo: ''
+    course: '',
+    additional_info: ''
   });
   const [courses, setCourses] = useState([]);
   const [errors, setErrors] = useState({});
   const [hasLoaded, setHasLoaded] = useState(false);
+  const [isMounted, setIsMounted] = useState(true);
 
   useEffect(() => {
     if (!currentUser) {
       history.push('/signin');
     }
+    return () => setIsMounted(false);
   }, [currentUser, history]);
 
-  const translateCourseName = (name) => {
-    const courseNameMap = {
-      'OW': 'Open Water',
-      'AOW': 'Advanced Open Water',
-      'RD': 'Rescue Diver'
-    };
-    return courseNameMap[name] || name;
-  };
-
-  const fetchCourses = useCallback(async () => {
+  const fetchCourses = useCallback(async (abortController) => {
     try {
-      const { data } = await axiosReq.get('/diving-courses/');
-      setCourses(data.results || data);
+      const { data } = await axiosReq.get('/courses/', {
+        signal: abortController.signal
+      });
+      if (isMounted) {
+        console.log('Fetched courses:', data);
+        setCourses(data.results || data);
+      }
     } catch (err) {
-      if (err.response?.status === 401) {
+      console.error('Error fetching courses:', err);
+      if (err.name === 'AbortError') {
+        return;
+      }
+      if (err.response?.status === 401 && isMounted) {
         toast.error('Your session has expired. Please sign in again.');
         history.push('/signin');
-      } else {
-        toast.error('Failed to fetch courses. Please try again.');
+      } else if (isMounted) {
+        toast.error('Failed to load courses. Please try again.');
       }
-    } finally {
-      setHasLoaded(true);
     }
-  }, [history]);
+  }, [history, isMounted]);
 
   useEffect(() => {
-    let isMounted = true;
+    const abortController = new AbortController();
     if (currentUser) {
-      fetchCourses().then(() => {
-        if (isMounted) setHasLoaded(true);
+      fetchCourses(abortController).finally(() => {
+        if (isMounted) {
+          setHasLoaded(true);
+        }
       });
     }
     return () => {
-      isMounted = false;
+      abortController.abort();
     };
-  }, [currentUser, fetchCourses]);
+  }, [currentUser, fetchCourses, isMounted]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
     if (name === 'date') {
       const selectedDate = new Date(value);
-      if (selectedDate.getDate() !== 10) {
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      
+      if (selectedDate < today) {
+        setErrors(prev => ({ ...prev, date: "You can't book a date in the past" }));
+      } else if (selectedDate.getDate() !== 10) {
         setErrors(prev => ({ ...prev, date: 'Bookings are only available on the 10th of each month.' }));
       } else {
         setErrors(prev => ({ ...prev, date: undefined }));
@@ -75,31 +83,45 @@ const BookingForm = () => {
     }
   };
 
+  const debouncedHandleChange = debounce(handleChange, 300);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     setErrors({});
     try {
       const formattedDate = new Date(formData.date).toISOString().split('T')[0];
-      const formattedTime = formData.time + ':00';
-  
-      await axiosReq.post('/bookings/', {
+      
+      console.log('Submitting booking with data:', {
         date: formattedDate,
-        time: formattedTime,
-        course: parseInt(formData.courseId),
-        additional_info: formData.additionalInfo
+        time: formData.time,
+        course: parseInt(formData.course),
+        additional_info: formData.additional_info
+      });
+
+      const response = await axiosReq.post('/bookings/', {
+        date: formattedDate,
+        time: formData.time,
+        course: parseInt(formData.course),
+        additional_info: formData.additional_info
       });
       
-      toast.success('Booking submitted successfully!');
-      history.push('/bookings', { refresh: true });
+      console.log('Booking response:', response);
+
+      if (response.status === 201) {
+        toast.success('Booking submitted successfully!');
+        history.push('/bookings', { refresh: true });
+      } else {
+        throw new Error(`Unexpected response status: ${response.status}`);
+      }
     } catch (err) {
-      
+      console.error('Error submitting booking:', err);
       if (err.response?.status === 401) {
         toast.error('Your session has expired. Please sign in again.');
         history.push('/signin');
       } else if (err.response && err.response.data) {
         setErrors(err.response.data);
-        Object.values(err.response.data).forEach(error => {
-          toast.error(Array.isArray(error) ? error[0] : error);
+        Object.entries(err.response.data).forEach(([key, value]) => {
+          toast.error(`${key}: ${Array.isArray(value) ? value[0] : value}`);
         });
       } else {
         setErrors({ message: 'An error occurred while creating the booking.' });
@@ -111,6 +133,8 @@ const BookingForm = () => {
   if (!hasLoaded) {
     return <Asset spinner />;
   }
+
+  const today = new Date().toISOString().split('T')[0];
 
   return (
     <form onSubmit={handleSubmit} className={styles.bookingForm}>
@@ -124,6 +148,7 @@ const BookingForm = () => {
           name="date"
           value={formData.date}
           onChange={handleChange}
+          min={today}
           required
         />
         {errors.date && <span className={styles.error}>{errors.date}</span>}
@@ -144,30 +169,30 @@ const BookingForm = () => {
         {errors.time && <span className={styles.error}>{errors.time}</span>}
       </div>
       <div>
-        <label htmlFor="courseId">Diving Course:</label>
+        <label htmlFor="course">Diving Course:</label>
         <select
-          id="courseId"
-          name="courseId"
-          value={formData.courseId}
+          id="course"
+          name="course"
+          value={formData.course}
           onChange={handleChange}
           required
         >
           <option value="">Select a course</option>
           {courses.map((course) => (
             <option key={course.id} value={course.id}>
-              {translateCourseName(course.name)}
+              {course.title} - {course.course_type}
             </option>
           ))}
         </select>
         {errors.course && <span className={styles.error}>{errors.course}</span>}
       </div>
       <div>
-        <label htmlFor="additionalInfo">Additional Information:</label>
+        <label htmlFor="additional_info">Additional Information:</label>
         <textarea
-          id="additionalInfo"
-          name="additionalInfo"
-          value={formData.additionalInfo}
-          onChange={handleChange}
+          id="additional_info"
+          name="additional_info"
+          value={formData.additional_info}
+          onChange={debouncedHandleChange}
           rows="4"
         ></textarea>
       </div>

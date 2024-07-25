@@ -38,7 +38,7 @@ function PostEditForm() {
 
         is_owner ? setPostData({ title, content, image }) : history.push("/");
       } catch (err) {
-        console.log(err);
+
       }
     };
 
@@ -79,7 +79,7 @@ function PostEditForm() {
       toast.success("Post updated successfully!");
       history.push(`/posts/${id}`);
     } catch (err) {
-      console.log(err);
+
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
         toast.error("Failed to update post. Please check your inputs.");
