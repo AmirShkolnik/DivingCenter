@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
-import { axiosReq } from '../../api/axiosDefaults';
+import { axiosReq } from "../../api/axiosDefaults";
 import styles from '../../styles/BookingForm.module.css';
-import { useCurrentUser } from '../../contexts/CurrentUserContext';
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { toast } from 'react-toastify';
-import Asset from '../../components/Asset';
+import Asset from "../../components/Asset";
 import { debounce } from 'lodash';
 
 const BookingForm = () => {
@@ -14,7 +14,7 @@ const BookingForm = () => {
     date: '',
     time: '',
     course: '',
-    additional_info: '',
+    additional_info: ''
   });
   const [courses, setCourses] = useState([]);
   const [errors, setErrors] = useState({});
@@ -28,31 +28,28 @@ const BookingForm = () => {
     return () => setIsMounted(false);
   }, [currentUser, history]);
 
-  const fetchCourses = useCallback(
-    async (abortController) => {
-      try {
-        const { data } = await axiosReq.get('/courses/', {
-          signal: abortController.signal,
-        });
-        if (isMounted) {
-          console.log('Fetched courses:', data);
-          setCourses(data.results || data);
-        }
-      } catch (err) {
-        console.error('Error fetching courses:', err);
-        if (err.name === 'AbortError') {
-          return;
-        }
-        if (err.response?.status === 401 && isMounted) {
-          toast.error('Your session has expired. Please sign in again.');
-          history.push('/signin');
-        } else if (isMounted) {
-          toast.error('Failed to load courses. Please try again.');
-        }
+  const fetchCourses = useCallback(async (abortController) => {
+    try {
+      const { data } = await axiosReq.get('/courses/', {
+        signal: abortController.signal
+      });
+      if (isMounted) {
+        console.log('Fetched courses:', data);
+        setCourses(data.results || data);
       }
-    },
-    [history, isMounted]
-  );
+    } catch (err) {
+      console.error('Error fetching courses:', err);
+      if (err.name === 'AbortError') {
+        return;
+      }
+      if (err.response?.status === 401 && isMounted) {
+        toast.error('Your session has expired. Please sign in again.');
+        history.push('/signin');
+      } else if (isMounted) {
+        toast.error('Failed to load courses. Please try again.');
+      }
+    }
+  }, [history, isMounted]);
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -70,24 +67,18 @@ const BookingForm = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData(prev => ({ ...prev, [name]: value }));
     if (name === 'date') {
       const selectedDate = new Date(value);
       const today = new Date();
       today.setHours(0, 0, 0, 0);
-
+      
       if (selectedDate < today) {
-        setErrors((prev) => ({
-          ...prev,
-          date: "You can't book a date in the past",
-        }));
+        setErrors(prev => ({ ...prev, date: "You can't book a date in the past" }));
       } else if (selectedDate.getDate() !== 10) {
-        setErrors((prev) => ({
-          ...prev,
-          date: 'Bookings are only available on the 10th of each month.',
-        }));
+        setErrors(prev => ({ ...prev, date: 'Bookings are only available on the 10th of each month.' }));
       } else {
-        setErrors((prev) => ({ ...prev, date: undefined }));
+        setErrors(prev => ({ ...prev, date: undefined }));
       }
     }
   };
@@ -99,21 +90,21 @@ const BookingForm = () => {
     setErrors({});
     try {
       const formattedDate = new Date(formData.date).toISOString().split('T')[0];
-
+      
       console.log('Submitting booking with data:', {
         date: formattedDate,
         time: formData.time,
         course: parseInt(formData.course),
-        additional_info: formData.additional_info,
+        additional_info: formData.additional_info
       });
 
       const response = await axiosReq.post('/bookings/', {
         date: formattedDate,
         time: formData.time,
         course: parseInt(formData.course),
-        additional_info: formData.additional_info,
+        additional_info: formData.additional_info
       });
-
+      
       console.log('Booking response:', response);
 
       if (response.status === 201) {
