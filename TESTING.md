@@ -1,6 +1,6 @@
 # Testing
 
-This is the TESTING file for the [Fit&Fine](https://fitandfine-react-p5-f5d23da9d77c.herokuapp.com/) website.
+This is the TESTING file for the [Diving Center](https://fitandfine-react-p5-f5d23da9d77c.herokuapp.com/) website.
 
 Return back to the [README.md](README.md) file.
 
