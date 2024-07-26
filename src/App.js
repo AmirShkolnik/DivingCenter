@@ -1,10 +1,15 @@
 import React from 'react';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from 'react-router-dom';
 import styles from './App.module.css';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import NotFound from './components/NotFound';
 import Container from 'react-bootstrap/Container';
-import { Route, Switch, Redirect } from 'react-router-dom';
 import './api/axiosDefaults';
 import LandingPage from './pages/homepage/LandingPage.js';
 import SignUpForm from './pages/auth/SignUpForm';
@@ -25,13 +30,15 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import BookingForm from './pages/bookings/BookingForm';
 import BookingPage from './pages/bookings/BookingPage';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   const currentUser = useCurrentUser();
   const profile_id = currentUser?.profile_id || '';
 
   return (
-    <div className={styles.App}>
+    <Router>
+      <ScrollToTop />
       <div className={styles.App}>
         <NavBar />
         <Container className={styles.Main}>
@@ -118,24 +125,24 @@ function App() {
             <Route component={NotFound} />
           </Switch>
         </Container>
+        <Footer />
+        <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+          toastClassName={styles.customToast}
+          progressClassName={styles.customToastProgress}
+          style={{ zIndex: 9999 }}
+        />
       </div>
-      <Footer />
-      <ToastContainer
-        position="top-center"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="colored"
-        toastClassName={styles.customToast}
-        progressClassName={styles.customToastProgress}
-        style={{ zIndex: 9999 }}
-      />
-    </div>
+    </Router>
   );
 }
 
