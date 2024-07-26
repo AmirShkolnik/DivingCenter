@@ -47,19 +47,18 @@ function PostsPage({ message, filter = '' }) {
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
         <PopularProfiles mobile />
-        <i className={`fas fa-search ${styles.SearchIcon}`} />
-        <Form
-          className={styles.SearchBar}
-          onSubmit={(event) => event.preventDefault()}
-        >
-          <Form.Control
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-            type="text"
-            className="mr-sm-2"
-            placeholder="Search posts"
-          />
-        </Form>
+        <div className={styles.SearchBar}>
+          <i className={`fas fa-search ${styles.SearchIcon}`} />
+          <Form onSubmit={(event) => event.preventDefault()}>
+            <Form.Control
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              type="text"
+              className="mr-sm-2"
+              placeholder="Search posts"
+            />
+          </Form>
+        </div>
 
         {hasLoaded ? (
           <>

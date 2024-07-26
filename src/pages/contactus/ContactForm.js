@@ -74,7 +74,19 @@ const ContactForm = () => {
     try {
       let response;
       if (isEditing) {
-        response = await axiosReq.put(`/contactus/${messageId}/`, formData);
+        const deletionToken = localStorage.getItem(
+          `deletion_token_${messageId}`
+        );
+        if (!deletionToken) {
+          toast.error(
+            'Unable to update message. The deletion token is missing.'
+          );
+          return;
+        }
+        response = await axiosReq.put(
+          `/contactus/${messageId}/?deletion_token=${deletionToken}`,
+          formData
+        );
       } else {
         response = await axiosReq.post('/contactus/', formData);
       }
@@ -89,7 +101,12 @@ const ContactForm = () => {
           : 'Your message has been sent successfully!'
       );
     } catch (err) {
-      toast.error('An error occurred. Please try again.');
+      console.error('Error submitting message:', err);
+      if (err.response?.status === 403) {
+        toast.error('You do not have permission to update this message.');
+      } else {
+        toast.error('An error occurred. Please try again.');
+      }
       if (err.response?.data) {
         setErrors(err.response.data);
       }
