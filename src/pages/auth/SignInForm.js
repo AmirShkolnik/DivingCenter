@@ -15,7 +15,7 @@ import btnStyles from '../../styles/Button.module.css';
 import appStyles from '../../App.module.css';
 import { useSetCurrentUser } from '../../contexts/CurrentUserContext';
 import { useRedirect } from '../../hooks/useRedirect';
-import VideoPlayerSignIn from '../../components/Video/VideoPlayerSignIn.js';
+import VideoPlayerSignIn from '../../components/Video/VideoPlayerSignIn';
 import { toast } from 'react-toastify';
 import { setTokenTimestamp } from '../../utils/utils';
 
@@ -57,7 +57,7 @@ function SignInForm() {
   return (
     <Row className={styles.Row}>
       <Col className="my-auto p-0 p-md-2" md={6}>
-        <Container className={`${appStyles.Content} p-4 `}>
+        <Container className={`${appStyles.Content} p-4`}>
           <h1 className={styles.Header}>
             Welcome back to our diving community!
           </h1>
@@ -115,7 +115,7 @@ function SignInForm() {
         </Container>
         <Container className={`mt-3 ${appStyles.Content}`}>
           <Link className={styles.Link} to="/signup">
-            Don't have an account? <span>Sign up now!</span>
+            Don&apos;t have an account? <span>Sign up now!</span>
           </Link>
         </Container>
       </Col>

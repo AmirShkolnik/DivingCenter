@@ -122,8 +122,8 @@ const ContactForm = () => {
         <div className={styles.successMessage}>
           <h2>Message Sent Successfully!</h2>
           <p>
-            Thank you for contacting us. We've received your message and will
-            get back to you within 2 business days.
+            Thank you for contacting us. We&apos;ve received your message and
+            will get back to you within 2 business days.
           </p>
           <img
             src="../images/courses/5.webp"

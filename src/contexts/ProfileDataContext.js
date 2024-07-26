@@ -1,5 +1,4 @@
-import React from 'react';
-import { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import { axiosReq, axiosRes } from '../api/axiosDefaults';
 import { useCurrentUser } from '../contexts/CurrentUserContext';
 import { followHelper, unfollowHelper } from '../utils/utils';
@@ -38,7 +37,9 @@ export const ProfileDataProvider = ({ children }) => {
           ),
         },
       }));
-    } catch (err) {}
+    } catch (err) {
+      console.error('Error following profile:', err);
+    }
   };
 
   const handleUnfollow = async (clickedProfile) => {
@@ -59,7 +60,9 @@ export const ProfileDataProvider = ({ children }) => {
           ),
         },
       }));
-    } catch (err) {}
+    } catch (err) {
+      console.error('Error unfollowing profile:', err);
+    }
   };
 
   useEffect(() => {
@@ -72,7 +75,9 @@ export const ProfileDataProvider = ({ children }) => {
           ...prevState,
           popularProfiles: data,
         }));
-      } catch (err) {}
+      } catch (err) {
+        console.error('Error fetching popular profiles:', err);
+      }
     };
 
     handleMount();

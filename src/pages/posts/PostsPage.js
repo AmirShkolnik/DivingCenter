@@ -1,19 +1,15 @@
 import React, { useEffect, useState } from 'react';
-
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
-
 import Post from './Post';
 import Asset from '../../components/Asset';
-
 import appStyles from '../../App.module.css';
 import styles from '../../styles/PostsPage.module.css';
 import { useLocation } from 'react-router';
 import { axiosReq } from '../../api/axiosDefaults';
-
 import NoResults from '../../assets/no-results.png';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { fetchMoreData } from '../../utils/utils';
@@ -24,7 +20,6 @@ function PostsPage({ message, filter = '' }) {
   const [hasLoaded, setHasLoaded] = useState(false);
   const { pathname } = useLocation();
   const currentUser = useCurrentUser();
-
   const [query, setQuery] = useState('');
 
   useEffect(() => {
@@ -33,7 +28,9 @@ function PostsPage({ message, filter = '' }) {
         const { data } = await axiosReq.get(`/posts/?${filter}search=${query}`);
         setPosts(data);
         setHasLoaded(true);
-      } catch (err) {}
+      } catch (err) {
+        console.error('Error fetching posts:', err);
+      }
     };
 
     setHasLoaded(false);
@@ -68,14 +65,15 @@ function PostsPage({ message, filter = '' }) {
           <>
             {posts.results.length ? (
               <InfiniteScroll
-                children={posts.results.map((post) => (
-                  <Post key={post.id} {...post} setPosts={setPosts} />
-                ))}
                 dataLength={posts.results.length}
                 loader={<Asset spinner />}
                 hasMore={!!posts.next}
                 next={() => fetchMoreData(posts, setPosts)}
-              />
+              >
+                {posts.results.map((post) => (
+                  <Post key={post.id} {...post} setPosts={setPosts} />
+                ))}
+              </InfiniteScroll>
             ) : (
               <Container className={appStyles.Content}>
                 <Asset src={NoResults} message={message} />

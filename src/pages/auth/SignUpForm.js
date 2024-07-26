@@ -83,13 +83,13 @@ const SignUpForm = () => {
   return (
     <Row className={styles.Row}>
       <Col className="my-auto py-2 p-md-2" md={6}>
-        <Container className={`${appStyles.Content} p-4 `}>
+        <Container className={`${appStyles.Content} p-4`}>
           <h1 className={styles.Header}>Join Our Diving Community</h1>
           <p className={styles.SubHeader}>
             Dive into a world of adventure! Sign up now to connect with fellow
             divers, share your underwater experiences, and discover new diving
-            spots. Whether you're a beginner or an experienced diver, there's a
-            place for you in our community.
+            spots. Whether you&apos;re a beginner or an experienced diver,
+            there&apos;s a place for you in our community.
           </p>
 
           <Form onSubmit={handleSubmit}>

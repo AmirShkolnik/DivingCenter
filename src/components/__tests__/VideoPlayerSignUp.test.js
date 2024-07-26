@@ -3,13 +3,15 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import VideoPlayer from '../Video/VideoPlayerSignUp';
 
-// Mock the Cloudinary library
 jest.mock('@cloudinary/react', () => ({
-  AdvancedVideo: ({ cldVid, ...props }) => (
-    <div data-testid="mock-advanced-video" {...props}>
-      Mock AdvancedVideo
-    </div>
-  ),
+  AdvancedVideo: ({ cldVid, publicId, ...divProps }) => {
+    // eslint-disable-next-line no-unused-vars
+    return (
+      <div data-testid="mock-advanced-video" data-cldvid={cldVid} {...divProps}>
+        Mock AdvancedVideo
+      </div>
+    );
+  },
 }));
 
 describe('VideoPlayer', () => {
@@ -21,7 +23,7 @@ describe('VideoPlayer', () => {
   });
 
   test('renders the AdvancedVideo component with correct props', () => {
-    render(<VideoPlayer id="video123" publicId="public123" />);
+    render(<VideoPlayer id="video123" publicd="public123" />);
 
     // Check if the AdvancedVideo component is rendered
     const videoElement = screen.getByTestId('mock-advanced-video');

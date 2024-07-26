@@ -8,7 +8,7 @@ const cld = new Cloudinary({
   },
 });
 
-const VideoPlayer = ({ id, publicId, ...props }) => {
+const VideoPlayer = (props) => {
   return (
     <div
       style={{

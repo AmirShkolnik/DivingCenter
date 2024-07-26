@@ -13,7 +13,14 @@ export const fetchMoreData = async (resource, setResource) => {
           : [...acc, cur];
       }, prevResource.results),
     }));
-  } catch (err) {}
+  } catch (err) {
+    console.error('Error fetching more data:', err);
+    // Optionally handle the error, e.g., set an error state or notify the user
+    // setResource((prevResource) => ({
+    //   ...prevResource,
+    //   error: 'Failed to fetch more data',
+    // }));
+  }
 };
 
 export const followHelper = (profile, clickedProfile, following_id) => {

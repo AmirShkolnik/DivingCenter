@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { toast } from 'react-toastify';
-
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
@@ -8,17 +7,14 @@ import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Alert from 'react-bootstrap/Alert';
 import Image from 'react-bootstrap/Image';
-
 import styles from '../../styles/PostCreateEditForm.module.css';
 import appStyles from '../../App.module.css';
 import btnStyles from '../../styles/Button.module.css';
-
 import { useHistory, useParams } from 'react-router';
 import { axiosReq } from '../../api/axiosDefaults';
 
 function PostEditForm() {
   const [errors, setErrors] = useState({});
-
   const [postData, setPostData] = useState({
     title: '',
     content: '',
@@ -36,8 +32,15 @@ function PostEditForm() {
         const { data } = await axiosReq.get(`/posts/${id}/`);
         const { title, content, image, is_owner } = data;
 
-        is_owner ? setPostData({ title, content, image }) : history.push('/');
-      } catch (err) {}
+        if (is_owner) {
+          setPostData({ title, content, image });
+        } else {
+          history.push('/');
+        }
+      } catch (err) {
+        console.error('Error fetching post data:', err);
+        toast.error('Failed to load post data.');
+      }
     };
 
     handleMount();
@@ -52,10 +55,13 @@ function PostEditForm() {
 
   const handleChangeImage = (event) => {
     if (event.target.files.length) {
-      URL.revokeObjectURL(image);
+      const newImageUrl = URL.createObjectURL(event.target.files[0]);
+      if (image) {
+        URL.revokeObjectURL(image);
+      }
       setPostData({
         ...postData,
-        image: URL.createObjectURL(event.target.files[0]),
+        image: newImageUrl,
       });
       toast.info('Image selected. Remember to save your changes!');
     }
@@ -64,11 +70,10 @@ function PostEditForm() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
-
     formData.append('title', title);
     formData.append('content', content);
 
-    if (imageInput?.current?.files[0]) {
+    if (imageInput.current?.files[0]) {
       formData.append('image', imageInput.current.files[0]);
     }
 
@@ -78,7 +83,7 @@ function PostEditForm() {
       history.push(`/posts/${id}`);
     } catch (err) {
       if (err.response?.status !== 401) {
-        setErrors(err.response?.data);
+        setErrors(err.response?.data || {});
         toast.error('Failed to update post. Please check your inputs.');
       }
     }
@@ -124,10 +129,10 @@ function PostEditForm() {
           toast.info('Edit cancelled');
         }}
       >
-        cancel
+        Cancel
       </Button>
       <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
-        save
+        Save
       </Button>
     </div>
   );

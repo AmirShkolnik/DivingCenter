@@ -80,6 +80,12 @@ const Post = (props) => {
     }
   };
 
+  const handleKeyPress = (event, action) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      action();
+    }
+  };
+
   return (
     <Card className={styles.Post}>
       <Card.Body>
@@ -109,16 +115,26 @@ const Post = (props) => {
           {is_owner ? (
             <OverlayTrigger
               placement="top"
-              overlay={<Tooltip>You can't like your own post!</Tooltip>}
+              overlay={<Tooltip>You can&apos;t like your own post!</Tooltip>}
             >
               <i className="far fa-heart" />
             </OverlayTrigger>
           ) : like_id ? (
-            <span onClick={handleUnlike}>
+            <span
+              onClick={handleUnlike}
+              onKeyPress={(e) => handleKeyPress(e, handleUnlike)}
+              role="button"
+              tabIndex={0}
+            >
               <i className={`fas fa-heart ${styles.Heart}`} />
             </span>
           ) : currentUser ? (
-            <span onClick={handleLike}>
+            <span
+              onClick={handleLike}
+              onKeyPress={(e) => handleKeyPress(e, handleLike)}
+              role="button"
+              tabIndex={0}
+            >
               <i className={`far fa-heart ${styles.HeartOutline}`} />
             </span>
           ) : (

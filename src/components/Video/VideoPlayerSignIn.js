@@ -8,7 +8,7 @@ const cld = new Cloudinary({
   },
 });
 
-const VideoPlayer = ({ id, publicId, ...props }) => {
+const VideoPlayerSignIn = (props) => {
   return (
     <div
       style={{
@@ -37,4 +37,4 @@ const VideoPlayer = ({ id, publicId, ...props }) => {
   );
 };
 
-export default VideoPlayer;
+export default VideoPlayerSignIn;
