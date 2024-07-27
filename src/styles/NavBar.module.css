@@ -44,8 +44,33 @@ a:hover i {
   text-decoration: none;
 }
 
-.DropdownToggle:hover {
+.DropdownToggle::after {
+  color: white !important;
+}
+
+.customDropdown > a::after {
+  color: white !important;
+  border-top-color: white !important;
+}
+
+.customDropdown > a:hover::after {
+  color: #b99a45 !important;
+  border-top-color: #b99a45 !important;
+}
+
+.DropdownToggle:hover,
+.DropdownToggle:hover::after {
   color: #b99a45;
+}
+
+.DropdownToggle {
+  display: inline-flex;
+  align-items: center;
+}
+
+.Dropdown > div[class*="dropdown-menu"] {
+  background-color: #0d5589 !important;
+  border: 1px solid #c7ae6a !important;
 }
 
 .DropdownMenu {
@@ -53,13 +78,7 @@ a:hover i {
   border: 1px solid #c7ae6a !important;
 }
 
-.Dropdown :global(.dropdown-menu.show) {
-  background-color: #0d5589 !important;
-  border: 1px solid #c7ae6a !important;
-}
-
-.DropdownItem,
-.Dropdown :global(.dropdown-item) {
+.DropdownItem {
   background-color: #0d5589 !important;
   color: white !important;
   transition:
@@ -68,9 +87,8 @@ a:hover i {
 }
 
 .DropdownItem:hover,
-.Dropdown :global(.dropdown-item:hover),
-.Dropdown :global(.dropdown-item:focus),
-.Dropdown :global(.dropdown-item.active) {
+.DropdownItem:focus,
+.DropdownItem.active {
   color: #ffffff !important;
   background-color: #b99a45 !important;
 }
@@ -82,12 +100,4 @@ a:hover i {
 
 .DropdownItem:hover i {
   color: #ffffff;
-}
-
-.Dropdown :global(.dropdown-toggle::after) {
-  display: none;
-}
-
-.DropdownArrow {
-  color: white;
 }

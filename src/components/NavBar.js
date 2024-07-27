@@ -47,7 +47,7 @@ const NavBar = () => {
   const loggedInIcons = (
     <>
       <NavDropdown
-        className={styles.Dropdown}
+        className={`${styles.Dropdown} ${styles.customDropdown}`}
         show={dropdownOpen}
         onToggle={handleDropdownToggle}
         title={
@@ -57,7 +57,6 @@ const NavBar = () => {
               text={currentUser?.username || 'Profile'}
               height={40}
             />
-            <i className={`fas fa-caret-down ${styles.DropdownArrow}`}></i>
           </span>
         }
         id="dropdown-custom-components"
