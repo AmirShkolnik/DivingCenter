@@ -5,7 +5,6 @@ import styles from '../../styles/BookingForm.module.css';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import { toast } from 'react-toastify';
 import Asset from '../../components/Asset';
-import { debounce } from 'lodash';
 
 const BookingForm = () => {
   const history = useHistory();
@@ -91,8 +90,6 @@ const BookingForm = () => {
       }
     }
   };
-
-  const debouncedHandleChange = debounce(handleChange, 300);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -201,9 +198,9 @@ const BookingForm = () => {
           id="additional_info"
           name="additional_info"
           value={formData.additional_info}
-          onChange={debouncedHandleChange}
+          onChange={handleChange}
           rows="4"
-        ></textarea>
+        />
       </div>
       <button className={styles.Button} type="submit">
         Book Now
