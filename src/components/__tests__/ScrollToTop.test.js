@@ -12,13 +12,41 @@ import PostCreateForm from '../../pages/posts/PostCreateForm';
 import ProfilePage from '../../pages/profiles/ProfilePage';
 
 // Mock dependencies
-jest.mock('../../pages/courses/CourseSingle', () => () => <div>Course Single Page</div>);
-jest.mock('../../pages/auth/SignInForm', () => () => <div>Sign In Form</div>);
-jest.mock('../../pages/auth/SignUpForm', () => () => <div>Sign Up Form</div>);
-jest.mock('../../pages/posts/PostPage', () => () => <div>Post Page</div>);
-jest.mock('../../pages/posts/PostEditForm', () => () => <div>Post Edit Form</div>);
-jest.mock('../../pages/posts/PostCreateForm', () => () => <div>Post Create Form</div>);
-jest.mock('../../pages/profiles/ProfilePage', () => () => <div>Profile Page</div>);
+jest.mock('../../pages/courses/CourseSingle', () => {
+  const MockCourseSingle = () => <div>Course Single Page</div>;
+  MockCourseSingle.displayName = 'MockCourseSingle';
+  return MockCourseSingle;
+});
+jest.mock('../../pages/auth/SignInForm', () => {
+  const MockSignInForm = () => <div>Sign In Form</div>;
+  MockSignInForm.displayName = 'MockSignInForm';
+  return MockSignInForm;
+});
+jest.mock('../../pages/auth/SignUpForm', () => {
+  const MockSignUpForm = () => <div>Sign Up Form</div>;
+  MockSignUpForm.displayName = 'MockSignUpForm';
+  return MockSignUpForm;
+});
+jest.mock('../../pages/posts/PostPage', () => {
+  const MockPostPage = () => <div>Post Page</div>;
+  MockPostPage.displayName = 'MockPostPage';
+  return MockPostPage;
+});
+jest.mock('../../pages/posts/PostEditForm', () => {
+  const MockPostEditForm = () => <div>Post Edit Form</div>;
+  MockPostEditForm.displayName = 'MockPostEditForm';
+  return MockPostEditForm;
+});
+jest.mock('../../pages/posts/PostCreateForm', () => {
+  const MockPostCreateForm = () => <div>Post Create Form</div>;
+  MockPostCreateForm.displayName = 'MockPostCreateForm';
+  return MockPostCreateForm;
+});
+jest.mock('../../pages/profiles/ProfilePage', () => {
+  const MockProfilePage = () => <div>Profile Page</div>;
+  MockProfilePage.displayName = 'MockProfilePage';
+  return MockProfilePage;
+});
 
 // Mock the scrollTo function
 beforeAll(() => {
@@ -56,7 +84,6 @@ it('should scroll to the top when pathname changes', () => {
     </Router>
   );
 
-  // Check initial route
   expect(window.scrollTo).toHaveBeenCalledWith(0, 0);
   expect(window.scrollTo).toHaveBeenCalledTimes(1);
 
@@ -70,7 +97,7 @@ it('should scroll to the top when pathname changes', () => {
     '/posts/create',
     '/posts/1',
     '/posts/1/edit',
-    '/profiles/1'
+    '/profiles/1',
   ];
 
   routes.forEach((route, index) => {
@@ -79,6 +106,6 @@ it('should scroll to the top when pathname changes', () => {
     });
 
     expect(window.scrollTo).toHaveBeenCalledWith(0, 0);
-    expect(window.scrollTo).toHaveBeenCalledTimes(index + 2); // +2 because of initial call
+    expect(window.scrollTo).toHaveBeenCalledTimes(index + 2);
   });
 });
