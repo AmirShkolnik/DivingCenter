@@ -149,63 +149,153 @@ These styles are essential for ensuring optimal font rendering and custom scroll
 
 #### ESLint
 
+Certainly! Here is a detailed step-by-step guide for JavaScript validation in your React project using ESLint and Prettier, written in simple English for an assessment team to understand:
+
+---
+
+## JavaScript Validation
+
+### ESLint
+
 **Tool Used:** [ESLint](https://eslint.org/)
 
 **Purpose:** To detect errors and potential problems in the JavaScript code, ensuring that all scripts run efficiently and are error-free. ESLint helps enforce consistent coding styles and best practices by identifying and fixing problematic patterns in JavaScript code.
 
-**Process:** JavaScript code is run through ESLint to identify issues related to syntax, deprecated methods, and other inefficiencies. The validation steps include running `npm test`, `npx eslint .`, and `npm run lint`.
+**Process:** JavaScript code is run through [ESLint](https://eslint.org/) to identify issues related to syntax, deprecated methods, and other inefficiencies. The validation steps include running `npm test`, `npx eslint .`, and `npm run lint`.
 
-#### Steps to Run JavaScript Validation
+### Steps to Run JavaScript Validation
 
 1. **Install Dependencies:**
-   Ensure all required packages are installed by running:
-
-   ```sh
+   Ensure all necessary dependencies are installed by running:
+   ```bash
    npm install
    ```
 
-2. **Run ESLint:**
-   To run ESLint across the project and identify any issues, use:
+2. **Configuration Files:**
+   - **.eslintrc.json**: This file contains the configuration for ESLint.
+     ```json
+     {
+       "env": {
+         "browser": true,
+         "es2021": true,
+         "jest": true,
+         "node": true
+       },
+       "extends": [
+         "eslint:recommended",
+         "plugin:react/recommended",
+         "plugin:react-hooks/recommended",
+         "plugin:jsx-a11y/recommended",
+         "plugin:prettier/recommended"
+       ],
+       "parser": "@babel/eslint-parser",
+       "parserOptions": {
+         "requireConfigFile": false,
+         "babelOptions": {
+           "presets": ["@babel/preset-react"]
+         },
+         "ecmaFeatures": {
+           "jsx": true
+         },
+         "ecmaVersion": 2020,
+         "sourceType": "module"
+       },
+       "plugins": ["react", "react-hooks", "jsx-a11y", "prettier"],
+       "rules": {
+         "react/prop-types": "off",
+         "no-unused-vars": ["warn", { "args": "none" }],
+         "react/react-in-jsx-scope": "off",
+         "no-undef": "error",
+         "no-empty": "warn",
+         "prettier/prettier": "error"
+       },
+       "settings": {
+         "react": {
+           "version": "detect"
+         }
+       }
+     }
+     ```
 
-   ```sh
-   npx eslint .
+   - **package.json**: This file [package.json](https://github.com/AmirShkolnik/DivingCenter/blob/main/package.json) includes scripts for running ESLint and Prettier.
+     ```json
+     {
+       "scripts": {
+         "lint": "eslint 'src/**/*.{js,jsx}'",
+         "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,scss,md}'"
+       }
+     }
+     ```
+
+   - **.prettierrc.json**: This file [.prettierrc.json](https://github.com/AmirShkolnik/DivingCenter/blob/main/.prettierrc.json) contains the configuration for Prettier.
+     ```json
+     {
+       "singleQuote": true,
+       "trailingComma": "es5",
+       "printWidth": 80
+     }
+     ```
+
+3. **Run ESLint:**
+   To check for linting errors, run:
+   ```bash
+   npx eslint src/
    ```
 
-   ![JS Validation Screenshot](documentation/validation/eserror.JPG)
-   ![JS Validation Screenshot](documentation/validation/esnoerror.JPG)
+   This command will lint all JavaScript and JSX files in the `src` directory.
+<details>
+<summary>Click to View npx eslint Screenshot</summary>
 
-3. **Run Lint Script:**
-   To run the lint script defined in `package.json`, use:
+**npx eslint src/**
 
-   ```sh
-   npm run lint
+![npx eslint src/ Screenshot](doc/testing/divingreact/eslint/eslint.png)
+
+</details>
+&nbsp;
+
+4. **Fix Linting Errors:**
+   To automatically fix some of the linting errors, run:
+   ```bash
+   npm run lint -- --fix
    ```
 
-   ![JS Validation Screenshot](documentation/validation/linterror.JPG)
+   This command uses the `--fix` option to automatically correct issues that ESLint can fix.
 
-   **After fixing all errors and warnings there are no 0 errors and warnings.**
-   ![JS Validation Screenshot](documentation/validation/lintnoerror.JPG)
+5. **Run Prettier:**
+   To format the code according to Prettier's rules, run:
+   ```bash
+   npm run format
+   ```
 
-4. **Run Tests:**
-   To ensure all tests are passing and there are no issues with the codebase, run:
-   ```sh
+   This command will format all specified file types in the `src` directory.
+
+6. **Run Tests:**
+   To ensure that the code is not only linted but also passes all tests, run:
+   ```bash
    npm test
    ```
-   ![JS Validation Screenshot](documentation/validation/test.JPG)
 
-#### Prettier for Code Formatting
+   This command will run all tests defined in your project.
 
-To maintain a consistent code style across the project, Prettier is used to automatically format code. Run the following command to format all code files:
+<details>
+<summary>Click to View npm test Screenshot</summary>
 
-```sh
-npm run format
-```
+**npm test**
 
-![JS Validation Screenshot](documentation/validation/prettier.JPG)
-![JS Validation Screenshot](documentation/validation/prettier1.JPG)
-![JS Validation Screenshot](documentation/validation/prettier2.JPG)
-![JS Validation Screenshot](documentation/validation/prettier3.JPG)
-![JS Validation Screenshot](documentation/validation/prettier4.JPG)
+![npm test Screenshot](doc/testing/divingreact/npmtest/npmtest.png)
+
+</details>
+
+### Summary of Validation Steps
+
+1. **Install Dependencies:** Ensure all necessary packages are installed.
+2. **Configure ESLint and Prettier:** Use `.eslintrc.json` and `.prettierrc.json` for configuration.
+3. **Run ESLint:** Check for linting errors in the `src` directory.
+4. **Fix Linting Errors:** Use the `--fix` option to automatically correct issues.
+5. **Run Prettier:** Format the code according to Prettier's rules.
+6. **Run Tests:** Ensure all tests pass.
+
+By following these steps, you can ensure that your JavaScript code is consistently formatted, free of common errors, and adheres to best practices.
 
 ### Lighthouse
 
