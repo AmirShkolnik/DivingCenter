@@ -116,9 +116,13 @@ const BookingForm = () => {
         history.push('/signin');
       } else if (err.response && err.response.data) {
         setErrors(err.response.data);
-        Object.entries(err.response.data).forEach(([key, value]) => {
-          toast.error(`${key}: ${Array.isArray(value) ? value[0] : value}`);
-        });
+        if (err.response.data.non_field_errors) {
+          toast.error('Try again: ' + err.response.data.non_field_errors[0]);
+        } else {
+          Object.entries(err.response.data).forEach(([key, value]) => {
+            toast.error(`${key}: ${Array.isArray(value) ? value[0] : value}`);
+          });
+        }
       } else {
         setErrors({ message: 'An error occurred while creating the booking.' });
         toast.error('Failed to submit booking. Please try again.');
