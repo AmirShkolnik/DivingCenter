@@ -34,7 +34,6 @@ const BookingForm = () => {
           signal: abortController.signal,
         });
         if (isMounted) {
-          console.log('Fetched courses:', data);
           setCourses(data.results || data);
         }
       } catch (err) {
@@ -97,21 +96,12 @@ const BookingForm = () => {
     try {
       const formattedDate = new Date(formData.date).toISOString().split('T')[0];
 
-      console.log('Submitting booking with data:', {
-        date: formattedDate,
-        time: formData.time,
-        course: parseInt(formData.course),
-        additional_info: formData.additional_info,
-      });
-
       const response = await axiosReq.post('/bookings/', {
         date: formattedDate,
         time: formData.time,
         course: parseInt(formData.course),
         additional_info: formData.additional_info,
       });
-
-      console.log('Booking response:', response);
 
       if (response.status === 201) {
         toast.success('Booking submitted successfully!');

@@ -117,7 +117,7 @@
 
 .DeleteRed {
   background-color: #dc3545;
-  border-color: #dc3545;
+  border-color: #c82333;
 }
 
 .DeleteRed:hover {
@@ -261,18 +261,18 @@
 
 .modalSecondaryButton {
   background-color: #0d5589;
-  border-color: #0d5589;
+  border-color: #0a4470;
   color: white;
 }
 
 .modalSecondaryButton:hover {
   background-color: #b99a45;
-  border-color: #b99a45;
+  border-color: #a68a3e;
 }
 
 .modalDangerButton {
   background-color: #dc3545;
-  border-color: #dc3545;
+  border-color: #c82333;
 }
 
 .modalDangerButton:hover {

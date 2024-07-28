@@ -44,10 +44,26 @@ By the end of this, you'll see how much care we've put into making sure our divi
 
 - **Tool Used:** [HTML W3C Markup Validator](https://validator.w3.org/)
 - **Purpose:** Validates the HTML code of the application to ensure it is free from syntax errors and adheres to the standards set by the World Wide Web Consortium (W3C).
-- **Process:** All HTML pages of Fit&Fine are checked through the W3C validator to identify and fix any markup errors or warnings.
+- **Process:** All HTML pages of Diving Center are checked through the W3C validator to identify and fix any markup errors or warnings.
 - Validatuion results with zero errors and warnings in **index.html**.
 
-![HTML Validation Screenshot](documentation/validation/indexhtml.JPG)
+<details>
+<summary>Click to View HTML Validation Screenshot</summary>
+
+**index.html**
+
+![HTML Validation Screenshot](doc/testing/divingreact/html/html.png)
+
+</details>
+
+**HTML Validation Bugs and Solutions**
+
+This table provides a clear overview of the issues, solutions, and resources for the HTML validation bugs we used.
+
+| Model       | Bug Description                                                                                       | Solution                                                                                                                               | Resource                                                                                                            | Solved |
+|-------------|-------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------|--------|
+| index.html Page   | Trailing slash on void elements has no effect and interacts badly with unquoted attribute values.     | Removed trailing slashes from void elements like `<meta>`, `<link>`, and `<script>` tags.                                              | [MDN Web Docs: HTML Void Elements](https://developer.mozilla.org/en-US/docs/Glossary/Void_element)                  | ✅     |
+| index.html Page   | The `type` attribute is unnecessary for JavaScript resources.                                         | Removed the `type="text/javascript"` attribute from the `<script>` tag, as it is unnecessary for JavaScript resources.                  | [MDN Web Docs: Script](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script)                            | ✅     |
 
 ### CSS Validation
 
@@ -55,25 +71,75 @@ By the end of this, you'll see how much care we've put into making sure our divi
 - **Purpose:** Ensures the CSS code is compliant with W3C standards, free from syntax errors, and follows best practices for styling.
 - **Process:** All CSS files are validated through the W3C CSS Validation Service to identify and rectify any issues.
 
-![CSS Validation Screenshot](documentation/validation/css.JPG)
+<details>
+<summary>Click to View CSS Validation Screenshot</summary>
 
-**There were '0' errors and '0' warnings on all other module.css files, except few warnings in index.css and App.module.css which are explained below.**
+**index.html**
 
-**CSS Warnings**
-This project includes custom styles that make use of vendor-specific extensions and pseudo-elements to ensure a consistent and polished user experience across various browsers and operating systems. During the linting process, certain warnings may appear, indicating the use of these vendor-specific extensions. These warnings are expected and can be safely ignored.
+![CSS Validation Screenshot](doc/testing/divingreact/css/no-error.png)
 
-The following vendor-specific extensions and pseudo-elements are used in the project:
+</details>
 
-1. **Font and Font Smoothing:**
+This table shows that all CSS files in the `src/styles` directory have passed the W3C CSS validation. The "Validation Link" column provides clickable links to the W3C CSS Validator where users can manually input the CSS content for validation if they wish to verify or re-run the tests.
 
+- **Note:** All files passed the W3C validator test. The CourseSingle.module.css file had warnings that were addressed and now passes the validation.
+
+- **CSS Warnings:** This project includes custom styles, for example in [index.css](#explanation-for-indexcss), that make use of vendor-specific extensions and pseudo-elements. These ensure a consistent and polished user experience across various browsers and operating systems. During the linting process, certain warnings may appear, indicating the use of these vendor-specific extensions. These warnings are expected and can be safely ignored.
+
+| File | Bug Description or Warning | Solution | Resource | Pass/Fail |
+|------|---------------------------|----------|----------|-----------|
+| [Asset.module.css](https://github.com/your-repo-name/src/styles/Asset.module.css) | N/A | N/A | N/A | ✅ |
+| [Avatar.module.css](https://github.com/your-repo-name/src/styles/Avatar.module.css) | N/A | N/A | N/A | ✅ |
+| [BookingForm.module.css](https://github.com/your-repo-name/src/styles/BookingForm.module.css) | N/A | N/A | N/A | ✅ |
+| [BookingPage.module.css](https://github.com/your-repo-name/src/styles/BookingPage.module.css) | N/A | N/A | N/A | ✅ |
+| [Button.module.css](https://github.com/your-repo-name/src/styles/Button.module.css) | N/A | N/A | N/A | ✅ |
+| [Comment.module.css](https://github.com/your-repo-name/src/styles/Comment.module.css) | N/A | N/A | N/A | ✅ |
+| [CommentCreateEditForm.module.css](https://github.com/your-repo-name/src/styles/CommentCreateEditForm.module.css) | N/A | N/A | N/A | ✅ |
+| [ContactForm.module.css](https://github.com/your-repo-name/src/styles/ContactForm.module.css) | N/A | N/A | N/A | ✅ |
+| [CourseSingle.module.css](https://github.com/your-repo-name/src/styles/CourseSingle.module.css) | Same color for background-color and border-color | Changed border-color to a different shade | [css-tricks.com](https://css-tricks.com/almanac/properties/b/border/) | ✅ |
+| [CoursesPage.module.css](https://github.com/your-repo-name/src/styles/CoursesPage.module.css) | N/A | N/A | N/A | ✅ |
+| [Footer.module.css](https://github.com/your-repo-name/src/styles/Footer.module.css) | N/A | N/A | N/A | ✅ |
+| [index.css](https://github.com/your-repo-name/src/index.css) | Vendor-specific properties and font names | Warnings left as is (see explanation) | [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix) | ⚠️ |
+| [LandingPage.module.css](https://github.com/your-repo-name/src/styles/LandingPage.module.css) | N/A | N/A | N/A | ✅ |
+| [MoreDropdown.module.css](https://github.com/your-repo-name/src/styles/MoreDropdown.module.css) | N/A | N/A | N/A | ✅ |
+| [NavBar.module.css](https://github.com/your-repo-name/src/styles/NavBar.module.css) | N/A | N/A | N/A | ✅ |
+| [NotFound.module.css](https://github.com/your-repo-name/src/styles/NotFound.module.css) | N/A | N/A | N/A | ✅ |
+| [Post.module.css](https://github.com/your-repo-name/src/styles/Post.module.css) | N/A | N/A | N/A | ✅ |
+| [PostCreateEditForm.module.css](https://github.com/your-repo-name/src/styles/PostCreateEditForm.module.css) | N/A | N/A | N/A | ✅ |
+| [PostsPage.module.css](https://github.com/your-repo-name/src/styles/PostsPage.module.css) | N/A | N/A | N/A | ✅ |
+| [Profile.module.css](https://github.com/your-repo-name/src/styles/Profile.module.css) | N/A | N/A | N/A | ✅ |
+| [ProfilePage.module.css](https://github.com/your-repo-name/src/styles/ProfilePage.module.css) | N/A | N/A | N/A | ✅ |
+| [SignInUpForm.module.css](https://github.com/your-repo-name/src/styles/SignInUpForm.module.css) | N/A | N/A | N/A | ✅ |
+
+## **Explanation for index.css:**
+
+The warnings in index.css are related to vendor-specific properties and font names. We are leaving these warnings as is for the following reasons:
+
+1. **Vendor-specific properties** (-webkit-font-smoothing, -moz-osx-font-smoothing):
+   - These properties are crucial for consistent font rendering across different browsers.
+   - They improve text legibility, especially on macOS and iOS devices.
+   - While they are non-standard, they are widely used and accepted in professional web development.
+
+2. **System font stack** (-apple-system, BlinkMacSystemFont, etc.):
+   - This approach uses system fonts, which improves performance and provides a native look and feel.
+   - It's a common and recommended practice in modern web development.
+   - While some of these font names are vendor-specific, they ensure the best possible font on each operating system.
    - `-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue',sans-serif`
    - `-webkit-font-smoothing`
    - `-moz-osx-font-smoothing`
 
-2. **Custom Scrollbar Styles for WebKit Browsers:**
+3. **Cross-browser compatibility**:
+   - These properties and font names ensure a consistent and high-quality user experience across different browsers and operating systems.
+   - Removing them could lead to inconsistent rendering on various platforms.
    - `::-webkit-scrollbar`
    - `::-webkit-scrollbar-track`
    - `::-webkit-scrollbar-thumb`
+
+4. **Industry standard practice**:
+   - Many major websites and frameworks use similar approaches for font smoothing and system font stacks.
+   - It's considered a best practice for balancing performance, aesthetics, and cross-platform consistency.
+
+While these warnings are flagged by the W3C validator, they represent a case where practical web development needs sometimes diverge from strict standards adherence. The benefits of using these properties outweigh the drawbacks of having validator warnings in this specific case.
 
 These styles are essential for ensuring optimal font rendering and custom scrollbar appearance, particularly in WebKit-based browsers (such as Chrome and Safari).
 
