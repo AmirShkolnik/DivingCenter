@@ -26,6 +26,7 @@ function CourseSingle() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
+  const [showUpdateConfirmation, setShowUpdateConfirmation] = useState(false);
 
   useEffect(() => {
     const fetchCourse = async () => {
@@ -54,12 +55,20 @@ function CourseSingle() {
     fetchCourse();
   }, [slug, currentUser]);
 
-  const handleSubmitReview = async (event) => {
+  const handleSubmitReview = (event) => {
     event.preventDefault();
     if (review.rating === 0) {
       toast.error('Please select a star rating before submitting your review.');
       return;
     }
+    if (isEditing) {
+      setShowUpdateConfirmation(true);
+    } else {
+      submitReview();
+    }
+  };
+
+  const submitReview = async () => {
     try {
       let data;
       if (isEditing) {
@@ -81,7 +90,6 @@ function CourseSingle() {
         setUserReview(data);
         toast.success('Review submitted successfully!');
       }
-
       setCourse((prevCourse) => {
         const updatedReviews = isEditing
           ? prevCourse.reviews.map((rev) => (rev.id === data.id ? data : rev))
@@ -92,10 +100,10 @@ function CourseSingle() {
           average_rating: calculateAverageRating(updatedReviews),
         };
       });
-
       setReview({ content: '', rating: 0 });
       setShowReviewForm(false);
       setIsEditing(false);
+      setShowUpdateConfirmation(false);
     } catch (err) {
       setError(err.response?.data?.detail || 'Failed to submit review');
       toast.error('Failed to submit review. Please try again.');
@@ -255,13 +263,12 @@ function CourseSingle() {
                     {isEditing ? 'Update Review' : 'Submit Review'}
                   </Button>
                   <Button
-                    variant="secondary"
                     onClick={() => {
                       setIsEditing(false);
                       setShowReviewForm(false);
                       toast.info('Review cancelled.');
                     }}
-                    className={`${styles.Button} ${styles.DeleteRed}`}
+                    className={`${styles.Button} ${styles.modalCancelButton}`}
                   >
                     Cancel
                   </Button>
@@ -293,7 +300,7 @@ function CourseSingle() {
                       </Button>
                       <Button
                         onClick={() => setShowDeleteConfirmation(true)}
-                        className={`${styles.Button} ${styles.DeleteRed}`}
+                        className={`${styles.Button} ${styles.modalDeleteButton}`}
                       >
                         Delete
                       </Button>
@@ -309,19 +316,74 @@ function CourseSingle() {
         show={showDeleteConfirmation}
         onHide={() => setShowDeleteConfirmation(false)}
       >
-        <Modal.Header closeButton>
-          <Modal.Title>Confirm Delete</Modal.Title>
+        <Modal.Header className={styles.modalHeader}>
+          <Modal.Title className={styles.modalTitle}>
+            Confirm Delete
+          </Modal.Title>
+          <button
+            type="button"
+            className={styles.modalCloseButton}
+            onClick={() => setShowDeleteConfirmation(false)}
+            aria-label="Close"
+          >
+            &times;
+          </button>
         </Modal.Header>
-        <Modal.Body>Are you sure you want to delete your review?</Modal.Body>
-        <Modal.Footer>
+        <Modal.Body className={styles.modalBody}>
+          Are you sure you want to delete your review?
+        </Modal.Body>
+        <Modal.Footer className={styles.modalFooter}>
           <Button
             variant="secondary"
             onClick={() => setShowDeleteConfirmation(false)}
+            className={styles.modalCancelButton}
           >
             Cancel
           </Button>
-          <Button variant="danger" onClick={handleDeleteReview}>
+          <Button
+            variant="danger"
+            onClick={handleDeleteReview}
+            className={styles.modalDeleteButton}
+          >
             Delete
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+      <Modal
+        show={showUpdateConfirmation}
+        onHide={() => setShowUpdateConfirmation(false)}
+      >
+        <Modal.Header className={styles.modalHeader}>
+          <Modal.Title className={styles.modalTitle}>
+            Confirm Update
+          </Modal.Title>
+          <button
+            type="button"
+            className={styles.modalCloseButton}
+            onClick={() => setShowUpdateConfirmation(false)}
+            aria-label="Close"
+          >
+            &times;
+          </button>
+        </Modal.Header>
+        <Modal.Body className={styles.modalBody}>
+          Are you sure you want to update your review?
+        </Modal.Body>
+        <Modal.Footer className={styles.modalFooter}>
+          <Button
+            variant="secondary"
+            onClick={() => setShowUpdateConfirmation(false)}
+            className={styles.modalCancelButton}
+          >
+            Cancel
+          </Button>
+          <Button
+            variant="primary"
+            onClick={submitReview}
+            className={styles.modalPrimaryButton}
+          >
+            Update
           </Button>
         </Modal.Footer>
       </Modal>
