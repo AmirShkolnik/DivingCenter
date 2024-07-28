@@ -42,11 +42,6 @@ By the end of this, you'll see how much care we've put into making sure our divi
 
 ### HTML Validation
 
-- **Tool Used:** [HTML W3C Markup Validator](https://validator.w3.org/)
-- **Purpose:** Validates the HTML code of the application to ensure it is free from syntax errors and adheres to the standards set by the World Wide Web Consortium (W3C).
-- **Process:** All HTML pages of Diving Center are checked through the W3C validator to identify and fix any markup errors or warnings.
-- Validatuion results with zero errors and warnings in **index.html**.
-
 <details>
 <summary>Click to View HTML Validation Screenshot</summary>
 
@@ -55,6 +50,12 @@ By the end of this, you'll see how much care we've put into making sure our divi
 ![HTML Validation Screenshot](doc/testing/divingreact/html/html.png)
 
 </details>
+&nbsp;
+
+- **Tool Used:** [HTML W3C Markup Validator](https://validator.w3.org/)
+- **Purpose:** Validates the HTML code of the application to ensure it is free from syntax errors and adheres to the standards set by the World Wide Web Consortium (W3C).
+- **Process:** All HTML pages of Diving Center are checked through the W3C validator to identify and fix any markup errors or warnings.
+- Validatuion results with zero errors and warnings in **index.html**.
 
 **HTML Validation Bugs and Solutions**
 
@@ -67,10 +68,6 @@ This table provides a clear overview of the issues, solutions, and resources for
 
 ### CSS Validation
 
-- **Tool Used:** [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/)
-- **Purpose:** Ensures the CSS code is compliant with W3C standards, free from syntax errors, and follows best practices for styling.
-- **Process:** All CSS files are validated through the W3C CSS Validation Service to identify and rectify any issues.
-
 <details>
 <summary>Click to View CSS Validation Screenshot</summary>
 
@@ -79,8 +76,13 @@ This table provides a clear overview of the issues, solutions, and resources for
 ![CSS Validation Screenshot](doc/testing/divingreact/css/no-error.png)
 
 </details>
+&nbsp;
 
-This table shows that all CSS files in the `src/styles` directory have passed the W3C CSS validation. The "Validation Link" column provides clickable links to the W3C CSS Validator where users can manually input the CSS content for validation if they wish to verify or re-run the tests.
+- **Tool Used:** [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/)
+- **Purpose:** Ensures the CSS code is compliant with W3C standards, free from syntax errors, and follows best practices for styling.
+- **Process:** All CSS files are validated through the W3C CSS Validation Service to identify and rectify any issues.
+
+The table below indicates that all CSS files located in the `src/styles` directory have successfully passed the W3C CSS validation. If you want to double-check or re-run the validation tests, you can use the [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/). This website allows you to enter CSS code or the URL of a document that includes CSS to validate its correctness.
 
 - **Note:** All files passed the W3C validator test. The CourseSingle.module.css file had warnings that were addressed and now passes the validation.
 
@@ -88,28 +90,28 @@ This table shows that all CSS files in the `src/styles` directory have passed th
 
 | File | Bug Description or Warning | Solution | Resource | Pass/Fail |
 |------|---------------------------|----------|----------|-----------|
-| [Asset.module.css](https://github.com/your-repo-name/src/styles/Asset.module.css) | N/A | N/A | N/A | ✅ |
-| [Avatar.module.css](https://github.com/your-repo-name/src/styles/Avatar.module.css) | N/A | N/A | N/A | ✅ |
-| [BookingForm.module.css](https://github.com/your-repo-name/src/styles/BookingForm.module.css) | N/A | N/A | N/A | ✅ |
-| [BookingPage.module.css](https://github.com/your-repo-name/src/styles/BookingPage.module.css) | N/A | N/A | N/A | ✅ |
-| [Button.module.css](https://github.com/your-repo-name/src/styles/Button.module.css) | N/A | N/A | N/A | ✅ |
-| [Comment.module.css](https://github.com/your-repo-name/src/styles/Comment.module.css) | N/A | N/A | N/A | ✅ |
-| [CommentCreateEditForm.module.css](https://github.com/your-repo-name/src/styles/CommentCreateEditForm.module.css) | N/A | N/A | N/A | ✅ |
-| [ContactForm.module.css](https://github.com/your-repo-name/src/styles/ContactForm.module.css) | N/A | N/A | N/A | ✅ |
-| [CourseSingle.module.css](https://github.com/your-repo-name/src/styles/CourseSingle.module.css) | Same color for background-color and border-color | Changed border-color to a different shade | [css-tricks.com](https://css-tricks.com/almanac/properties/b/border/) | ✅ |
-| [CoursesPage.module.css](https://github.com/your-repo-name/src/styles/CoursesPage.module.css) | N/A | N/A | N/A | ✅ |
-| [Footer.module.css](https://github.com/your-repo-name/src/styles/Footer.module.css) | N/A | N/A | N/A | ✅ |
-| [index.css](https://github.com/your-repo-name/src/index.css) | Vendor-specific properties and font names | Warnings left as is (see explanation) | [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix) | ⚠️ |
-| [LandingPage.module.css](https://github.com/your-repo-name/src/styles/LandingPage.module.css) | N/A | N/A | N/A | ✅ |
-| [MoreDropdown.module.css](https://github.com/your-repo-name/src/styles/MoreDropdown.module.css) | N/A | N/A | N/A | ✅ |
-| [NavBar.module.css](https://github.com/your-repo-name/src/styles/NavBar.module.css) | N/A | N/A | N/A | ✅ |
-| [NotFound.module.css](https://github.com/your-repo-name/src/styles/NotFound.module.css) | N/A | N/A | N/A | ✅ |
-| [Post.module.css](https://github.com/your-repo-name/src/styles/Post.module.css) | N/A | N/A | N/A | ✅ |
-| [PostCreateEditForm.module.css](https://github.com/your-repo-name/src/styles/PostCreateEditForm.module.css) | N/A | N/A | N/A | ✅ |
-| [PostsPage.module.css](https://github.com/your-repo-name/src/styles/PostsPage.module.css) | N/A | N/A | N/A | ✅ |
-| [Profile.module.css](https://github.com/your-repo-name/src/styles/Profile.module.css) | N/A | N/A | N/A | ✅ |
-| [ProfilePage.module.css](https://github.com/your-repo-name/src/styles/ProfilePage.module.css) | N/A | N/A | N/A | ✅ |
-| [SignInUpForm.module.css](https://github.com/your-repo-name/src/styles/SignInUpForm.module.css) | N/A | N/A | N/A | ✅ |
+| [Asset.module.css](https://github.com/AmirShkolnik/DivingCenter/blob/main/src/styles/Asset.module.css) | N/A | N/A | N/A | ✅ |
+| [Avatar.module.css](https://github.com/AmirShkolnik/DivingCenter/blob/main/src/styles/Avatar.module.css) | N/A | N/A | N/A | ✅ |
+| [BookingForm.module.css](https://github.com/AmirShkolnik/DivingCenter/blob/main/src/styles/BookingForm.module.css) | N/A | N/A | N/A | ✅ |
+| [BookingPage.module.css](https://github.com/AmirShkolnik/DivingCenter/blob/main/src/styles/BookingPage.module.css) | N/A | N/A | N/A | ✅ |
+| [Button.module.css](https://github.com/AmirShkolnik/DivingCenter/blob/main/src/styles/Button.module.css) | N/A | N/A | N/A | ✅ |
+| [Comment.module.css](https://github.com/AmirShkolnik/DivingCenter/blob/main/src/styles/Comment.module.css) | N/A | N/A | N/A | ✅ |
+| [CommentCreateEditForm.module.css](https://github.com/AmirShkolnik/DivingCenter/blob/main/src/styles/CommentCreateEditForm.module.css) | N/A | N/A | N/A | ✅ |
+| [ContactForm.module.css](https://github.com/AmirShkolnik/DivingCenter/blob/main/src/styles/ContactForm.module.css) | N/A | N/A | N/A | ✅ |
+| [CourseSingle.module.css](https://github.com/AmirShkolnik/DivingCenter/blob/main/src/styles/CourseSingle.module.css) | Same color for background-color and border-color | Changed border-color to a different shade | [css-tricks.com](https://css-tricks.com/almanac/properties/b/border/) | ✅ |
+| [CoursesPage.module.css](https://github.com/AmirShkolnik/DivingCenter/blob/main/src/styles/CoursesPage.module.css) | N/A | N/A | N/A | ✅ |
+| [Footer.module.css](https://github.com/AmirShkolnik/DivingCenter/blob/main/src/styles/Footer.module.css) | N/A | N/A | N/A | ✅ |
+| [index.css](https://github.com/AmirShkolnik/DivingCenter/blob/main/src/index.css) | Vendor-specific properties and font names | Warnings left as is (see explanation) | [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix) | ⚠️ |
+| [LandingPage.module.css](https://github.com/AmirShkolnik/DivingCenter/blob/main/src/styles/LandingPage.module.css) | N/A | N/A | N/A | ✅ |
+| [MoreDropdown.module.css](https://github.com/AmirShkolnik/DivingCenter/blob/main/src/styles/MoreDropdown.module.css) | N/A | N/A | N/A | ✅ |
+| [NavBar.module.css](https://github.com/AmirShkolnik/DivingCenter/blob/main/src/styles/NavBar.module.css) | N/A | N/A | N/A | ✅ |
+| [NotFound.module.css](https://github.com/AmirShkolnik/DivingCenter/blob/main/src/styles/NotFound.module.css) | N/A | N/A | N/A | ✅ |
+| [Post.module.css](https://github.com/AmirShkolnik/DivingCenter/blob/main/src/styles/Post.module.css) | N/A | N/A | N/A | ✅ |
+| [PostCreateEditForm.module.css](https://github.com/AmirShkolnik/DivingCenter/blob/main/src/styles/PostCreateEditForm.module.css) | N/A | N/A | N/A | ✅ |
+| [PostsPage.module.css](https://github.com/AmirShkolnik/DivingCenter/blob/main/src/styles/PostsPage.module.css) | N/A | N/A | N/A | ✅ |
+| [Profile.module.css](https://github.com/AmirShkolnik/DivingCenter/blob/main/src/styles/Profile.module.css) | N/A | N/A | N/A | ✅ |
+| [ProfilePage.module.css](https://github.com/AmirShkolnik/DivingCenter/blob/main/src/styles/ProfilePage.module.css) | N/A | N/A | N/A | ✅ |
+| [SignInUpForm.module.css](https://github.com/AmirShkolnik/DivingCenter/blob/main/src/styles/SignInUpForm.module.css) | N/A | N/A | N/A | ✅ |
 
 ## **Explanation for index.css:**
 
