@@ -338,12 +338,6 @@ Lighthouse is an essential tool for assessing the quality of web applications, f
 
 ## Manual Testing
 
-### User Input/Form Validation
-
-Thorough testing was conducted on all forms throughout Fit&Fine to ensure accurate user input validation and to provide necessary feedback.
-
-## Manual Testing
-
 This manual testing process focuses primarily on the frontend functionality of the Diving Center website. However, to provide a comprehensive understanding of how the frontend interacts with the backend, we've included split images showing both the user interface and the corresponding backend responses. For those interested in a more detailed examination of the backend testing, you can visit our [in-depth backend testing documentation](https://github.com/AmirShkolnik/DivingCenter_API/blob/main/TESTING.md). This additional resource offers valuable insights into the API endpoints, data handling, and server-side logic that support the frontend features described in this manual testing section.
 
 The manual testing covers all aspects of the site, including:
@@ -395,15 +389,7 @@ Members have full access to the site's features, including:
 
 The manual testing process ensures that each of these features works correctly for both user types, and that the frontend actions are accurately reflected in the backend. This comprehensive approach helps maintain the integrity and functionality of the Diving Center website, providing a seamless experience for all users while encouraging non-members to sign up for full access to the site's features.
 
-### As a visitor
-
-## Manual Testing
-
-### Overview
-
-The manual testing for the Diving Center website involves verifying the functionality of both the frontend and backend components. The frontend is built using a standard web framework, while the backend is implemented using Django REST Framework. Each test ensures that user actions on the frontend are correctly handled and reflected on the backend. The tests are divided into two categories: logged-in users and non-logged-in users. Logged-in users have access to more features like commenting, liking, adding posts, booking courses, and reviewing/rating them based on their experiences. Non-logged-in users can for the most only read content.
-
-### As a visitor
+### Non Logged-In User
 
 #### Navbar
 
@@ -415,16 +401,14 @@ The manual testing for the Diving Center website involves verifying the function
 | Sign In link | Clicking "Sign In" navigates to the sign in page | <details><summary>Sign In Navigation</summary><img src="doc/testing/divingreact/pages/sign-in.png" alt="Sign In Navigation"></details> | ✅ |
 | Sign Up link | Clicking "Sign Up" navigates to the sign up page | <details><summary>Sign Up Navigation</summary><img src="doc/testing/divingreact/pages/sign-up.png" alt="Sign Up Navigation"></details> | ✅ |
 
-### Footer
+#### Footer
 
 | What was tested | Expected Result | Image | Fail/Pass |
 |-----------------|-----------------|-------|-----------|
 | GitHub link | Clicking "GitHub" navigates to the GitHub page | <details><summary>GitHub Navigation</summary><img src="doc/testing/divingreact/pages/github.png" alt="GitHub Navigation"></details> | ✅ |
 | LinkedIn link | Clicking "LinkedIn" navigates to the LinkedIn page | <details><summary>LinkedIn Navigation</summary><img src="doc/testing/divingreact/pages/linkedin.png" alt="Linkedin Navigation"></details> | ✅ |
 
-
-
-#### Non Logged-In User
+#### Website
 
 | What was tested | Expected Result | Image | Fail/Pass |
 |-----------------|-----------------|-------|-----------|
@@ -440,7 +424,30 @@ The manual testing for the Diving Center website involves verifying the function
 | Review and rate courses | Cannot review and rate courses | <details><summary>Review and Rate Courses</summary><img src="doc/testing/divingreact/non-logged-in/logg-in-add-review.png" alt="Review and Rate Courses"></details> | ✅ |
 | Profiles | Can read profiles | <details><summary>Profiles</summary><img src="doc/testing/divingreact/non-logged-in/profile.png" alt="Profiles"></details> | ✅ |
 
-#### Logged-In User
+### Logged-In User
+
+#### Navbar
+
+| What was tested | Expected Result | Image | Fail/Pass |
+|-----------------|-----------------|-------|-----------|
+| Logged-in User Navbar | All navigation elements visible and functional | <details><summary>Navbar Overview</summary>View full navbar<br><img src="doc/testing/divingreact/logged-in/navbar/logged-in-navbar.png" alt="Logged-in Navbar"></details> | ✅ |
+| Home Link | Redirects to home page | <details><summary>Home</summary>Click home link<br><img src="doc/testing/divingreact/logged-in/navbar/logged-in-home.png" alt="Logged-in Home"></details> | ✅ |
+| Feed Link | Displays user feed | <details><summary>Feed</summary>Click feed link<br><img src="doc/testing/divingreact/logged-in/navbar/logged-in-feed.png" alt="Logged-in Feed"></details> | ✅ |
+| Liked Link | Shows liked posts | <details><summary>Liked</summary>Click liked link<br><img src="doc/testing/divingreact/logged-in/navbar/logged-in-liked.png" alt="Logged-in Liked"></details> | ✅ |
+| Add Post Link | Opens add post form | <details><summary>Add Post</summary>Click add post link<br><img src="doc/testing/divingreact/logged-in/navbar/logged-in-add-post.png" alt="Logged-in Add Post"></details> | ✅ |
+| Courses Link | Displays available courses | <details><summary>Courses</summary>Click courses link<br><img src="doc/testing/divingreact/logged-in/navbar/logged-in-courses.png" alt="Logged-in Courses"></details> | ✅ |
+| My Bookings Link | Shows user's bookings | <details><summary>My Bookings</summary>Click my bookings (empty)<br><img src="doc/testing/divingreact/logged-in/navbar/logged-in-my-bookings-empty-1.png" alt="Logged-in My Bookings Empty">Click my bookings (with bookings)<br><img src="doc/testing/divingreact/logged-in/navbar/logged-in-my-bookings-2.png" alt="Logged-in My Bookings"></details> | ✅ |
+| Contact Us Link | Opens contact form | <details><summary>Contact Us</summary>Click contact us link<br><img src="doc/testing/divingreact/logged-in/navbar/logged-in-contact-us.png" alt="Logged-in Contact Us"></details> | ✅ |
+| Profile Link | Displays user profile | <details><summary>Profile</summary>Click profile link<br><img src="doc/testing/divingreact/logged-in/navbar/logged-in-profile.png" alt="Logged-in Profile"></details> | ✅ |
+
+#### Footer
+
+| What was tested | Expected Result | Image | Fail/Pass |
+|-----------------|-----------------|-------|-----------|
+| GitHub link | Clicking "GitHub" navigates to the GitHub page | <details><summary>GitHub Navigation</summary><img src="doc/testing/divingreact/pages/github.png" alt="GitHub Navigation"></details> | ✅ |
+| LinkedIn link | Clicking "LinkedIn" navigates to the LinkedIn page | <details><summary>LinkedIn Navigation</summary><img src="doc/testing/divingreact/pages/linkedin.png" alt="Linkedin Navigation"></details> | ✅ |
+
+***********************
 
 | What was tested | Expected Result | Image | Fail/Pass |
 |-----------------|-----------------|-------|-----------|
@@ -459,9 +466,9 @@ The manual testing for the Diving Center website involves verifying the function
 | Edit own posts | Can edit own posts | <details><summary>Edit Own Posts</summary>Edit Own Posts</details> | ✅ |
 | Sign Out | Can sign out | <details><summary>Sign Out</summary>Sign Out</details> | ✅ |
 
-### Booking
+****************
 
-Here's the updated table with step numbers and brief explanations for each image:
+### Booking
 
 | What was tested | Expected Result | Image | Fail/Pass |
 |-----------------|-----------------|-------|-----------|
@@ -477,25 +484,15 @@ Here's the updated table with step numbers and brief explanations for each image
 | Update Booking Same Course Twice | Error message for updating to the same course twice | <details><summary>Update Same Course Twice</summary><strong>Step 1:</strong> Select same course for update<br><img src="doc/testing/divingreact/logged-in/bookings/bookingtesting/update-booking-same-course-twice-step2.png" alt="Update Same Course Twice Step 2"><strong>Step 2:</strong> Confirm update<br><img src="doc/testing/divingreact/logged-in/bookings/bookingtesting/update-booking-same-course-twice.png" alt="Update Same Course Twice"></details> | ✅ |
 | Wrong Date Format | Error message for incorrect date format | <details><summary>Wrong Date</summary><strong>Step 1:</strong> Enter wrong date format<br><img src="doc/testing/divingreact/logged-in/bookings/bookingtesting/wrong-date.png" alt="Wrong Date"></details> | ✅ |
 
-### Courses
+### Reviews
 
 | What was tested | Expected Result | Image | Fail/Pass |
 |-----------------|-----------------|-------|-----------|
-| View courses | Access to courses list | <details><summary>View Courses</summary>View Courses</details> | ✅ |
-| Book courses (logged-in) | Can book courses | <details><summary>Book Courses</summary>Book Courses</details> | ✅ |
-| Review and rate courses (logged-in) | Can review and rate courses | <details><summary>Review and Rate Courses</summary>Review and Rate Courses Basic Review and Rate Courses Advanced Review and Rate Courses Rescue</details> | ✅ |
-
-### Posts and Feed
-
-| What was tested | Expected Result | Image | Fail/Pass |
-|-----------------|-----------------|-------|-----------|
-| View feed (non-logged-in) | Feed is hidden but not blocked | <details><summary>View Feed (Non-logged-in)</summary>View Feed Non-logged-in</details> | ✅ |
-| View feed (logged-in) | Access to personalized feed | <details><summary>View Feed (Logged-in)</summary>View Feed Logged-in</details> | ✅ |
-| Add post (logged-in) | Can add new posts | <details><summary>Add Post</summary>Add Post 1 Add Post 2</details> | ✅ |
-| Like posts (logged-in) | Can like other posts | <details><summary>Like Posts</summary>Like Posts</details> | ✅ |
-| Comment on posts (logged-in) | Can comment on posts | <details><summary>Comment on Posts</summary>Comment on Posts</details> | ✅ |
-
-I've added the provided image links to the appropriate sections in the table. For some sections where specific images weren't provided (like Sign In, Sign Up, etc.), I left the original placeholders. You may want to add more specific images for these sections if available.
+| Create Review | Successful creation of a new review | <details><summary>Create Review</summary><strong>Step 1:</strong> Open review form<br><img src="doc/testing/divingreact/logged-in/reviews/reviews-step1.png" alt="Reviews Step 1"><strong>Step 2:</strong> Submit review<br><img src="doc/testing/divingreact/logged-in/reviews/reviews-step2.png" alt="Reviews Step 2"></details> | ✅ |
+| Delete Review | Successful deletion of a review | <details><summary>Delete Review</summary><strong>Step 1:</strong> Select review to delete<br><img src="doc/testing/divingreact/logged-in/reviews/delete-reviews-step1.png" alt="Delete Reviews Step 1"><strong>Step 2:</strong> Confirm deletion<br><img src="doc/testing/divingreact/logged-in/reviews/delete-reviews-step2.png" alt="Delete Reviews Step 2"></details> | ✅ |
+| Update Review | Successful update of an existing review | <details><summary>Update Review</summary><strong>Step 1:</strong> Select review to update<br><img src="doc/testing/divingreact/logged-in/reviews/update-reviews-step1.png" alt="Update Reviews Step 1"><strong>Step 2:</strong> Open edit form<br><img src="doc/testing/divingreact/logged-in/reviews/update-reviews-step2.png" alt="Update Reviews Step 2"><strong>Step 3:</strong> Edit review content<br><img src="doc/testing/divingreact/logged-in/reviews/update-reviews-step3.png" alt="Update Reviews Step 3"><strong>Step 4:</strong> Confirm update<br><img src="doc/testing/divingreact/logged-in/reviews/update-reviews-step4.png" alt="Update Reviews Step 4"></details> | ✅ |
+| Missing Stars Rating | Error message for missing star rating | <details><summary>Missing Stars</summary>Submit without selecting stars<br><img src="doc/testing/divingreact/logged-in/reviews/reviews-testing-missing-stars.png" alt="Reviews Testing Missing Stars"></details> | ✅ |
+| Missing Review Text | Error message for missing review text | <details><summary>Missing Text</summary>Submit without entering text<br><img src="doc/testing/divingreact/logged-in/reviews/reviews-testing-missing-text.png" alt="Reviews Testing Missing Text"></details> | ✅ |
 
 **Form Validation**
 
