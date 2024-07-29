@@ -299,35 +299,42 @@ By following these steps, you can ensure that your JavaScript code is consistent
 
 ### Lighthouse
 
-- **Tool Used:** [Google Lighthouse](https://en.wikipedia.org/wiki/Google_Lighthouse)
+- **Tool Used:** Lighthouse is an open-source, automated tool for improving the quality of web pages. It performs audits for performance, accessibility, progressive web apps, SEO, and more. You can run it against any web page, public or requiring authentication. For more information, visit [Lighthouse](https://developers.google.com/web/tools/lighthouse).
 - **Purpose:** To assess the quality of web pages in terms of performance, accessibility, progressive web apps, SEO, and best practices.
-- **Process:** Fit&Fine is tested with Google Lighthouse, which provides a detailed report on various aspects of the site’s performance and offers recommendations for improvement.
+- **Process:** Dive Center is tested with Google Lighthouse, which provides a detailed report on various aspects of the site’s performance and offers recommendations for improvement.
 
-| HTML Page / Source        | Lighthouse Report Screenshot                                              |
-| ------------------------- | ------------------------------------------------------------------------- |
-| **Home Page**             | ![screenshot](documentation/validation/lighthouse/home.JPG)               |
-| **Collaborate Page**      | ![screenshot](documentation/validation/lighthouse/collaborate.JPG)        |
-| **Challenges Page**       | ![screenshot](documentation/validation/lighthouse/challenges.JPG)         |
-| **Add Post Page**         | ![screenshot](documentation/validation/lighthouse/addpost.JPG)            |
-| **Add Challenge Page**    | ![screenshot](documentation/validation/lighthouse/createchallenge.JPG)    |
-| **Add DailyRoutine Page** | ![screenshot](documentation/validation/lighthouse/createdailyroutine.JPG) |
-| **Sigin Page**            | ![screenshot](documentation/validation/lighthouse/signin.JPG)             |
-| **Signup Page**           | ![screenshot](documentation/validation/lighthouse/signup.JPG)             |
-| **Profile Page**          | ![screenshot](documentation/validation/lighthouse/profile.JPG)            |
-| **My Likes Page**         | ![screenshot](documentation/validation/lighthouse/likes.JPG)              |
-| **My Feeds Page**         | ![screenshot](documentation/validation/lighthouse/feeds.JPG)              |
-| **My Comments Page**      | ![screenshot](documentation/validation/lighthouse/comments.JPG)           |
-| **My Daily Routine Page** | ![screenshot](documentation/validation/lighthouse/dailzroutine.JPG)       |
+| Page | Mobile | PC |
+|------|--------|----|
+| [Home](https://divingspace-900b5a3db777.herokuapp.com/) | <details><summary>Click to View Home Mobile</summary>![Home Mobile](doc/testing/divingreact/lighthouse/home-mobile.png)</details> | <details><summary>Click to View Home Pc</summary>![Home Pc](doc/testing/divingreact/lighthouse/home-pc.png)</details> |
+| [Contact Us](https://divingspace-900b5a3db777.herokuapp.com/contactus) | <details><summary>Click to View Contact Us Mobile</summary>![Contact Us Mobile](doc/testing/divingreact/lighthouse/contact-us-mobile.png)</details> | <details><summary>Click to View Contact Us PC</summary>![Contact Us PC](doc/testing/divingreact/lighthouse/contact-us-pc.png)</details> |
+| [Courses](https://divingspace-900b5a3db777.herokuapp.com/courses) | <details><summary>Click to View Courses Mobile</summary>![Courses Mobile](doc/testing/divingreact/lighthouse/courses-mobile.png)</details> | <details><summary>Click to View Courses PC</summary>![Courses PC](doc/testing/divingreact/lighthouse/courses-pc.png)</details> |
+| [Sign In](https://divingspace-900b5a3db777.herokuapp.com/signin) | <details><summary>Click to View Sign In Mobile</summary>![Sign In Mobile](doc/testing/divingreact/lighthouse/signin-mobile.png)</details> | <details><summary>Click to View Sign In PC</summary>![Sign In PC](doc/testing/divingreact/lighthouse/signin-pc.png)</details> |
+| [Sign Up](https://divingspace-900b5a3db777.herokuapp.com/signup) | <details><summary>Click to View Sign Up Mobile</summary>![Sign Up Mobile](doc/testing/divingreact/lighthouse/signup-mobile.png)</details> | <details><summary>Click to View Sign Up PC</summary>![Sign Up PC](doc/testing/divingreact/lighthouse/signup-pc.png)</details> |
+| [Single Course](https://divingspace-900b5a3db777.herokuapp.com/courses/basic-open-water-diver) | <details><summary>Click to View Single Course Mobile</summary>![Single Course Mobile](doc/testing/divingreact/lighthouse/single-course-mobile.png)</details> | <details><summary>Click to View Single Course PC</summary>![Single Course PC](doc/testing/divingreact/lighthouse/single-course-pc.png)</details> |
+[Feed](https://divingspace-900b5a3db777.herokuapp.com/feed) | <details><summary>Click to View Feed Mobile</summary>![Feed Mobile](doc/testing/divingreact/lighthouse/feed-mobile.png)</details> | <details><summary>Click to View Feed PC</summary>![Feed PC](doc/testing/divingreact/lighthouse/feed-pc.png)</details> |
 
-I have converted few images to webp and Even after compressing the images, could not increase the performance scores.
+## Improving Lighthouse Scores for React and Django REST Framework
+
+Lighthouse is an essential tool for assessing the quality of web applications, focusing on performance, accessibility, SEO, and best practices. High Lighthouse scores are crucial for enhancing user experience and search engine rankings. This table provides a structured approach to identifying common problems that can negatively impact Lighthouse scores and offers practical solutions for both React on the frontend and Django REST framework on the backend. Each entry includes a clickable link to a resource for further reading and implementation guidance.
+
+| Area | Problem | Solution | Resource Link |
+|------|---------|----------|---------------|
+| React (Frontend) | Large images affecting load time | Use responsive images to serve appropriately sized images based on device | [Properly size images](https://developer.chrome.com/docs/lighthouse/performance/uses-responsive-images) |
+| React (Frontend) | Unused JavaScript slowing down performance | Code-splitting and dynamic imports to load only necessary code | [Get 100 Lighthouse Performance Score with a React App](https://dev.to/mladenstojanovic/get-100-lighthouse-performance-score-with-a-react-app-hc6) |
+| React (Frontend) | Poor SEO and accessibility | Implement best practices for SEO and accessibility, such as semantic HTML and ARIA roles | [5 Tips to Take your Website Lighthouse Score from Meh to WOW!](https://dev.to/ruppysuppy/5-tips-to-take-your-website-lighthouse-score-from-meh-to-wow-2375) |
+| React (Frontend) | Slow initial page load | Use server-side rendering (SSR) to pre-render pages on the server | [Optimizing Your Web App: How to Score 100 on Lighthouse](https://www.justjeb.com/post/how-to-score-100-on-lighthouse) |
+| Django (Backend) | Slow API responses | Optimize database queries and use caching mechanisms | [Using Google Lighthouse to optimise your mobile site](https://teapot.agency/insights/using-google-lighthouse-to-optimise-your-mobile-site) |
+| Django (Backend) | Inefficient static file serving | Use a Content Delivery Network (CDN) to serve static files | [Adapting to Lighthouse 10: How Google's Latest Update Affects Your Site](https://ogalweb.com/lighthouse-10/) |
+| Django (Backend) | Lack of proper image dimensions | Ensure images have explicit width and height attributes in HTML | [Responsive images vs Lighthouse performance audit](https://stackoverflow.com/questions/71912806/responsive-images-vs-lighthouse-performance-audit) |
+| Django (Backend) | High server response times | Implement asynchronous processing for long-running tasks | [Improve your fashion ecommerce website's Lighthouse score and core web vitals](https://centra.com/news/improve-your-fashion-ecommerce-website-s-lighthouse-score-and-core-web-vitals) |
 
 ### Wave Accessibility Evaluation
 
 - **Tool Used:** [Wave Web Accessibility Evaluation Tool](https://wave.webaim.org/)
 - **Purpose:** To ensure that the website is accessible to individuals with disabilities by identifying and suggesting fixes for web accessibility issues.
-- **Process:** The Wave tool evaluates each page of Fit&Fine to ensure it complies with accessibility standards like WCAG and Section 508.
+- **Process:** The Wave tool evaluates each page of the Diving Center to ensure it complies with accessibility standards like WCAG and Section 508.
 
-![Wave Web Accessibility Evaluation Tool](documentation/validation/wave.JPG)
+![Wave Web Accessibility Evaluation Tool](doc/testing/divingreact/wave/wave.png)
 
 ## Manual Testing
 
