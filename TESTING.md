@@ -401,9 +401,7 @@ The manual testing process ensures that each of these features works correctly f
 
 ### Overview
 
-The manual testing for the Diving Center website involves verifying the functionality of both the frontend and backend components. The frontend is built using a standard web framework, while the backend is implemented using Django REST Framework. Each test ensures that user actions on the frontend are correctly handled and reflected on the backend. The tests are divided into two categories: logged-in users and non-logged-in users. Logged-in users have access to more features like commenting, liking, adding posts, booking courses, and reviewing/rating them based on their experiences. Non-logged-in users can only read content.
-
-Certainly! I'll add these relative path image links to the appropriate places in the tables. Here's the updated version with the image links inserted:
+The manual testing for the Diving Center website involves verifying the functionality of both the frontend and backend components. The frontend is built using a standard web framework, while the backend is implemented using Django REST Framework. Each test ensures that user actions on the frontend are correctly handled and reflected on the backend. The tests are divided into two categories: logged-in users and non-logged-in users. Logged-in users have access to more features like commenting, liking, adding posts, booking courses, and reviewing/rating them based on their experiences. Non-logged-in users can for the most only read content.
 
 ### As a visitor
 
@@ -424,22 +422,23 @@ Certainly! I'll add these relative path image links to the appropriate places in
 | GitHub link | Clicking "GitHub" navigates to the GitHub page | <details><summary>GitHub Navigation</summary><img src="doc/testing/divingreact/pages/github.png" alt="GitHub Navigation"></details> | ✅ |
 | LinkedIn link | Clicking "LinkedIn" navigates to the LinkedIn page | <details><summary>LinkedIn Navigation</summary><img src="doc/testing/divingreact/pages/linkedin.png" alt="Linkedin Navigation"></details> | ✅ |
 
-### Home Page
+
 
 #### Non Logged-In User
 
 | What was tested | Expected Result | Image | Fail/Pass |
 |-----------------|-----------------|-------|-----------|
-| Home link | Access to home page | <details><summary>Home Page</summary>Home Page</details> | ✅ |
-| Contact Us form | Access and use the contact us form | <details><summary>Contact Us Form</summary>Contact Us Form</details> | ✅ |
-| Courses link | Access to courses page | <details><summary>Courses Page</summary>Courses Page</details> | ✅ |
-| Feed visibility | Feed is hidden but not blocked | <details><summary>Feed Visibility</summary>Feed Visibility</details> | ✅ |
-| Read posts | Can read posts | <details><summary>Read Posts</summary>Read Posts</details> | ✅ |
-| Add post | Cannot add posts | <details><summary>Add Post</summary>Add Post</details> | ✅ |
-| Like posts | Cannot like posts | <details><summary>Like Posts</summary>Like Posts</details> | ✅ |
-| Comment on posts | Cannot comment on posts | <details><summary>Comment on Posts</summary>Comment on Posts</details> | ✅ |
-| Book courses | Cannot book courses | <details><summary>Book Courses</summary>Book Courses</details> | ✅ |
-| Review and rate courses | Cannot review and rate courses | <details><summary>Review and Rate Courses</summary>Review and Rate Courses</details> | ✅ |
+| Home link | Access to home page | <details><summary>Home Page</summary><img src="doc/testing/divingreact/non-logged-in/home.png" alt="Home Page"></details> | ✅ |
+| Contact Us form | Access and use the contact us form | <details><summary>Contact Us Form</summary><img src="doc/testing/divingreact/non-logged-in/contactus.png" alt="Contact Us Form"></details> | ✅ |
+| Courses link | Access to courses page | <details><summary>Courses Page</summary><img src="doc/testing/divingreact/non-logged-in/courses.png" alt="Courses Page"></details> | ✅ |
+| Feed visibility | Feed is hidden but not blocked | <details><summary>Feed Visibility</summary><img src="doc/testing/divingreact/non-logged-in/feed.png" alt="Feed Visibility"></details> | ✅ |
+| Read posts | Can read posts | <details><summary>Read Posts</summary><img src="doc/testing/divingreact/non-logged-in/feed.png" alt="Read Posts"></details> | ✅ |
+| Add post | Cannot add posts - Redirect to home page when trying to access /posts/create endpoint which is hidden and blocked for non logged-in users | <details><summary>Add Post</summary><img src="doc/testing/divingreact/non-logged-in/home.png" alt="Add Post"></details> | ✅ |
+| Like posts | Cannot like posts | <details><summary>Like Posts</summary><img src="doc/testing/divingreact/non-logged-in/like.png" alt="Like Posts"></details> | ✅ |
+| Comment on posts | Cannot comment on posts | <details><summary>Comment on Posts</summary><img src="doc/testing/divingreact/non-logged-in/comment.png" alt="Comment on Posts"></details> | ✅ |
+| Book courses | Cannot book courses | <details><summary>Book Courses</summary><img src="doc/testing/divingreact/non-logged-in/book.png" alt="Book Courses"></details> | ✅ |
+| Review and rate courses | Cannot review and rate courses | <details><summary>Review and Rate Courses</summary><img src="doc/testing/divingreact/non-logged-in/logg-in-add-review.png" alt="Review and Rate Courses"></details> | ✅ |
+| Profiles | Can read profiles | <details><summary>Profiles</summary><img src="doc/testing/divingreact/non-logged-in/profile.png" alt="Profiles"></details> | ✅ |
 
 #### Logged-In User
 
@@ -459,6 +458,24 @@ Certainly! I'll add these relative path image links to the appropriate places in
 | Change bio description | Can change bio description | <details><summary>Change Bio</summary>Change Bio</details> | ✅ |
 | Edit own posts | Can edit own posts | <details><summary>Edit Own Posts</summary>Edit Own Posts</details> | ✅ |
 | Sign Out | Can sign out | <details><summary>Sign Out</summary>Sign Out</details> | ✅ |
+
+### Booking
+
+Here's the updated table with step numbers and brief explanations for each image:
+
+| What was tested | Expected Result | Image | Fail/Pass |
+|-----------------|-----------------|-------|-----------|
+| Create Booking | Successful creation of a new booking | <details><summary>Create Booking</summary><strong>Step 1:</strong> Open booking form<br><img src="doc/testing/divingreact/logged-in/bookings/create-step1.png" alt="Create Step 1"><strong>Step 2:</strong> Fill in details<br><img src="doc/testing/divingreact/logged-in/bookings/create-step2.png" alt="Create Step 2"><strong>Step 3:</strong> Review details<br><img src="doc/testing/divingreact/logged-in/bookings/create-step3.png" alt="Create Step 3"><strong>Step 4:</strong> Confirm booking<br><img src="doc/testing/divingreact/logged-in/bookings/create-step4.png" alt="Create Step 4"></details> | ✅ |
+| Delete Booking | Successful deletion of a booking | <details><summary>Delete Booking</summary><strong>Step 1:</strong> Select booking<br><img src="doc/testing/divingreact/logged-in/bookings/delete-step1.png" alt="Delete Step 1"><strong>Step 2:</strong> Confirm deletion<br><img src="doc/testing/divingreact/logged-in/bookings/delete-step2.png" alt="Delete Step 2"></details> | ✅ |
+| Update Booking | Successful update of an existing booking | <details><summary>Update Booking</summary><strong>Step 1:</strong> Open booking details<br><img src="doc/testing/divingreact/logged-in/bookings/update-step1.png" alt="Update Step 1"><strong>Step 2:</strong> Edit booking info<br><img src="doc/testing/divingreact/logged-in/bookings/update-step2.png" alt="Update Step 2"><strong>Step 3:</strong> Save changes<br><img src="doc/testing/divingreact/logged-in/bookings/update-step3.png" alt="Update Step 3"></details> | ✅ |
+| Booking Past Date | Past date is greyed out | <details><summary>Past Date</summary><strong>Step 1:</strong> Attempt to select past date<br><img src="doc/testing/divingreact/logged-in/bookings/bookingtesting/booking-past-date.png" alt="Past Date"></details> | ✅ |
+| Booking Same Course Twice | Error message for booking the same course twice | <details><summary>Same Course Twice</summary><strong>Step 1:</strong> Select same course<br><img src="doc/testing/divingreact/logged-in/bookings/bookingtesting/booking-same-course-twice.png" alt="Same Course Twice"></details> | ✅ |
+| Course Missing | Error message for missing course selection | <details><summary>Course Missing</summary><strong>Step 1:</strong> Leave course field empty<br><img src="doc/testing/divingreact/logged-in/bookings/bookingtesting/course-missing.png" alt="Course Missing"></details> | ✅ |
+| Date Missing | Error message for missing date selection | <details><summary>Date Missing</summary><strong>Step 1:</strong> Leave date field empty<br><img src="doc/testing/divingreact/logged-in/bookings/bookingtesting/date-missing.png" alt="Date Missing"></details> | ✅ |
+| Time Missing | Error message for missing time selection | <details><summary>Time Missing</summary><strong>Step 1:</strong> Leave time field empty<br><img src="doc/testing/divingreact/logged-in/bookings/bookingtesting/time-missing.png" alt="Time Missing"></details> | ✅ |
+| Update Booking Past Date | Error message for updating to a past date | <details><summary>Update Past Date</summary><strong>Step 1:</strong> Attempt to update to past date<br><img src="doc/testing/divingreact/logged-in/bookings/bookingtesting/update-booking-past-date.png" alt="Update Past Date"></details> | ✅ |
+| Update Booking Same Course Twice | Error message for updating to the same course twice | <details><summary>Update Same Course Twice</summary><strong>Step 1:</strong> Select same course for update<br><img src="doc/testing/divingreact/logged-in/bookings/bookingtesting/update-booking-same-course-twice-step2.png" alt="Update Same Course Twice Step 2"><strong>Step 2:</strong> Confirm update<br><img src="doc/testing/divingreact/logged-in/bookings/bookingtesting/update-booking-same-course-twice.png" alt="Update Same Course Twice"></details> | ✅ |
+| Wrong Date Format | Error message for incorrect date format | <details><summary>Wrong Date</summary><strong>Step 1:</strong> Enter wrong date format<br><img src="doc/testing/divingreact/logged-in/bookings/bookingtesting/wrong-date.png" alt="Wrong Date"></details> | ✅ |
 
 ### Courses
 
