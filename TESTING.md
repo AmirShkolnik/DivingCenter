@@ -342,6 +342,144 @@ Lighthouse is an essential tool for assessing the quality of web applications, f
 
 Thorough testing was conducted on all forms throughout Fit&Fine to ensure accurate user input validation and to provide necessary feedback.
 
+## Manual Testing
+
+This manual testing process focuses primarily on the frontend functionality of the Diving Center website. However, to provide a comprehensive understanding of how the frontend interacts with the backend, we've included split images showing both the user interface and the corresponding backend responses. For those interested in a more detailed examination of the backend testing, you can visit our [in-depth backend testing documentation](https://github.com/AmirShkolnik/DivingCenter_API/blob/main/TESTING.md). This additional resource offers valuable insights into the API endpoints, data handling, and server-side logic that support the frontend features described in this manual testing section.
+
+The manual testing covers all aspects of the site, including:
+
+- Navigation bar
+- Footer
+- Home page
+- User authentication (Sign In/Sign Up)
+- Course listings and individual course pages
+- User profiles
+- Booking system
+- Feed and posts
+- Likes and comments
+- Reviews and ratings
+
+The tests are categorized into two main user types:
+
+1. Non-logged in users
+2. Logged in users (members)
+
+This distinction is crucial as it highlights the different levels of access and functionality available to each user type.
+
+### Non-logged in Users
+
+Non-logged in users have limited access to the site's features. They can:
+
+- View the home page, course listings, and individual course details
+- Access the contact form
+- See public posts in the feed (hidden but not blocked)
+- Sign up or log in
+
+However, they cannot:
+
+- Add, like, or comment on posts
+- Book courses
+- Leave reviews or ratings
+
+### Logged in Users (Members)
+
+Members have full access to the site's features, including:
+
+- Viewing and editing their personal profile
+- Accessing their bookings
+- Viewing a personalized feed
+- Creating, editing, and deleting their own posts
+- Liking and commenting on posts (except their own)
+- Booking courses
+- Leaving reviews and ratings for courses
+
+The manual testing process ensures that each of these features works correctly for both user types, and that the frontend actions are accurately reflected in the backend. This comprehensive approach helps maintain the integrity and functionality of the Diving Center website, providing a seamless experience for all users while encouraging non-members to sign up for full access to the site's features.
+
+### As a visitor
+
+## Manual Testing
+
+### Overview
+
+The manual testing for the Diving Center website involves verifying the functionality of both the frontend and backend components. The frontend is built using a standard web framework, while the backend is implemented using Django REST Framework. Each test ensures that user actions on the frontend are correctly handled and reflected on the backend. The tests are divided into two categories: logged-in users and non-logged-in users. Logged-in users have access to more features like commenting, liking, adding posts, booking courses, and reviewing/rating them based on their experiences. Non-logged-in users can only read content.
+
+Certainly! I'll add these relative path image links to the appropriate places in the tables. Here's the updated version with the image links inserted:
+
+### As a visitor
+
+#### Navbar
+
+| What was tested | Expected Result | Image | Fail/Pass |
+|-----------------|-----------------|-------|-----------|
+| Home link | Clicking "Home" navigates to the home page | <details><summary>Home Navigation</summary><img src="doc/testing/divingreact/pages/home.png" alt="Home Navigation"></details> | ✅ |
+| Contact Us link | Clicking "Contact Us" navigates to the contact page | <details><summary>Contact Us Navigation</summary><img src="doc/testing/divingreact/pages/contact-us.png" alt="Contact Us Navigation"></details> | ✅ |
+| Courses link | Clicking "Courses" navigates to the courses page | <details><summary>Courses Navigation</summary><img src="doc/testing/divingreact/pages/courses-page.png" alt="Courses Navigation"></details> | ✅ |
+| Sign In link | Clicking "Sign In" navigates to the sign in page | <details><summary>Sign In Navigation</summary><img src="doc/testing/divingreact/pages/sign-in.png" alt="Sign In Navigation"></details> | ✅ |
+| Sign Up link | Clicking "Sign Up" navigates to the sign up page | <details><summary>Sign Up Navigation</summary><img src="doc/testing/divingreact/pages/sign-up.png" alt="Sign Up Navigation"></details> | ✅ |
+
+### Footer
+
+| What was tested | Expected Result | Image | Fail/Pass |
+|-----------------|-----------------|-------|-----------|
+| GitHub link | Clicking "GitHub" navigates to the GitHub page | <details><summary>GitHub Navigation</summary><img src="doc/testing/divingreact/pages/github.png" alt="GitHub Navigation"></details> | ✅ |
+| LinkedIn link | Clicking "LinkedIn" navigates to the LinkedIn page | <details><summary>LinkedIn Navigation</summary><img src="doc/testing/divingreact/pages/linkedin.png" alt="Linkedin Navigation"></details> | ✅ |
+
+### Home Page
+
+#### Non Logged-In User
+
+| What was tested | Expected Result | Image | Fail/Pass |
+|-----------------|-----------------|-------|-----------|
+| Home link | Access to home page | <details><summary>Home Page</summary>Home Page</details> | ✅ |
+| Contact Us form | Access and use the contact us form | <details><summary>Contact Us Form</summary>Contact Us Form</details> | ✅ |
+| Courses link | Access to courses page | <details><summary>Courses Page</summary>Courses Page</details> | ✅ |
+| Feed visibility | Feed is hidden but not blocked | <details><summary>Feed Visibility</summary>Feed Visibility</details> | ✅ |
+| Read posts | Can read posts | <details><summary>Read Posts</summary>Read Posts</details> | ✅ |
+| Add post | Cannot add posts | <details><summary>Add Post</summary>Add Post</details> | ✅ |
+| Like posts | Cannot like posts | <details><summary>Like Posts</summary>Like Posts</details> | ✅ |
+| Comment on posts | Cannot comment on posts | <details><summary>Comment on Posts</summary>Comment on Posts</details> | ✅ |
+| Book courses | Cannot book courses | <details><summary>Book Courses</summary>Book Courses</details> | ✅ |
+| Review and rate courses | Cannot review and rate courses | <details><summary>Review and Rate Courses</summary>Review and Rate Courses</details> | ✅ |
+
+#### Logged-In User
+
+| What was tested | Expected Result | Image | Fail/Pass |
+|-----------------|-----------------|-------|-----------|
+| Personal profile | Access to personal profile page | <details><summary>Personal Profile</summary>Personal Profile</details> | ✅ |
+| My Bookings | Access to bookings page | <details><summary>My Bookings</summary>My Bookings 1 My Bookings 2</details> | ✅ |
+| My Feed | Access to personalized feed | <details><summary>My Feed</summary>My Feed</details> | ✅ |
+| Add Post | Can add new posts | <details><summary>Add Post</summary>Add Post 1 Add Post 2</details> | ✅ |
+| Liked posts | Can see liked posts | <details><summary>Liked Posts</summary>Liked Posts</details> | ✅ |
+| Book a course | Can book diving courses | <details><summary>Book a Course</summary>Book a Course</details> | ✅ |
+| Review and rate courses | Can review and rate courses | <details><summary>Review and Rate Courses</summary>Review and Rate Courses</details> | ✅ |
+| Like other posts | Can like other posts | <details><summary>Like Other Posts</summary>Like Other Posts</details> | ✅ |
+| Comment on posts | Can comment on posts | <details><summary>Comment on Posts</summary>Comment on Posts</details> | ✅ |
+| Change username | Can change username | <details><summary>Change Username</summary>Change Username</details> | ✅ |
+| Change profile image | Can change profile image | <details><summary>Change Profile Image</summary>Change Profile Image</details> | ✅ |
+| Change bio description | Can change bio description | <details><summary>Change Bio</summary>Change Bio</details> | ✅ |
+| Edit own posts | Can edit own posts | <details><summary>Edit Own Posts</summary>Edit Own Posts</details> | ✅ |
+| Sign Out | Can sign out | <details><summary>Sign Out</summary>Sign Out</details> | ✅ |
+
+### Courses
+
+| What was tested | Expected Result | Image | Fail/Pass |
+|-----------------|-----------------|-------|-----------|
+| View courses | Access to courses list | <details><summary>View Courses</summary>View Courses</details> | ✅ |
+| Book courses (logged-in) | Can book courses | <details><summary>Book Courses</summary>Book Courses</details> | ✅ |
+| Review and rate courses (logged-in) | Can review and rate courses | <details><summary>Review and Rate Courses</summary>Review and Rate Courses Basic Review and Rate Courses Advanced Review and Rate Courses Rescue</details> | ✅ |
+
+### Posts and Feed
+
+| What was tested | Expected Result | Image | Fail/Pass |
+|-----------------|-----------------|-------|-----------|
+| View feed (non-logged-in) | Feed is hidden but not blocked | <details><summary>View Feed (Non-logged-in)</summary>View Feed Non-logged-in</details> | ✅ |
+| View feed (logged-in) | Access to personalized feed | <details><summary>View Feed (Logged-in)</summary>View Feed Logged-in</details> | ✅ |
+| Add post (logged-in) | Can add new posts | <details><summary>Add Post</summary>Add Post 1 Add Post 2</details> | ✅ |
+| Like posts (logged-in) | Can like other posts | <details><summary>Like Posts</summary>Like Posts</details> | ✅ |
+| Comment on posts (logged-in) | Can comment on posts | <details><summary>Comment on Posts</summary>Comment on Posts</details> | ✅ |
+
+I've added the provided image links to the appropriate sections in the table. For some sections where specific images weren't provided (like Sign In, Sign Up, etc.), I left the original placeholders. You may want to add more specific images for these sections if available.
+
 **Form Validation**
 
 | Feature                 | Tested? | Action              | Expected Outcome                                                      | Pass/Fail | Screenshots                                                                                                                                                                 |
