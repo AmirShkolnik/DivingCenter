@@ -482,17 +482,6 @@ The manual testing process ensures that each of these features works correctly f
 | GitHub link | Clicking "GitHub" navigates to the GitHub page | <details><summary>GitHub Navigation</summary><img src="doc/testing/divingreact/pages/github.png" alt="GitHub Navigation"></details> | ✅ |
 | LinkedIn link | Clicking "LinkedIn" navigates to the LinkedIn page | <details><summary>LinkedIn Navigation</summary><img src="doc/testing/divingreact/pages/linkedin.png" alt="Linkedin Navigation"></details> | ✅ |
 
-***********************
-
-| What was tested | Expected Result | Image | Fail/Pass |
-|-----------------|-----------------|-------|-----------|
-
-| Liked posts | Can see liked posts | <details><summary>Liked Posts</summary>Liked Posts</details> | ✅ |
-
-| Like other posts | Can like other posts | <details><summary>Like Other Posts</summary>Like Other Posts</details> | ✅ |
-
-****************
-
 ### My Bookings
 
 Only logged-in users can book a course. Here are the instructions and rules for bookings:
@@ -609,9 +598,25 @@ These improvements will enhance the user experience, encourage more meaningful i
 
 [Back to top](#table-of-contents)
 
+### My Likes
+
+The "Like" feature is an essential engagement tool that allows logged-in users to express their appreciation for a post. By clicking the empty heart icon, users can like a post, and the heart will turn red to indicate their interaction. The total number of likes is visible to all users, providing social proof and encouraging further engagement.
+
+Future improvements:
+1. Introduce a "Most Liked" section to highlight popular content.
+2. Implement notifications for post owners when their content receives likes.
+
+| What was tested | Expected Result | Image | Fail/Pass |
+|-----------------|-----------------|-------|-----------|
+| Add like to a post | User can like a post, heart turns red, like count increases | <details><summary>Add Like</summary><img src="doc/testing/divingreact/logged-in/likes/add-like-step1.png" alt="Add Like Step 1"><br><img src="doc/testing/divingreact/logged-in/likes/add-like-step2.png" alt="Add Like Step 2"></details> | ✅ |
+| Remove like from a post | User can unlike a post, heart turns empty, like count decreases | <details><summary>Remove Like</summary><img src="doc/testing/divingreact/logged-in/likes/remove-like-step1.png" alt="Remove Like Step 1"><br><img src="doc/testing/divingreact/logged-in/likes/remove-like-step2.png" alt="Remove Like Step 2"></details> | ✅ |
+| Like visibility | Total number of likes is visible to all users | <details><summary>Like Visibility</summary><img src="doc/testing/divingreact/logged-in/likes/add-like-step2.png" alt="Like Visibility"></details> | ✅ |
+
+[Back to top](#table-of-contents)
+
 ### Browser Compatibility
 
-Fit&Fine was tested on the latest versions of major browsers to ensure compatibility across different platforms.
+Diving Center was tested on the latest versions of major browsers to ensure compatibility across different platforms.
 
 | Browser        | Tested? | Issues Found | Pass/Fail |
 | -------------- | ------- | ------------ | --------- |
