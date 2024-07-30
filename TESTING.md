@@ -1,4 +1,9 @@
-# Testing
+<p align="center">
+  <img src="doc/images/logos/logo.jpg" alt="Diving Center">
+</p>
+<h1 align="center">Diving Center - Testing</h1>
+
+<h2>Welcome</h2>
 
 This is the TESTING file for the [Diving Center](https://divingspace-900b5a3db777.herokuapp.com/) website.
 
@@ -12,23 +17,31 @@ Return back to the [README.md](README.md) file.
     - [HTML Validation](#html-validation)
     - [CSS Validation](#css-validation)
     - [JavaScript Validation](#javascript-validation)
-      - [ESLint](#eslint)
+      - [ESLint and Prettier](#eslint-and-prettier)
       - [Steps to Run JavaScript Validation](#steps-to-run-javascript-validation)
-      - [Prettier for Code Formatting](#prettier-for-code-formatting)
     - [Lighthouse](#lighthouse)
     - [Wave Accessibility Evaluation](#wave-accessibility-evaluation)
   - [Manual Testing](#manual-testing)
-    - [User Input/Form Validation](#user-inputform-validation)
+    - [Non-logged in User](#non-logged-in-user)
+      - [Navbar](#navbar)
+      - [Footer](#footer)
+    - [Logged-In User](#logged-in-user)
+      - [Navbar](#navbar)
+      - [Footer](#footer)
+      - [My Bookings](#my-bookings)
+      - [Add Review](#add-review)
+      - [Add Post](#add-post)
+      - [Update Profile](#update-profile)
+      - [Add Comments](#add-comments)
+      - [My Likes](#my-likes)
     - [Browser Compatibility](#browser-compatibility)
-    - [Toastify Messages Implementation Testing](#toastify-messages-implementation-testing)
     - [Responsiveness](#responsiveness)
   - [Automated Testing](#automated-testing)
-    - [Tools Used](#tools-used)
-    - [Running Tests](#running-tests)
   - [Bugs](#bugs)
     - [Solved Bugs](#solved-bugs)
     - [Known Bugs](#known-bugs)
     - [Unknown Bugs](#unknown-bugs)
+  - [Credits](#credits)
 
 ## Validation
 
@@ -466,7 +479,7 @@ The manual testing process ensures that each of these features works correctly f
 
 [Back to top](#table-of-contents)
 
-### Logged-In Users
+### Logged-In User
 
 #### Navbar
 
@@ -703,19 +716,20 @@ By running `npm test`, we executed all test suites simultaneously, allowing for 
 
 The following table summarizes the testing files created for various components of the Diving Center project, along with the results of running the tests using npm:
 
-| Component                     | Test File Link                                              | Status  | Time Taken |
-|-------------------------------|------------------------------------------------------------|---------|------------|
-| App                           | [src/App.test.js](src/App.test.js)                        | PASS    | 6.394 s    |
-| Asset                         | [src/components/__tests__/Asset.test.js](src/components/__tests__/Asset.test.js) | PASS    | 9.314 s    |
-| Avatar                        | [src/components/__tests__/Avatar.test.js](src/components/__tests__/Avatar.test.js) | PASS    | 9.207 s    |
-| Footer                        | [src/components/__tests__/Footer.test.js](src/components/__tests__/Footer.test.js) | PASS    | 9.399 s    |
-| MoreDropDown                  | [src/components/__tests__/MoreDropDown.test.js](src/components/__tests__/MoreDropDown.test.js) | PASS    | 9.620 s    |
-| NavBar                        | [src/components/__tests__/NavBar.test.js](src/components/__tests__/NavBar.test.js) | PASS    | 9.945 s    |
-| NotFound                      | [src/components/__tests__/NotFound.test.js](src/components/__tests__/NotFound.test.js) | PASS    | 9.302 s    |
-| ScrollToTop                   | [src/components/__tests__/ScrollToTop.test.js](src/components/__tests__/ScrollToTop.test.js) | PASS    | 9.496 s    |
-| VideoPlayer                   | [src/components/__tests__/VideoPlayer.test.js](src/components/__tests__/VideoPlayer.test.js) | PASS    | 9.401 s    |
-| VideoPlayerSignIn             | [src/components/__tests__/VideoPlayerSignIn.test.js](src/components/__tests__/VideoPlayerSignIn.test.js) | PASS    | 9.499 s    |
-| VideoPlayerSignUp             | [src/components/__tests__/VideoPlayerSignUp.test.js](src/components/__tests__/VideoPlayerSignUp.test.js) | PASS    | 9.401 s    |
+
+| Component                     | Test File Link                                              | Status  |
+|-------------------------------|------------------------------------------------------------|---------|
+| App                           | [src/App.test.js](src/App.test.js)                        | PASS    |
+| Asset                         | [src/components/__tests__/Asset.test.js](src/components/__tests__/Asset.test.js) | PASS    |
+| Avatar                        | [src/components/__tests__/Avatar.test.js](src/components/__tests__/Avatar.test.js) | PASS    |
+| Footer                        | [src/components/__tests__/Footer.test.js](src/components/__tests__/Footer.test.js) | PASS    |
+| MoreDropDown                  | [src/components/__tests__/MoreDropDown.test.js](src/components/__tests__/MoreDropDown.test.js) | PASS    |
+| NavBar                        | [src/components/__tests__/NavBar.test.js](src/components/__tests__/NavBar.test.js) | PASS    |
+| NotFound                      | [src/components/__tests__/NotFound.test.js](src/components/__tests__/NotFound.test.js) | PASS    |
+| ScrollToTop                   | [src/components/__tests__/ScrollToTop.test.js](src/components/__tests__/ScrollToTop.test.js) | PASS    |
+| VideoPlayer                   | [src/components/__tests__/VideoPlayer.test.js](src/components/__tests__/VideoPlayer.test.js) | PASS    |
+| VideoPlayerSignIn             | [src/components/__tests__/VideoPlayerSignIn.test.js](src/components/__tests__/VideoPlayerSignIn.test.js) | PASS    |
+| VideoPlayerSignUp             | [src/components/__tests__/VideoPlayerSignUp.test.js](src/components/__tests__/VideoPlayerSignUp.test.js) | PASS    |
 
 ### Summary of Test Results
 
@@ -724,17 +738,50 @@ The following table summarizes the testing files created for various components 
 - **Total Tests**: 31
 - **Passed Tests**: 31
 - **Total Snapshots**: 0
-- **Total Time Taken**: 13.519 seconds
 
 These results demonstrate the thoroughness of our testing approach and confirm that all components are functioning as expected within the Diving Center project. The successful passing of all tests provides confidence in the reliability and stability of the application's core components.
 
 ![npm test Screenshot](doc/testing/npmtest/npmtest.png)
 
+[Back to top](#table-of-contents)  
+
 ## Bugs
 
 ### Solved Bugs
 
-Certainly! I'll create a bug table summarizing the issues, solutions, and references for the problems we've addressed in the PostCreateForm component. Here's the table:
+#### Video Player Bugs
+
+| File Name | Issue | Solution | Reference |
+|-----------|-------|----------|-----------|
+| VideoPlayer.js | Warning: React does not recognize the `publicId` prop on a DOM element | Remove `publicId` prop and use `cldVid` object correctly | [Cloudinary React SDK Documentation](https://cloudinary.com/documentation/react_integration) |
+| VideoPlayer.js | State update on an unmounted component | Implement cleanup function using `useEffect` | [React Hooks Documentation](https://reactjs.org/docs/hooks-effect.html#effects-with-cleanup) |
+| VideoPlayer.js | Unused `isMounted` variable | Remove unused variable and related `useEffect` hook | [ESLint no-unused-vars Rule](https://eslint.org/docs/rules/no-unused-vars) |
+| VideoPlayer.js | ESLint warning: 'useEffect' is defined but never used | Remove unused `useEffect` import | [ESLint no-unused-vars Rule](https://eslint.org/docs/rules/no-unused-vars) |
+
+
+Here's a brief explanation of each issue and its solution:
+
+1. **`publicId` prop warning**: 
+   - Issue: The Cloudinary component was not recognizing the `publicId` prop.
+   - Solution: Use the `cldVid` object correctly with the Cloudinary video method.
+
+2. **State update on unmounted component**:
+   - Issue: Potential memory leak due to state updates after component unmount.
+   - Solution: Implement a cleanup function using `useEffect` to prevent updates on unmounted components.
+
+3. **Unused `isMounted` variable**:
+   - Issue: ESLint warning about an unused variable.
+   - Solution: Remove the unused `isMounted` variable and its related `useEffect` hook.
+
+4. **Unused `useEffect` import**:
+   - Issue: ESLint warning about an unused import.
+   - Solution: Remove the unused `useEffect` import from the component.
+
+These fixes ensure that the Video Player component runs without warnings and follows React best practices for handling asynchronous operations and component lifecycle.
+
+[Back to top](#table-of-contents)
+
+#### Post Create Form Bugs
 
 | File Name | Issue | Solution | Reference |
 |-----------|-------|----------|-----------|
@@ -752,24 +799,35 @@ These solutions address the main issues we encountered in the PostCreateForm com
 
 By implementing these solutions, we've improved the component's functionality, user experience, and overall performance. The references provided offer more in-depth information about each solution and the underlying concepts.
 
+[Back to top](#table-of-contents)
+
 ### Known Bugs
 
-1. **Add Post Page Responsiveness**
+Here's a table summarizing the known bugs you've described:
 
-   - The Add Post page does not appear responsive on some devices.
+| Bug ID | Description | Details |
+|--------|-------------|---------|
+| 1 | Add Post Page Responsiveness | The Add Post page does not appear responsive on some devices. |
+| 2 | Slow Load Times on Initial Page Load | The initial page load time is slower than expected, particularly on the home page with many posts. |
+| 3 | Authentication Errors for Non-Logged-In Users | Multiple 401 (Unauthorized) errors appear in the browser console for non-logged-in users: <br>- GET request to /dj-rest-auth/user/ <br>- POST request to /dj-rest-auth/token/refresh/ <br>- Another GET request to /dj-rest-auth/user/ |
+| 4 | Error Fetching User Data | Error message in console: "Error fetching user data: Error: Request failed with status code 401" |
 
-2. **Intermittent Login Issues**
-
-   - Some users experience intermittent issues while logging in, where the login button becomes unresponsive.
-
-3. **Slow Load Times on Initial Page Load**
-   - The initial page load time is slower than expected, particularly on the home page with many posts.
+[Back to top](#table-of-contents)
 
 ### Unknown Bugs
 
 There may be other bugs that have not yet been identified.
 
-Credits
+## Credits
 
-https://testing-library.com/docs/react-testing-library/intro/
-https://testing-library.com/docs/queries/about/
+In this project, all credits have been meticulously attributed to the respective sources. Each table includes links to the original content or resources, ensuring that proper recognition is given to the authors and creators. This practice not only honors the contributions of others but also enhances the credibility of the project by providing transparency about the sources of information and inspiration.
+
+### Key Points:
+
+- **Attribution**: Every source used in this project has been credited appropriately, allowing users to trace back the information to its origin.
+- **Links**: Each credit is linked directly to the source material, making it easy for users to access further information or context.
+- **Integrity**: By providing clear credits, we uphold the principles of academic honesty and intellectual property rights, fostering a respectful community of creators and users.
+
+Thank you to all the contributors whose work has enriched this project!
+
+[Back to top](#table-of-contents)
