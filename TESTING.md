@@ -503,6 +503,18 @@ The manual testing process ensures that each of these features works correctly f
 
 ### Add Review
 
+A logged-in user can review and rate a course on the specific course page.
+
+Steps to Add a Review:
+
+1. Navigate to the specific course page where you want to leave a review.
+2. Locate the review section and click on the "Add Review" button.
+3. Rate the course by selecting the appropriate number of stars.
+4. Leave a comment in the provided text area.
+5. Submit the review.
+
+If either the rating or the comment is missing, a warning message will appear, prompting the user to complete both fields.
+
 | What was tested | Expected Result | Image | Fail/Pass |
 |-----------------|-----------------|-------|-----------|
 | Create Review | Successful creation of a new review | <details><summary>Create Review</summary><strong>Step 1:</strong> Open review form<br><img src="doc/testing/divingreact/logged-in/reviews/reviews-step1.png" alt="Reviews Step 1"><strong>Step 2:</strong> Submit review<br><img src="doc/testing/divingreact/logged-in/reviews/reviews-step2.png" alt="Reviews Step 2"></details> | ✅ |
@@ -513,7 +525,20 @@ The manual testing process ensures that each of these features works correctly f
 
 ### Add Post
 
+To successfully add a post, the user must follow these steps:
+1. Navigate to the posts/create page by clicking the "Add Post" option in the dropdown navigation bar.
+2. Choose an image that is less than 2 MB.
+3. Add a title and content for the post.
 
+| What was tested | Expected Result | Image | Fail/Pass |
+|-----------------|-----------------|-------|-----------|
+| Navigate to Add Post page | User can access the Add Post page from the dropdown menu | <details><summary>Step 1: Access Add Post page</summary><img src="doc/testing/divingreact/logged-in/addpost/add-post-step1.png" alt="Access Add Post page"></details> | ✅ |
+| Select image | User can choose an image file | <details><summary>Step 2: Select image</summary><img src="doc/testing/divingreact/logged-in/addpost/add-post-step2.png" alt="Select image"></details> | ✅ |
+| Add title and content | User can input title and content | <details><summary>Step 3: Add title and content</summary><img src="doc/testing/divingreact/logged-in/addpost/add-post-step3.png" alt="Add title and content"></details> | ✅ |
+| Submit post | User can submit the post | <details><summary>Step 4: Submit post</summary><img src="doc/testing/divingreact/logged-in/addpost/add-post-step4.png" alt="Submit post"></details> | ✅ |
+| Backend confirmation | Backend confirms post creation | <details><summary>Step 5: Backend confirmation</summary><img src="doc/testing/divingreact/logged-in/addpost/add-post-backend-step5.png" alt="Backend confirmation"></details> | ✅ |
+| Large image size warning | Warning displayed for images > 2 MB | <details><summary>Large image size warning</summary><img src="doc/testing/divingreact/logged-in/addpost/add-post-large-image-size-warning.png" alt="Large image size warning"></details> | ✅ |
+| Missing fields warning | Warning displayed for missing title or content | <details><summary>Missing fields warning</summary><img src="doc/testing/divingreact/logged-in/addpost/add-post-missing-fields-warning.png" alt="Missing fields warning"></details> | ✅ |
 
 ### Update Profile
 
