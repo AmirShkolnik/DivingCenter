@@ -25,6 +25,7 @@ Return back to the [README.md](README.md) file.
     - [Non-logged in User](#non-logged-in-user)
       - [Navbar](#navbar)
       - [Footer](#footer)
+      - [Website](#website)
     - [Logged-In User](#logged-in-user)
       - [Navbar](#navbar)
       - [Footer](#footer)
@@ -476,6 +477,7 @@ The manual testing process ensures that each of these features works correctly f
 | Book courses | Cannot book courses | <details><summary>Book Courses</summary><img src="doc/testing/divingreact/non-logged-in/book.png" alt="Book Courses"></details> | ✅ |
 | Review and rate courses | Cannot review and rate courses | <details><summary>Review and Rate Courses</summary><img src="doc/testing/divingreact/non-logged-in/logg-in-add-review.png" alt="Review and Rate Courses"></details> | ✅ |
 | Profiles | Can read profiles | <details><summary>Profiles</summary><img src="doc/testing/divingreact/non-logged-in/profile.png" alt="Profiles"></details> | ✅ |
+| NotFound | See NotFound page | <details><summary>Not Found</summary><img src="doc/testing/divingreact/notfound/notfound.png" alt="NotFound"></details> | ✅ |
 
 [Back to top](#table-of-contents)
 
@@ -497,6 +499,7 @@ The manual testing process ensures that each of these features works correctly f
 | Add Post Link | Opens add post form | <details><summary>Add Post</summary>Click add post link<br><img src="doc/testing/divingreact/logged-in/navbar/logged-in-add-post.png" alt="Logged-in Add Post"></details> | ✅ |
 | My Likes Link | Shows liked posts | <details><summary>Liked</summary>Click my likes link<br><img src="doc/testing/divingreact/logged-in/navbar/logged-in-liked.png" alt="Logged-in Liked"></details> | ✅ |
 | Sign Out | Can sign out | <details><summary>Sign out</summary>Click sign out<br><img src="doc/testing/divingreact/logged-in/navbar/sign-out.png" alt="Logged-in Liked"></details> | ✅ |
+| NotFound | See NotFound page | <details><summary>Not Found</summary><img src="doc/testing/divingreact/notfound/notfound-logged-in.png" alt="NotFound"></details> | ✅ |
 
 [Back to top](#table-of-contents)
 
@@ -809,8 +812,25 @@ Here's a table summarizing the known bugs you've described:
 |--------|-------------|---------|
 | 1 | Add Post Page Responsiveness | The Add Post page does not appear responsive on some devices. |
 | 2 | Slow Load Times on Initial Page Load | The initial page load time is slower than expected, particularly on the home page with many posts. |
-| 3 | Authentication Errors for Non-Logged-In Users | Multiple 401 (Unauthorized) errors appear in the browser console for non-logged-in users: <br>- GET request to /dj-rest-auth/user/ <br>- POST request to /dj-rest-auth/token/refresh/ <br>- Another GET request to /dj-rest-auth/user/ |
-| 4 | Error Fetching User Data | Error message in console: "Error fetching user data: Error: Request failed with status code 401" |
+
+![DevTools](doc/testing/401-error.png)
+
+The 401 (Unauthorized) errors for non-logged-in users are expected behavior in a React application when certain API endpoints require authentication. These errors occur because the application attempts to access resources that are restricted to authenticated users. This is a common scenario in web applications where user-specific data is protected and requires valid credentials to be accessed.
+
+### References
+
+For more information, you can refer to the following resources:
+
+- [Microsoft Entra ID - Non-Interactive Sign-Ins](https://techcommunity.microsoft.com/t5/microsoft-entra/entra-id-user-sign-ins-non-interactive-failed-connection/td-p/3979487) [1]
+- [Postman Community - User Not Logged In Error](https://community.postman.com/t/response-shows-error-code-1-user-not-logged-in/18273) [2]
+- [ServiceNow - Public/Non-Logged-In Users Access Issues](https://support.servicenow.com/kb?id=kb_article_view&sysparm_article=KB0822637) [3]
+- [UX Stack Exchange - Handling Not Logged In Errors](https://ux.stackexchange.com/questions/107705/how-should-i-handle-errors-due-to-not-being-logged-in) [4]
+- [Appwrite - Verify Email for Non-Logged-In Users](https://www.appwrite.io/threads/1264927475725762636) [5]
+
+| Bug ID | Description | Details |
+|--------|-------------|---------|
+| 1 | Authentication Errors for Non-Logged-In Users | Multiple 401 (Unauthorized) errors appear in the browser console for non-logged-in users: <br>- GET request to /dj-rest-auth/user/ <br>- POST request to /dj-rest-auth/token/refresh/ <br>- Another GET request to /dj-rest-auth/user/ ([1](https://techcommunity.microsoft.com/t5/microsoft-entra/entra-id-user-sign-ins-non-interactive-failed-connection/td-p/3979487), [2](https://community.postman.com/t/response-shows-error-code-1-user-not-logged-in/18273), [3](https://support.servicenow.com/kb?id=kb_article_view&sysparm_article=KB0822637), [4](https://ux.stackexchange.com/questions/107705/how-should-i-handle-errors-due-to-not-being-logged-in), [5](https://www.appwrite.io/threads/1264927475725762636)) |
+| 2 | Error Fetching User Data | Error message in console: "Error fetching user data: Error: Request failed with status code 401" ([1](https://techcommunity.microsoft.com/t5/microsoft-entra/entra-id-user-sign-ins-non-interactive-failed-connection/td-p/3979487), [2](https://community.postman.com/t/response-shows-error-code-1-user-not-logged-in/18273), [3](https://support.servicenow.com/kb?id=kb_article_view&sysparm_article=KB0822637), [4](https://ux.stackexchange.com/questions/107705/how-should-i-handle-errors-due-to-not-being-logged-in), [5](https://www.appwrite.io/threads/1264927475725762636)) |
 
 [Back to top](#table-of-contents)
 
