@@ -1,6 +1,5 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
-
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
@@ -8,15 +7,11 @@ import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Alert from 'react-bootstrap/Alert';
 import Image from 'react-bootstrap/Image';
-
 import Asset from '../../components/Asset';
-
 import Upload from '../../assets/upload.png';
-
 import styles from '../../styles/PostCreateEditForm.module.css';
 import appStyles from '../../App.module.css';
 import btnStyles from '../../styles/Button.module.css';
-
 import { useHistory } from 'react-router';
 import { axiosReq } from '../../api/axiosDefaults';
 import { useRedirect } from '../../hooks/useRedirect';
@@ -35,6 +30,15 @@ function PostCreateForm() {
 
   const imageInput = useRef(null);
   const history = useHistory();
+
+  useEffect(() => {
+    return () => {
+      // Cleanup function
+      if (image) {
+        URL.revokeObjectURL(image);
+      }
+    };
+  }, [image]);
 
   const handleChange = (event) => {
     setPostData({
@@ -118,7 +122,7 @@ function PostCreateForm() {
           toast.info('Post creation cancelled');
         }}
       >
-        cancel
+        Cancel
       </Button>
       <Button
         className={`${btnStyles.Button} ${btnStyles.Blue}`}

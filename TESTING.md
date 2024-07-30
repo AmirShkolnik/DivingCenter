@@ -734,53 +734,23 @@ These results demonstrate the thoroughness of our testing approach and confirm t
 
 ### Solved Bugs
 
-1. **Incorrect Display of Joined Date**
+Certainly! I'll create a bug table summarizing the issues, solutions, and references for the problems we've addressed in the PostCreateForm component. Here's the table:
 
-   - **Issue:** The joined date for challenges was incorrectly displayed or not formatted properly.
-   - **Solution:** Implemented proper date formatting using `toLocaleDateString` to ensure the joined date was displayed in "dd-mm-yyyy" format.
-   - **Reference:** [JavaScript Date toLocaleDateString Documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString)
+| File Name | Issue | Solution | Reference |
+|-----------|-------|----------|-----------|
+| PostCreateForm.js | Multiple post submissions when clicking "Create" button repeatedly | Implemented submission state management and early return in `handleSubmit` function | [React Form Submission](https://reactjs.org/docs/forms.html#handling-multiple-inputs) |
+| PostCreateForm.js | Lack of user feedback for form actions | Added toast notifications for various actions (create, cancel, error) | [React-Toastify Usage](https://fkhadra.github.io/react-toastify/introduction) |
+| PostCreateForm.js | Warning: Can't perform a React state update on an unmounted component | Implemented cleanup function using `useEffect` hook to revoke object URLs | [React useEffect Cleanup](https://reactjs.org/docs/hooks-effect.html#effects-with-cleanup) |
+| PostCreateForm.js | Potential memory leak due to unreleased resources | Added cleanup function to revoke object URLs when component unmounts | [MDN URL.revokeObjectURL()](https://developer.mozilla.org/en-US/docs/Web/API/URL/revokeObjectURL) |
 
-2. **Navigation Bar Toggle Issue on Mobile Devices**
+These solutions address the main issues we encountered in the PostCreateForm component:
 
-   - **Issue:** The navigation bar toggle was not working correctly on some mobile devices.
-   - **Solution:** Updated the React Bootstrap NavBar component to ensure the toggle functioned properly across all screen sizes.
-   - **Reference:** [React Bootstrap NavBar Documentation](https://react-bootstrap.github.io/docs/components/navbar)
+1. Preventing multiple submissions
+2. Adding user feedback through toast notifications
+3. Resolving the warning about state updates on unmounted components
+4. Preventing potential memory leaks
 
-3. **Dynamic Filtering of Challenges**
-
-   - **Issue:** Filtering challenges by sport was not dynamically updating the displayed list.
-   - **Solution:** Implemented state management using React hooks to ensure the filtered list updated correctly based on user selection.
-   - **Reference:** [React Hooks Documentation](https://reactjs.org/docs/hooks-intro.html)
-
-4. **Form Submission Validation for Daily Routines**
-
-   - **Issue:** Users were able to submit daily routines with future dates and unrealistic water intake values.
-   - **Solution:** Added custom validation in the Django serializers to ensure dates were not in the future and water intake was within a realistic range.
-   - **Reference:** [Django Serializers Documentation](https://www.django-rest-framework.org/api-guide/serializers/)
-
-5. **Image Upload Errors**
-
-   - **Issue:** Users encountered errors when uploading images, especially when the images exceeded the maximum file size.
-   - **Solution:** Integrated file size validation and compression before uploading images to Cloudinary, and provided user feedback on file size issues.
-   - **Reference:** [Cloudinary Documentation on Image Uploads](https://cloudinary.com/documentation/image_upload_api)
-
-6. **Navigation Bar Update Issues**
-
-   - **Issue:** The navigation bar did not update dynamically to reflect the user's authentication status.
-   - **Solution:** Utilized React's context API to manage global state, ensuring the navigation bar updates in real-time when the user's authentication status changes.
-   - **Reference:** [React Context API Documentation](https://reactjs.org/docs/context.html)
-
-7. **Challenges Filtering by Sport**
-
-   - **Issue:** Users were unable to filter challenges by specific sports effectively.
-   - **Solution:** Added filter functionality to the challenges API and implemented corresponding frontend filters to allow users to select and view challenges based on specific sports.
-   - **Reference:** [Django QuerySet API](https://docs.djangoproject.com/en/3.2/ref/models/querysets/)
-
-8. **Improving Button Layout**
-
-   - **Issue:** Buttons on the Challenges page were overlapping, making them difficult to interact with.
-   - **Solution:** Updated the CSS styles to ensure buttons are spaced properly and do not overlap.
-   - **Reference:** [CSS Flexbox Documentation](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+By implementing these solutions, we've improved the component's functionality, user experience, and overall performance. The references provided offer more in-depth information about each solution and the underlying concepts.
 
 ### Known Bugs
 
