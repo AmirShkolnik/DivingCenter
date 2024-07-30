@@ -8,7 +8,9 @@ const cld = new Cloudinary({
   },
 });
 
-const VideoPlayerSignUp = (props) => {
+const VideoPlayerSignUp = () => {
+  const cldVid = cld.video('160396821086388');
+
   return (
     <div
       style={{
@@ -20,7 +22,7 @@ const VideoPlayerSignUp = (props) => {
       }}
     >
       <AdvancedVideo
-        cldVid={cld.video('160396821086388')} // Static video ID
+        cldVid={cldVid}
         controls={false}
         autoPlay
         muted
@@ -31,7 +33,6 @@ const VideoPlayerSignUp = (props) => {
           objectFit: 'cover',
           objectPosition: 'center',
         }}
-        {...props}
       />
     </div>
   );

@@ -664,43 +664,71 @@ Results were documented in a table format, indicating whether each browser was t
 
 Responsiveness and interactive elements were thoroughly tested on various devices and through browser developer tools to ensure a seamless user experience across different platforms and screen sizes.
 
+![Am I Responsive Image](doc/images/amiresponsive/amiresponsive.png)
+
 | Device/Method           | Features Tested          |
 | ----------------------- | ------------------------ |
 | Chrome DevTools         | All                      |
 | Firefox Responsive Mode | All                      |
-| iPhone 13               | Navigation, forms, posts |
-| Tab                     | Few                      |
+| iPhone xr               | All |
+| samsung s21               | All |
+| Tablet                    | All                    |
 | Real Android Device     | All                      |
-
-**Identified Issue**
-**Add Post Page:** On some devices, the add post page did not display correctly.
 
 ## Automated Testing
 
-### Tools Used
+### NPM Test Results for the Diving Center Project
 
-- **Jest**: A JavaScript testing framework for creating and running tests.
-- **React Testing Library**: A set of helpers that let you test React components without relying on their implementation details.
+### Testing Tools and Process
 
-**Key Areas Tested:**
+For the Diving Center project, we employed a robust testing strategy using modern JavaScript testing tools:
 
-- **Component Rendering**: Ensure all components render as expected.
-- **User Interactions**: Verify interactions like button clicks, form submissions, and navigation.
-- **Form Validations**: Check that form inputs are validated correctly and error messages are displayed as needed.
+1. **Jest**: As the primary testing framework, Jest provides a comprehensive suite of testing utilities, including test runners, assertions, and mocking capabilities.
 
-### Running Tests
+2. **React Testing Library**: This library was used in conjunction with Jest to test React components. It encourages testing components in a way that closely resembles how users interact with the application.
 
-1. **Install the dependencies:**
+3. **npm**: The Node Package Manager was used to run the tests via the `npm test` command, which executes all test suites in the project.
 
-   ```sh
-   npm install
-   ```
+The testing process involved creating individual test files for each component, located in the `src/components/__tests__` directory. These tests cover various aspects of component functionality, including:
 
-2. **Run the tests:**
-   ```sh
-   npm test
-   ```
-   ![JS Validation Screenshot](documentation/validation/test.JPG)
+- Rendering checks
+- User interaction simulations
+- State and prop validations
+- Conditional rendering tests
+- Event handling verifications
+
+By running `npm test`, we executed all test suites simultaneously, allowing for a comprehensive overview of the project's test coverage and component stability.
+
+### Test Results Table
+
+The following table summarizes the testing files created for various components of the Diving Center project, along with the results of running the tests using npm:
+
+| Component                     | Test File Link                                              | Status  | Time Taken |
+|-------------------------------|------------------------------------------------------------|---------|------------|
+| App                           | [src/App.test.js](src/App.test.js)                        | PASS    | 6.394 s    |
+| Asset                         | [src/components/__tests__/Asset.test.js](src/components/__tests__/Asset.test.js) | PASS    | 9.314 s    |
+| Avatar                        | [src/components/__tests__/Avatar.test.js](src/components/__tests__/Avatar.test.js) | PASS    | 9.207 s    |
+| Footer                        | [src/components/__tests__/Footer.test.js](src/components/__tests__/Footer.test.js) | PASS    | 9.399 s    |
+| MoreDropDown                  | [src/components/__tests__/MoreDropDown.test.js](src/components/__tests__/MoreDropDown.test.js) | PASS    | 9.620 s    |
+| NavBar                        | [src/components/__tests__/NavBar.test.js](src/components/__tests__/NavBar.test.js) | PASS    | 9.945 s    |
+| NotFound                      | [src/components/__tests__/NotFound.test.js](src/components/__tests__/NotFound.test.js) | PASS    | 9.302 s    |
+| ScrollToTop                   | [src/components/__tests__/ScrollToTop.test.js](src/components/__tests__/ScrollToTop.test.js) | PASS    | 9.496 s    |
+| VideoPlayer                   | [src/components/__tests__/VideoPlayer.test.js](src/components/__tests__/VideoPlayer.test.js) | PASS    | 9.401 s    |
+| VideoPlayerSignIn             | [src/components/__tests__/VideoPlayerSignIn.test.js](src/components/__tests__/VideoPlayerSignIn.test.js) | PASS    | 9.499 s    |
+| VideoPlayerSignUp             | [src/components/__tests__/VideoPlayerSignUp.test.js](src/components/__tests__/VideoPlayerSignUp.test.js) | PASS    | 9.401 s    |
+
+### Summary of Test Results
+
+- **Total Test Suites**: 11
+- **Passed Test Suites**: 11
+- **Total Tests**: 31
+- **Passed Tests**: 31
+- **Total Snapshots**: 0
+- **Total Time Taken**: 13.519 seconds
+
+These results demonstrate the thoroughness of our testing approach and confirm that all components are functioning as expected within the Diving Center project. The successful passing of all tests provides confidence in the reliability and stability of the application's core components.
+
+![npm test Screenshot](doc/testing/npmtest/npmtest.png)
 
 ## Bugs
 

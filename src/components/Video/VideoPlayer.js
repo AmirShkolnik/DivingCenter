@@ -8,7 +8,7 @@ const cld = new Cloudinary({
   },
 });
 
-const VideoPlayer = (props) => {
+const VideoPlayer = ({ className, ...rest }) => {
   return (
     <div
       style={{
@@ -32,7 +32,7 @@ const VideoPlayer = (props) => {
           objectFit: 'cover',
           objectPosition: 'center',
         }}
-        {...props}
+        className={className}
       />
     </div>
   );
