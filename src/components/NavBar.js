@@ -83,7 +83,7 @@ const NavBar = () => {
           className={styles.DropdownItem}
           onClick={handleNavItemClick}
         >
-          <i className="fas fa-stream"></i> Feed
+          <i className="fas fa-stream"></i> My Feed
         </NavDropdown.Item>
         <NavDropdown.Item
           as={NavLink}
@@ -99,7 +99,7 @@ const NavBar = () => {
           className={styles.DropdownItem}
           onClick={handleNavItemClick}
         >
-          <i className="fas fa-heart"></i> Liked
+          <i className="fas fa-heart"></i> My Likes
         </NavDropdown.Item>
         <NavDropdown.Item
           onClick={() => {

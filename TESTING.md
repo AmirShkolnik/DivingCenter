@@ -334,7 +334,15 @@ Lighthouse is an essential tool for assessing the quality of web applications, f
 - **Purpose:** To ensure that the website is accessible to individuals with disabilities by identifying and suggesting fixes for web accessibility issues.
 - **Process:** The Wave tool evaluates each page of the Diving Center to ensure it complies with accessibility standards like WCAG and Section 508.
 
+<details>
+<summary>Click to View Wave Web Accessibility Screenshot</summary>
+
+**index.html**
+
 ![Wave Web Accessibility Evaluation Tool](doc/testing/divingreact/wave/wave.png)
+
+</details>
+&nbsp;
 
 ## Manual Testing
 
@@ -393,6 +401,8 @@ The manual testing process ensures that each of these features works correctly f
 
 #### Navbar
 
+![Navbar](doc/testing/divingreact/logged-in/navbar/navbar-non.png)
+
 | What was tested | Expected Result | Image | Fail/Pass |
 |-----------------|-----------------|-------|-----------|
 | Home link | Clicking "Home" navigates to the home page | <details><summary>Home Navigation</summary><img src="doc/testing/divingreact/pages/home.png" alt="Home Navigation"></details> | ✅ |
@@ -402,6 +412,8 @@ The manual testing process ensures that each of these features works correctly f
 | Sign Up link | Clicking "Sign Up" navigates to the sign up page | <details><summary>Sign Up Navigation</summary><img src="doc/testing/divingreact/pages/sign-up.png" alt="Sign Up Navigation"></details> | ✅ |
 
 #### Footer
+
+![Footer](doc/testing/divingreact/logged-in/navbar/footer.png)
 
 | What was tested | Expected Result | Image | Fail/Pass |
 |-----------------|-----------------|-------|-----------|
@@ -428,19 +440,24 @@ The manual testing process ensures that each of these features works correctly f
 
 #### Navbar
 
+![Navbar](doc/testing/divingreact/logged-in/navbar/navbar.png)
+
 | What was tested | Expected Result | Image | Fail/Pass |
 |-----------------|-----------------|-------|-----------|
 | Logged-in User Navbar | All navigation elements visible and functional | <details><summary>Navbar Overview</summary>View full navbar<br><img src="doc/testing/divingreact/logged-in/navbar/logged-in-navbar.png" alt="Logged-in Navbar"></details> | ✅ |
 | Home Link | Redirects to home page | <details><summary>Home</summary>Click home link<br><img src="doc/testing/divingreact/logged-in/navbar/logged-in-home.png" alt="Logged-in Home"></details> | ✅ |
-| Feed Link | Displays user feed | <details><summary>Feed</summary>Click feed link<br><img src="doc/testing/divingreact/logged-in/navbar/logged-in-feed.png" alt="Logged-in Feed"></details> | ✅ |
-| Liked Link | Shows liked posts | <details><summary>Liked</summary>Click liked link<br><img src="doc/testing/divingreact/logged-in/navbar/logged-in-liked.png" alt="Logged-in Liked"></details> | ✅ |
-| Add Post Link | Opens add post form | <details><summary>Add Post</summary>Click add post link<br><img src="doc/testing/divingreact/logged-in/navbar/logged-in-add-post.png" alt="Logged-in Add Post"></details> | ✅ |
-| Courses Link | Displays available courses | <details><summary>Courses</summary>Click courses link<br><img src="doc/testing/divingreact/logged-in/navbar/logged-in-courses.png" alt="Logged-in Courses"></details> | ✅ |
-| My Bookings Link | Shows user's bookings | <details><summary>My Bookings</summary>Click my bookings (empty)<br><img src="doc/testing/divingreact/logged-in/navbar/logged-in-my-bookings-empty-1.png" alt="Logged-in My Bookings Empty">Click my bookings (with bookings)<br><img src="doc/testing/divingreact/logged-in/navbar/logged-in-my-bookings-2.png" alt="Logged-in My Bookings"></details> | ✅ |
 | Contact Us Link | Opens contact form | <details><summary>Contact Us</summary>Click contact us link<br><img src="doc/testing/divingreact/logged-in/navbar/logged-in-contact-us.png" alt="Logged-in Contact Us"></details> | ✅ |
+| Courses Link | Displays available courses | <details><summary>Courses</summary>Click courses link<br><img src="doc/testing/divingreact/logged-in/navbar/logged-in-courses.png" alt="Logged-in Courses"></details> | ✅ |
 | Profile Link | Displays user profile | <details><summary>Profile</summary>Click profile link<br><img src="doc/testing/divingreact/logged-in/navbar/logged-in-profile.png" alt="Logged-in Profile"></details> | ✅ |
+| My Bookings Link | Shows user's bookings | <details><summary>My Bookings</summary>Click my bookings (empty)<br><img src="doc/testing/divingreact/logged-in/navbar/logged-in-my-bookings-empty-1.png" alt="Logged-in My Bookings Empty">Click my bookings (with bookings)<br><img src="doc/testing/divingreact/logged-in/navbar/logged-in-my-bookings-2.png" alt="Logged-in My Bookings"></details> | ✅ |
+| My Feed Link | Displays user feed | <details><summary>Feed</summary>Click my feed link<br><img src="doc/testing/divingreact/logged-in/navbar/logged-in-feed.png" alt="Logged-in Feed"></details> | ✅ |
+| Add Post Link | Opens add post form | <details><summary>Add Post</summary>Click add post link<br><img src="doc/testing/divingreact/logged-in/navbar/logged-in-add-post.png" alt="Logged-in Add Post"></details> | ✅ |
+| My Likes Link | Shows liked posts | <details><summary>Liked</summary>Click my likes link<br><img src="doc/testing/divingreact/logged-in/navbar/logged-in-liked.png" alt="Logged-in Liked"></details> | ✅ |
+| Sign Out | Can sign out | <details><summary>Sign out</summary>Click sign out<br><img src="doc/testing/divingreact/logged-in/navbar/sign-out.png" alt="Logged-in Liked"></details> | ✅ |
 
 #### Footer
+
+![Footer](doc/testing/divingreact/logged-in/navbar/footer.png)
 
 | What was tested | Expected Result | Image | Fail/Pass |
 |-----------------|-----------------|-------|-----------|
@@ -468,68 +485,51 @@ The manual testing process ensures that each of these features works correctly f
 
 ****************
 
-### Booking
+### My Bookings
 
 | What was tested | Expected Result | Image | Fail/Pass |
 |-----------------|-----------------|-------|-----------|
 | Create Booking | Successful creation of a new booking | <details><summary>Create Booking</summary><strong>Step 1:</strong> Open booking form<br><img src="doc/testing/divingreact/logged-in/bookings/create-step1.png" alt="Create Step 1"><strong>Step 2:</strong> Fill in details<br><img src="doc/testing/divingreact/logged-in/bookings/create-step2.png" alt="Create Step 2"><strong>Step 3:</strong> Review details<br><img src="doc/testing/divingreact/logged-in/bookings/create-step3.png" alt="Create Step 3"><strong>Step 4:</strong> Confirm booking<br><img src="doc/testing/divingreact/logged-in/bookings/create-step4.png" alt="Create Step 4"></details> | ✅ |
 | Delete Booking | Successful deletion of a booking | <details><summary>Delete Booking</summary><strong>Step 1:</strong> Select booking<br><img src="doc/testing/divingreact/logged-in/bookings/delete-step1.png" alt="Delete Step 1"><strong>Step 2:</strong> Confirm deletion<br><img src="doc/testing/divingreact/logged-in/bookings/delete-step2.png" alt="Delete Step 2"></details> | ✅ |
 | Update Booking | Successful update of an existing booking | <details><summary>Update Booking</summary><strong>Step 1:</strong> Open booking details<br><img src="doc/testing/divingreact/logged-in/bookings/update-step1.png" alt="Update Step 1"><strong>Step 2:</strong> Edit booking info<br><img src="doc/testing/divingreact/logged-in/bookings/update-step2.png" alt="Update Step 2"><strong>Step 3:</strong> Save changes<br><img src="doc/testing/divingreact/logged-in/bookings/update-step3.png" alt="Update Step 3"></details> | ✅ |
-| Booking Past Date | Past date is greyed out | <details><summary>Past Date</summary><strong>Step 1:</strong> Attempt to select past date<br><img src="doc/testing/divingreact/logged-in/bookings/bookingtesting/booking-past-date.png" alt="Past Date"></details> | ✅ |
-| Booking Same Course Twice | Error message for booking the same course twice | <details><summary>Same Course Twice</summary><strong>Step 1:</strong> Select same course<br><img src="doc/testing/divingreact/logged-in/bookings/bookingtesting/booking-same-course-twice.png" alt="Same Course Twice"></details> | ✅ |
-| Course Missing | Error message for missing course selection | <details><summary>Course Missing</summary><strong>Step 1:</strong> Leave course field empty<br><img src="doc/testing/divingreact/logged-in/bookings/bookingtesting/course-missing.png" alt="Course Missing"></details> | ✅ |
-| Date Missing | Error message for missing date selection | <details><summary>Date Missing</summary><strong>Step 1:</strong> Leave date field empty<br><img src="doc/testing/divingreact/logged-in/bookings/bookingtesting/date-missing.png" alt="Date Missing"></details> | ✅ |
-| Time Missing | Error message for missing time selection | <details><summary>Time Missing</summary><strong>Step 1:</strong> Leave time field empty<br><img src="doc/testing/divingreact/logged-in/bookings/bookingtesting/time-missing.png" alt="Time Missing"></details> | ✅ |
-| Update Booking Past Date | Error message for updating to a past date | <details><summary>Update Past Date</summary><strong>Step 1:</strong> Attempt to update to past date<br><img src="doc/testing/divingreact/logged-in/bookings/bookingtesting/update-booking-past-date.png" alt="Update Past Date"></details> | ✅ |
-| Update Booking Same Course Twice | Error message for updating to the same course twice | <details><summary>Update Same Course Twice</summary><strong>Step 1:</strong> Select same course for update<br><img src="doc/testing/divingreact/logged-in/bookings/bookingtesting/update-booking-same-course-twice-step2.png" alt="Update Same Course Twice Step 2"><strong>Step 2:</strong> Confirm update<br><img src="doc/testing/divingreact/logged-in/bookings/bookingtesting/update-booking-same-course-twice.png" alt="Update Same Course Twice"></details> | ✅ |
-| Wrong Date Format | Error message for incorrect date format | <details><summary>Wrong Date</summary><strong>Step 1:</strong> Enter wrong date format<br><img src="doc/testing/divingreact/logged-in/bookings/bookingtesting/wrong-date.png" alt="Wrong Date"></details> | ✅ |
+| TEST - Booking Past Date | Past date is greyed out | <details><summary>Past Date</summary><strong>Step 1:</strong> Attempt to select past date<br><img src="doc/testing/divingreact/logged-in/bookings/bookingtesting/booking-past-date.png" alt="Past Date"></details> | ✅ |
+| TEST - Booking Same Course Twice | Error message for booking the same course twice | <details><summary>Same Course Twice</summary><strong>Step 1:</strong> Select same course<br><img src="doc/testing/divingreact/logged-in/bookings/bookingtesting/booking-same-course-twice.png" alt="Same Course Twice"></details> | ✅ |
+| TEST - Course Missing | Error message for missing course selection | <details><summary>Course Missing</summary><strong>Step 1:</strong> Leave course field empty<br><img src="doc/testing/divingreact/logged-in/bookings/bookingtesting/course-missing.png" alt="Course Missing"></details> | ✅ |
+| TEST - Date Missing | Error message for missing date selection | <details><summary>Date Missing</summary><strong>Step 1:</strong> Leave date field empty<br><img src="doc/testing/divingreact/logged-in/bookings/bookingtesting/date-missing.png" alt="Date Missing"></details> | ✅ |
+| TEST - Time Missing | Error message for missing time selection | <details><summary>Time Missing</summary><strong>Step 1:</strong> Leave time field empty<br><img src="doc/testing/divingreact/logged-in/bookings/bookingtesting/time-missing.png" alt="Time Missing"></details> | ✅ |
+| TEST - Update Booking Past Date | Error message for updating to a past date | <details><summary>Update Past Date</summary><strong>Step 1:</strong> Attempt to update to past date<br><img src="doc/testing/divingreact/logged-in/bookings/bookingtesting/update-booking-past-date.png" alt="Update Past Date"></details> | ✅ |
+| TEST - Update Booking Same Course Twice | Error message for updating to the same course twice | <details><summary>Update Same Course Twice</summary><strong>Step 1:</strong> Select same course for update<br><img src="doc/testing/divingreact/logged-in/bookings/bookingtesting/update-booking-same-course-twice-step2.png" alt="Update Same Course Twice Step 2"><strong>Step 2:</strong> Confirm update<br><img src="doc/testing/divingreact/logged-in/bookings/bookingtesting/update-booking-same-course-twice.png" alt="Update Same Course Twice"></details> | ✅ |
+| TEST - Wrong Date Format | Error message for incorrect date format | <details><summary>Wrong Date</summary><strong>Step 1:</strong> Enter wrong date format<br><img src="doc/testing/divingreact/logged-in/bookings/bookingtesting/wrong-date.png" alt="Wrong Date"></details> | ✅ |
 
-### Reviews
+### Add Review
 
 | What was tested | Expected Result | Image | Fail/Pass |
 |-----------------|-----------------|-------|-----------|
 | Create Review | Successful creation of a new review | <details><summary>Create Review</summary><strong>Step 1:</strong> Open review form<br><img src="doc/testing/divingreact/logged-in/reviews/reviews-step1.png" alt="Reviews Step 1"><strong>Step 2:</strong> Submit review<br><img src="doc/testing/divingreact/logged-in/reviews/reviews-step2.png" alt="Reviews Step 2"></details> | ✅ |
 | Delete Review | Successful deletion of a review | <details><summary>Delete Review</summary><strong>Step 1:</strong> Select review to delete<br><img src="doc/testing/divingreact/logged-in/reviews/delete-reviews-step1.png" alt="Delete Reviews Step 1"><strong>Step 2:</strong> Confirm deletion<br><img src="doc/testing/divingreact/logged-in/reviews/delete-reviews-step2.png" alt="Delete Reviews Step 2"></details> | ✅ |
 | Update Review | Successful update of an existing review | <details><summary>Update Review</summary><strong>Step 1:</strong> Select review to update<br><img src="doc/testing/divingreact/logged-in/reviews/update-reviews-step1.png" alt="Update Reviews Step 1"><strong>Step 2:</strong> Open edit form<br><img src="doc/testing/divingreact/logged-in/reviews/update-reviews-step2.png" alt="Update Reviews Step 2"><strong>Step 3:</strong> Edit review content<br><img src="doc/testing/divingreact/logged-in/reviews/update-reviews-step3.png" alt="Update Reviews Step 3"><strong>Step 4:</strong> Confirm update<br><img src="doc/testing/divingreact/logged-in/reviews/update-reviews-step4.png" alt="Update Reviews Step 4"></details> | ✅ |
-| Missing Stars Rating | Error message for missing star rating | <details><summary>Missing Stars</summary>Submit without selecting stars<br><img src="doc/testing/divingreact/logged-in/reviews/reviews-testing-missing-stars.png" alt="Reviews Testing Missing Stars"></details> | ✅ |
-| Missing Review Text | Error message for missing review text | <details><summary>Missing Text</summary>Submit without entering text<br><img src="doc/testing/divingreact/logged-in/reviews/reviews-testing-missing-text.png" alt="Reviews Testing Missing Text"></details> | ✅ |
+| TEST - Missing Stars Rating | Error message for missing star rating | <details><summary>Missing Stars</summary>Submit without selecting stars<br><img src="doc/testing/divingreact/logged-in/reviews/reviews-testing-missing-stars.png" alt="Reviews Testing Missing Stars"></details> | ✅ |
+| TEST - Missing Review Text | Error message for missing review text | <details><summary>Missing Text</summary>Submit without entering text<br><img src="doc/testing/divingreact/logged-in/reviews/reviews-testing-missing-text.png" alt="Reviews Testing Missing Text"></details> | ✅ |
 
-**Form Validation**
+### Add Post
 
-| Feature                 | Tested? | Action              | Expected Outcome                                                      | Pass/Fail | Screenshots                                                                                                                                                                 |
-| ----------------------- | ------- | ------------------- | --------------------------------------------------------------------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| SignUp Form             | Yes     | Submit form         | User receives confirmation message and is redirected to the Home page | Pass      | ![screenshot](documentation/screenshots/signup1.JPG) ![screenshot](documentation/screenshots/signup2.JPG) ![screenshot](documentation/screenshots/signup3.JPG)              |
-| SignIn Form             | Yes     | Submit credentials  | User is logged in and redirected to the Home page                     | Pass      | ![screenshot](documentation/screenshots/signin1.JPG) ![screenshot](documentation/screenshots/signin2.JPG) ![screenshot](documentation/screenshots/signin3.JPG)              |
-| Profile Edit Form       | Yes     | Profile Edit        | Profile is edited and displayed                                       | Pass      | ![screenshot](documentation/screenshots/profilepage.JPG) ![screenshot](documentation/screenshots/profile1.JPG) ![screenshot](documentation/screenshots/changepassword2.JPG) |
-| Add Post Form           | Yes     | Create post         | Post is created and displayed                                         | Pass      | ![screenshot](documentation/screenshots/addpostvalidation.JPG)                                                                                                              |
-| Add Daily Routine Form  | Yes     | Create dailyroutine | Routine is created and added to user's daily routines                 | Pass      | ![screenshot](documentation/screenshots/dailyroutinevalidate.JPG)                                                                                                           |
-| Comment Form            | Yes     | Submit comment      | Comment is added to the post                                          | Pass      | ![screenshot](documentation/screenshots/comment1.JPG)                                                                                                                       |
-| Challenge Creation Form | Yes     | Create challenge    | Challenge is created and listed                                       | Pass      | ![screenshot](documentation/screenshots/challengevalidation.JPG)                                                                                                            |
-| Collaborate Form        | Yes     | Submit form         | User receives confirmation message                                    | Pass      | ![screenshot](documentation/screenshots/collaborate1.JPG)                                                                                                                   |
 
-**User Input**
 
-| Feature                             | Tested? | User Input Required                | User Feedback Provided                                                                   | Pass/Fail | Notes on Fix (If Any) |
-| ----------------------------------- | ------- | ---------------------------------- | ---------------------------------------------------------------------------------------- | --------- | --------------------- |
-| Navigation Links                    | Yes     | Click                              | Links redirect to corresponding pages. Hover effects indicate interactivity.             | Pass      | -                     |
-| Home Page                           | Yes     | Click                              | Clicking on posts takes users to detailed views.                                         | Pass      | -                     |
-| Sign Up Page                        | Yes     | Username/Password/Confirm password | Validation prompts for incorrect input. Success message on account creation.             | Pass      | -                     |
-| Sign In Page                        | Yes     | Username and Password              | Correct credentials required for login. Error message for failed login attempt.          | Pass      | -                     |
-| Add Post and Submission             | Yes     | Text/Image Upload                  | Mandatory fields checked. Confirmation message upon successful submission.               | Pass      | -                     |
-| Add Challenge and Submission        | Yes     | Text/Image Upload                  | Mandatory fields checked. Confirmation message upon successful submission.               | Pass      | -                     |
-| Add Daily Routine                   | Yes     | Text Input/Time Input              | All fields validated for correct input. Confirmation message upon successful submission. | Pass      | -                     |
-| Edit Profile                        | Yes     | Text/Image Upload                  | Changes saved and confirmation message displayed. Updated profile information shown.     | Pass      | -                     |
-| Comment Submission                  | Yes     | Text Input                         | Users can submit comments. Confirmation message displayed.                               | Pass      | -                     |
-| Like/Follow Interaction             | Yes     | Click                              | Visual feedback on like/follow. Counts update accordingly.                               | Pass      | -                     |
-| Search & Filter functionality       | Yes     | Text Input/Click                   | Relevant search results displayed. Message for no results found.                         | Pass      | -                     |
-| Collaborate Form Submission         | Yes     | Text Input                         | Contact details of the user are submitted. Confirmation message displayed.               | Pass      | -                     |
-| Post Detail Interaction             | Yes     | Click on various elements          | Detailed view of post with comments and like/follow options.                             | Pass      | -                     |
-| Mobile Navigation (Hamburger Menu)  | Yes     | Touch/Click                        | Responsive menu works on touch devices. Toggles correctly.                               | Pass      | -                     |
-| Form Error Handling                 | Yes     | Invalid Inputs                     | Forms handle errors with descriptive messages guiding the user.                          | Pass      | -                     |
-| Logout Functionality                | Yes     | Click                              | Users can log out successfully with a confirmation message.                              | Pass      | -                     |
-| Footer Social Media Icons           | Yes     | Click                              | Social media icons link to external pages in a new tab.                                  | Pass      | -                     |
-| Responsive Design Elements          | Yes     | Resize/Change Orientation          | All elements resize and adjust appropriately for different screen sizes.                 | Pass      | -                     |
-| Accessibility Features (e.g., ARIA) | Yes     | Use of assistive technology        | ARIA labels and roles are present, ensuring accessibility compliance.                    | Pass      | -                     |
+### Update Profile
+
+To modify profile information:
+1. Navigate to the profile through the navbar
+2. Click the three dots to access options
+3. Choose the pen symbol to change bio or image
+4. Select the key symbol to change your password
+5. Click the newspaper symbol to change your username
+
+| What was tested | Expected Result | Image | Fail/Pass |
+|-----------------|-----------------|-------|-----------|
+| Profile Bio Update | User can update their bio | <details><summary>Update Bio</summary>Step 1<br><img src="doc/testing/divingreact/logged-in/profile/update-bio-step1.png" alt="Update Bio Step 1"><br>Step 2: Edit and save bio<br><img src="doc/testing/divingreact/logged-in/profile/update-bio-step2.png" alt="Update Bio Step 2"></details> | ✅ |
+| Profile Image Update | User can update their profile image | <details><summary>Update Image</summary>Step 1: Click three dots<br><img src="doc/testing/divingreact/logged-in/profile/update-image-step1.png" alt="Update Image Step 1"><br>Step 2: Choose new image<br><img src="doc/testing/divingreact/logged-in/profile/update-image-step2.png" alt="Update Image Step 2"><br>Step 3: Crop and save image<br><img src="doc/testing/divingreact/logged-in/profile/update-image-step3.png" alt="Update Image Step 3"></details> | ✅ |
+| Password Change | User can change their password | <details><summary>Change Password</summary>Step 1: Access password change<br><img src="doc/testing/divingreact/logged-in/password/change-pw-step-1.png" alt="Change Password Step 1"><br>Step 2: Enter new password<br><img src="doc/testing/divingreact/logged-in/password/change-pw-step-2.png" alt="Change Password Step 2"><br>Step 3: Confirm change<br><img src="doc/testing/divingreact/logged-in/password/change-pw-step-3.png" alt="Change Password Step 3"> | ✅ |
+| TEST - Password Change | Error: Passwords don't match | <details><summary>Error: Passwords don't match</summary><img src="doc/testing/divingreact/logged-in/password/change-pw-dont-match.png" alt="Change Password Error"></details> | ✅ |
 
 ### Browser Compatibility
 
