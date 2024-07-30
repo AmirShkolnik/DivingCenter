@@ -40,6 +40,8 @@ We've done some testing by hand, clicking around and trying things out just like
 
 By the end of this, you'll see how much care we've put into making sure our diving center website is top-notch and ready for all the underwater adventures to come!
 
+[Back to top](#table-of-contents)
+
 ### HTML Validation
 
 <details>
@@ -65,6 +67,8 @@ This table provides a clear overview of the issues, solutions, and resources for
 |-------------|-------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------|--------|
 | index.html Page   | Trailing slash on void elements has no effect and interacts badly with unquoted attribute values.     | Removed trailing slashes from void elements like `<meta>`, `<link>`, and `<script>` tags.                                              | [MDN Web Docs: HTML Void Elements](https://developer.mozilla.org/en-US/docs/Glossary/Void_element)                  | ✅     |
 | index.html Page   | The `type` attribute is unnecessary for JavaScript resources.                                         | Removed the `type="text/javascript"` attribute from the `<script>` tag, as it is unnecessary for JavaScript resources.                  | [MDN Web Docs: Script](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script)                            | ✅     |
+
+[Back to top](#table-of-contents)
 
 ### CSS Validation
 
@@ -145,17 +149,11 @@ While these warnings are flagged by the W3C validator, they represent a case whe
 
 These styles are essential for ensuring optimal font rendering and custom scrollbar appearance, particularly in WebKit-based browsers (such as Chrome and Safari).
 
-### JavaScript Validation
-
-#### ESLint
-
-Certainly! Here is a detailed step-by-step guide for JavaScript validation in your React project using ESLint and Prettier, written in simple English for an assessment team to understand:
-
----
+[Back to top](#table-of-contents)
 
 ## JavaScript Validation
 
-### ESLint
+### ESLint and Prettier
 
 **Tool Used:** [ESLint](https://eslint.org/)
 
@@ -297,6 +295,8 @@ Certainly! Here is a detailed step-by-step guide for JavaScript validation in yo
 
 By following these steps, you can ensure that your JavaScript code is consistently formatted, free of common errors, and adheres to best practices.
 
+[Back to top](#table-of-contents)
+
 ### Lighthouse
 
 - **Tool Used:** Lighthouse is an open-source, automated tool for improving the quality of web pages. It performs audits for performance, accessibility, progressive web apps, SEO, and more. You can run it against any web page, public or requiring authentication. For more information, visit [Lighthouse](https://developers.google.com/web/tools/lighthouse).
@@ -313,6 +313,8 @@ By following these steps, you can ensure that your JavaScript code is consistent
 | [Single Course](https://divingspace-900b5a3db777.herokuapp.com/courses/basic-open-water-diver) | <details><summary>Click to View Single Course Mobile</summary>![Single Course Mobile](doc/testing/divingreact/lighthouse/single-course-mobile.png)</details> | <details><summary>Click to View Single Course PC</summary>![Single Course PC](doc/testing/divingreact/lighthouse/single-course-pc.png)</details> |
 [Feed](https://divingspace-900b5a3db777.herokuapp.com/feed) | <details><summary>Click to View Feed Mobile</summary>![Feed Mobile](doc/testing/divingreact/lighthouse/feed-mobile.png)</details> | <details><summary>Click to View Feed PC</summary>![Feed PC](doc/testing/divingreact/lighthouse/feed-pc.png)</details> |
 
+[Back to top](#table-of-contents)
+
 ## Improving Lighthouse Scores for React and Django REST Framework
 
 Lighthouse is an essential tool for assessing the quality of web applications, focusing on performance, accessibility, SEO, and best practices. High Lighthouse scores are crucial for enhancing user experience and search engine rankings. This table provides a structured approach to identifying common problems that can negatively impact Lighthouse scores and offers practical solutions for both React on the frontend and Django REST framework on the backend. Each entry includes a clickable link to a resource for further reading and implementation guidance.
@@ -327,6 +329,8 @@ Lighthouse is an essential tool for assessing the quality of web applications, f
 | Django (Backend) | Inefficient static file serving | Use a Content Delivery Network (CDN) to serve static files | [Adapting to Lighthouse 10: How Google's Latest Update Affects Your Site](https://ogalweb.com/lighthouse-10/) |
 | Django (Backend) | Lack of proper image dimensions | Ensure images have explicit width and height attributes in HTML | [Responsive images vs Lighthouse performance audit](https://stackoverflow.com/questions/71912806/responsive-images-vs-lighthouse-performance-audit) |
 | Django (Backend) | High server response times | Implement asynchronous processing for long-running tasks | [Improve your fashion ecommerce website's Lighthouse score and core web vitals](https://centra.com/news/improve-your-fashion-ecommerce-website-s-lighthouse-score-and-core-web-vitals) |
+
+[Back to top](#table-of-contents)
 
 ### Wave Accessibility Evaluation
 
@@ -343,6 +347,8 @@ Lighthouse is an essential tool for assessing the quality of web applications, f
 
 </details>
 &nbsp;
+
+[Back to top](#table-of-contents)
 
 ## Manual Testing
 
@@ -367,6 +373,8 @@ The tests are categorized into two main user types:
 2. Logged in users (members)
 
 This distinction is crucial as it highlights the different levels of access and functionality available to each user type.
+
+[Back to top](#table-of-contents)
 
 ### Non-logged in Users
 
@@ -397,6 +405,8 @@ Members have full access to the site's features, including:
 
 The manual testing process ensures that each of these features works correctly for both user types, and that the frontend actions are accurately reflected in the backend. This comprehensive approach helps maintain the integrity and functionality of the Diving Center website, providing a seamless experience for all users while encouraging non-members to sign up for full access to the site's features.
 
+[Back to top](#table-of-contents)
+
 ### Non Logged-In User
 
 #### Navbar
@@ -411,6 +421,8 @@ The manual testing process ensures that each of these features works correctly f
 | Sign In link | Clicking "Sign In" navigates to the sign in page | <details><summary>Sign In Navigation</summary><img src="doc/testing/divingreact/pages/sign-in.png" alt="Sign In Navigation"></details> | ✅ |
 | Sign Up link | Clicking "Sign Up" navigates to the sign up page | <details><summary>Sign Up Navigation</summary><img src="doc/testing/divingreact/pages/sign-up.png" alt="Sign Up Navigation"></details> | ✅ |
 
+[Back to top](#table-of-contents)
+
 #### Footer
 
 ![Footer](doc/testing/divingreact/logged-in/navbar/footer.png)
@@ -419,6 +431,8 @@ The manual testing process ensures that each of these features works correctly f
 |-----------------|-----------------|-------|-----------|
 | GitHub link | Clicking "GitHub" navigates to the GitHub page | <details><summary>GitHub Navigation</summary><img src="doc/testing/divingreact/pages/github.png" alt="GitHub Navigation"></details> | ✅ |
 | LinkedIn link | Clicking "LinkedIn" navigates to the LinkedIn page | <details><summary>LinkedIn Navigation</summary><img src="doc/testing/divingreact/pages/linkedin.png" alt="Linkedin Navigation"></details> | ✅ |
+
+[Back to top](#table-of-contents)
 
 #### Website
 
@@ -436,7 +450,9 @@ The manual testing process ensures that each of these features works correctly f
 | Review and rate courses | Cannot review and rate courses | <details><summary>Review and Rate Courses</summary><img src="doc/testing/divingreact/non-logged-in/logg-in-add-review.png" alt="Review and Rate Courses"></details> | ✅ |
 | Profiles | Can read profiles | <details><summary>Profiles</summary><img src="doc/testing/divingreact/non-logged-in/profile.png" alt="Profiles"></details> | ✅ |
 
-### Logged-In User
+[Back to top](#table-of-contents)
+
+### Logged-In Users
 
 #### Navbar
 
@@ -455,6 +471,8 @@ The manual testing process ensures that each of these features works correctly f
 | My Likes Link | Shows liked posts | <details><summary>Liked</summary>Click my likes link<br><img src="doc/testing/divingreact/logged-in/navbar/logged-in-liked.png" alt="Logged-in Liked"></details> | ✅ |
 | Sign Out | Can sign out | <details><summary>Sign out</summary>Click sign out<br><img src="doc/testing/divingreact/logged-in/navbar/sign-out.png" alt="Logged-in Liked"></details> | ✅ |
 
+[Back to top](#table-of-contents)
+
 #### Footer
 
 ![Footer](doc/testing/divingreact/logged-in/navbar/footer.png)
@@ -468,24 +486,28 @@ The manual testing process ensures that each of these features works correctly f
 
 | What was tested | Expected Result | Image | Fail/Pass |
 |-----------------|-----------------|-------|-----------|
-| Personal profile | Access to personal profile page | <details><summary>Personal Profile</summary>Personal Profile</details> | ✅ |
-| My Bookings | Access to bookings page | <details><summary>My Bookings</summary>My Bookings 1 My Bookings 2</details> | ✅ |
-| My Feed | Access to personalized feed | <details><summary>My Feed</summary>My Feed</details> | ✅ |
-| Add Post | Can add new posts | <details><summary>Add Post</summary>Add Post 1 Add Post 2</details> | ✅ |
+
 | Liked posts | Can see liked posts | <details><summary>Liked Posts</summary>Liked Posts</details> | ✅ |
-| Book a course | Can book diving courses | <details><summary>Book a Course</summary>Book a Course</details> | ✅ |
-| Review and rate courses | Can review and rate courses | <details><summary>Review and Rate Courses</summary>Review and Rate Courses</details> | ✅ |
+
 | Like other posts | Can like other posts | <details><summary>Like Other Posts</summary>Like Other Posts</details> | ✅ |
-| Comment on posts | Can comment on posts | <details><summary>Comment on Posts</summary>Comment on Posts</details> | ✅ |
-| Change username | Can change username | <details><summary>Change Username</summary>Change Username</details> | ✅ |
-| Change profile image | Can change profile image | <details><summary>Change Profile Image</summary>Change Profile Image</details> | ✅ |
-| Change bio description | Can change bio description | <details><summary>Change Bio</summary>Change Bio</details> | ✅ |
-| Edit own posts | Can edit own posts | <details><summary>Edit Own Posts</summary>Edit Own Posts</details> | ✅ |
-| Sign Out | Can sign out | <details><summary>Sign Out</summary>Sign Out</details> | ✅ |
 
 ****************
 
 ### My Bookings
+
+Only logged-in users can book a course. Here are the instructions and rules for bookings:
+
+1. Navigate to the "My Bookings" page from the dropdown menu under your name.
+2. If you don't have any bookings yet, the page will be empty with a notification that you haven't booked anything.
+3. To make a booking:
+   - Choose a course
+   - Select a date in the future (must be the 10th of a month)
+   - Choose a time (either 09:00 or 15:00)
+4. Important rules:
+   - You cannot book or update a course for a past date
+   - You cannot book or update the same course twice
+   - The booking date must be on the 10th of a month
+   - Course times are only at 09:00 or 15:00
 
 | What was tested | Expected Result | Image | Fail/Pass |
 |-----------------|-----------------|-------|-----------|
@@ -500,6 +522,8 @@ The manual testing process ensures that each of these features works correctly f
 | TEST - Update Booking Past Date | Error message for updating to a past date | <details><summary>Update Past Date</summary><strong>Step 1:</strong> Attempt to update to past date<br><img src="doc/testing/divingreact/logged-in/bookings/bookingtesting/update-booking-past-date.png" alt="Update Past Date"></details> | ✅ |
 | TEST - Update Booking Same Course Twice | Error message for updating to the same course twice | <details><summary>Update Same Course Twice</summary><strong>Step 1:</strong> Select same course for update<br><img src="doc/testing/divingreact/logged-in/bookings/bookingtesting/update-booking-same-course-twice-step2.png" alt="Update Same Course Twice Step 2"><strong>Step 2:</strong> Confirm update<br><img src="doc/testing/divingreact/logged-in/bookings/bookingtesting/update-booking-same-course-twice.png" alt="Update Same Course Twice"></details> | ✅ |
 | TEST - Wrong Date Format | Error message for incorrect date format | <details><summary>Wrong Date</summary><strong>Step 1:</strong> Enter wrong date format<br><img src="doc/testing/divingreact/logged-in/bookings/bookingtesting/wrong-date.png" alt="Wrong Date"></details> | ✅ |
+
+[Back to top](#table-of-contents)
 
 ### Add Review
 
@@ -523,6 +547,8 @@ If either the rating or the comment is missing, a warning message will appear, p
 | TEST - Missing Stars Rating | Error message for missing star rating | <details><summary>Missing Stars</summary>Submit without selecting stars<br><img src="doc/testing/divingreact/logged-in/reviews/reviews-testing-missing-stars.png" alt="Reviews Testing Missing Stars"></details> | ✅ |
 | TEST - Missing Review Text | Error message for missing review text | <details><summary>Missing Text</summary>Submit without entering text<br><img src="doc/testing/divingreact/logged-in/reviews/reviews-testing-missing-text.png" alt="Reviews Testing Missing Text"></details> | ✅ |
 
+[Back to top](#table-of-contents)
+
 ### Add Post
 
 To successfully add a post, the user must follow these steps:
@@ -540,6 +566,8 @@ To successfully add a post, the user must follow these steps:
 | Large image size warning | Warning displayed for images > 2 MB | <details><summary>Large image size warning</summary><img src="doc/testing/divingreact/logged-in/addpost/add-post-large-image-size-warning.png" alt="Large image size warning"></details> | ✅ |
 | Missing fields warning | Warning displayed for missing title or content | <details><summary>Missing fields warning</summary><img src="doc/testing/divingreact/logged-in/addpost/add-post-missing-fields-warning.png" alt="Missing fields warning"></details> | ✅ |
 
+[Back to top](#table-of-contents)
+
 ### Update Profile
 
 To modify profile information:
@@ -556,6 +584,31 @@ To modify profile information:
 | Password Change | User can change their password | <details><summary>Change Password</summary>Step 1: Access password change<br><img src="doc/testing/divingreact/logged-in/password/change-pw-step-1.png" alt="Change Password Step 1"><br>Step 2: Enter new password<br><img src="doc/testing/divingreact/logged-in/password/change-pw-step-2.png" alt="Change Password Step 2"><br>Step 3: Confirm change<br><img src="doc/testing/divingreact/logged-in/password/change-pw-step-3.png" alt="Change Password Step 3"> | ✅ |
 | TEST - Password Change | Error: Passwords don't match | <details><summary>Error: Passwords don't match</summary><img src="doc/testing/divingreact/logged-in/password/change-pw-dont-match.png" alt="Change Password Error"></details> | ✅ |
 
+[Back to top](#table-of-contents)
+
+### Add Comments
+
+Future Improvements:
+
+1. **Implement a confirmation prompt:** Before updating or deleting a comment, display a warning message asking the user to confirm their action, as it is irreversible and all content will be permanently removed.
+2. **Add rich text formatting:** Allow users to format their comments with basic HTML or Markdown for better expression.
+3. **Implement a nested comment system:** Enable users to reply directly to other comments, creating threaded discussions.
+4. **Add comment voting:** Implement an upvote/downvote system to highlight valuable contributions.
+5. **Introduce comment moderation:** Implement a system for flagging inappropriate comments and allow moderators to review and take action.
+
+These improvements will enhance the user experience, encourage more meaningful interactions, and provide better control over the comment section's content.
+
+| What was tested | Expected Result | Image | Fail/Pass |
+|-----------------|-----------------|-------|-----------|
+| Add comment | Only logged-in users can comment on a post | <details><summary>Add Comment</summary>**Step 1:** Navigate to the post.<br><img src="doc/testing/divingreact/logged-in/add-comment/add-comment-step1.png" alt="Add Comment Step 1"><br>**Step 2:** Type comment and click 'Post'.<br><img src="doc/testing/divingreact/logged-in/add-comment/add-comment-success-step2.png" alt="Add Comment Step 2"></details> | ✅ |
+| Post button behavior | Post button is greyed out until comment added | <details><summary>Post Button</summary>**Step 1:** Navigate to the post.<br><img src="doc/testing/divingreact/logged-in/add-comment/add-comment-success-step2.png" alt="Post Button Greyed Out"></details> | ✅ |
+| Comment submission | Comment appears on post after submission | <details><summary>Comment Success</summary>**Step 1:** Navigate to the post.<br><img src="doc/testing/divingreact/logged-in/add-comment/add-comment-step1.png" alt="Comment Success Step 1"><br>**Step 2:** Submit comment.<br><img src="doc/testing/divingreact/logged-in/add-comment/add-comment-success-step2.png" alt="Comment Success Step 2"></details> | ✅ |
+| Backend verification | Comment appears in admin panel | <details><summary>Admin Panel</summary>**Step 1:** Navigate to admin panel.<br><img src="doc/testing/divingreact/logged-in/add-comment/add-comment-backend-admin-pannel-step3.png" alt="Admin Panel Verification"></details> | ✅ |
+| Update comment | User can edit their own comments | <details><summary>Update Comment</summary>**Step 1:** Click on the 3 dots.<br><img src="doc/testing/divingreact/logged-in/update-comment/update-comment-click-3-dots-step1.png" alt="Update Comment Step 1"><br>**Step 2:** Choose the pen icon.<br><img src="doc/testing/divingreact/logged-in/update-comment/update-comment-add-text-step2.png" alt="Update Comment Step 2"><br>**Step 3:** Update text and click 'Post'.<br><img src="doc/testing/divingreact/logged-in/update-comment/update-comment-success-step3.png" alt="Update Comment Step 3"></details> | ✅ |
+| Delete comment | User can delete their own comments | <details><summary>Delete Comment</summary>**Step 1:** Click on the 3 dots.<br><img src="doc/testing/divingreact/logged-in/delete-comment/delete-comment-step1.png" alt="Delete Comment Step 1"><br>**Step 2:** Choose the garbage can icon.<br><img src="doc/testing/divingreact/logged-in/delete-comment/delete-comment-success-step2.png" alt="Delete Comment Step 2"></details> | ✅ |
+
+[Back to top](#table-of-contents)
+
 ### Browser Compatibility
 
 Fit&Fine was tested on the latest versions of major browsers to ensure compatibility across different platforms.
@@ -567,6 +620,8 @@ Fit&Fine was tested on the latest versions of major browsers to ensure compatibi
 | Microsoft Edge | Yes     | None         | Pass      |
 
 These validation steps confirm that Fit&Fine provides a seamless and accessible user experience across various devices and browsers.
+
+[Back to top](#table-of-contents)
 
 ### Toastify Messages Implementation Testing
 
