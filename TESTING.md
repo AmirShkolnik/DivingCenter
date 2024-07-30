@@ -352,7 +352,17 @@ Lighthouse is an essential tool for assessing the quality of web applications, f
 
 ## Manual Testing
 
-This manual testing process focuses primarily on the frontend functionality of the Diving Center website. However, to provide a comprehensive understanding of how the frontend interacts with the backend, we've included split images showing both the user interface and the corresponding backend responses. For those interested in a more detailed examination of the backend testing, you can visit our [in-depth backend testing documentation](https://github.com/AmirShkolnik/DivingCenter_API/blob/main/TESTING.md). This additional resource offers valuable insights into the API endpoints, data handling, and server-side logic that support the frontend features described in this manual testing section.
+## Comprehensive Manual Testing of the Diving Center Website
+
+This manual testing process focuses primarily on the frontend functionality of the Diving Center website. However, to provide a comprehensive understanding of how the frontend interacts with the admin panel, we've included split images showing both the user interface and the corresponding admin panel responses. Many images will demonstrate the point of view of the logged-in user and the admin perspective on the Django Rest Framework admin panel. 
+
+For those interested in a more detailed examination of the admin panel testing, you can visit our [in-depth backend testing documentation](https://github.com/AmirShkolnik/DivingCenter_API/blob/main/TESTING.md). This additional resource offers valuable insights into the API endpoints, data handling, and server-side logic that support the frontend features described in this manual testing section.
+
+### Toastify Messages Implementation in the Diving Center Project
+
+Throughout the Diving Center project, Toastify messages are used to provide users with immediate feedback after specific actions are completed on the website. Toastify is a lightweight JavaScript library that enables the display of customizable toast notifications, enhancing user experience by confirming actions and delivering important information.
+
+### Manual Testing Coverage
 
 The manual testing covers all aspects of the site, including:
 
@@ -367,12 +377,16 @@ The manual testing covers all aspects of the site, including:
 - Likes and comments
 - Reviews and ratings
 
+### User Types Tested
+
 The tests are categorized into two main user types:
 
-1. Non-logged in users
-2. Logged in users (members)
+1. **Non-logged in users**
+2. **Logged in users (members)**
 
 This distinction is crucial as it highlights the different levels of access and functionality available to each user type.
+
+By thoroughly testing both the frontend and the admin panel interactions, we ensure that the Diving Center website provides a seamless and robust user experience across all functionalities and user types.
 
 [Back to top](#table-of-contents)
 
@@ -616,44 +630,35 @@ Future improvements:
 
 ### Browser Compatibility
 
-Diving Center was tested on the latest versions of major browsers to ensure compatibility across different platforms.
+The purpose of this manual testing was to ensure the functionality, visibility, and error handling of the diving center website across popular web browsers. The testing process involved:
 
-| Browser        | Tested? | Issues Found | Pass/Fail |
-| -------------- | ------- | ------------ | --------- |
-| Chrome         | Yes     | None         | Pass      |
-| Firefox        | Yes     | None         | Pass      |
-| Microsoft Edge | Yes     | None         | Pass      |
+1. Accessing the diving center website on different browsers (Chrome, Firefox, Mozilla, and Opera).
+2. Manually navigating through various pages and features of the website.
+3. Checking for proper rendering of content, images, and layout.
+4. Testing interactive elements such as forms, buttons, and navigation menus.
+5. Using browser developer tools to inspect for any console errors or performance issues.
 
-These validation steps confirm that Fit&Fine provides a seamless and accessible user experience across various devices and browsers.
+The manual testing was conducted on Chrome, Firefox, Mozilla, and Opera browsers to ensure cross-browser compatibility. Each browser was tested for:
 
-[Back to top](#table-of-contents)
+1. Functionality: Verifying that all features work as expected.
+2. Visibility: Ensuring proper display of content and layout consistency.
+3. Error handling: Checking for any browser-specific errors or issues.
 
-### Toastify Messages Implementation Testing
+Results were documented in a table format, indicating whether each browser was tested, any issues found, and including relevant screenshots. The testing revealed that the website performed well across all tested browsers, with no significant issues detected.
 
-This table documents the Toastify messages used throughout the Fit&Fine website to provide feedback to users after certain actions have been performed.
+### Summary of Results
+- **Browsers Tested**: Chrome, Firefox, Microsoft Edge, and Opera.
+- **Issues Found**: None across all tested browsers.
+- **Overall Status**: All browsers passed the functionality and visibility tests successfully. 
 
-| Action Performed           | Message Type | Message Text                                 | Implementation Location        | Screenshots                                                                                                                       |
-| -------------------------- | ------------ | -------------------------------------------- | ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------- |
-| SignUp Success             | Success      | "Successfully signed in."                    | After user form submission     | ![screenshot](documentation/screenshots/signinsuccess.JPG)                                                                        |
-| Login Success              | Success      | "Logged in successfully."                    | After user authentication      | ![screenshot](documentation/screenshots/signinsuccess.JPG)                                                                        |
-| Logout Action              | Success      | "Successfully logged out!"                   | After user clicks logout       | ![screenshot](documentation/screenshots/signoutsuccess.JPG)                                                                       |
-| Post Submission Success    | Success      | "Your post has been submitted for review."   | After submitting a post form   | ![screenshot](documentation/screenshots/postcreated.JPG)                                                                          |
-| Post Updated               | Success      | "Your post has been updated"."               | After editing a post           | ![screenshot](documentation/screenshots/postupdated.JPG)                                                                          |
-| Post Deletion Confirmation | Success      | "Your post has been deleted."                | After deleting a post          | ![screenshot](documentation/screenshots/postdeletemodal.JPG) ![screenshot](documentation/screenshots/postdeletesuccess.JPG)       |
-| Comment                    | Success      | "Your comment has been posted."              | After submitting a comment     | ![screenshot](documentation/screenshots/commented.JPG)                                                                            |
-| Comment Updated            | Success      | "Your comment has been updated."             | After updating a comment       | ![screenshot](documentation/screenshots/commentupdatesuccess.JPG)                                                                 |
-| Comment Deleted            | Success      | "Your comment has been deleted."             | After deleting a comment       | ![screenshot](documentation/screenshots/commentdeletemodal.JPG) ![screenshot](documentation/screenshots/commentdeletesuccess.JPG) |
-| Followed                   | Info         | "Followed successfully."                     | When a user is followed        | ![screenshot](documentation/screenshots/follow.JPG)                                                                               |
-| Unfollowed                 | Info         | "Unfollowed successfully"                    | "When a user is unfollowed."   | ![screenshot](documentation/screenshots/unfollow.JPG)                                                                             |
-| Collaborate                | Info         | "Collaboration form submitted successfully!" | When details are submitted.    | ![screenshot](documentation/screenshots/collaboratemessage.JPG)                                                                   |
-| Challenge Join Success     | Success      | "You have joined the challenge!"             | After joining a challenge      | ![screenshot](documentation/screenshots/challengejoin.JPG)                                                                        |
-| Challenge Leave Success    | Success      | "You have left the challenge!"               | After leaving a challenge      | ![screenshot](documentation/screenshots/leavechallenge.JPG)                                                                       |
-| Challenge Created          | Success      | "Challenge created successfully!"            | After creating a challenge     | ![screenshot](documentation/screenshots/challengecreate.JPG)                                                                      |
-| Challenge Updated          | Success      | "Challenge updated successfully!"            | After updating a challenge     | ![screenshot](documentation/screenshots/challengeupdate.JPG)                                                                      |
-| Challenge Deleted          | Success      | "Challenge deleted successfully!"            | After deleting a challenge     | ![screenshot](documentation/screenshots/challengedeletemodal.JPG) ![screenshot](documentation/screenshots/challengedelete.JPG)    |
-| Daily Routine Created      | Success      | "Daily routine created successfully!"        | After creating a daily routine | ![screenshot](documentation/screenshots/dailyroutinesuccess.JPG)                                                                  |
-| Daily Routine Updated      | Success      | "Daily routine updated successfully!"        | After updating a daily routine | ![screenshot](documentation/screenshots/updatedailyroutine.JPG)                                                                   |
-| Daily Routine Deleted      | Success      | "Daily routine deleted successfully!"        | After deleting a daily routine | ![screenshot](documentation/screenshots/dailyroutinedeletesuccess.JPG)                                                            |
+| Browser        | Tested? | Issues Found | Image | Pass/Fail |
+| -------------- | ------- | ------------ | ----- | --------- |
+| Chrome         | Yes     | None         | <details><summary>Chrome</summary><img src="doc/testing/browser/chrom.png" alt="Profiles"></details> | ✅       |
+| Firefox        | Yes     | None         | <details><summary>Firefox</summary><img src="doc/testing/browser/mozilla.png" alt="Profiles"></details> | ✅       |
+| Microsoft Edge | Yes     | None         | <details><summary>Microsoft Edge</summary><img src="doc/testing/browser/edge.png" alt="Profiles"></details> | ✅       |
+| Opera          | Yes     | None         | <details><summary>Opera</summary><img src="doc/testing/browser/opera.png" alt="Profiles"></details> | ✅       |
+
+[Back to top](#table-of-contents)                                         |
 
 ### Responsiveness
 
