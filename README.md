@@ -21,7 +21,7 @@ Welcome to [**Diving Center**](https://divingspace-900b5a3db777.herokuapp.com), 
 
 ### Get Involved
 
-Join our vibrant social media platform to dive into a world of excitement. Whether you're taking your first plunge or you're a seasoned pro, there's a place for you here. Sign up to connect with like-minded divers, share your underwater tales, and explore the depths together.
+Join our vibrant [**social media platform**](https://divingspace-900b5a3db777.herokuapp.com/feed)to dive into a world of excitement. Whether you're taking your first plunge or you're a seasoned pro, there's a place for you here. Sign up to connect with like-minded divers, share your underwater tales, and explore the depths together.
 
 For our returning divers, welcome back! Sign in to reconnect with your diving buddies, showcase your latest aquatic explorations, and uncover new underwater wonders. At [**Diving Center**](https://divingspace-900b5a3db777.herokuapp.com), we're not just about courses – we're about creating a community where passion for diving thrives. Let's embark on this underwater journey together!
 
