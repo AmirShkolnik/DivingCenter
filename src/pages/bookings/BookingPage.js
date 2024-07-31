@@ -78,8 +78,24 @@ const BookingPage = () => {
 
   const handleUpdate = async (e) => {
     e.preventDefault();
-    const { id, date, time, course } = editingBooking;
+    const { id, date, time, course, additional_info } = editingBooking;
     const formattedDate = new Date(date).toISOString().split('T')[0];
+
+    // Find the original booking
+    const originalBooking = bookings.find((booking) => booking.id === id);
+
+    // Check if any changes were made
+    const hasChanges =
+      formattedDate !== originalBooking.date ||
+      time !== originalBooking.time ||
+      course !== originalBooking.course ||
+      additional_info !== originalBooking.additional_info;
+
+    if (!hasChanges) {
+      toast.info('No changes were made to the booking.');
+      setEditingBooking(null);
+      return;
+    }
 
     if (checkExistingBooking(formattedDate, time, course, id)) {
       toast.warning(
