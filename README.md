@@ -869,9 +869,11 @@ I've used [dbdiagram](https://dbdiagram.io/home) to design my site's ERD.
 
 #### Entity Relationship Diagram (ERD)
 
-![Entity Relationship Diagram](documentation/erd/entity-relationship-diagram.png)
+![Entity Relationship Diagram](doc/erd/erd.png)
 
 The Entity Relationship Diagram (ERD) is a visual representation of the database structure for the Diving Center project. It illustrates the relationships between different entities (tables) and their attributes (columns). The ERD helps in understanding the data organization and facilitates efficient database design.
+
+Click to exploer the [Diving Center API - DataBase](https://github.com/AmirShkolnik/DivingCenter_API/blob/main/README.md#data-models)
 
 #### Tables Overview
 
@@ -879,32 +881,51 @@ In the Diving Center project, the ERD consists of the following entities:
 
 ### Entities
 
-1. **User**: This entity stores user information such as username, email, password, and other relevant details.
-
-2. **Post**: This entity represents the posts or content created by users. It may include attributes like post title, content, date, and author (linked to the User entity).
-
-3. **Like**: This entity tracks the likes given by users on posts. It may have attributes like the user who liked the post and the post that was liked.
-
-4. **Favorite**: This entity stores the posts marked as favorites by users. It may have attributes like the user who favorited the post and the post that was favorited.
-
-5. **Review**: This entity represents the reviews or ratings given by users for posts. It may include attributes like the review text, rating score, and the user who wrote the review.
-
-6. **Comment**: This entity stores the comments made by users on posts. It may have attributes like the comment text, date, and the user who posted the comment.
-
-7. **Contact**: This entity stores contact information submitted by users through a contact form. It may include attributes like name, email, message, and date.
+| Entities | Purpose |
+|------------|---------|
+| User | Manages user authentication and basic information |
+| Profile | Extends user information with additional details and preferences |
+| Courses | Stores information about available diving courses, including details like title, description, type, and price |
+| Bookings | Handles course reservations made by users, including date, time, and additional information |
+| Reviews | Allows users to rate and review courses, with content and rating |
+| Posts | Manages user-generated content for the community feed, including images and filters |
+| Comments | Enables users to comment on posts, with creation and update timestamps |
+| Likes | Tracks user likes on posts, with creation timestamps |
+| Followers | Manages user follow relationships, tracking who follows whom |
+| Contact Us| Stores customer inquiries and messages, including a deletion token for privacy |
 
 [Back to top](#table-of-contents)
 
 #### Relationships
 
-The relationships between these entities are as follows:
+The relationships between these models create a cohesive system:
 
-- **User** has a one-to-many relationship with **Post**, **Like**, **Favorite**, **Review**, and **Comment**, meaning a user can have multiple posts, likes, favorites, reviews, and comments.
-- **Post** has a one-to-many relationship with **Like**, **Favorite**, **Review**, and **Comment**, meaning a post can have multiple likes, favorites, reviews, and comments.
-- **Like** has a many-to-one relationship with **User** and **Post**, indicating that a like is associated with one user and one post.
-- **Favorite** has a many-to-one relationship with **User** and **Post**, indicating that a favorite is associated with one user and one post.
-- **Review** has a many-to-one relationship with **User** and **Post**, indicating that a review is associated with one user and one post.
-- **Comment** has a many-to-one relationship with **User** and **Post**, indicating that a comment is associated with one user and one post.
+- Users are linked to Profiles, Bookings, Reviews, Posts, Comments, Likes, and Followers.
+- DivingCourses are connected to Bookings and Reviews.
+- Posts are associated with Comments and Likes.
+- Followers establish connections between users.
+
+The following tables illustrates the relationships between different models in the system. It shows how users are connected to various other entities like profiles, bookings, reviews, posts, comments, likes, and followers. It also demonstrates the connections between diving courses and their bookings and reviews, as well as the relationship between posts and their comments and likes. Lastly, it represents the follower relationship between users.
+
+| Model 1 | Relationship | Model 2 |
+|---------|--------------|---------|
+| User | has one | Profile |
+| User | has many | Bookings |
+| User | has many | Reviews/Ratings (through Courses) |
+| User | has many | Posts |
+| User | has many | Comments |
+| User | has many | Likes |
+| User | has many | Followers |
+| User | has many | Contacts |
+| User | follows many | User |
+| Courses | has many | Bookings |
+| Courses | has many | Reviews/Ratings |
+| Post | has many | Comments |
+| Post | has many | Likes |
+| Post | belongs to | User |
+| Comment | belongs to | User |
+| Like | belongs to | User |
+| Follower | belongs to | User |
 
 The ERD provides a clear understanding of the data structure and relationships within the Diving Center project, facilitating efficient database design and development.
 
@@ -912,62 +933,574 @@ The ERD provides a clear understanding of the data structure and relationships w
 
 ### Security
 
-The "Diving Center" coffee project takes keeping your information safe very seriously. The developers have put in place strong protections to guard against bad people trying to access or misuse your data.
+The "Diving Center" project, built with a React frontend and Django REST framework backend, prioritizes the security of the user information. We have implemented robust measures to protect against unauthorized access or misuse of users data.
 
-Only authorized users with the proper permissions can view or make changes to sensitive information within the application. The code that runs the app is also written in a secure way to prevent any vulnerabilities or weaknesses that could be exploited by hackers.
+### Authorized Access
 
-One such protection is against Cross-Site Request Forgery (CSRF) attacks. CSRF protection ensures that unauthorized commands are not executed on behalf of authenticated users without their knowledge. This safeguard prevents malicious sites from tricking users into performing unwanted actions, thereby keeping your data secure.
+Only authorized users with the appropriate permissions can view or modify sensitive information within the application, ensuring that the data is only accessible to those who are supposed to have access.
 
-The team behind "Diving Center" understands how important it is to protect the privacy and personal details of all users. That's why they have made data security one of their top priorities throughout the development process.
+### Secure Code
+
+The codebase is developed with security best practices in mind to prevent vulnerabilities that could be exploited by malicious actors. This includes secure handling of user authentication and data validation.
+
+### CSRF Protection
+
+Cross-Site Request Forgery (CSRF) protection is a critical security measure implemented in the "Diving Center" project. It prevents attackers from tricking authenticated users into executing unwanted actions on a web application without their consent[1]. Django, the backend framework used in this project, provides built-in CSRF protection by default. This protection works by including a unique, secret token in each form and checking that token on form submission.
+
+For more detailed information on CSRF protection in Django, you can visit the [official Django documentation on CSRF](https://docs.djangoproject.com/en/3.2/ref/csrf/).
+
+### JWT Authentication
+
+JSON Web Token (JWT) authentication is employed in the "Diving Center" project for secure user authentication. JWTs are an open standard (RFC 7519) that define a compact and self-contained way for securely transmitting information between parties as a JSON object. In this project, JWTs are used to manage user sessions and prevent unauthorized access.
+
+The Django REST framework, used in the backend, supports JWT authentication through libraries like `dj-rest-auth`. This implementation ensures that each request from an authenticated user includes a JWT, which the server verifies before processing the request.
+
+For more information on JWT and its implementation in Django REST framework, you can refer to the [official JWT website](https://jwt.io/) and the [dj-rest-auth documentation](https://dj-rest-auth.readthedocs.io/en/latest/installation.html#jwt-support-optional).
+
+These security measures work together to provide a robust defense against common web application vulnerabilities, ensuring the safety and integrity of user data in the "Diving Center" application.
+
+### Secure Storage
+
+Sensitive files and media in the "Diving Center" project are securely stored using Cloudinary, a cloud-based image and video management service. Cloudinary provides robust security measures to protect user data both in transit and at rest.
+
+Key security features of Cloudinary include:
+
+1. Data encryption: All data is encrypted both in transit (using HTTPS/TLS) and at rest (using AES-256 encryption)[1].
+
+2. Access control: Cloudinary offers various access control mechanisms, including signed URLs and access control lists (ACLs), to ensure that only authorized users can access specific resources[1].
+
+3. Compliance: Cloudinary complies with major security standards and regulations, including GDPR, CCPA, and ISO 27001[1].
+
+4. Secure API: All interactions with Cloudinary's API are done over HTTPS, ensuring secure communication between the application and Cloudinary's servers[1].
+
+5. Asset backup: Cloudinary maintains multiple backups of all assets, protecting against data loss[1].
+
+By leveraging Cloudinary's secure storage solutions, the "Diving Center" project ensures that user-uploaded images, videos, and other media files are protected against unauthorized access and data breaches.
+
+For more detailed information on Cloudinary's security measures and best practices, you can visit the [official Cloudinary Security documentation](https://cloudinary.com/documentation/security).
+
+### Continuous Monitoring
+
+The team behind "Diving Center" continuously monitors the application for potential security threats and regularly updates the codebase to address any new vulnerabilities.
+
+### Privacy Commitment
+
+Understanding the importance of protecting the privacy and personal details of all users, the "Diving Center" team makes data security a top priority throughout the development process.
+
+By implementing these comprehensive security measures, the "Diving Center" project aims to provide a safe and trustworthy platform for all users.
 
 [Back to top](#table-of-contents)
 
 #### CRUD functunalities
 
-Django has special tools that make sure only the right people can view add, change or delete information on a website. These tools work together to keep everything safe and secure. First, there are "class-based views" that handle the basic actions like viewing, editing, and deleting information.
+The "Diving Center" project, built with a React frontend and Django REST framework backend, leverages Django's robust tools to manage Create, Read, Update, and Delete (CRUD) functionalities securely and efficiently.
 
-These views make it easy to write code for common tasks.
-Next, Django has an "authentication system" that checks if a user is logged in or not. If they are not logged in, it won't let them do certain things like edit or delete information.
+**Django Class-Based Views**
 
-This authentication system has special mixins called "LoginRequiredMixin" and "UserPassesTestMixin". These mixins work with the class-based views to make sure that only logged-in users can perform certain actions.
+Django's class-based views simplify the implementation of CRUD operations. These views handle common tasks such as viewing, editing, and deleting information, making it easier to write and maintain code for these operations.
 
-If a user tries to do something they are not allowed to do, like edit someone else's information, the mixins will stop them. Instead of letting them do the wrong thing, the mixins will redirect the user to the login page.
+**Authentication System**
 
-This way, Django's tools work together to keep the website secure and prevent people from doing things they shouldn't be doing. It's like having a security guard that only lets the right people through the door.
+Django's authentication system ensures that only logged-in users can perform certain actions. This system includes mixins like `LoginRequiredMixin` and `UserPassesTestMixin`, which work with class-based views to enforce access control. These mixins ensure that only authenticated users can access specific views and perform actions like editing or deleting data.
+
+**Permissions**
+
+Custom permissions are implemented to further secure CRUD operations. For instance, the `IsOwnerOrReadOnly` permission class ensures that only the owner of an object can modify or delete it, while others can only view it.
+
+```python
+from rest_framework import permissions
+
+class IsOwnerOrReadOnly(permissions.BasePermission):
+    def has_object_permission(self, request, view, obj):
+        if request.method in permissions.SAFE_METHODS:
+            return True
+        return obj.owner == request.user
+```
+
+**Serializers**
+
+Serializers in Django REST framework handle the conversion between complex data types and JSON, making it easy to validate and transform data. Custom serializers, like `CurrentUserSerializer`, extend existing serializers to include additional fields.
+
+```python
+from dj_rest_auth.serializers import UserDetailsSerializer
+from rest_framework import serializers
+
+class CurrentUserSerializer(UserDetailsSerializer):
+    profile_id = serializers.ReadOnlyField(source='profile.id')
+    profile_image = serializers.ReadOnlyField(source='profile.image.url')
+
+    class Meta(UserDetailsSerializer.Meta):
+        fields = UserDetailsSerializer.Meta.fields + ('profile_id', 'profile_image')
+```
+
+**Views**
+
+Custom views handle the logic for CRUD operations. For example, the `ContactListCreateView` and `ContactDetailView` manage the creation, retrieval, updating, and deletion of contact messages.
+
+```python
+from rest_framework import generics
+from rest_framework.permissions import IsAuthenticated, IsAdminUser, AllowAny
+from .serializers import ContactSerializer
+from .models import Contact
+from uuid import uuid4
+
+class ContactListCreateView(generics.ListCreateAPIView):
+    serializer_class = ContactSerializer
+
+    def get_queryset(self):
+        if self.request.user.is_authenticated:
+            if self.request.user.is_staff:
+                return Contact.objects.all()
+            return Contact.objects.filter(email=self.request.user.email)
+        return Contact.objects.none()
+
+    def get_permissions(self):
+        if self.request.method == 'POST':
+            return [AllowAny()]
+        return [IsAuthenticated()]
+
+    def perform_create(self, serializer):
+        serializer.save(deletion_token=uuid4())
+```
+
+**Frontend Integration**
+
+The React frontend interacts with the Django backend through API calls, allowing users to perform CRUD operations. For example, the `ContactForm` component handles form submission, editing, and deletion of contact messages.
+
+```javascript
+import React, { useState, useEffect } from 'react';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import { axiosReq } from '../../api/axiosDefaults';
+import { toast } from 'react-toastify';
+import { useHistory } from 'react-router-dom';
+import styles from '../../styles/ContactForm.module.css';
+import Asset from '../../components/Asset';
+
+const ContactForm = () => {
+  // State and handlers for form submission, editing, and deletion
+  // ...
+  return (
+    <div className={styles.ContactForm}>
+      <h2 className={styles.Title}>{isEditing ? 'Edit Your Message' : 'Contact Us'}</h2>
+      <Form onSubmit={handleSubmit}>
+        {/* Form fields and buttons */}
+      </Form>
+    </div>
+  );
+};
+
+export default ContactForm;
+```
+
+By integrating Django's class-based views, authentication system, custom permissions, and serializers with a React frontend, the "Diving Center" project ensures secure and efficient management of CRUD functionalities. For more information on Django's class-based views and authentication system, you can visit the [official Django documentation](https://docs.djangoproject.com/en/3.2/topics/class-based-views/).
 
 [Back to top](#table-of-contents)
 
 #### Authentication and Authorization
 
-The "Diving Center" coffee project makes it very simple for new users to create accounts and existing users to log in. This is possible thanks to a special tool called "Django Allauth." With "Django Allauth," signing up and logging in happens smoothly and without any problems. Users don't have to worry about complicated steps or confusing instructions. They can easily become part of the "Diving Center" community and start exploring all the fun features right away!
+The "Diving Center" project makes it very simple for new users to create accounts and existing users to log in. This is achieved using Django Allauth, a powerful authentication system integrated into the Django backend. With Django Allauth, the signup and login processes are seamless and user-friendly, allowing users to quickly become part of the "Diving Center" community and start exploring all the features right away.
+
+#### Key Features:
+
+1. **User Registration and Login:**
+   - Users can easily register for a new account or log in to an existing one through intuitive forms provided by Django Allauth.
+   - The React frontend includes components like `SignUpForm` and `SignInForm` to handle these processes.
+
+2. **JWT Authentication:**
+   - JSON Web Tokens (JWT) are used for secure authentication, ensuring that user sessions are managed securely.
+   - The backend employs libraries like `dj-rest-auth` to support JWT, enhancing security and user experience.
+
+3. **Access Control:**
+   - Custom permissions, such as `IsOwnerOrReadOnly`, ensure that only authorized users can modify or delete specific resources.
+   - The React frontend uses context (e.g., `useCurrentUser`) to manage the current user's state and enforce access control.
+
+4. **Protected Routes:**
+   - Certain routes are protected and require user authentication. For example, the route to create a booking (`/bookings/create`) redirects unauthenticated users to the sign-in page.
+
+5. **User Feedback:**
+   - The application uses `react-toastify` to provide real-time feedback to users, such as success or error messages during authentication and authorization processes.
+
+#### Example Code:
+
+**Backend: Permissions**
+
+```python
+from rest_framework import permissions
+
+class IsOwnerOrReadOnly(permissions.BasePermission):
+    def has_object_permission(self, request, view, obj):
+        if request.method in permissions.SAFE_METHODS:
+            return True
+        return obj.owner == request.user
+```
+
+**Frontend: Authentication Forms**
+
+```javascript
+import React from 'react';
+import { useHistory } from 'react-router-dom';
+import { useCurrentUser } from '../../contexts/CurrentUserContext';
+import SignUpForm from './SignUpForm';
+import SignInForm from './SignInForm';
+
+const AuthRoutes = () => {
+  const currentUser = useCurrentUser();
+  const history = useHistory();
+
+  return (
+    <Switch>
+      <Route
+        exact
+        path="/signin"
+        render={() =>
+          currentUser ? <Redirect to="/bookings/create" /> : <SignInForm />
+        }
+      />
+      <Route exact path="/signup" component={SignUpForm} />
+    </Switch>
+  );
+};
+
+export default AuthRoutes;
+```
+
+By integrating Django Allauth with JWT authentication and custom permissions, the "Diving Center" project ensures a secure and user-friendly authentication and authorization process. This allows users to easily join the community and access the features they need while keeping their data secure.
+
+For more information on Django Allauth and its capabilities, you can visit the [official Django Allauth documentation](https://django-allauth.readthedocs.io/en/latest/).
 
 [Back to top](#table-of-contents)
 
 #### Data Validation and Sanitization
 
-Checking the information people type into forms is very important. It helps make sure the data is correct and safe. This way, no one can put in bad or harmful information by mistake or on purpose. Validating forms protects the project and keeps everything working properly.
+Ensuring the accuracy and safety of the data entered into forms is crucial for maintaining the integrity and security of the "Diving Center" project. This process involves validating and sanitizing user inputs to prevent the submission of incorrect or harmful information, whether by mistake or malicious intent.
+
+#### Data Validation
+
+Data validation is implemented both on the frontend and backend to ensure that user inputs meet the required criteria before being processed or stored. In the React frontend, form validation can be handled using state and effect hooks to provide real-time feedback to users.
+
+**Example: Booking Form Validation**
+
+```javascript
+const handleUpdate = async (e) => {
+  e.preventDefault();
+  const { id, date, time, course } = editingBooking;
+  const formattedDate = new Date(date).toISOString().split('T')[0];
+  if (checkExistingBooking(formattedDate, time, course, id)) {
+    toast.warning('You already have a booking for this course, date, and time. Please try again.');
+  } else {
+    setEditingBooking({ ...editingBooking, date: formattedDate });
+    setShowUpdateConfirmation(true);
+  }
+};
+```
+
+On the backend, Django REST framework serializers are used to validate data before saving it to the database. Custom validators can be added to ensure that all inputs conform to the expected formats and constraints.
+
+**Example: Contact Serializer**
+
+```python
+from rest_framework import serializers
+from .models import Contact
+
+class ContactSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Contact
+        fields = ['id', 'name', 'email', 'subject', 'message', 'created_at', 'deletion_token']
+        read_only_fields = ['id', 'deletion_token', 'created_at']
+        extra_kwargs = {
+            'name': {'help_text': 'Enter your full name'},
+            'email': {'help_text': 'Enter a valid email address'},
+            'subject': {'help_text': 'Enter the subject of your message'},
+            'message': {'help_text': 'Enter your message here', 'style': {'base_template': 'textarea.html', 'rows': 4}},
+        }
+```
+
+#### Data Sanitization
+
+Data sanitization involves cleaning user inputs to remove any potentially harmful content, such as SQL injection or cross-site scripting (XSS) attacks. This is typically handled by the backend before storing or processing the data.
+
+**Example: Sanitizing User Inputs**
+
+In Django, data sanitization can be achieved using built-in functions and middleware that automatically escape harmful characters and scripts.
+
+```python
+from django.utils.html import escape
+
+class Contact(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    subject = models.CharField(max_length=200)
+    message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    deletion_token = models.UUIDField(default=uuid.uuid4, editable=False)
+
+    def save(self, *args, **kwargs):
+        self.name = escape(self.name)
+        self.email = escape(self.email)
+        self.subject = escape(self.subject)
+        self.message = escape(self.message)
+        super().save(*args, **kwargs)
+```
+
+By implementing robust data validation and sanitization processes, the "Diving Center" project ensures that all user inputs are accurate, safe, and secure, protecting the application and its users from potential threats and maintaining smooth operation.
 
 [Back to top](#table-of-contents)
 
 #### Error Handling
 
-When something goes wrong with the website, special pages are shown. These pages help explain the problem in a friendly way. They use simple words and pictures to make it easy for everyone to understand what happened. This way, if there is an issue, users won't feel lost or confused. The special pages will guide them and let them know what's going on in a clear and helpful manner.
+### Error Handling
+
+The "Diving Center" project implements comprehensive error handling mechanisms across both the frontend and backend to ensure a smooth user experience, even when issues arise. This approach uses clear, user-friendly messages and appropriate visual cues to guide users through any unexpected situations.
+
+#### Frontend Error Handling
+
+In the React frontend, error handling is implemented through various methods:
+
+1. **Custom Error Pages:**
+   The project includes a custom `NotFound` component that is displayed when users navigate to non-existent pages. This component uses diving-themed humor to lighten the mood while guiding users back to the main site:
+
+   ```jsx
+   const NotFound = () => {
+     return (
+       <div className={styles.NotFound}>
+         <div className={styles.NotFoundContent}>
+           <img src={NoResults} alt="No results" />
+           <p>
+             Our apologies, this page must have gotten eaten by a shark! Surface
+             and head back to the home page.
+           </p>
+         </div>
+       </div>
+     );
+   };
+   ```
+
+2. **Toast Notifications:**
+   The application uses `react-toastify` to display user-friendly error messages. For example, in the `BookingPage` component:
+
+   ```javascript
+   catch (err) {
+     toast.error('Failed to load bookings. Please try again.');
+   }
+   ```
+
+3. **Conditional Rendering:**
+   Components use conditional rendering to display appropriate content based on the application's state, including error states:
+
+   ```jsx
+   if (loading) {
+     return <Spinner animation="border" />;
+   }
+
+   if (bookings.length === 0) {
+     return (
+       <p>You have no bookings. Would you like to create one?</p>
+     );
+   }
+   ```
+
+4. **Error Boundaries:**
+   React error boundaries could be implemented to catch JavaScript errors anywhere in the component tree and display fallback UI.
+
+#### Backend Error Handling
+
+On the Django REST framework backend, error handling is managed through several mechanisms:
+
+1. **Serializer Validation:**
+   Serializers validate incoming data and return detailed error messages. For example, in the `ContactSerializer`:
+
+   ```python
+   class ContactSerializer(serializers.ModelSerializer):
+       class Meta:
+           model = Contact
+           fields = ['id', 'name', 'email', 'subject', 'message', 'created_at', 'deletion_token']
+           read_only_fields = ['id', 'deletion_token', 'created_at']
+           extra_kwargs = {
+               'name': {'help_text': 'Enter your full name'},
+               'email': {'help_text': 'Enter a valid email address'},
+               # ...
+           }
+   ```
+
+2. **Exception Handling in Views:**
+   Views include try-except blocks to catch and handle exceptions gracefully. For instance, in the `ContactDetailView`:
+
+   ```python
+   def destroy(self, request, *args, **kwargs):
+       instance = self.get_object()
+       if instance is None:
+           return Response(
+               {"error": "You don't have permission to delete this message"},
+               status=status.HTTP_403_FORBIDDEN
+           )
+       # ...
+   ```
+
+3. **Custom Permissions:**
+   Custom permission classes, like `IsOwnerOrReadOnly`, provide specific error messages when access is denied:
+
+   ```python
+   class IsOwnerOrReadOnly(permissions.BasePermission):
+       def has_object_permission(self, request, view, obj):
+           if request.method in permissions.SAFE_METHODS:
+               return True
+           return obj.owner == request.user
+   ```
+
+4. **HTTP Status Codes:**
+   The backend uses appropriate HTTP status codes to indicate the nature of errors, which the frontend can interpret and display accordingly.
+
+By implementing these error handling strategies, the "Diving Center" project ensures that users receive clear, helpful guidance when encountering issues, maintaining a positive user experience even in the face of errors or unexpected situations. The diving-themed error messages add a touch of personality to the application, aligning with its overall theme and potentially easing user frustration during error scenarios.
 
 [Back to top](#table-of-contents)
 
 #### Environment Security
 
-Keeping important information safe is very important in this project. This includes things like database addresses, secret codes, and cloud storage links.
+Keeping important information safe is crucial in the "Diving Center" project. This includes sensitive data such as database addresses, secret keys, and cloud storage links.
 
-During the building phase, these details are kept in a special file called .env.py. This file is not shared with others to protect the information.
+#### Development Phase
 
-When the project is ready to be used by people, the important information is stored in a different way called configurable variables. This makes it harder for anyone to see or misuse the information. It also turns off a setting called debug mode, which makes the project even more secure.By taking these steps, the project makes sure that sensitive data is well-protected and cannot be easily accessed by anyone who should not have access to it.
+During the development phase, these sensitive details are stored in a special file called `.env.py`. This file contains environment variables and is not shared with others to protect the information. Here’s an example of how sensitive information is managed in the Django settings:
+
+```python
+import os
+from pathlib import Path
+import dj_database_url
+
+if os.path.exists('env.py'):
+    import env
+
+SECRET_KEY = os.getenv('SECRET_KEY')
+DATABASES = {
+    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+}
+CLOUDINARY_STORAGE = {
+    'CLOUDINARY_URL': os.environ.get('CLOUDINARY_URL')
+}
+```
+
+#### Production Phase
+
+When the project is deployed for production, the sensitive information is stored using environment variables. This approach makes it harder for unauthorized individuals to access or misuse the information. Additionally, the `DEBUG` setting is turned off to enhance security:
+
+```python
+DEBUG = False
+
+ALLOWED_HOSTS = [
+    os.environ.get('ALLOWED_HOST'),
+    'your-production-domain.com',
+]
+
+DATABASES = {
+    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+}
+```
+
+By taking these steps, the "Diving Center" project ensures that sensitive data is well-protected and cannot be easily accessed by unauthorized individuals. This practice helps maintain the security and integrity of the project.
+
+#### Example Code for Environment Variables
+
+**Backend: Django Settings**
+
+```python
+import os
+from pathlib import Path
+import dj_database_url
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Load environment variables from .env.py if it exists
+if os.path.exists('env.py'):
+    import env
+
+SECRET_KEY = os.getenv('SECRET_KEY')
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
+
+ALLOWED_HOSTS = [
+    os.getenv('ALLOWED_HOST'),
+    'localhost',
+]
+
+DATABASES = {
+    'default': dj_database_url.parse(os.getenv("DATABASE_URL"))
+}
+
+CLOUDINARY_STORAGE = {
+    'CLOUDINARY_URL': os.getenv('CLOUDINARY_URL')
+}
+```
 
 [Back to top](#table-of-contents)
 
 #### CSRF Protection
 
-Keeping Bad People Out: The coffee website has a special way to stop bad people from doing bad things. It uses a secret code called a "CSRF token." This code is like a password that gets sent with every form you fill out on the website. This secret code helps keep the website safe from people trying to do bad things.
+The "Diving Center" project takes security seriously, especially when it comes to protecting against Cross-Site Request Forgery (CSRF) attacks. CSRF protection is implemented to ensure that unauthorized commands are not executed on behalf of authenticated users without their knowledge.
+
+#### How CSRF Protection Works
+
+CSRF protection involves using a secret code called a "CSRF token." This token is like a password that gets sent with every form submission on the website. It helps verify that the request is coming from an authenticated user and not from a malicious third-party site.
+
+#### Implementation in the Project
+
+**Backend (Django):**
+
+In Django, CSRF protection is enabled by default. The framework automatically includes a CSRF token in forms and checks it on form submission to ensure the request is legitimate.
+
+**Frontend (React with Axios):**
+
+In the React frontend, Axios is configured to include the CSRF token in all requests. This ensures that the backend can verify the authenticity of the requests.
+
+Here’s how Axios is configured in the project:
+
+```javascript
+import axios from 'axios';
+
+axios.defaults.baseURL = 'https://your-api-url.com/';
+axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
+axios.defaults.withCredentials = true;
+
+export const axiosReq = axios.create();
+export const axiosRes = axios.create();
+```
+
+By including the CSRF token in every request, the "Diving Center" project ensures that all interactions with the backend are secure and protected from CSRF attacks.
+
+For more information on CSRF protection in Django, you can visit the [official Django documentation on CSRF](https://docs.djangoproject.com/en/stable/ref/csrf/).
+
+---
+
+### Example Code for CSRF Protection
+
+**Django Settings:**
+
+In the Django settings, CSRF protection is enabled by default. However, you can customize CSRF settings as needed:
+
+```python
+# settings.py
+
+CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_HTTPONLY = True
+CSRF_COOKIE_SAMESITE = 'Lax'
+```
+
+**React with Axios:**
+
+In the React frontend, Axios is configured to include credentials (cookies) with every request, ensuring that the CSRF token is sent along with form submissions:
+
+```javascript
+import axios from 'axios';
+
+axios.defaults.baseURL = 'https://your-api-url.com/';
+axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
+axios.defaults.withCredentials = true;
+
+export const axiosReq = axios.create();
+export const axiosRes = axios.create();
+```
+
+By implementing these security measures, the "Diving Center" project ensures that sensitive operations are protected from CSRF attacks, maintaining the integrity and security of user data.
 
 [Back to top](#table-of-contents)
 
@@ -975,13 +1508,104 @@ Keeping Bad People Out: The coffee website has a special way to stop bad people 
 
 ### Screens of All Sizes
 
-![responsiveness](documentation/amireponsive/cupsofjoy.png)
+![Am I Responsive Image](doc/images/amiresponsive/amiresponsive.png)
 
-The "Diving Center" website works well on different devices like phones, tablets, and computers. This was done by using special code called Bootstrap. Bootstrap helps make websites look good on any screen size without needing too much extra code.
+The "Diving Center" website is designed to provide an optimal viewing experience across a wide range of devices, from mobile phones to desktop computers. This responsive design is achieved through a combination of Bootstrap's grid system and custom CSS modules.
 
-Instead of writing many lines of code for different screen sizes, Bootstrap has a simple way to make the website adjust itself automatically. This means the website will look great whether you're using a small phone screen or a big computer monitor.
+### Bootstrap Integration
 
-By using Bootstrap's smart design, the "Diving Center" website can be easily viewed and used on any device. This was an excellent chance to practice using Bootstrap and make the website work smoothly everywhere with just a little bit of code.
+We utilize Bootstrap's responsive grid system to ensure that the layout adapts seamlessly to different screen sizes. This approach minimizes the need for extensive media queries and custom breakpoints.
+
+Example of Bootstrap grid usage in our `BookingPage` component:
+
+```jsx
+<Container className={styles.bookingPage}>
+  <Row>
+    <Col md={8} lg={6}>
+      <h2 className={styles.bookingTitle}>Your Bookings</h2>
+      {/* Booking list content */}
+    </Col>
+    <Col md={4} lg={6}>
+      {/* Sidebar or additional content */}
+    </Col>
+  </Row>
+</Container>
+```
+
+### Custom CSS Modules
+
+While Bootstrap provides a solid foundation, we've implemented custom CSS modules for each component to maintain a unique and cohesive design throughout the application. This approach allows for component-specific styling while avoiding global style conflicts.
+
+Example of a custom CSS module (`BookingPage.module.css`):
+
+```css
+.bookingPage {
+  padding: 20px;
+}
+
+.bookingTitle {
+  color: #0056b3;
+  margin-bottom: 1rem;
+}
+
+.bookingItem {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+
+@media (max-width: 768px) {
+  .bookingItem {
+    padding: 10px;
+  }
+}
+```
+
+### React Components and Styling
+
+Our React components are designed with responsiveness in mind. We use a combination of Bootstrap components and custom-styled elements to create a consistent and adaptive user interface.
+
+Example of responsive component design:
+
+```jsx
+const BookingItem = ({ booking }) => (
+  <div className={styles.bookingItem}>
+    <Row>
+      <Col xs={12} md={6}>
+        <p>Date: {booking.date}</p>
+        <p>Time: {booking.time}</p>
+      </Col>
+      <Col xs={12} md={6}>
+        <p>Course: {booking.course_name}</p>
+        <p>Additional Info: {booking.additional_info}</p>
+      </Col>
+    </Row>
+    {/* Action buttons */}
+  </div>
+);
+```
+
+### Responsive Images
+
+We ensure that images are responsive and optimized for different devices:
+
+```jsx
+<img
+  src={course.image}
+  className={`${styles.rowImage} img-fluid`}
+  alt={course.title}
+  onError={(e) => {
+    e.target.src = '../images/courses/default.webp';
+  }}
+/>
+```
+
+### Mobile-First Approach
+
+Our styling approach follows the mobile-first principle, ensuring that the base styles are optimized for mobile devices and then enhanced for larger screens.
+
+By combining Bootstrap's responsive framework with custom React components and CSS modules, the "Diving Center" website delivers a seamless and visually appealing experience across all devices. This approach not only enhances user experience but also streamlines development and maintenance processes.
 
 [Back to top](#table-of-contents)
 
