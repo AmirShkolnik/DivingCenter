@@ -7,6 +7,7 @@ const NotFound = () => {
     <div className={styles.NotFound}>
       <div className={styles.NotFoundContent}>
         <img src={NoResults} alt="No results" />
+        <h1>404 - Not Found</h1>
         <p>
           Our apologies, this page must have gotten eaten by a shark! Surface
           and head back to the home page.
