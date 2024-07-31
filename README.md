@@ -1646,16 +1646,71 @@ By combining Bootstrap's responsive framework with custom React components and C
 
 ### CRUD Functionality
 
-The table below describes the CRUD operations that can be performed on Diving Center main features by a registered, logged-in user and admin.
+CRUD is an acronym that stands for Create, Read, Update, and Delete. These are the four basic operations that can be performed on data in most software applications. Here's a description of CRUD, its importance, and how it works between the frontend and backend, specifically with React and Django Rest Framework:
 
-| Feature          | Create                    | Read                                     | Update                      | Delete                    |
-| ---------------- | ------------------------- | ---------------------------------------- | --------------------------- | ------------------------- |
-| **User Account** | Sign up for a new account | View own content                         | Edit own content            | Deactivate/Delete account |
-| **Reviews**      | Publish new reviews       | Browse and read all articles and reviews | Edit own reviews            | Remove own reviews        |
-| **Comments**     | Comment on articles       | View comments                            | Edit own comments           | Delete own comments       |
-| **Likes**        | Like articles             | View likes on articles                   | Like/Unlike - Update amount | Unlike articles           |
-| **Favourites**   | Add a favourite           | View favourites articles                 | Add/Remove - change color   | Remove own favourites     |
-| **Articles**     | Add an article            | View articles                            | Edit own articles           | Delete own articles       |
+### What CRUD Means:
+
+1. Create: Adding new data to the system.
+2. Read: Retrieving or viewing existing data.
+3. Update: Modifying existing data.
+4. Delete: Removing data from the system.
+
+### Importance of CRUD:
+
+CRUD operations are fundamental to most interactive systems because they represent the basic ways users can interact with data. They provide a standardized approach to data manipulation, ensuring that applications can perform essential data management tasks. CRUD operations form the backbone of many web applications, databases, and APIs.
+
+### How CRUD Works Between Frontend and Backend:
+
+In a typical React and Django Rest Framework (DRF) application:
+
+1. Frontend (React):
+   - Creates user interfaces for inputting, displaying, editing, and deleting data.
+   - Sends HTTP requests to the backend API for each CRUD operation.
+   - Uses state management to handle data locally and update the UI.
+   - Read more here [React User Authentication](https://reactrouter.com/en/main)
+
+2. Backend (Django Rest Framework):
+   - Defines API endpoints that correspond to CRUD operations.
+   - Processes incoming requests from the frontend.
+   - Interacts with the database to perform the requested operations.
+   - Sends responses back to the frontend with the results of the operations.
+   - Read more here  [Django Rest Framework User Authentication](https://www.django-rest-framework.org/api-guide/authentication/)
+
+### CRUD in React and Django Rest Framework:
+
+1. Create:
+   - React: User fills a form and submits data.
+   - DRF: Handles POST request, validates data, and creates a new database entry.
+
+2. Read:
+   - React: Fetches and displays data from the API.
+   - DRF: Handles GET requests and returns data from the database.
+
+3. Update:
+   - React: User modifies existing data in a form and submits changes.
+   - DRF: Handles PUT or PATCH requests, validates changes, and updates the database.
+
+4. Delete:
+   - React: User triggers a delete action.
+   - DRF: Handles DELETE requests and removes the specified data from the database.
+
+In the Diving Center project, CRUD operations are implemented for various features like bookings, courses, and user profiles. The React frontend provides interfaces for users to perform these operations, while the Django backend processes these requests and manages the data in the database.
+
+### Diving Center - CRUD Functionality
+
+The table below describes the CRUD operations that can be performed on the Diving Center's main features by registered, logged-in users and admin.
+
+| Feature | Create | Read | Update | Delete |
+|---------|--------|------|--------|--------|
+| Bookings | Authenticated users can create bookings | Users can view their own bookings | Users can update their own bookings | Users can delete their own bookings |
+| Comments | Authenticated users can create comments | All users can read comments | Comment owners can update their comments | Comment owners can delete their comments |
+| Contact Messages | Anyone can create contact messages | Staff can view all messages, users can view their own | Message creators can update their messages | Staff can delete any message, creators can delete with token |
+| Courses | Admin only | All users can view courses | Admin only | Admin only |
+| Course Reviews | Authenticated users can create reviews | All users can read reviews | Review owners and staff can update reviews | Review owners and staff can delete reviews |
+| Followers | Authenticated users can follow others | All users can view follower lists | N/A | Follower owners can unfollow |
+| Likes | Authenticated users can like posts | All users can view likes | N/A | Like owners can unlike |
+| Posts | Authenticated users can create posts | All users can view posts | Post owners can update their posts | Post owners can delete their posts |
+| Profiles | Auto-created on user registration | All users can view profiles | Profile owners can update their profiles | N/A (profiles are not deletable) |
 
 ## Future Features
 
