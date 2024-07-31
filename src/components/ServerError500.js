@@ -1,6 +1,6 @@
 import React from 'react';
 import ServerErrorImage from '../assets/no-results.webp';
-import styles from '../styles/NotFound.module.css';
+import styles from '../styles/ServerError500.module.css';
 
 const ServerError500 = () => {
   return (

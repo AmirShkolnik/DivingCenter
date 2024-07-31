@@ -1,6 +1,6 @@
 import React from 'react';
 import ForbiddenImage from '../assets/no-results.webp';
-import styles from '../styles/NotFound.module.css';
+import styles from '../styles/Forbidden403.module.css';
 
 const Forbidden403 = () => {
   return (
