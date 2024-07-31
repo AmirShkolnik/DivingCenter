@@ -733,13 +733,16 @@ The following table summarizes the testing files created for various components 
 | VideoPlayer                   | [src/components/__tests__/VideoPlayer.test.js](src/components/__tests__/VideoPlayer.test.js) | PASS    |
 | VideoPlayerSignIn             | [src/components/__tests__/VideoPlayerSignIn.test.js](src/components/__tests__/VideoPlayerSignIn.test.js) | PASS    |
 | VideoPlayerSignUp             | [src/components/__tests__/VideoPlayerSignUp.test.js](src/components/__tests__/VideoPlayerSignUp.test.js) | PASS    |
+| ServerError500                | [src/components/__tests__/ServerError500.test.js](src/components/__tests__/ServerError500.test.js) | PASS    |
+| Forbidden403                  | [src/components/__tests__/Forbidden403.test.js](src/components/__tests__/Forbidden403.test.js) | PASS    |
+
 
 ### Summary of Test Results
 
-- **Total Test Suites**: 11
-- **Passed Test Suites**: 11
-- **Total Tests**: 31
-- **Passed Tests**: 31
+- **Total Test Suites**: 13
+- **Passed Test Suites**: 13
+- **Total Tests**: 37
+- **Passed Tests**: 37
 - **Total Snapshots**: 0
 
 These results demonstrate the thoroughness of our testing approach and confirm that all components are functioning as expected within the Diving Center project. The successful passing of all tests provides confidence in the reliability and stability of the application's core components.
