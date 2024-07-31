@@ -9,6 +9,8 @@ import styles from './App.module.css';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import NotFound from './components/NotFound';
+import Forbidden403 from './components/Forbidden403'; // Import the Forbidden403 component
+import ServerError500 from './components/ServerError500'; // Import the ServerError500 component
 import Container from 'react-bootstrap/Container';
 import './api/axiosDefaults';
 import LandingPage from './pages/homepage/LandingPage.js';
@@ -110,7 +112,6 @@ function App() {
               path="/profiles/:id/edit"
               render={() => <ProfileEditForm />}
             />
-
             <Route exact path="/bookings" render={() => <BookingPage />} />
             <Route
               exact
@@ -122,6 +123,10 @@ function App() {
             <Route exact path="/courses" component={CoursesPage} />
             <Route exact path="/courses/:slug" component={CourseSingle} />
             <Route exact path="/contactus" component={ContactForm} />
+            <Route exact path="/403" component={Forbidden403} />{' '}
+            {/* Add the 403 route */}
+            <Route exact path="/500" component={ServerError500} />{' '}
+            {/* Add the 500 route */}
             <Route component={NotFound} />
           </Switch>
         </Container>
