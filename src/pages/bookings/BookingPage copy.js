@@ -190,22 +190,6 @@ const BookingPage = () => {
         discover new wonders beneath the waves. Happy diving!
       </p>
 
-      {courses.length > 0 && (
-        <div className={styles.imageRow}>
-          {courses.slice(0, 3).map((course) => (
-            <img
-              key={course.id}
-              src={course.image}
-              className={styles.rowImage}
-              alt={course.title}
-              onError={(e) => {
-                e.target.src = '../images/courses/4.webp';
-              }}
-            />
-          ))}
-        </div>
-      )}
-
       {bookings.map((booking) => (
         <div key={booking.id} className={styles.bookingItem}>
           {editingBooking && editingBooking.id === booking.id ? (

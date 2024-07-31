@@ -21,9 +21,11 @@ Welcome to [**Diving Center**](https://divingspace-900b5a3db777.herokuapp.com), 
 
 ### Get Involved
 
-Join our vibrant [**social media platform**](https://divingspace-900b5a3db777.herokuapp.com/feed)to dive into a world of excitement. Whether you're taking your first plunge or you're a seasoned pro, there's a place for you here. Sign up to connect with like-minded divers, share your underwater tales, and explore the depths together.
+Join our vibrant [**social media platform**](https://divingspace-900b5a3db777.herokuapp.com/feed) to dive into a world of excitement. Whether you're taking your first plunge or you're a seasoned pro, there's a place for you here. Sign up to connect with like-minded divers, share your underwater tales, and explore the depths together.
 
-For our returning divers, welcome back! Sign in to reconnect with your diving buddies, showcase your latest aquatic explorations, and uncover new underwater wonders. At [**Diving Center**](https://divingspace-900b5a3db777.herokuapp.com), we're not just about courses – we're about creating a community where passion for diving thrives. Let's embark on this underwater journey together!
+For our returning divers, welcome back! Sign in to reconnect with your diving buddies, showcase your latest aquatic explorations, and uncover new underwater wonders. At [**Diving Center**](https://divingspace-900b5a3db777.herokuapp.com), we're not just about [**courses**](https://divingspace-900b5a3db777.herokuapp.com/courses) – we're about creating a community where passion for diving thrives. Let's embark on this underwater journey together!
+
+[Back to top](#table-of-contents)
 
 # Table of Contents
 
@@ -87,7 +89,9 @@ The **Diving Center** is like a cool online clubhouse for scuba divers! Here, ev
 
 Accessible across various devices and browsers, [**Diving Center**](https://divingspace-900b5a3db777.herokuapp.com) aims to demystify the complexities of scuba diving, making the art of underwater exploration and appreciation accessible to a diverse audience. Whether you're a seasoned divemaster, a diving enthusiast, or a curious newcomer, the platform offers tailored resources to support your journey into the world of diving.
 
-[**Diving Center**](https://divingspace-900b5a3db777.herokuapp.com) envisions fostering a collaborative ecosystem where members can learn, share, and grow together in their love for underwater exploration. By engaging with the platform, users can stay ahead of diving trends, enhance their diving skills, and connect with like-minded enthusiasts. As the platform evolves, future enhancements will include advanced interactive features, further enriching the user experience and community engagement around the shared passion for diving adventures.
+The [**Diving Center**](https://divingspace-900b5a3db777.herokuapp.com) aims to cultivate a collaborative ecosystem where members can learn, share, and grow together in their love for underwater exploration. By engaging with the platform, users can stay ahead of diving trends, enhance their diving skills, and connect with like-minded enthusiasts. As the platform evolves, future enhancements will include advanced interactive features, further enriching the user experience and community engagement around the shared passion for diving adventures.
+
+[Back to top](#table-of-contents)
 
 # UX - User Experience
 
@@ -95,19 +99,76 @@ The UX design of Diving Center revolves around creating an immersive and engagin
 
 - **Intuitive Navigation:** Our user-friendly interface ensures effortless exploration of courses, dive sites, and community contributions, making it easy for users to find their desired content.
 
+<details>
+<summary>Click to View the Intuitive Navigation</summary>
+
+![wireframesnavigation](doc/pages/navbar.png)
+
+</details>
+&nbsp;
+
 - **Responsive Design:** Whether accessing Diving Center from a desktop, tablet, or mobile device, our responsive layout adapts seamlessly, ensuring a consistent and enjoyable experience across all platforms.
+
+<details>
+<summary>Click to View the Responsive Design</summary>
+
+![Am I Responsive Image](doc/images/amiresponsive/amiresponsive.png)
+
+</details>
+&nbsp;
+
 
 - **Engaging Content:** Our course descriptions, dive site reviews, and community posts are crafted to captivate and inform, offering a wealth of knowledge and insights into the art of diving.
 
+<details>
+<summary>Click to View Engaging Content</summary>
+
+![Engaging Content](doc/pages/feed.png)
+
+</details>
+&nbsp;
+
 - **Personalization:** Users can create personalized accounts, allowing them to save their favorite courses, follow fellow divers, and curate their own collection of diving experiences.
+
+<details>
+<summary>Click to View Personalization</summary>
+
+![Personalization](doc/pages/update-bio-step1.png)
+
+</details>
+&nbsp;
 
 - **Interactive Community:** We foster a vibrant community where users can share their passion, exchange ideas, and engage in discussions through comments, likes, and personal reviews of dive sites and equipment.
 
+<details>
+<summary>Click to View Community</summary>
+
+![Community](doc/pages/community.png)
+
+</details>
+&nbsp;
+
 - **Seamless Contribution:** Our platform empowers users to contribute their own content, whether it's writing reviews, sharing personal diving stories, or offering tips and recommendations to fellow enthusiasts.
+
+<details>
+<summary>Click to View Reviews</summary>
+
+![Reviews](doc/pages/reviews.png)
+
+</details>
+<details>
+<summary>Click to View Posts</summary>
+
+![Posts](doc/pages/posts1.png)
+
+</details>
+&nbsp;
 
 Overall, the UX design of Diving Center aims to create an immersive and inclusive environment where diving lovers can explore, learn, and connect, all while experiencing the thrilling adventures that the underwater world has to offer.
 
 ![Feed](doc/images/social/feed-ben.png)
+
+[Back to top](#table-of-contents)
 
 # Design
 
@@ -137,27 +198,33 @@ The palette is completed with classic **Black (#000000)** and **White (#FFFFFF)*
 
 This unique color scheme not only captures the essence of diving but also enhances usability. The contrast between the deep blues and warm golds creates visual interest and guides users through the site, while the neutral black and white ensure clarity and accessibility. Together, these colors create an immersive digital environment that beckons diving enthusiasts to explore, connect, and dive deeper into their passion.
 
+[Back to top](#table-of-contents)
+
 ## Fonts
 
-The font choices for Diving Center are meticulously selected to evoke the essence of underwater exploration and adventure. By harnessing the power of typography, we aim to enhance the user experience and immerse our visitors in the captivating world of diving.
+Diving Center employs fonts from [Google Fonts](https://fonts.google.com/?preview.text=dm%20sans), specifically the DM Sans family, to create a cohesive and visually appealing design across our platform. This modern, sans-serif typeface offers excellent readability and a clean, professional appearance that aligns perfectly with our diving-themed website.
 
-### Google Fonts
+### Palette
 
-**Diving Center** employs fonts from [Google Fonts](doc/fonts/dm-sans.png), specifically the DM Sans family, to create a cohesive and visually appealing design across our platform. This modern, sans-serif typeface offers excellent readability and a clean, professional appearance that aligns perfectly with our diving-themed website.
+**DM Sans**  
+
+**Usage:** Headings, titles, and emphasis  
+
+**Characteristics:** DM Sans boasts a perfect equilibrium of fluid contours and bold strokes, embodying both approachability and professionalism in its design.
+
+**Reason for Selection:** The distinctive character of DM Sans encapsulates the spirit of diving exploration – a fusion of adventure and expertise. Its clean yet dynamic style emphasizes key information, guiding divers through our platform while evoking a sense of aquatic wonder and technical proficiency.
+
+**DM Sans on Google Fonts**
 
 ![Palette](doc/fonts/dm-sans.png)
 
-#### DM Sans
-
-- **Usage**: Headings, titles, and emphasis
-
-- **Characteristics**: DM Sans boasts a perfect equilibrium of fluid contours and bold strokes, embodying both approachability and professionalism in its design.
-
-- **Reason for Selection**: The distinctive character of DM Sans encapsulates the spirit of diving exploration – a fusion of adventure and expertise. Its clean yet dynamic style emphasizes key information, guiding divers through our platform while evoking a sense of aquatic wonder and technical proficiency.
-
-[DM Sans on Google Fonts](https://fonts.google.com/specimen/DM+Sans)
-
 By leveraging the crisp legibility of DM Sans, Diving Center crafts a typographic journey that resonates with underwater enthusiasts. Each character, phrase, and paragraph invites users to dive in, discover, and connect with the vast tapestry of marine life, diving techniques, and underwater narratives that make the diving world so captivating. The font's versatility allows for clear communication of both technical diving information and engaging storytelling, creating an immersive digital experience that mirrors the depth and diversity of the ocean itself.
+
+### Backup Font
+
+In the event that DM Sans is unavailable due to browser limitations or other reasons, a generic **sans-serif** font will be used as a fallback. Sans-serif fonts are characterized by their clean and minimalistic appearance, lacking the decorative strokes (serifs) found in traditional serif fonts. This ensures that text remains legible and maintains a modern aesthetic, providing a consistent user experience across different platforms and devices. The absence of serifs contributes to improved readability, especially on digital screens, making sans-serif fonts a reliable choice for web design.
+
+[Back to top](#table-of-contents)
 
 # Project Planning
 
@@ -178,6 +245,8 @@ Diving Center is an immersive online platform dedicated to the thrilling world o
 
 - Continuously enhance the platform based on user feedback and evolving trends in the diving industry, ensuring a dynamic and up-to-date experience that meets the needs of our diverse diving community.
 
+[Back to top](#table-of-contents)
+
 ## Agile Methodologies - Project Management:
 
 Diving Center embraces Agile methodologies, enabling iterative development and continuous enhancement. Through GitHub Projects, tasks are efficiently managed, and progress is tracked using a Kanban-style board, ensuring a seamless workflow and timely delivery of new features.
@@ -193,6 +262,8 @@ Story points were meticulously assigned to each user story, quantifying the effo
 - **Should-have Stories**: Features that improve the overall user experience, such as personalization options and community engagement tools, were considered important but not critical. These were prioritized after the essential features were implemented.
 - **Could-have Stories**: Additional features like integration with external diving communities or advanced analytics were considered desirable but not essential for the initial launch of Diving Center.
 - **Won't-have Stories**: These are requirements that are recognized as potentially useful but have been agreed to be excluded from the current delivery timeframe. They may be considered for future releases.
+
+[Back to top](#table-of-contents)
 
 ### Sprint Planning Example
 
@@ -215,6 +286,8 @@ Here is an example of how story points are managed and allocated across differen
   - Breakdown:
     - Must-have: 32 points
     - Should-have: 48 points
+
+[Back to top](#table-of-contents)
 
 ### MoSCoW Prioritization:
 
@@ -249,6 +322,8 @@ Features deemed non-essential for the initial launch, such as:
 - Third-party advertising integrations.
 - Real-time underwater communication tools.
 - Dive travel booking services.
+
+[Back to top](#table-of-contents)
 
 ### User Stories, Milestones and Epics
 
@@ -321,6 +396,8 @@ Click to explore the [Diving Center GitHub Link](https://github.com/AmirShkolnik
 
 Click to exploer the [Diving Center API - DataBase](https://github.com/AmirShkolnik/DivingCenter_API)
 
+[Back to top](#table-of-contents)
+
 #### Milestones
 
 **A milestone**, is a major checkpoint or goal in a project's timeline that signifies the completion of a key phase or the achievement of a significant objective.
@@ -354,6 +431,8 @@ Click to exploer the [Diving Center API - DataBase](https://github.com/AmirShkol
 
 - Elevating the Platform Experience
   - This final phase introduces advanced features like personalized recommendations, interactive dive logs, and integration with external diving resources, further enriching the user experience and platform capabilities.
+
+[Back to top](#table-of-contents)
 
 #### Epics
 
@@ -453,6 +532,8 @@ Click to exploer the [Diving Center API - DataBase](https://github.com/AmirShkol
 
 Every epic represents a major feature area, guiding development from initial setup to a full-fledged, engaging community platform
 
+[Back to top](#table-of-contents)
+
 ## Scope Plane
 
 **Purpose:**
@@ -517,6 +598,8 @@ Overall, the website's purpose is to create a mutually beneficial environment fo
   - Participate in discussions and share your diving experiences through community events (managed by admins).
   - Post and read course reviews to make informed decisions about your diving education.
   - Stay informed with the latest diving news and tips through blog posts published by admins.
+
+[Back to top](#table-of-contents)
 
 ## Structural Plane
 
@@ -598,6 +681,8 @@ Overall, the website's purpose is to create a mutually beneficial environment fo
 
 13. Search Functionality
     - Global search bar for posts in the feed
+
+[Back to top](#table-of-contents)
 
 ## Skeleton & Surface Planes
 
@@ -778,6 +863,8 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
 I've used [dbdiagram](https://dbdiagram.io/home) to design my site's ERD.
 
+[Back to top](#table-of-contents)
+
 #### Database Schema
 
 #### Entity Relationship Diagram (ERD)
@@ -806,6 +893,8 @@ In the Diving Center project, the ERD consists of the following entities:
 
 7. **Contact**: This entity stores contact information submitted by users through a contact form. It may include attributes like name, email, message, and date.
 
+[Back to top](#table-of-contents)
+
 #### Relationships
 
 The relationships between these entities are as follows:
@@ -819,6 +908,8 @@ The relationships between these entities are as follows:
 
 The ERD provides a clear understanding of the data structure and relationships within the Diving Center project, facilitating efficient database design and development.
 
+[Back to top](#table-of-contents)
+
 ### Security
 
 The "Diving Center" coffee project takes keeping your information safe very seriously. The developers have put in place strong protections to guard against bad people trying to access or misuse your data.
@@ -828,6 +919,8 @@ Only authorized users with the proper permissions can view or make changes to se
 One such protection is against Cross-Site Request Forgery (CSRF) attacks. CSRF protection ensures that unauthorized commands are not executed on behalf of authenticated users without their knowledge. This safeguard prevents malicious sites from tricking users into performing unwanted actions, thereby keeping your data secure.
 
 The team behind "Diving Center" understands how important it is to protect the privacy and personal details of all users. That's why they have made data security one of their top priorities throughout the development process.
+
+[Back to top](#table-of-contents)
 
 #### CRUD functunalities
 
@@ -842,17 +935,25 @@ If a user tries to do something they are not allowed to do, like edit someone el
 
 This way, Django's tools work together to keep the website secure and prevent people from doing things they shouldn't be doing. It's like having a security guard that only lets the right people through the door.
 
+[Back to top](#table-of-contents)
+
 #### Authentication and Authorization
 
 The "Diving Center" coffee project makes it very simple for new users to create accounts and existing users to log in. This is possible thanks to a special tool called "Django Allauth." With "Django Allauth," signing up and logging in happens smoothly and without any problems. Users don't have to worry about complicated steps or confusing instructions. They can easily become part of the "Diving Center" community and start exploring all the fun features right away!
+
+[Back to top](#table-of-contents)
 
 #### Data Validation and Sanitization
 
 Checking the information people type into forms is very important. It helps make sure the data is correct and safe. This way, no one can put in bad or harmful information by mistake or on purpose. Validating forms protects the project and keeps everything working properly.
 
+[Back to top](#table-of-contents)
+
 #### Error Handling
 
 When something goes wrong with the website, special pages are shown. These pages help explain the problem in a friendly way. They use simple words and pictures to make it easy for everyone to understand what happened. This way, if there is an issue, users won't feel lost or confused. The special pages will guide them and let them know what's going on in a clear and helpful manner.
+
+[Back to top](#table-of-contents)
 
 #### Environment Security
 
@@ -862,9 +963,13 @@ During the building phase, these details are kept in a special file called .env.
 
 When the project is ready to be used by people, the important information is stored in a different way called configurable variables. This makes it harder for anyone to see or misuse the information. It also turns off a setting called debug mode, which makes the project even more secure.By taking these steps, the project makes sure that sensitive data is well-protected and cannot be easily accessed by anyone who should not have access to it.
 
+[Back to top](#table-of-contents)
+
 #### CSRF Protection
 
 Keeping Bad People Out: The coffee website has a special way to stop bad people from doing bad things. It uses a secret code called a "CSRF token." This code is like a password that gets sent with every form you fill out on the website. This secret code helps keep the website safe from people trying to do bad things.
+
+[Back to top](#table-of-contents)
 
 ## Responsiveness
 
@@ -877,6 +982,8 @@ The "Diving Center" website works well on different devices like phones, tablets
 Instead of writing many lines of code for different screen sizes, Bootstrap has a simple way to make the website adjust itself automatically. This means the website will look great whether you're using a small phone screen or a big computer monitor.
 
 By using Bootstrap's smart design, the "Diving Center" website can be easily viewed and used on any device. This was an excellent chance to practice using Bootstrap and make the website work smoothly everywhere with just a little bit of code.
+
+[Back to top](#table-of-contents)
 
 # Features
 
@@ -1315,6 +1422,13 @@ The following sites were used to gather the photographic media used:
 - [Logo & Favicon by logo.com](https://logo.com/)
 
 ## Additional reading/tutorials/books/blogs
+
+**Fonts**
+- https://en.wikipedia.org/wiki/Sans-serif
+- https://docs.aspose.com/font/net/what-is-font/sans-serif-fonts/
+- https://www.sitepoint.com/the-sans-serif-typeface/
+- https://www.manypixels.co/blog/brand-design/serif-vs-sans-serif
+- https://www.threerooms.com/blog/typography-series-what-is-a-sans-serif-font
 
 **User Stories**
 
