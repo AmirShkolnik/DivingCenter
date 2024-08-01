@@ -807,6 +807,34 @@ By implementing these solutions, we've improved the component's functionality, u
 
 [Back to top](#table-of-contents)
 
+Certainly! Here's a bug table for the issue you encountered with the `PostsPage` component (My Feed page for logged-in users):
+
+### PostsPage Bugs
+
+| File Name  | Issue                                                                 | Solution                                                                                                     | Reference                     |
+|------------|-----------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------|-------------------------------|
+| PostsPage.js | Component not refreshing when liking/unliking or following/unfollowing | Implemented periodic data refresh using `setInterval` and `useCallback` to fetch posts every 5 seconds. Ensured `setPosts` is passed to child components for state updates. | React useEffect, useCallback, setInterval |
+
+### Detailed Explanation:
+
+These solutions address the main issues we encountered in the `PostsPage` component:
+
+1. **Ensuring Component Refresh**:
+   - Implemented a periodic data refresh using `setInterval` in a `useEffect` hook to fetch the latest posts every 5 seconds.
+   - Used `useCallback` to memoize the `fetchPosts` function, ensuring it doesn't cause unnecessary re-renders.
+   - Passed the `setPosts` function to child components to allow them to update the post list when actions like liking/unliking or following/unfollowing occur.
+
+By implementing these solutions, we've improved the component's functionality, ensuring that it reflects the latest data and provides a better user experience. The references provided offer more in-depth information about each solution and the underlying concepts.
+
+### References:
+- [React useEffect Documentation](https://reactjs.org/docs/hooks-effect.html)
+- [React useCallback Documentation](https://reactjs.org/docs/hooks-reference.html#usecallback)
+- [MDN setInterval](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setInterval)
+
+These references provide more information on the hooks and functions used to solve the issues in the `PostsPage` component.
+
+[Back to top](#table-of-contents)
+
 ### Known Bugs
 
 Here's a table summarizing the known bugs you've described:

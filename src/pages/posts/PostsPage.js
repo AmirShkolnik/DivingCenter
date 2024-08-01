@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
@@ -22,17 +22,17 @@ function PostsPage({ message, filter = '' }) {
   const currentUser = useCurrentUser();
   const [query, setQuery] = useState('');
 
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const { data } = await axiosReq.get(`/posts/?${filter}search=${query}`);
-        setPosts(data);
-        setHasLoaded(true);
-      } catch (err) {
-        console.error('Error fetching posts:', err);
-      }
-    };
+  const fetchPosts = useCallback(async () => {
+    try {
+      const { data } = await axiosReq.get(`/posts/?${filter}search=${query}`);
+      setPosts(data);
+      setHasLoaded(true);
+    } catch (err) {
+      console.error('Error fetching posts:', err);
+    }
+  }, [filter, query]);
 
+  useEffect(() => {
     setHasLoaded(false);
     const timer = setTimeout(() => {
       fetchPosts();
@@ -41,7 +41,12 @@ function PostsPage({ message, filter = '' }) {
     return () => {
       clearTimeout(timer);
     };
-  }, [filter, query, pathname, currentUser]);
+  }, [filter, query, pathname, currentUser, fetchPosts]);
+
+  useEffect(() => {
+    const interval = setInterval(fetchPosts, 5000); // Refresh every 5 seconds
+    return () => clearInterval(interval);
+  }, [fetchPosts]);
 
   return (
     <Row className="h-100">
@@ -49,7 +54,10 @@ function PostsPage({ message, filter = '' }) {
         <PopularProfiles mobile />
         <div className={styles.SearchBar}>
           <i className={`fas fa-search ${styles.SearchIcon}`} />
-          <Form onSubmit={(event) => event.preventDefault()}>
+          <Form
+            onSubmit={(event) => event.preventDefault()}
+            className={styles.SearchForm}
+          >
             <Form.Control
               value={query}
               onChange={(event) => setQuery(event.target.value)}
