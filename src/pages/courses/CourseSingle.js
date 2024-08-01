@@ -196,7 +196,7 @@ function CourseSingle() {
                 }}
                 className={`${styles.Button} ${styles.Blue}`}
               >
-                Book This Course
+                {currentUser ? 'Book This Course' : 'Sign In to Book'}
               </Button>
               <span className={styles.PriceDisplay}>
                 Price: {course.price_display || `${course.price}`}
