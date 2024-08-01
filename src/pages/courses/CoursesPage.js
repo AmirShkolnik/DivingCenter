@@ -59,7 +59,7 @@ const CourseBox = ({ title, imageUrl, excerpt, slug, price, currentUser }) => {
           <p className={styles.PriceDisplay}>Price: {price}</p>
           <div className={styles.buttonContainer}>
             <Button onClick={handleBookNowClick} className={styles.bookButton}>
-              Book Now
+              {currentUser ? 'Book Now' : 'Sign In to Book'}
             </Button>
             <Link to={`/courses/${slug}`} className={styles.homeButton}>
               Learn More
