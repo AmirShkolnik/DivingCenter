@@ -131,13 +131,13 @@ function CourseSingle() {
 
   const handleAddReview = () => {
     if (!currentUser) {
-      toast.error('Please log in to add a review.');
+      toast.warning('Please sign in to add a review.');
       history.push('/signin');
-      return;
+    } else {
+      setIsEditing(false);
+      setReview({ content: '', rating: 0 });
+      setShowReviewForm(true);
     }
-    setIsEditing(false);
-    setReview({ content: '', rating: 0 });
-    setShowReviewForm(true);
   };
 
   const handleEditReview = (reviewContent, reviewRating) => {
@@ -223,7 +223,7 @@ function CourseSingle() {
                 onClick={handleAddReview}
                 className={`${styles.ReviewButton} ${styles.Blue}`}
               >
-                Add Review
+                {currentUser ? 'Add Review' : 'Sign In to Review'}
               </Button>
             )}
             {(showReviewForm || isEditing) && (
