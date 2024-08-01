@@ -1735,17 +1735,28 @@ Here are some future feature suggestions for the "Diving Center" project:
 - Progress tracking for ongoing courses
 - Notifications and messages
 
-#### My Comments
-- Access to all user comments in one dedicated page
-- Ability to manage and edit comments
+#### My Comments Page
+- Access to all logged-in user comments in one dedicated page
+- Ability to manage and edit comments from one place
+- This page will be accessible from a dropdown menu under the user's profile image.
 
-#### My Reviews
-- Centralized page for all user reviews
-- CRUD (Create, Read, Update, Delete) functionality for reviews
+#### My Reviews Page
+- Dedicated page for all logged-in user reviews and retings
+- Ability to manage and edit comments from one place
+- This page will be accessible from a dropdown menu under the user's profile image.
 
-#### My Messages
-- Dedicated page for all user messages
-- CRUD functionality for message management
+#### My Messages Page
+- Dedicated page for all logged-in user messages
+- Ability to manage and edit comments from one place
+- This page will be accessible from a dropdown menu under the user's profile image.
+- It will display all messages associated with the logged-in user's email address.
+- This feature will provide users with a centralized view of their communication history with the diving center.
+
+**Future Feature - Flexible Message Management**:
+- The current implementation allows both anonymous and authenticated users to create and view their messages.
+- Authenticated users will be able to see their messages by filtering based on their email.
+- Anonymous users will be to access their messages using the `deletion_token`.
+- This approach ensures that all users can interact with their messages, regardless of their login status.
 
 ### Community and Social Features
 
