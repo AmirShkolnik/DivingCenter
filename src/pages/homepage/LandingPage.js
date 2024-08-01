@@ -8,6 +8,8 @@ import {
   useSetCurrentUser,
 } from '../../contexts/CurrentUserContext';
 import { removeTokenTimestamp } from '../../utils/utils';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const LandingPage = () => {
   const currentUser = useCurrentUser();
@@ -31,6 +33,7 @@ const LandingPage = () => {
   const handleCommunityClick = (e) => {
     if (!currentUser) {
       e.preventDefault();
+      toast.warning('Please sign in to join the Diving Community.');
       history.push('/signin');
     }
   };

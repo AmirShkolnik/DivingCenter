@@ -1063,6 +1063,8 @@ class ContactListCreateView(generics.ListCreateAPIView):
         serializer.save(deletion_token=uuid4())
 ```
 
+[Back to top](#table-of-contents)
+
 **Frontend Integration**
 
 The React frontend interacts with the Django backend through API calls, allowing users to perform CRUD operations. For example, the `ContactForm` component handles form submission, editing, and deletion of contact messages.
@@ -1121,6 +1123,8 @@ The "Diving Center" project makes it very simple for new users to create account
 
 5. **User Feedback:**
    - The application uses `react-toastify` to provide real-time feedback to users, such as success or error messages during authentication and authorization processes.
+
+[Back to top](#table-of-contents)
 
 #### Example Code:
 
@@ -1217,6 +1221,8 @@ class ContactSerializer(serializers.ModelSerializer):
         }
 ```
 
+[Back to top](#table-of-contents)
+
 #### Data Sanitization
 
 Data sanitization involves cleaning user inputs to remove any potentially harmful content, such as SQL injection or cross-site scripting (XSS) attacks. This is typically handled by the backend before storing or processing the data.
@@ -1303,6 +1309,8 @@ In the React frontend, error handling is implemented through various methods:
 
 4. **Error Boundaries:**
    React error boundaries could be implemented to catch JavaScript errors anywhere in the component tree and display fallback UI.
+
+[Back to top](#table-of-contents)
 
 #### Backend Error Handling
 
@@ -1532,6 +1540,8 @@ Example of Bootstrap grid usage in our `BookingPage` component:
 </Container>
 ```
 
+[Back to top](#table-of-contents)
+
 ### Custom CSS Modules
 
 While Bootstrap provides a solid foundation, we've implemented custom CSS modules for each component to maintain a unique and cohesive design throughout the application. This approach allows for component-specific styling while avoiding global style conflicts.
@@ -1622,9 +1632,9 @@ By combining Bootstrap's responsive framework with custom React components and C
 | Logo | The logo consists of an image of a diver and the text "Diving Center" in a stylized font. The word "Diving" is in a bold blue color, and "Center" is in a lighter blue. <details> <summary>**Click to View The Logo**</summary> <img src="doc/images/logos/logo.jpg" alt="Logo"></details> | Everyone |
 | Navigation Bar | The navigation bar includes links to the Home page, Contact Us page, Courses page, Sign In, and Sign Up. For smaller screen sizes, a hamburger menu is available. <details> <summary>**Click to View The Navigation Bar**</summary> <img src="doc/pages/navbar-non.png" alt="Navigation Bar"></details> <details> <summary>**Click to View The Hamburger Drop DownMenu**</summary> <img src="doc/pages/hamburger-non.png" alt="Hamburger Menu"></details> | Everyone |
 | | Dropdown menu with links to Profile page, My Bookings page, My Feed, Add Post, My Likes, and Sign Out. <details> <summary>**Click to View The Navigation Bar - Logged In**</summary> <img src="doc/pages/logged-in-navbar.png" alt="Navigation Bar - Logged In"></details> <details> <summary>**Click to View The Hamburger Drop Down Menu**</summary> <img src="doc/pages/hamburger-logged-in.png" alt="Hamburger Drop Down Menu"></details> | Logged-in User |
-| Browse Courses Page | The Browse Courses page allows users to view a collection of diving courses offered. It serves as a central hub for users to explore various diving courses within the website. <details> <summary>**Click to View The Courses Page**</summary> <img src="doc/pages/courses-page.png" alt="Courses Page"></details> | Everyone |
+| Browse Courses Page | The Browse Courses page allows users to view a collection of diving courses offered. It serves as a central hub for users to explore various diving courses within the website. The "Book Now" button text changes based on the user's login status: for logged-in users, it displays "Book Now", while for non-logged-in users, it shows "Sign In to Book". This change clarifies the required action for non-authenticated users. <details> <summary>**Click to View The Courses Page - Logged-in Users**</summary> <img src="doc/pages/courses-page.png" alt="Courses Page"></details> <details> <summary>**Click to View The Courses Page - Non Logged-in Users**</summary> <img src="doc/pages/diving-courses-non.png" alt="Courses Page"></details>| Everyone |
 | Logged-in users can click the "Book Now" button and be redirected to the bookings page. Non-logged-in users will be redirected to the sign-in page. | Logged-in users can book the course directly from this page. <details> <summary>**Click to View The Book Now**</summary> <img src="doc/pages/courses-book-now.png" alt="Single Course Page - Rescue"></details> | Logged-in User |
-| Single Course Page | This page displays detailed information about a specific diving course, including description, duration, and requirements. <details> <summary>**Click to View The Single Course Page - Basic**</summary> <img src="doc/pages/single-course-basic.png" alt="Single Course Page - Basic"></details> <details> <summary>**Click to View The Single Course Page - Advanced**</summary> <img src="doc/pages/single-course-advanced.png" alt="Single Course Page - Advanced"></details> <details> <summary>**Click to View The Single Course Page - Rescue**</summary> <img src="doc/pages/single-course-rescue.png" alt="Single Course Page - Rescue"></details> | Everyone |
+| Single Course Page | This page displays detailed information about a specific diving course, including description, duration, and requirements. The "Book This Course" button text changes based on the user's login status: for logged-in users, it displays "Book This Course", while for non-logged-in users, it shows "Sign In to Book". This change clarifies the required action for non-authenticated users. <details> <summary>**Click to View The Single Course Page - Basic**</summary> <img src="doc/pages/single-course-basic.png" alt="Single Course Page - Basic"></details> <details> <summary>**Click to View The Single Course Page - Advanced**</summary> <img src="doc/pages/single-course-advanced.png" alt="Single Course Page - Advanced"></details> <details> <summary>**Click to View The Single Course Page - Rescue**</summary> <img src="doc/pages/single-course-rescue.png" alt="Single Course Page - Rescue"></details> <details> <summary>**Click to View The Sign In To Book Button**</summary> <img src="doc/pages/single-course-logged-in.png" alt="Sign In To Book Button"></details> | Everyone |
 | Logged-in users can click the "Book This Course" button and be redirected to the bookings page. Non-logged-in users will be redirected to the sign-in page. | Logged-in users can book the course directly from this page. <details> <summary>**Click to View The Book This Course Button**</summary> <img src="doc/pages/single-course-book.png" alt="Single Course Page - Rescue"></details> | Logged-in User |
 | My Bookings Page | The Bookings page displays a list of the user's current and past diving course bookings. Users can view, edit, or cancel their bookings from this page. <details> <summary>**Click to View My Bookings Page - No Bookings**</summary> <img src="doc/pages/my-bookings-1.png" alt="My Bookings Page"></details> <details> <summary>**Click to View My Bookings Page - 2 Bookings**</summary> <img src="doc/pages/yourbookings.png" alt="My Bookings Page - Editing"></details> <details> <summary>**Click to View My Bookings Page - Editing**</summary> <img src="doc/pages/your-bookings-editing.png" alt="My Bookings Page - Editing"></details> | Logged-in User |
 | My Feed | This page provides a personalized feed of diving experiences and updates from followed users and popular content. Users can interact with posts through likes and comments. <details> <summary>**Click to View The My Feed Page**</summary> <img src="doc/pages/feed.png" alt="My Feed Page"></details> | Logged-in User |
