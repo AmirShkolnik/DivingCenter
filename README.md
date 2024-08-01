@@ -1801,6 +1801,8 @@ Here are some future feature suggestions for the "Diving Center" project:
 - Gamified system rewarding divers for eco-friendly practices
 - Promotes environmental consciousness and contributes to marine conservation
 
+This updated list incorporates all the new features you mentioned, including the user-specific pages for comments, reviews, and messages, while maintaining the structure of the previously provided features. The list is now more comprehensive and better organized, covering various aspects of the diving community, education, safety, and environmental consciousness.
+
 # Technology Used
 
 ## Frontend
@@ -1808,13 +1810,19 @@ Here are some future feature suggestions for the "Diving Center" project:
 - [**HTML5**](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5): The latest version of the Hypertext Markup Language, used to structure and define the content of web pages. It introduced new elements and capabilities to enhance the language, improving accessibility, multimedia integration, and offline capabilities.
 - [**CSS3**](https://developer.mozilla.org/en-US/docs/Web/CSS): The latest evolution of Cascading Style Sheets, a stylesheet language used to describe the presentation and styling of web content, including layout, colors, fonts, and animations. It provides more advanced styling features and better browser support compared to previous versions.
 - [**JavaScript**](https://developer.mozilla.org/en-US/docs/Web/JavaScript): A high-level, dynamic programming language used to add interactivity, effects, and behaviors to web pages. It allows developers to manipulate web page content, respond to user events, and make asynchronous requests to servers.
+- [**React**](https://reactjs.org/): A JavaScript library for building user interfaces, maintained by Facebook and a community of individual developers and companies. It allows developers to create large web applications that can update and render efficiently in response to data changes.
 - [**Bootstrap**](https://getbootstrap.com/): A popular open-source front-end framework for building responsive, mobile-first websites and web applications. It provides a collection of HTML, CSS, and JavaScript components and utilities for creating consistent and visually appealing user interfaces across different devices and screen sizes.
+- [**React Bootstrap**](https://react-bootstrap.github.io/): The most popular front-end framework rebuilt for React. It provides Bootstrap components as React components, which makes it easy to use Bootstrap with React.
+- [**Axios**](https://axios-http.com/): A promise-based HTTP client for JavaScript that can be used in the browser and Node.js. It simplifies making HTTP requests to fetch or save data.
+- [**ESLint**](https://eslint.org/): A static code analysis tool for identifying and fixing common coding errors and style issues in JavaScript code. It is highly configurable and can be extended with plugins and shareable configs to enforce coding standards across teams.
+- [**Prettier**](https://prettier.io/): An opinionated code formatter that automatically formats code based on a set of predefined rules, ensuring a consistent code style across the entire codebase. It can be integrated with ESLint to handle code formatting while ESLint focuses on code style and error checking.
 
 ## Backend
 
 - [**Django**](https://www.djangoproject.com/): A high-level Python web framework that follows the Model-View-Template architectural pattern. It promotes rapid development and clean, pragmatic design by providing built-in features for handling common web development tasks, such as URL routing, database integration, and user authentication.
+- [**Django REST Framework**](https://www.django-rest-framework.org/): A powerful and flexible toolkit for building Web APIs in Django. It provides features like serialization, authentication, and viewsets to simplify the creation of RESTful APIs.
 - [**Python**](https://www.python.org/): A versatile, high-level programming language known for its simplicity, readability, and extensive standard library. It is widely used for backend development, data analysis, machine learning, and automation tasks.
-- **CI database**: The database systems provided by Code Institute for storing and managing application data during the development and deployment process.
+- [**Cloudinary**](https://cloudinary.com/): A cloud-based service that provides an end-to-end image and video management solution, including uploads, storage, manipulations, optimizations, and delivery.
 
 ## Deployment and Version Control
 
@@ -1827,89 +1835,90 @@ Here are some future feature suggestions for the "Diving Center" project:
 - [**GitPod**](https://www.gitpod.io/): A cloud-based integrated development environment (IDE) that allows developers to write, edit, and run code directly from their web browser. It provides a preconfigured development environment with all the necessary tools and dependencies installed, enabling a consistent and efficient coding experience across different projects and teams.
 - [**Django Extensions**](https://github.com/django-extensions/django-extensions): A collection of custom management extensions for the Django web framework. It provides additional commands and utilities to enhance the development workflow, such as generating model diagrams, executing raw SQL queries, and generating fixtures for testing purposes.
 
+Based on the information provided and the requirements you've shared, here's an updated ## Libraries and Frameworks section:
+
 ## Libraries and Frameworks
 
-Here are short descriptions for the libraries and frameworks used, following the provided formula:
+### Frontend
+- **React (v17.0.2)**: A JavaScript library for building user interfaces, allowing for efficient rendering of components and state management.
+- **React Router (v5.3.0)**: Provides declarative routing for React applications, enabling navigation between different components.
+- **React Bootstrap (v1.6.8)**: A popular frontend framework rebuilt for React, offering pre-built Bootstrap components as React components.
+- **Axios (v0.21.4)**: A promise-based HTTP client for making API requests from the browser.
+- **JWT Decode (v3.1.2)**: A library for decoding JSON Web Tokens (JWTs) on the client-side.
+- **React Infinite Scroll Component (v6.1.0)**: Implements infinite scrolling functionality in React applications.
+- **React Star Ratings (v2.3.0)**: A customizable React component for displaying star ratings.
+- **React Toastify (v8.1.0)**: A library for adding toast notifications to React applications.
+- **Cloudinary React (v1.13.0)**: React components for integrating Cloudinary services, facilitating image and video management.
 
-- **asgiref**: A Python package that provides a sync and async-compatible ASGI (Asynchronous Server Gateway Interface) specification implementation.
+### Backend
+- **Django (v5.0.6)**: A high-level Python web framework that encourages rapid development and clean, pragmatic design.
+- **Django REST Framework (v3.15.1)**: A powerful and flexible toolkit for building Web APIs, used in conjunction with Django.
+- **dj-rest-auth (v2.1.9)**: Provides a set of REST API endpoints for authentication and registration.
+- **django-allauth (v0.54.0)**: An integrated set of Django applications addressing authentication, registration, account management, and third-party (social) account authentication.
+- **django-cors-headers (v4.3.1)**: A Django application for handling the server headers required for Cross-Origin Resource Sharing (CORS).
+- **django-filter (v24.2)**: A generic system for filtering Django QuerySets based on user selections.
+- **dj-database-url (v0.5.0)**: A Django utility to utilize the 12factor inspired DATABASE_URL environment variable to configure your Django application.
+- **Cloudinary (v1.40.0)**: Cloud service that offers a solution to a web application's entire image management pipeline.
+- **django-cloudinary-storage (v0.3.0)**: Django package that facilitates integration with Cloudinary by implementing Django Storage API.
+- **djangorestframework-simplejwt (v5.3.1)**: A JSON Web Token authentication plugin for Django REST Framework.
+- **gunicorn (v22.0.0)**: A Python WSGI HTTP Server for UNIX, often used to run Python web applications.
+- **Pillow (v10.3.0)**: A fork of PIL (Python Imaging Library), adding support for opening, manipulating, and saving many different image file formats.
+- **psycopg2 (v2.9.9)**: PostgreSQL database adapter for Python.
 
-- **black**: A Python code formatter that enforces a consistent code style by parsing Python syntax and re-printing it with a standard set of rules.
+### Development Tools
+- **ESLint (v8.57.0)**: A static code analysis tool for identifying problematic patterns found in JavaScript code.
+- **Prettier (v3.3.3)**: An opinionated code formatter that ensures consistent code style.
+- **Jest (v27.5.1)**: A delightful JavaScript Testing Framework with a focus on simplicity.
+- **Mock Service Worker (MSW) (v0.35.0)**: An API mocking library for browser and Node.js, used for testing and development.
 
-- **click**: A Python package for creating command-line interfaces with options, arguments, and commands.
+### Frontend
+- **React (v17.0.2)**: A JavaScript library for building user interfaces, allowing for efficient rendering of components and state management.
+- **React Router (v5.3.0)**: Provides declarative routing for React applications, enabling navigation between different components.
+- **React Bootstrap (v1.6.8)**: A popular frontend framework rebuilt for React, offering pre-built Bootstrap components as React components.
+- **Axios (v0.21.4)**: A promise-based HTTP client for making API requests from the browser.
+- **JWT Decode (v3.1.2)**: A library for decoding JSON Web Tokens (JWTs) on the client-side.
+- **React Infinite Scroll Component (v6.1.0)**: Implements infinite scrolling functionality in React applications.
+- **React Star Ratings (v2.3.0)**: A customizable React component for displaying star ratings.
+- **React Toastify (v8.1.0)**: A library for adding toast notifications to React applications.
+- **Cloudinary React (v1.13.0)**: React components for integrating Cloudinary services, facilitating image and video management.
 
-- **cloudinary**: A cloud-based service that provides an end-to-end image and video management solution for websites and mobile applications.
+### Backend
+- **Django (v3.2.4)**: A high-level Python web framework that encourages rapid development and clean, pragmatic design.
+- **Django REST Framework**: A powerful and flexible toolkit for building Web APIs, used in conjunction with Django.
+- **dj-rest-auth**: Provides a set of REST API endpoints for authentication and registration.
+- **django-allauth**: An integrated set of Django applications addressing authentication, registration, account management, and third-party (social) account authentication.
+- **django-cors-headers**: A Django application for handling the server headers required for Cross-Origin Resource Sharing (CORS).
+- **django-filter**: A generic system for filtering Django QuerySets based on user selections.
+- **dj-database-url**: A Django utility to utilize the 12factor inspired DATABASE_URL environment variable to configure your Django application.
+- **Cloudinary**: Cloud service that offers a solution to a web application's entire image management pipeline.
 
-- **crispy-bootstrap5**: A Django extension that provides a way to easily render Django forms using Bootstrap 5 styles.
-
-- **dj-database-url**: A Django utility that allows you to parse database connection URLs.
-
-- **dj3-cloudinary-storage**: A Django package that facilitates the integration of Cloudinary with Django's file storage system.
-
-- **Django**: A high-level Python web framework that follows the Model-View-Template architectural pattern.
-
-- **django-allauth**: A set of Django applications that handle account authentication, registration, and third-party account integration.
-
-- **django-crispy-forms**: A Django application that provides a way to easily render Django forms using various CSS frameworks.
-
-- **django-js-asset**: A Django application that allows you to include JavaScript files in your templates using Django's static file handling.
-
-- **django-resized**: A Django application that provides a template tag for rendering resized versions of images.
-
-- **django-summernote**: A Django application that integrates the Summernote WYSIWYG editor into Django's admin interface.
-
-- **django-widget-tweaks**: A Django application that provides a set of template tags and filters for tweaking form field rendering.
-
-- **gunicorn**: A Python WSGI HTTP server for running Python web applications.
-
-- **oauthlib**: A Python library that provides a way to interact with various OAuth service providers.
-
-- **pathspec**: A Python library for pattern matching of file paths.
-
-- **pillow**: A Python Imaging Library (PIL) fork that adds support for opening, manipulating, and saving many different image file formats.
-
-- **psycopg2**: A Python package that provides a database adapter for the PostgreSQL database server.
-
-- **PyJWT**: A Python library for encoding and decoding JSON Web Tokens (JWT).
-
-- **python3-openid**: A Python library that provides support for the OpenID decentralized authentication protocol.
-
-- **requests-oauthlib**: A Python library that provides an easy-to-use implementation of the OAuth request-signing logic.
-
-- **sqlparse**: A Python library that provides non-validating SQL parser for Python.
-
-- **urllib3**: A Python library that provides a user-friendly HTTP client.
-
-- **whitenoise**: A Python package that provides a way to serve static files from a Django application.
-
-Citations and sources:
-
-[1] https://developer.mozilla.org/en-US/docs/Web/CSS
-
-[2] https://developer.mozilla.org/en-US/docs/Web/JavaScript
-
-[3] https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5
-
-[4] https://www.slideshare.net/slideshow/coffee-shop-management-systempptx/255161865
-
-[5] https://www.beliveweb.com/coffee-shop-website-design.html
+### Development Tools
+- **ESLint (v8.57.0)**: A static code analysis tool for identifying problematic patterns found in JavaScript code.
+- **Prettier (v3.3.3)**: An opinionated code formatter that ensures consistent code style.
+- **Jest (v27.5.1)**: A delightful JavaScript Testing Framework with a focus on simplicity.
+- **Mock Service Worker (MSW) (v0.35.0)**: An API mocking library for browser and Node.js, used for testing and development.
 
 ## Validation Tools
 
 - [**W3C Markup Validation Service**](https://validator.w3.org/): This is a free tool provided by W3C that checks the syntax of web documents written in markup languages like HTML, XHTML, SMIL, and MathML against their respective specifications. It helps identify any discrepancies or errors in the markup code, ensuring compliance with web standards.
+
 - [**W3C CSS Validation Service**](https://jigsaw.w3.org/css-validator/): A tool offered by W3C that validates Cascading Style Sheets (CSS) code against the official CSS specifications. It checks for syntax errors, property value validity, and other potential issues in CSS stylesheets, helping developers ensure their styles are correctly implemented.
+
 - [**JSHint**](https://jshint.com/): A community-driven tool that detects errors and potential problems in JavaScript code. It performs static code analysis and provides feedback on coding conventions, syntax errors, and other issues that may lead to bugs or performance problems. JSHint helps maintain code quality and consistency across projects.
+
 - [**CI Python Linter**](https://pep8ci.herokuapp.com/): A code linting tool used in the Code Institute's development environment to analyze Python code for potential errors, stylistic inconsistencies, and adherence to best practices defined by the Python Enhancement Proposals (PEPs). It helps catch issues early in the development process and promotes code quality and maintainability.
+
 - [**Google Lighthouse**](https://developers.google.com/web/tools/lighthouse): An open-source automated tool developed by Google that audits web pages for performance, accessibility, progressive web app capabilities, and other best practices. It provides a comprehensive report with scores and recommendations to help developers optimize their websites and improve the overall user experience.
 
-Citations and sources:
+- [**ESLint**](https://eslint.org/): A highly configurable static code analysis tool for identifying problematic patterns found in JavaScript code. It can be customized to enforce specific coding styles and practices, helping maintain consistency across a project or team.
 
-[1] https://developer.mozilla.org/en-US/docs/Web/CSS
+- [**Prettier**](https://prettier.io/): An opinionated code formatter that supports many languages and integrates with most editors. It enforces a consistent style by parsing your code and re-printing it with its own rules, taking maximum line length into account.
 
-[2] https://developer.mozilla.org/en-US/docs/Web/JavaScript
+- **npm test**: A command used to run the test scripts defined in a project's package.json file. It typically executes a test runner like Jest to perform unit tests, integration tests, and other automated checks on the codebase.
 
-[3] https://validator.w3.org/docs/help
+- **Chrome DevTools**: A set of web developer tools built directly into the Google Chrome browser. It allows developers to edit pages on-the-fly, diagnose problems quickly, and includes features like a JavaScript debugger and network monitor.
 
-[4] https://validator.w3.org
+- **Firefox Developer Tools**: Similar to Chrome DevTools, these are built-in developer tools in the Firefox browser that provide a wide range of features for inspecting, editing, and debugging web pages and applications.
 
 ## Others
 
@@ -1921,7 +1930,30 @@ Citations and sources:
 
 # Testing
 
-For all testing and validation, please refer to the [TESTING.md](TESTING.md) file.
+Comprehensive testing has been conducted on both the backend API and the frontend application. For detailed information on the testing procedures and results, please refer to the following:
+
+## Backend API Testing
+
+The backend API testing is documented in the [DivingCenter_API TESTING.md](https://github.com/AmirShkolnik/DivingCenter_API/blob/main/TESTING.md) file. This includes:
+
+- Manual testing of API endpoints
+- Automated testing using Django's test framework
+- Database model testing
+- Authentication and permissions testing
+- Validation of data serialization and deserialization
+
+## Frontend Testing
+
+Frontend testing details can be found in the [TESTING.md](TESTING.md) file in the frontend repository. This covers:
+
+- Manual testing of user interfaces and interactions
+- Responsive design testing across various devices and screen sizes
+- Cross-browser compatibility checks
+- User authentication and authorization testing
+- Form validation and submission testing
+- Integration testing with the backend API
+
+Both testing documents provide comprehensive information on the methodologies used, test cases, and results to ensure the reliability and functionality of the entire application.
 
 # Deployment
 
@@ -1972,14 +2004,7 @@ The respective URLs for these platforms and services are as follows:
 
 10. **Monitor your app**: Heroku provides tools to monitor your app's performance, logs, and other metrics. You can access these through the "More" menu in your app's dashboard.
 
-By following these steps, you'll be able to deploy your "Diving Center" coffee project to Heroku's cloud server, making it accessible to anyone with the app's URL. Remember to consult Heroku's documentation or seek help if you encounter any issues during the deployment process.
-
-Citations:
-[1] https://developer.mozilla.org/en-US/docs/Web/JavaScript
-[2] https://developer.mozilla.org/en-US/docs/Web/CSS
-[3] https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5
-[4] https://devcenter.heroku.com/articles/preparing-a-codebase-for-heroku-deployment
-[5] https://coding-boot-camp.github.io/full-stack/heroku/heroku-deployment-guide/
+By following these steps, you'll be able to deploy your "Diving Center" project to Heroku's cloud server, making it accessible to anyone with the app's URL. Remember to consult Heroku's documentation or seek help if you encounter any issues during the deployment process.
 
 **For deployment Heroku needs two additional files in order to deploy properly.**
 
@@ -1999,9 +2024,11 @@ If you have your own packages that have been installed, then the requirements fi
 echo web: gunicorn app_name.wsgi > Procfile
 replace app_name with the name of your primary Django app name; the folder where settings.py is located
 
-## CI database
+## CI Database
 
-- **Database Hosting:** The Code Institute (CI) database systems are employed to store and manage the application's data during development and deployment phases. For Code Institute students only.
+- **Database Hosting:** The Code Institute (CI) provides PostgreSQL database hosting for students to use during their development and deployment phases.
+
+This powerful, open-source relational database system is ideal for managing application data, allowing students to create realistic testing environments that closely resemble production scenarios.
 
 ## Cloudinary
 
@@ -2019,9 +2046,13 @@ By adopting this approach, the project benefits from a dedicated and optimized i
 
 ## Cloning the Repository
 
+# Cloning and Forking
+
+**Note**: This project consists of two repositories: the frontend repository and the API repository. The instructions below are for the frontend repository. For the API repository, please follow the same steps but use the API repository URL: https://github.com/AmirShkolnik/DivingCenter_API
+
 - **Local Setup:**
-  1. Clone the repository: [GitHub repository](https://github.com/AmirShkolnik/Cups-of-Joy).
-     `git clone https://github.com/AmirShkolnik/Cups-of-Joy`.
+  1. Clone the repository: [GitHub repository](https://github.com/AmirShkolnik/DivingCenter).
+     `git clone https://github.com/AmirShkolnik/DivingCenter`.
   2. Navigate into the project directory: `cd software-stacks-p4`
   3. Install dependencies: `pip install -r requirements.txt`
   4. Set up local environment variables in a `.env` file.
@@ -2030,7 +2061,7 @@ By adopting this approach, the project benefits from a dedicated and optimized i
 
 1. **Open Your Preferred Code Editor**: Launch the code editor or integrated development environment (IDE) you typically use for your coding projects.
 
-2. **Navigate to the Repository URL**: Visit the following URL in your web browser: https://github.com/AmirShkolnik/Cups-of-Joy
+2. **Navigate to the Repository URL**: Visit the following URL in your web browser: https://github.com/AmirShkolnik/DivingCenter
 
 3. **Locate the Clone Button**: On the repository page, you'll find a green-colored button labeled "Code". Click on this button to reveal the cloning options.
 
@@ -2054,9 +2085,9 @@ By adopting this approach, the project benefits from a dedicated and optimized i
 
 ## Forking the Repository
 
-Here's an original step-by-step guide for forking the "Diving Center" project from the GitHub repository located at https://github.com/AmirShkolnik/Cups-of-Joy:
+Here's an original step-by-step guide for forking the "Diving Center" project from the GitHub repository located at https://github.com/AmirShkolnik/DivingCenter:
 
-1. **Navigate to the Repository**: Open your web browser and visit the "Diving Center" repository at https://github.com/AmirShkolnik/Cups-of-Joy.
+1. **Navigate to the Repository**: Open your web browser and visit the "Diving Center" repository at https://github.com/AmirShkolnik/DivingCenter.
 
 2. **Locate the Fork Button**: On the top-right corner of the repository page, you'll find a button labeled "Fork". This button allows you to create a copy of the repository under your own GitHub account.
 
@@ -2095,17 +2126,15 @@ The following blogs/tutorials complemented my learning for this project:
 
 ## Media
 
-The following sites were used to gather the photographic media used:
-**Pages**
+The following sites were used to gather the photographic media:
 
-- [xxx Page by xxx]()
-  **Slideshow**
-- [Slideshow Image byxxx]()
-- [Slideshow Image byxxx]()
-  **Articles**
-- [Article Image by xxx]()
-  **Logo**
-- [Logo & Favicon by logo.com](https://logo.com/)
+**Pages**
+- [Home Page, Sign In, Sign Up, Posts, Profiles, and Courses images and videos by Pexels](https://www.pexels.com/)
+
+**Logo and Color Scheme**
+- [Logo & Website colors inspired by Looka](https://looka.com)
+
+All images and videos for the home page, sign in, sign up, posts, profiles, and courses sections were sourced from Pexels, a free stock photo and video website. The logo and color scheme for the website were inspired by designs from Looka, an AI-powered logo maker and brand identity platform.
 
 ## Additional reading/tutorials/books/blogs
 
@@ -2116,25 +2145,59 @@ The following sites were used to gather the photographic media used:
 - https://www.manypixels.co/blog/brand-design/serif-vs-sans-serif
 - https://www.threerooms.com/blog/typography-series-what-is-a-sans-serif-font
 
+**Libraries and Frameworks**
+
+- **React**: [React Documentation](https://reactjs.org/)
+- **React Router**: [React Router Documentation](https://reactrouter.com/)
+- **React Bootstrap**: [React Bootstrap Documentation](https://react-bootstrap.github.io/)
+- **Axios**: [Axios Documentation](https://axios-http.com/)
+- **JWT Decode**: [JWT Decode Documentation](https://github.com/auth0/jwt-decode)
+- **React Infinite Scroll Component**: [React Infinite Scroll Component Documentation](https://github.com/ankeetmaini/react-infinite-scroll-component)
+- **React Star Ratings**: [React Star Ratings Documentation](https://github.com/niklaswa/react-star-ratings)
+- **React Toastify**: [React Toastify Documentation](https://fkhadra.github.io/react-toastify/)
+- **Cloudinary React**: [Cloudinary React Documentation](https://cloudinary.com/documentation/react_integration)
+
+**Backend**
+
+- **Django**: [Django Documentation](https://www.djangoproject.com/)
+- **Django REST Framework**: [Django REST Framework Documentation](https://www.django-rest-framework.org/)
+- **dj-rest-auth**: [dj-rest-auth Documentation](https://dj-rest-auth.readthedocs.io/en/latest/)
+- **django-allauth**: [django-allauth Documentation](https://django-allauth.readthedocs.io/en/latest/)
+- **django-cors-headers**: [django-cors-headers Documentation](https://pypi.org/project/django-cors-headers/)
+- **django-filter**: [django-filter Documentation](https://django-filter.readthedocs.io/en/latest/)
+- **dj-database-url**: [dj-database-url Documentation](https://github.com/jazzband/dj-database-url)
+- **Cloudinary**: [Cloudinary Documentation](https://cloudinary.com/documentation)
+
+**Development Tools**
+
+- **ESLint**: [ESLint Documentation](https://eslint.org/)
+- **Prettier**: [Prettier Documentation](https://prettier.io/)
+- **Jest**: [Jest Documentation](https://jestjs.io/)
+- **Mock Service Worker (MSW)**: [MSW Documentation](https://mswjs.io/)
+
 **User Stories**
 
 - [User Stories](https://storiesonboard.com/blog/epics-and-user-stories)
 - [Epics](https://www.youtube.com/watch?v=ogV2r9579WI)
 
-**xxx**
+**Deployment**
 
-- [xxx Page by xxx]()
+- [JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+- [CSS: Cascading Style Sheets | MDN](https://developer.mozilla.org/en-US/docs/Web/CSS)
+- [HTML5 - MDN Web Docs Glossary](https://developer.mozilla.org/en-US/docs/Glossary/HTML5)
+- [Preparing a Codebase for Heroku Deployment](https://devcenter.heroku.com/articles/preparing-a-codebase-for-heroku-deployment)
+- [Heroku Deployment Guide](https://coding-boot-camp.github.io/full-stack/heroku/heroku-deployment-guide/)
 
 ## Readme and Testing Inspiration
 
 - [Readme by Shizuka Donaghue](https://github.com/ShizukaDonaghue/happy-beans)
-- [Readme and Testing by Swathi Keshavamurthy](https://github.com/SwathiKeshavamurthy/SoftwareStacks-P4/)
+- [Readme and Testing by Swathi Keshavamurthy](https://github.com/SwathiKeshavamurthy/fitandfine-react-p5)
 - [Readme by Gudrun Omarsdottir](https://github.com/g-omarsdottir/helping-hands-happy-hearts)
+- [Readme and Testing by Amir Shkolnik](https://github.com/AmirShkolnik/Cups-of-Joy)
 
 ## Acknowledgements
 
 - My mentor, Antonio Rodriguez, for his guidance and encouragement.
-- My fellow student at Code Institute, especially [Gudrun Omarsdottir](https://github.com/g-omarsdottir), for guidance, inspiration, testing and proofreading.
 - My Code Institute class facilitator, Kristyna Wach, for her cheerful motivation and encouragement.
 - Slack community for support and advice.
 - Stackoverflow community for information.
