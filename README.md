@@ -1704,89 +1704,102 @@ The table below describes the CRUD operations that can be performed on the Divin
 |---------|--------|------|--------|--------|
 | Bookings | Authenticated users can create bookings | Users can view their own bookings | Users can update their own bookings | Users can delete their own bookings |
 | Comments | Authenticated users can create comments | All users can read comments | Comment owners can update their comments | Comment owners can delete their comments |
-| Contact Messages | Anyone can create contact messages | Staff can view all messages, users can view their own | Message creators can update their messages | Staff can delete any message, creators can delete with token |
+| Contact Messages | Anyone can create contact messages | Admin can view all messages, users can view their own | Message creators can update their messages | Admin can delete any message, creators can delete with token |
 | Courses | Admin only | All users can view courses | Admin only | Admin only |
-| Course Reviews | Authenticated users can create reviews | All users can read reviews | Review owners and staff can update reviews | Review owners and staff can delete reviews |
+| Course Reviews | Authenticated users can create reviews | All users can read reviews | Review owners and admin can update reviews | Review owners and admin can delete reviews |
 | Followers | Authenticated users can follow others | All users can view follower lists | N/A | Follower owners can unfollow |
 | Likes | Authenticated users can like posts | All users can view likes | N/A | Like owners can unlike |
 | Posts | Authenticated users can create posts | All users can view posts | Post owners can update their posts | Post owners can delete their posts |
-| Profiles | Auto-created on user registration | All users can view profiles | Profile owners can update their profiles | N/A (profiles are not deletable) |
+| Profiles | Auto-created on user registration | All users can view profiles | Profile owners can update their profiles | Admin only  |
+
+Thank you for providing those additional features. I'll incorporate them into the existing list and organize them for better readability. Here's the updated "Future Features" section:
 
 ## Future Features
 
 Here are some future feature suggestions for the "Diving Center" project:
 
-### About Us Page / Section
+### User-Centric Features
 
+#### My Dashboard (for registered users)
+- Personal diving log
+- Progress tracking for ongoing courses
+- Notifications and messages
+
+#### My Comments
+- Access to all user comments in one dedicated page
+- Ability to manage and edit comments
+
+#### My Reviews
+- Centralized page for all user reviews
+- CRUD (Create, Read, Update, Delete) functionality for reviews
+
+#### My Messages
+- Dedicated page for all user messages
+- CRUD functionality for message management
+
+### Community and Social Features
+
+#### About Us Page / Section
 - Information about the Diving Center platform
 - Mission statement and community guidelines
 - Team and instructor profiles
 
-### Discussion forums
+#### Discussion Forums
 
-### Community events calendar
+#### Community Events Calendar
 
-### Dive Site Directory
+#### User Reviews
+- Option to sort and filter reviews
+- Links to full review pages
 
+#### AI-Powered Dive Buddy Matching
+- Matches divers based on experience level, interests, and availability
+- Facilitates connections between divers, enhancing safety and social aspects
+
+#### Underwater Photography Workshop and Gallery
+- Online workshops for underwater photography
+- Platform for users to showcase their best shots
+
+### Dive Site Features
+
+#### Dive Site Directory
 - List of dive sites with brief descriptions
 - Map integration for location visualization
 - User reviews and ratings for each site
 - Option to save favorite dive sites (for registered users)
 
-### My Dashboard (for registered users)
+#### Virtual Dive Tour Integration
+- VR or AR tours of popular dive sites
+- Allows users to preview dive locations before booking
 
-- Personal diving log
-- Progress tracking for ongoing courses
-- Notifications and messages
+#### Dive Site Conditions Forecasting
+- Weather and ocean condition forecasting for specific dive sites
+- Helps divers plan trips and enhances safety
 
-### User Reviews
+### Educational and Support Features
 
-- Option to sort and filter reviews
-- Links to full review pages
-
-### FAQ section
-
+#### FAQ Section
 - Support resources
 
-### Search Functionality
-
+#### Search Functionality
 - Global search bar for courses, dive sites, and community content
 - Advanced search options with filters
 
-### Virtual Dive Tour Integration
+### Diving Management Features
 
-- **Description:** Implement virtual reality (VR) or augmented reality (AR) tours of popular dive sites.
-- **Benefit:** Allows users to preview dive locations before booking, enhancing decision-making and excitement for upcoming dives.
+#### Interactive Dive Log with Environmental Data
+- Advanced digital dive log incorporating real-time environmental data
+- Contributes to citizen science efforts in marine conservation
 
-### AI-Powered Dive Buddy Matching
+#### Gear Maintenance Tracker
+- Helps divers track the maintenance schedule of their equipment
+- Improves safety by ensuring gear is properly maintained
 
-- **Description:** Develop an AI system that matches divers based on experience level, interests, and availability.
-- **Benefit:** Facilitates connections between divers, enhancing safety and social aspects of diving experiences.
+### Environmental Initiatives
 
-### Interactive Dive Log with Environmental Data
-
-- **Description:** Create an advanced digital dive log that incorporates real-time environmental data such as water temperature, visibility, and marine life sightings.
-- **Benefit:** Provides divers with a comprehensive record of their dives and contributes to citizen science efforts in marine conservation.
-
-### Gear Maintenance Tracker
-
-- **Description:** Implement a feature that helps divers track the maintenance schedule of their equipment.
-- **Benefit:** Improves safety by ensuring gear is properly maintained and reminds users when servicing is due.
-
-### Dive Site Conditions Forecasting
-
-- **Description:** Integrate weather and ocean condition forecasting specifically tailored for dive sites.
-- **Benefit:** Helps divers plan their trips more effectively and enhances safety by providing up-to-date environmental information.
-
-### Underwater Photography Workshop and Gallery
-
-- **Description:** Offer online workshops for underwater photography and create a platform for users to showcase their best shots.
-- **Benefit:** Enhances skills of diving enthusiasts and provides a space for creative expression within the community.
-
-### Eco-Friendly Dive Challenge
-
-- **Description:** Create a gamified system that rewards divers for eco-friendly practices such as participating in underwater cleanups or using reef-safe sunscreen.
-- **Benefit:** Promotes environmental consciousness among divers and contributes to marine conservation efforts.
+#### Eco-Friendly Dive Challenge
+- Gamified system rewarding divers for eco-friendly practices
+- Promotes environmental consciousness and contributes to marine conservation
 
 # Technology Used
 
