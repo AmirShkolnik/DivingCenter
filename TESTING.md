@@ -835,7 +835,6 @@ These references provide more information on the hooks and functions used to sol
 
 [Back to top](#table-of-contents)
 
-Certainly! I'll create bug tables for both the Courses Page and Single Course Page based on the changes we've made. Here they are:
 
 ### Courses Page Bugs
 
