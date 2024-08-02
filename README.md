@@ -1730,6 +1730,59 @@ Here are some future feature suggestions for the "Diving Center" project:
 
 ### User-Centric Features
 
+**Admin Portal**:
+
+- **Current Status**: 
+  - Admins currently use the Django Rest Framework (DRF) interface for managing courses, users, profiles, comments, and other site content.
+  - The DRF interface provides a JSON-based API, which is efficient for data manipulation and integration with other systems.
+  - In production, the DRF browsable API is disabled for security reasons, and all interactions are done through JSON responses.
+
+- **Basic Design**:
+  - The current admin interface is built on Django's default admin panel, which includes basic styling and functionality.
+  - Admins interact with the API primarily through JSON, which allows for efficient data handling and integration with other tools.
+  - The interface is designed to be functional but minimal, focusing on core administrative tasks without unnecessary complexity.
+
+- **Future Enhancement**: 
+  - A dedicated, user-friendly front-end admin portal will be developed to replace the current DRF interface.
+  - This portal will provide a more accessible and visually appealing interface for non-technical staff members.
+
+- **Key Features**:
+  - **Intuitive Dashboard**: A quick overview of site activities, including user registrations, course enrollments, and recent comments.
+  - **Easy-to-Use Interfaces**: Simplified interfaces for managing courses, users, profiles, and comments, reducing the learning curve for new admins.
+  - **Advanced Analytics**: Reporting tools to provide insights into user behavior, course popularity, and other key metrics.
+  - **Customizable Views**: Admins can customize their views and workflows to streamline their daily tasks, making the admin portal more efficient and user-friendly.
+
+- **Benefits**:
+  - **Improved Efficiency**: The new admin portal will significantly improve the efficiency of administrative tasks by providing a more intuitive and streamlined interface.
+  - **Accessibility**: A user-friendly design will make it easier for non-technical staff members to perform their duties without extensive training.
+  - **Enhanced Functionality**: Advanced features like analytics and customizable views will empower admins to manage the site more effectively.
+
+By transitioning to a dedicated front-end admin portal, we aim to enhance the overall administrative experience, making it more efficient and accessible for all staff members. This will also lay the groundwork for future enhancements and integrations, ensuring that our platform remains robust and user-friendly.
+
+<details>
+<summary>Click to View the Admin Panel Dashboard Today</summary>
+
+![Admin Panel - Dashboard](doc/pages/admin-dashboard.png)
+
+</details>
+&nbsp;
+
+<details>
+<summary>Click to View the Admin Panel Dashboard - Dev</summary>
+
+![Admin Panel - Dashboard](doc/pages/admin.png)
+
+</details>
+&nbsp;
+
+<details>
+<summary>Click to View the Admin Panel Courses Dashboard Today</summary>
+
+![Admin Panel - Courses](doc/pages/admin-courses.png)
+
+</details>
+&nbsp;
+
 #### My Dashboard (for registered users)
 - Personal diving log
 - Progress tracking for ongoing courses
@@ -1740,12 +1793,16 @@ Here are some future feature suggestions for the "Diving Center" project:
 - Ability to manage and edit comments from one place
 - This page will be accessible from a dropdown menu under the user's profile image.
 
+Click to exploer the [Comments Model - API](https://github.com/AmirShkolnik/DivingCenter_API/blob/main/README.md#comments-model)
+
 #### My Reviews Page
 - Dedicated page for all logged-in user reviews and retings
 - Ability to manage and edit comments from one place
 - This page will be accessible from a dropdown menu under the user's profile image.
 
-#### My Messages Page
+Click to exploer the [Reviews Model - API](https://github.com/AmirShkolnik/DivingCenter_API/blob/main/README.md#reviews-model)
+
+#### My Messages Page (Contact Us Form)
 - Dedicated page for all logged-in user messages
 - Ability to manage and edit comments from one place
 - This page will be accessible from a dropdown menu under the user's profile image.
@@ -1757,6 +1814,8 @@ Here are some future feature suggestions for the "Diving Center" project:
 - Authenticated users will be able to see their messages by filtering based on their email.
 - Anonymous users will be to access their messages using the `deletion_token`.
 - This approach ensures that all users can interact with their messages, regardless of their login status.
+
+Click to exploer the [Contact Us Model - API](https://github.com/AmirShkolnik/DivingCenter_API/blob/main/README.md#contact-us-model)
 
 ### Community and Social Features
 
@@ -1824,6 +1883,8 @@ Here are some future feature suggestions for the "Diving Center" project:
 
 This updated list incorporates all the new features you mentioned, including the user-specific pages for comments, reviews, and messages, while maintaining the structure of the previously provided features. The list is now more comprehensive and better organized, covering various aspects of the diving community, education, safety, and environmental consciousness.
 
+[Back to top](#table-of-contents)
+
 # Technology Used
 
 ## Frontend
@@ -1838,6 +1899,8 @@ This updated list incorporates all the new features you mentioned, including the
 - [**ESLint**](https://eslint.org/): A static code analysis tool for identifying and fixing common coding errors and style issues in JavaScript code. It is highly configurable and can be extended with plugins and shareable configs to enforce coding standards across teams.
 - [**Prettier**](https://prettier.io/): An opinionated code formatter that automatically formats code based on a set of predefined rules, ensuring a consistent code style across the entire codebase. It can be integrated with ESLint to handle code formatting while ESLint focuses on code style and error checking.
 
+[Back to top](#table-of-contents)
+
 ## Backend
 
 - [**Django**](https://www.djangoproject.com/): A high-level Python web framework that follows the Model-View-Template architectural pattern. It promotes rapid development and clean, pragmatic design by providing built-in features for handling common web development tasks, such as URL routing, database integration, and user authentication.
@@ -1845,22 +1908,27 @@ This updated list incorporates all the new features you mentioned, including the
 - [**Python**](https://www.python.org/): A versatile, high-level programming language known for its simplicity, readability, and extensive standard library. It is widely used for backend development, data analysis, machine learning, and automation tasks.
 - [**Cloudinary**](https://cloudinary.com/): A cloud-based service that provides an end-to-end image and video management solution, including uploads, storage, manipulations, optimizations, and delivery.
 
+[Back to top](#table-of-contents)
+
 ## Deployment and Version Control
 
 - [**Git**](https://git-scm.com/): A distributed version control system that tracks changes in source code files and facilitates collaboration among multiple developers. It allows developers to manage and merge code changes efficiently, revert to previous versions, and maintain a detailed history of modifications.
 - [**GitHub**](https://github.com/): A web-based hosting service for Git repositories, providing a platform for version control, collaboration, and code sharing. It offers features like issue tracking, pull requests, and project management tools to streamline the development workflow.
 - [**Heroku**](https://www.heroku.com/): A cloud platform that enables developers to build, run, and operate applications entirely in the cloud. It supports various programming languages and provides a seamless deployment process, automatic scaling, and management tools for monitoring and maintaining applications.
 
+[Back to top](#table-of-contents)
+
 ## Development Tools
 
 - [**GitPod**](https://www.gitpod.io/): A cloud-based integrated development environment (IDE) that allows developers to write, edit, and run code directly from their web browser. It provides a preconfigured development environment with all the necessary tools and dependencies installed, enabling a consistent and efficient coding experience across different projects and teams.
 - [**Django Extensions**](https://github.com/django-extensions/django-extensions): A collection of custom management extensions for the Django web framework. It provides additional commands and utilities to enhance the development workflow, such as generating model diagrams, executing raw SQL queries, and generating fixtures for testing purposes.
 
-Based on the information provided and the requirements you've shared, here's an updated ## Libraries and Frameworks section:
+[Back to top](#table-of-contents)
 
 ## Libraries and Frameworks
 
 ### Frontend
+
 - **React (v17.0.2)**: A JavaScript library for building user interfaces, allowing for efficient rendering of components and state management.
 - **React Router (v5.3.0)**: Provides declarative routing for React applications, enabling navigation between different components.
 - **React Bootstrap (v1.6.8)**: A popular frontend framework rebuilt for React, offering pre-built Bootstrap components as React components.
@@ -1870,8 +1938,13 @@ Based on the information provided and the requirements you've shared, here's an 
 - **React Star Ratings (v2.3.0)**: A customizable React component for displaying star ratings.
 - **React Toastify (v8.1.0)**: A library for adding toast notifications to React applications.
 - **Cloudinary React (v1.13.0)**: React components for integrating Cloudinary services, facilitating image and video management.
+- **@cloudinary/url-gen (v1.19.0)**: Cloudinary SDK for generating URLs for transformation and optimization.
+- **Font Awesome (v6.5.2)**: Icon library and toolkit used for adding icons to the application.
+
+[Back to top](#table-of-contents)
 
 ### Backend
+
 - **Django (v5.0.6)**: A high-level Python web framework that encourages rapid development and clean, pragmatic design.
 - **Django REST Framework (v3.15.1)**: A powerful and flexible toolkit for building Web APIs, used in conjunction with Django.
 - **dj-rest-auth (v2.1.9)**: Provides a set of REST API endpoints for authentication and registration.
@@ -1885,39 +1958,25 @@ Based on the information provided and the requirements you've shared, here's an 
 - **gunicorn (v22.0.0)**: A Python WSGI HTTP Server for UNIX, often used to run Python web applications.
 - **Pillow (v10.3.0)**: A fork of PIL (Python Imaging Library), adding support for opening, manipulating, and saving many different image file formats.
 - **psycopg2 (v2.9.9)**: PostgreSQL database adapter for Python.
+- **django-tinymce (v4.1.0)**: A Django application that contains a widget to render a form field as a TinyMCE editor.
+
+[Back to top](#table-of-contents)
 
 ### Development Tools
+
 - **ESLint (v8.57.0)**: A static code analysis tool for identifying problematic patterns found in JavaScript code.
 - **Prettier (v3.3.3)**: An opinionated code formatter that ensures consistent code style.
 - **Jest (v27.5.1)**: A delightful JavaScript Testing Framework with a focus on simplicity.
 - **Mock Service Worker (MSW) (v0.35.0)**: An API mocking library for browser and Node.js, used for testing and development.
+- **Babel (v7.24.9)**: A JavaScript compiler that allows you to use next generation JavaScript, today.
 
-### Frontend
-- **React (v17.0.2)**: A JavaScript library for building user interfaces, allowing for efficient rendering of components and state management.
-- **React Router (v5.3.0)**: Provides declarative routing for React applications, enabling navigation between different components.
-- **React Bootstrap (v1.6.8)**: A popular frontend framework rebuilt for React, offering pre-built Bootstrap components as React components.
-- **Axios (v0.21.4)**: A promise-based HTTP client for making API requests from the browser.
-- **JWT Decode (v3.1.2)**: A library for decoding JSON Web Tokens (JWTs) on the client-side.
-- **React Infinite Scroll Component (v6.1.0)**: Implements infinite scrolling functionality in React applications.
-- **React Star Ratings (v2.3.0)**: A customizable React component for displaying star ratings.
-- **React Toastify (v8.1.0)**: A library for adding toast notifications to React applications.
-- **Cloudinary React (v1.13.0)**: React components for integrating Cloudinary services, facilitating image and video management.
+### Additional Information
 
-### Backend
-- **Django (v3.2.4)**: A high-level Python web framework that encourages rapid development and clean, pragmatic design.
-- **Django REST Framework**: A powerful and flexible toolkit for building Web APIs, used in conjunction with Django.
-- **dj-rest-auth**: Provides a set of REST API endpoints for authentication and registration.
-- **django-allauth**: An integrated set of Django applications addressing authentication, registration, account management, and third-party (social) account authentication.
-- **django-cors-headers**: A Django application for handling the server headers required for Cross-Origin Resource Sharing (CORS).
-- **django-filter**: A generic system for filtering Django QuerySets based on user selections.
-- **dj-database-url**: A Django utility to utilize the 12factor inspired DATABASE_URL environment variable to configure your Django application.
-- **Cloudinary**: Cloud service that offers a solution to a web application's entire image management pipeline.
+- The frontend is using Node.js version 16.19.1 and npm version 8.19.3.
+- The backend is using Python 3 (specific version not specified in the requirements.txt).
+- The project includes various testing libraries such as @testing-library/jest-dom, @testing-library/react, and @testing-library/user-event for frontend testing.
 
-### Development Tools
-- **ESLint (v8.57.0)**: A static code analysis tool for identifying problematic patterns found in JavaScript code.
-- **Prettier (v3.3.3)**: An opinionated code formatter that ensures consistent code style.
-- **Jest (v27.5.1)**: A delightful JavaScript Testing Framework with a focus on simplicity.
-- **Mock Service Worker (MSW) (v0.35.0)**: An API mocking library for browser and Node.js, used for testing and development.
+[Back to top](#table-of-contents)
 
 ## Validation Tools
 
@@ -1941,6 +2000,8 @@ Based on the information provided and the requirements you've shared, here's an 
 
 - **Firefox Developer Tools**: Similar to Chrome DevTools, these are built-in developer tools in the Firefox browser that provide a wide range of features for inspecting, editing, and debugging web pages and applications.
 
+[Back to top](#table-of-contents)
+
 ## Others
 
 - [**Cloudinary**](https://cloudinary.com/): An end-to-end image and video management solution.
@@ -1948,6 +2009,8 @@ Based on the information provided and the requirements you've shared, here's an 
 - [**Font Awesome**](https://fontawesome.com/): Provides icons for enhancing UI/UX.
 - [**Tiny Png**](https://tinypng.com/): To compress the images.
 - [**Free Convert**](https://www.freeconvert.com/): To convert PNG, JPG, JPEG...images to Webp format.
+
+[Back to top](#table-of-contents)
 
 # Testing
 
@@ -1976,6 +2039,8 @@ Frontend testing details can be found in the [TESTING.md](TESTING.md) file in th
 
 Both testing documents provide comprehensive information on the methodologies used, test cases, and results to ensure the reliability and functionality of the entire application.
 
+[Back to top](#table-of-contents)
+
 # Deployment
 
 The "Diving Center" project leverages a combination of platforms and services to facilitate its deployment and management.
@@ -1993,6 +2058,8 @@ The respective URLs for these platforms and services are as follows:
 ## Gitpod
 
 - **Development Environment:** Gitpod, a cloud-based integrated development environment (IDE), provides a streamlined coding experience by offering a preconfigured workspace with all the necessary tools and dependencies. [Gitpod](https://www.gitpod.io/)
+
+[Back to top](#table-of-contents)
 
 ## Heroku
 
@@ -2045,6 +2112,8 @@ If you have your own packages that have been installed, then the requirements fi
 echo web: gunicorn app_name.wsgi > Procfile
 replace app_name with the name of your primary Django app name; the folder where settings.py is located
 
+[Back to top](#table-of-contents)
+
 ## CI Database
 
 - **Database Hosting:** The Code Institute (CI) provides PostgreSQL database hosting for students to use during their development and deployment phases.
@@ -2062,6 +2131,8 @@ To enhance performance and scalability, the project utilizes a third-party servi
     3. Use Django’s storage backend for Cloudinary to handle media uploads.
 
 By adopting this approach, the project benefits from a dedicated and optimized infrastructure for managing and delivering static media content. This not only improves the overall user experience but also facilitates future growth and expansion by providing a scalable solution for handling an increasing volume of media assets.
+
+[Back to top](#table-of-contents)
 
 # Cloning and Forking
 
@@ -2104,6 +2175,8 @@ By adopting this approach, the project benefits from a dedicated and optimized i
 
 9. **Create env.py**: Create a env.py to store database url, secret key and cloudinary url. directory:
 
+[Back to top](#table-of-contents)
+
 ## Forking the Repository
 
 Here's an original step-by-step guide for forking the "Diving Center" project from the GitHub repository located at https://github.com/AmirShkolnik/DivingCenter:
@@ -2119,6 +2192,8 @@ Here's an original step-by-step guide for forking the "Diving Center" project fr
 5. **Navigate to Your Forked Repository**: Once the forking process is complete, you'll be automatically redirected to the forked repository's page within your account or organization. The URL will reflect the new location of your forked repository.
 
 6. **Customize Your Fork (Optional)**: You now have full control over your forked repository. You can rename it, modify the description, or make any other desired changes to distinguish it from the original repository.
+
+[Back to top](#table-of-contents)
 
 # Credits
 
@@ -2145,6 +2220,8 @@ The following blogs/tutorials complemented my learning for this project:
 
 - Code Institute PP5 Walkthrough - Moments
 
+[Back to top](#table-of-contents)
+
 ## Media
 
 The following sites were used to gather the photographic media:
@@ -2156,6 +2233,8 @@ The following sites were used to gather the photographic media:
 - [Logo & Website colors inspired by Looka](https://looka.com)
 
 All images and videos for the home page, sign in, sign up, posts, profiles, and courses sections were sourced from Pexels, a free stock photo and video website. The logo and color scheme for the website were inspired by designs from Looka, an AI-powered logo maker and brand identity platform.
+
+[Back to top](#table-of-contents)
 
 ## Additional reading/tutorials/books/blogs
 
@@ -2209,6 +2288,8 @@ All images and videos for the home page, sign in, sign up, posts, profiles, and 
 - [Preparing a Codebase for Heroku Deployment](https://devcenter.heroku.com/articles/preparing-a-codebase-for-heroku-deployment)
 - [Heroku Deployment Guide](https://coding-boot-camp.github.io/full-stack/heroku/heroku-deployment-guide/)
 
+[Back to top](#table-of-contents)
+
 ## Readme and Testing Inspiration
 
 - [Readme by Shizuka Donaghue](https://github.com/ShizukaDonaghue/happy-beans)
@@ -2222,3 +2303,5 @@ All images and videos for the home page, sign in, sign up, posts, profiles, and 
 - My Code Institute class facilitator, Kristyna Wach, for her cheerful motivation and encouragement.
 - Slack community for support and advice.
 - Stackoverflow community for information.
+
+[Back to top](#table-of-contents)
