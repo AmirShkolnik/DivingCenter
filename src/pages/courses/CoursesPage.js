@@ -5,7 +5,6 @@ import Col from 'react-bootstrap/Col';
 import Spinner from 'react-bootstrap/Spinner';
 import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
-
 import { Link, useHistory } from 'react-router-dom';
 import { axiosReq } from '../../api/axiosDefaults';
 import styles from '../../styles/CoursesPage.module.css';
@@ -28,7 +27,8 @@ const CourseBox = ({ title, imageUrl, excerpt, slug, price, currentUser }) => {
         history.push('/bookings/create');
       } else {
         toast.warning('Please sign in to book a course.');
-        history.push('/signin');
+        const currentLocation = history.location.pathname;
+        history.push(`/signin?next=${encodeURIComponent(currentLocation)}`);
       }
     },
     [currentUser, history]

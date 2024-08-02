@@ -1,3 +1,5 @@
+// src/pages/courses/CourseSingle.js
+
 import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import {
@@ -132,7 +134,8 @@ function CourseSingle() {
   const handleAddReview = () => {
     if (!currentUser) {
       toast.warning('Please sign in to add a review.');
-      history.push('/signin');
+      const currentLocation = history.location.pathname;
+      history.push(`/signin?next=${encodeURIComponent(currentLocation)}`);
     } else {
       setIsEditing(false);
       setReview({ content: '', rating: 0 });
@@ -189,7 +192,10 @@ function CourseSingle() {
                 onClick={() => {
                   if (!currentUser) {
                     toast.warning('Please sign in to book this course.');
-                    history.push('/signin');
+                    const currentLocation = history.location.pathname;
+                    history.push(
+                      `/signin?next=${encodeURIComponent(currentLocation)}`
+                    );
                   } else {
                     history.push('/bookings/create');
                   }
@@ -311,7 +317,6 @@ function CourseSingle() {
           </div>
         </>
       )}
-
       <Modal
         show={showDeleteConfirmation}
         onHide={() => setShowDeleteConfirmation(false)}

@@ -1,15 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-
 import Form from 'react-bootstrap/Form';
 import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
-
 import { Link, useHistory } from 'react-router-dom';
-
 import styles from '../../styles/SignInUpForm.module.css';
 import btnStyles from '../../styles/Button.module.css';
 import appStyles from '../../App.module.css';
@@ -18,10 +15,12 @@ import { useRedirect } from '../../hooks/useRedirect';
 import VideoPlayerSignIn from '../../components/Video/VideoPlayerSignIn';
 import { toast } from 'react-toastify';
 import { setTokenTimestamp } from '../../utils/utils';
+import { useRedirectAfterLogin } from '../../hooks/useRedirectAfterLogin';
 
 function SignInForm() {
   const setCurrentUser = useSetCurrentUser();
   useRedirect('loggedIn');
+  const getRedirectUrl = useRedirectAfterLogin();
 
   const [signInData, setSignInData] = useState({
     username: '',
@@ -40,7 +39,8 @@ function SignInForm() {
       setCurrentUser(data.user);
       setTokenTimestamp(data);
       toast.success('Successfully signed in!');
-      history.push(`/profiles/${data.user.profile_id}`);
+      const redirectUrl = getRedirectUrl();
+      history.push(redirectUrl);
     } catch (err) {
       setErrors(err.response?.data);
       toast.error('Sign in failed. Please check your credentials.');

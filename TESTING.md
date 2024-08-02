@@ -835,6 +835,44 @@ These references provide more information on the hooks and functions used to sol
 
 [Back to top](#table-of-contents)
 
+Certainly! I'll create bug tables for both the Courses Page and Single Course Page based on the changes we've made. Here they are:
+
+### Courses Page Bugs
+
+| File Name     | Issue                                                                                     | Solution                                                                                                                                   | Reference                                                                                                    |
+|---------------|-------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------|
+| CoursesPage.js | User redirected to profile page after signing in, losing context of the course they viewed | Implemented redirection with 'next' parameter, storing current location before redirecting to sign-in page                                | [React Router useHistory](https://reactrouter.com/web/api/Hooks/usehistory)                                  |
+| CoursesPage.js | Inconsistent user experience when trying to book a course without being signed in         | Updated 'Book Now' button logic to include current location in redirection URL, ensuring return to the same page after sign-in            | [URL encoding](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent) |
+
+### Single Course Page Bugs
+
+| File Name       | Issue                                                                                     | Solution                                                                                                                                   | Reference                                                                                                    |
+|-----------------|-------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------|
+| CourseSingle.js | User loses context when redirected to sign-in page for booking or reviewing               | Implemented redirection with 'next' parameter for both 'Book This Course' and 'Add Review' actions                                        | [React Router useHistory](https://reactrouter.com/web/api/Hooks/usehistory)                                  |
+| CourseSingle.js | Inconsistent user experience when trying to interact with course features without sign-in | Updated button click handlers to include current location in redirection URL, ensuring return to the same course page after sign-in       | [URL encoding](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent) |
+
+### Detailed Explanation:
+
+These solutions address the main issues we encountered in both the Courses Page and Single Course Page components:
+
+1. **Maintaining Context After Sign-In**:
+   - Implemented a redirection mechanism that includes the current page URL as a 'next' parameter when redirecting to the sign-in page.
+   - This ensures that after successful sign-in, the user is returned to the page they were viewing, improving user experience and maintaining context.
+
+2. **Consistent User Experience**:
+   - Updated the logic for actions that require sign-in (like booking a course or adding a review) to include the current location in the redirection URL.
+   - This provides a seamless experience where users can easily complete their intended actions after signing in, without losing their place in the application.
+
+By implementing these solutions, we've improved the overall user flow in the course-related pages, ensuring that users can easily navigate the sign-in process when needed and return to their intended actions without frustration.
+
+### References:
+- [React Router useHistory Documentation](https://reactrouter.com/web/api/Hooks/usehistory)
+- [MDN encodeURIComponent](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent)
+
+These references provide more information on the React Router hooks and URL encoding techniques used to solve the issues in both the Courses Page and Single Course Page components.
+
+[Back to top](#table-of-contents)
+
 ### Known Bugs
 
 Here's a table summarizing the known bugs you've described:
