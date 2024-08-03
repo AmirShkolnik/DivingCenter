@@ -10,6 +10,7 @@ import {
 import { removeTokenTimestamp } from '../../utils/utils';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Avatar from '../../components/Avatar'; // Import Avatar component
 
 const LandingPage = () => {
   const currentUser = useCurrentUser();
@@ -59,7 +60,8 @@ const LandingPage = () => {
         <div className={styles['button-container']}>
           {currentUser ? (
             <Link to={getUserProfilePath()} className={styles['home-btn']}>
-              Welcome Back {currentUser.username}!
+              <Avatar src={currentUser?.profile_image} height={40} />
+              <span>Welcome Back {currentUser.username}!</span>
             </Link>
           ) : (
             <button
