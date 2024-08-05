@@ -44,7 +44,7 @@ function PostsPage({ message, filter = '' }) {
   }, [filter, query, pathname, currentUser, fetchPosts]);
 
   useEffect(() => {
-    const interval = setInterval(fetchPosts, 5000); // Refresh every 5 seconds
+    const interval = setInterval(fetchPosts, 5000);
     return () => clearInterval(interval);
   }, [fetchPosts]);
 
