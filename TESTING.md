@@ -787,14 +787,18 @@ These fixes ensure that the Video Player component runs without warnings and fol
 
 [Back to top](#table-of-contents)
 
-#### Post Create Form Bugs
+### Post Create and Edit Form Bugs
 
-| File Name | Issue | Solution | Reference |
-|-----------|-------|----------|-----------|
-| PostCreateForm.js | Multiple post submissions when clicking "Create" button repeatedly | Implemented submission state management and early return in `handleSubmit` function | [React Form Submission](https://reactjs.org/docs/forms.html#handling-multiple-inputs) |
-| PostCreateForm.js | Lack of user feedback for form actions | Added toast notifications for various actions (create, cancel, error) | [React-Toastify Usage](https://fkhadra.github.io/react-toastify/introduction) |
-| PostCreateForm.js | Warning: Can't perform a React state update on an unmounted component | Implemented cleanup function using `useEffect` hook to revoke object URLs | [React useEffect Cleanup](https://reactjs.org/docs/hooks-effect.html#effects-with-cleanup) |
-| PostCreateForm.js | Potential memory leak due to unreleased resources | Added cleanup function to revoke object URLs when component unmounts | [MDN URL.revokeObjectURL()](https://developer.mozilla.org/en-US/docs/Web/API/URL/revokeObjectURL) |
+| File Name         | Issue                                                                                     | Solution                                                                                                                                   | Reference                                                                                                    |
+|-------------------|-------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------|
+| PostCreateForm.js | 'Create' button active even when no fields are filled                                     | Implemented form validation state (isFormValid) to disable 'Create' button until at least one field is filled                              | [React useState Hook](https://reactjs.org/docs/hooks-state.html)                                             |
+| PostCreateForm.js | Cursor changes to pointer on disabled 'Create' button                                     | Updated CSS styles to use `cursor: not-allowed` for disabled button state                                                                  | [CSS cursor property](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor)                               |
+| PostCreateForm.js | Multiple post submissions when clicking "Create" button repeatedly                        | Implemented submission state management and early return in `handleSubmit` function                                                        | [React Form Submission](https://reactjs.org/docs/forms.html#handling-multiple-inputs)                        |
+| PostCreateForm.js | Lack of user feedback for form actions                                                    | Added toast notifications for various actions (create, cancel, error)                                                                      | [React-Toastify Usage](https://fkhadra.github.io/react-toastify/introduction)                                |
+| PostCreateForm.js | Warning: Can't perform a React state update on an unmounted component                     | Implemented cleanup function using `useEffect` hook to revoke object URLs                                                                  | [React useEffect Cleanup](https://reactjs.org/docs/hooks-effect.html#effects-with-cleanup)                   |
+| PostCreateForm.js | Potential memory leak due to unreleased resources                                         | Added cleanup function to revoke object URLs when component unmounts                                                                       | [MDN URL.revokeObjectURL()](https://developer.mozilla.org/en-US/docs/Web/API/URL/revokeObjectURL)            |
+| PostEditForm.js   | 'Save' button active even when no changes are made to the post                            | Implemented change tracking by comparing current form data with original post data                                                         | [React useEffect Hook](https://reactjs.org/docs/hooks-effect.html)                                           |
+| PostEditForm.js   | Unnecessary API calls when form is submitted without changes                              | Disabled 'Save' button when no changes are detected, preventing unnecessary API calls                                                      | [React conditional rendering](https://reactjs.org/docs/conditional-rendering.html)                           |
 
 These solutions address the main issues we encountered in the PostCreateForm component:
 
@@ -806,8 +810,6 @@ These solutions address the main issues we encountered in the PostCreateForm com
 By implementing these solutions, we've improved the component's functionality, user experience, and overall performance. The references provided offer more in-depth information about each solution and the underlying concepts.
 
 [Back to top](#table-of-contents)
-
-Certainly! Here's a bug table for the issue you encountered with the `PostsPage` component (My Feed page for logged-in users):
 
 ### PostsPage Bugs
 
@@ -860,17 +862,6 @@ These solutions address the main issues we encountered in both the Courses Page 
    - This provides a seamless experience where users can easily complete their intended actions after signing in, without losing their place in the application.
 
 By implementing these solutions, we've improved the overall user flow in the course-related pages, ensuring that users can easily navigate the sign-in process when needed and return to their intended actions without frustration.
-
-[Back to top](#table-of-contents)
-
-### Post Create and Edit Form Bugs
-
-| File Name         | Issue                                                                                     | Solution                                                                                                                                   | Reference                                                                                                    |
-|-------------------|-------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------|
-| PostCreateForm.js | 'Create' button active even when no fields are filled                                     | Implemented form validation state (isFormValid) to disable 'Create' button until at least one field is filled                              | [React useState Hook](https://reactjs.org/docs/hooks-state.html)                                             |
-| PostCreateForm.js | Cursor changes to pointer on disabled 'Create' button                                     | Updated CSS styles to use `cursor: not-allowed` for disabled button state                                                                  | [CSS cursor property](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor)                               |
-| PostEditForm.js   | 'Save' button active even when no changes are made to the post                            | Implemented change tracking by comparing current form data with original post data                                                         | [React useEffect Hook](https://reactjs.org/docs/hooks-effect.html)                                           |
-| PostEditForm.js   | Unnecessary API calls when form is submitted without changes                              | Disabled 'Save' button when no changes are detected, preventing unnecessary API calls                                                      | [React conditional rendering](https://reactjs.org/docs/conditional-rendering.html)                           |
 
 [Back to top](#table-of-contents)
 
