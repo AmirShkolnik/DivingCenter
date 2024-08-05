@@ -287,7 +287,13 @@ const ContactForm = () => {
               >
                 Cancel
               </Button>
-              <Button type="submit" className={styles.SubmitButton}>
+              <Button
+                type="submit"
+                className={`${styles.SubmitButton} ${
+                  !isChanged || !hasChanges() ? styles.DisabledButton : ''
+                }`}
+                disabled={!isChanged || !hasChanges()}
+              >
                 Send Message
               </Button>
             </>

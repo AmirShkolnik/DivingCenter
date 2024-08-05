@@ -156,6 +156,13 @@
   color: #b99a45 !important;
 }
 
+.DisabledButton {
+  background-color: #cccccc !important;
+  border-color: #666666 !important;
+  color: #666666 !important;
+  cursor: not-allowed !important;
+}
+
 @media only screen and (min-width: 1201px) {
   .bookingForm {
     max-width: 600px;

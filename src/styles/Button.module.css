@@ -73,7 +73,7 @@
 .Gray:focus,
 .Gray:active {
   background-color: #cccccc !important;
-  border-color: #cccccc !important;
+  border-color: #666666 !important;
   color: #666666 !important;
   cursor: not-allowed !important;
   opacity: 1 !important;

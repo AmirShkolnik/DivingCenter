@@ -19,6 +19,7 @@ const BookingForm = () => {
   const [errors, setErrors] = useState({});
   const [hasLoaded, setHasLoaded] = useState(false);
   const [isMounted, setIsMounted] = useState(true);
+  const [isChanged, setIsChanged] = useState(false);
 
   useEffect(() => {
     if (!currentUser) {
@@ -69,6 +70,8 @@ const BookingForm = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    setIsChanged(true);
+
     if (name === 'date') {
       const selectedDate = new Date(value);
       const today = new Date();
@@ -88,6 +91,10 @@ const BookingForm = () => {
         setErrors((prev) => ({ ...prev, date: undefined }));
       }
     }
+  };
+
+  const hasChanges = () => {
+    return Object.values(formData).some((value) => value.trim() !== '');
   };
 
   const handleSubmit = async (event) => {
@@ -196,7 +203,11 @@ const BookingForm = () => {
           rows="4"
         />
       </div>
-      <button className={styles.Button} type="submit">
+      <button
+        className={`${styles.Button} ${!isChanged || !hasChanges() ? styles.DisabledButton : ''}`}
+        type="submit"
+        disabled={!isChanged || !hasChanges()}
+      >
         Book Now
       </button>
     </form>

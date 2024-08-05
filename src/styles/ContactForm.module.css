@@ -173,7 +173,7 @@
 
 .DisabledButton {
   background-color: #cccccc !important;
-  border-color: #cccccc !important;
+  border-color: #666666 !important;
   color: #666666 !important;
   cursor: not-allowed !important;
 }
