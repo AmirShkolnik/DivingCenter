@@ -301,8 +301,8 @@ const BookingPage = () => {
                   rows="4"
                 ></textarea>
               </div>
-              <button 
-                type="submit" 
+              <button
+                type="submit"
                 className={`${styles.bookingButton} ${!isChanged ? styles.disabledButton : ''}`}
                 disabled={!isChanged}
               >

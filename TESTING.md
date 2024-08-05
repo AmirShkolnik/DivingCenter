@@ -865,6 +865,42 @@ By implementing these solutions, we've improved the overall user flow in the cou
 
 [Back to top](#table-of-contents)
 
+### BookingPage Bugs
+
+| File Name       | Issue                                                                                     | Solution                                                                                          | Reference                                                                                                    |
+|-----------------|-------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------|
+| BookingPage.js  | 'Update' button active even when no fields are filled                                     | Implemented state management (isChanged) to disable 'Update' button until at least one field is filled | [React useState Hook](https://reactjs.org/docs/hooks-state.html)                                             |
+| BookingPage.js  | Cursor changes to pointer on disabled 'Update' button                                     | Updated CSS styles to use `cursor: not-allowed` for disabled button state                         | [CSS cursor property](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor)                               |
+| BookingPage.js  | 'Update' button not visually indicating disabled state                                    | Added CSS class `.disabledButton` to style the button as grey and unclickable when disabled       | [CSS Styling](https://developer.mozilla.org/en-US/docs/Web/CSS)                                              |
+
+These solutions address the main issues we encountered in the `BookingPage` component:
+
+1. Ensuring the "Update" button is disabled until at least one field is filled.
+2. Providing visual feedback by greying out the disabled "Update" button.
+3. Preventing the cursor from changing to a pointer on the disabled button.
+
+By implementing these solutions, we've improved the component's functionality, user experience, and overall performance. The references provided offer more in-depth information about each solution and the underlying concepts.
+
+[Back to top](#table-of-contents)
+
+### ContactForm Bugs
+
+| File Name      | Issue                                                                                     | Solution                                                                                          | Reference                                                                                                    |
+|----------------|-------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------|
+| ContactForm.js | 'Update Message' button active even when no changes are made                              | Implemented state management (isChanged) to disable 'Update Message' button until changes are detected | [React useState Hook](https://reactjs.org/docs/hooks-state.html)                                             |
+| ContactForm.js | Cursor changes to pointer on disabled 'Update Message' button                             | Updated CSS styles to use `cursor: not-allowed` for disabled button state                         | [CSS cursor property](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor)                               |
+| ContactForm.js | 'Update Message' button not visually indicating disabled state                            | Added CSS class `.DisabledButton` to style the button as grey and unclickable when disabled       | [CSS Styling](https://developer.mozilla.org/en-US/docs/Web/CSS)                                              |
+
+These solutions address the main issues in the `ContactForm` component:
+
+1. Ensuring the "Update Message" button is disabled until changes are made to the form.
+2. Providing visual feedback by greying out the disabled "Update Message" button.
+3. Preventing the cursor from changing to a pointer on the disabled button.
+
+By implementing these solutions, we've improved the component's functionality, user experience, and overall performance. The references provided offer more in-depth information about each solution and the underlying concepts.
+
+[Back to top](#table-of-contents)
+
 ### Known Bugs
 
 Here's a table summarizing the known bugs you've described:

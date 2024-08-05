@@ -170,3 +170,11 @@
 .btn_danger:hover {
   background-color: darkred !important;
 }
+
+.DisabledButton {
+  background-color: #cccccc !important;
+  border-color: #cccccc !important;
+  color: #666666 !important;
+  cursor: not-allowed !important;
+}
+

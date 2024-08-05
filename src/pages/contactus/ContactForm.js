@@ -22,6 +22,7 @@ const ContactForm = () => {
   const [messageId, setMessageId] = useState(null);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [hasLoaded, setHasLoaded] = useState(false);
+  const [isChanged, setIsChanged] = useState(false);
 
   useEffect(() => {
     setHasLoaded(true);
@@ -66,6 +67,7 @@ const ContactForm = () => {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    setIsChanged(true);
   };
 
   const handleSubmit = async (e) => {
@@ -118,6 +120,7 @@ const ContactForm = () => {
     setIsSubmitted(false);
     setIsEditing(false);
     setMessageId(null);
+    setIsChanged(false);
   };
 
   const handleCancelMessage = () => {
@@ -127,6 +130,11 @@ const ContactForm = () => {
   const handleEditMessage = () => {
     setIsEditing(true);
     setIsSubmitted(false);
+    setIsChanged(false);
+  };
+
+  const hasChanges = () => {
+    return Object.values(formData).some((value) => value.trim() !== '');
   };
 
   if (!hasLoaded) {
@@ -261,7 +269,13 @@ const ContactForm = () => {
               >
                 Cancel Edit
               </Button>
-              <Button type="submit" className={styles.SubmitButton}>
+              <Button
+                type="submit"
+                className={`${styles.SubmitButton} ${
+                  !isChanged || !hasChanges() ? styles.DisabledButton : ''
+                }`}
+                disabled={!isChanged || !hasChanges()}
+              >
                 Update Message
               </Button>
             </>
