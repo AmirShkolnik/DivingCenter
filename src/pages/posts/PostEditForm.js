@@ -20,6 +20,10 @@ function PostEditForm() {
     content: '',
     image: '',
   });
+
+  const [originalPostData, setOriginalPostData] = useState({});
+  const [isChanged, setIsChanged] = useState(false);
+
   const { title, content, image } = postData;
 
   const imageInput = useRef(null);
@@ -34,6 +38,7 @@ function PostEditForm() {
 
         if (is_owner) {
           setPostData({ title, content, image });
+          setOriginalPostData({ title, content, image });
         } else {
           history.push('/');
         }
@@ -45,6 +50,14 @@ function PostEditForm() {
 
     handleMount();
   }, [history, id]);
+
+  useEffect(() => {
+    setIsChanged(
+      title !== originalPostData.title ||
+        content !== originalPostData.content ||
+        image !== originalPostData.image
+    );
+  }, [title, content, image, originalPostData]);
 
   const handleChange = (event) => {
     setPostData({
@@ -131,7 +144,11 @@ function PostEditForm() {
       >
         Cancel
       </Button>
-      <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
+      <Button
+        className={`${btnStyles.Button} ${isChanged ? btnStyles.Blue : btnStyles.Gray}`}
+        type="submit"
+        disabled={!isChanged}
+      >
         Save
       </Button>
     </div>
