@@ -67,3 +67,14 @@
   background-color: #2ed9ff;
   color: #2142b2;
 }
+
+.Gray,
+.Gray:hover,
+.Gray:focus,
+.Gray:active {
+  background-color: #cccccc !important;
+  border-color: #cccccc !important;
+  color: #666666 !important;
+  cursor: not-allowed !important;
+  opacity: 1 !important;
+}

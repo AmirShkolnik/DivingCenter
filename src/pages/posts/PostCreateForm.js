@@ -31,14 +31,23 @@ function PostCreateForm() {
   const imageInput = useRef(null);
   const history = useHistory();
 
+  const [isFormValid, setIsFormValid] = useState(false);
+
   useEffect(() => {
     return () => {
-      // Cleanup function
       if (image) {
         URL.revokeObjectURL(image);
       }
     };
   }, [image]);
+
+  useEffect(() => {
+    setIsFormValid(
+      title.trim() !== '' ||
+        content.trim() !== '' ||
+        imageInput.current?.files.length > 0
+    );
+  }, [title, content]);
 
   const handleChange = (event) => {
     setPostData({
@@ -54,6 +63,7 @@ function PostCreateForm() {
         ...postData,
         image: URL.createObjectURL(event.target.files[0]),
       });
+      setIsFormValid(true);
       toast.info('Image uploaded successfully');
     }
   };
@@ -125,9 +135,9 @@ function PostCreateForm() {
         Cancel
       </Button>
       <Button
-        className={`${btnStyles.Button} ${btnStyles.Blue}`}
+        className={`${btnStyles.Button} ${isFormValid ? btnStyles.Blue : btnStyles.Gray}`}
         type="submit"
-        disabled={isSubmitting}
+        disabled={!isFormValid || isSubmitting}
       >
         {isSubmitting ? 'Creating...' : 'Create'}
       </Button>
