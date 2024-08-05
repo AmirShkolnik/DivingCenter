@@ -9,8 +9,8 @@ import styles from './App.module.css';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import NotFound from './components/NotFound';
-import Forbidden403 from './components/Forbidden403'; // Import the Forbidden403 component
-import ServerError500 from './components/ServerError500'; // Import the ServerError500 component
+import Forbidden403 from './components/Forbidden403';
+import ServerError500 from './components/ServerError500';
 import Container from 'react-bootstrap/Container';
 import './api/axiosDefaults';
 import LandingPage from './pages/homepage/LandingPage.js';

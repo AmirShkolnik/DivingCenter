@@ -3,6 +3,7 @@ import Form from 'react-bootstrap/Form';
 import { axiosRes } from '../../api/axiosDefaults';
 import styles from '../../styles/CommentCreateEditForm.module.css';
 import { toast } from 'react-toastify';
+import btnStyles from '../../styles/Button.module.css';
 
 function CommentEditForm(props) {
   const { id, content, setShowEditForm, setComments } = props;
@@ -78,12 +79,16 @@ function CommentEditForm(props) {
         />
       </Form.Group>
       <div className="text-right">
-        <button className={styles.Button} onClick={handleCancel} type="button">
+        <button
+          className={`${btnStyles.Button} ${btnStyles.Red}`}
+          onClick={handleCancel}
+          type="button"
+        >
           cancel
         </button>
         <button
-          className={styles.Button}
-          disabled={!formContent.trim()}
+          className={`${btnStyles.Button} ${formContent.trim() !== content ? btnStyles.Blue : btnStyles.Gray}`}
+          disabled={formContent.trim() === content}
           type="submit"
         >
           save

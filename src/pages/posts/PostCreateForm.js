@@ -126,7 +126,7 @@ function PostCreateForm() {
       ))}
 
       <Button
-        className={`${btnStyles.Button} ${btnStyles.Blue}`}
+        className={`${btnStyles.Button} ${btnStyles.Red}`}
         onClick={() => {
           history.goBack();
           toast.info('Post creation cancelled');
