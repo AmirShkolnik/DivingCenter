@@ -845,12 +845,15 @@ These references provide more information on the hooks and functions used to sol
 
 | File Name       | Issue                                                                                     | Solution                                                                                                                                   | Reference                                                                                                    |
 |-----------------|-------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------|
-| CourseSingle.js | User loses context when redirected to sign-in page for booking or reviewing               | Implemented redirection with 'next' parameter for both 'Book This Course' and 'Add Review' actions                                        | [React Router useHistory](https://reactrouter.com)                                  |
+| CourseSingle.js | User loses context when redirected to sign-in page for booking or reviewing               | Implemented redirection with 'next' parameter for both 'Book This Course' and 'Add Review' actions                                        | [React Router useHistory](https://reactrouter.com/web/api/Hooks/usehistory)                                  |
 | CourseSingle.js | Inconsistent user experience when trying to interact with course features without sign-in | Updated button click handlers to include current location in redirection URL, ensuring return to the same course page after sign-in       | [URL encoding](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent) |
+| CourseSingle.js | Update Review button not disabled when no changes are made                                | Implemented state management to track changes and disable the Update Review button when no changes are detected                           | [React useState Hook](https://reactjs.org/docs/hooks-state.html)                                             |
+| CourseSingle.js | Delete confirmation modal not consistent with other parts of the application              | Replaced the existing delete confirmation modal with a reusable DeleteConfirmationModal component                                         | [React Bootstrap Modal](https://react-bootstrap.github.io/components/modal/)                                |
+| CourseSingle.js | Update Review button not visually indicating disabled state                               | Added CSS styles to change the appearance of the disabled button to gray                                                                   | [CSS :disabled Selector](https://developer.mozilla.org/en-US/docs/Web/CSS/:disabled)                        |
 
 ### Detailed Explanation:
 
-These solutions address the main issues we encountered in both the Courses Page and Single Course Page components:
+These solutions address the main issues we encountered in the Single Course Page component:
 
 1. **Maintaining Context After Sign-In**:
    - Implemented a redirection mechanism that includes the current page URL as a 'next' parameter when redirecting to the sign-in page.
@@ -860,7 +863,19 @@ These solutions address the main issues we encountered in both the Courses Page 
    - Updated the logic for actions that require sign-in (like booking a course or adding a review) to include the current location in the redirection URL.
    - This provides a seamless experience where users can easily complete their intended actions after signing in, without losing their place in the application.
 
-By implementing these solutions, we've improved the overall user flow in the course-related pages, ensuring that users can easily navigate the sign-in process when needed and return to their intended actions without frustration.
+3. **Update Review Button State Management**:
+   - Implemented state management using React's useState hook to track changes in the review form.
+   - The Update Review button is now disabled when no changes are detected, preventing unnecessary API calls and providing better user feedback.
+
+4. **Consistent Delete Confirmation Modal**:
+   - Replaced the existing delete confirmation modal with a reusable DeleteConfirmationModal component.
+   - This ensures consistency across the application and improves maintainability of the code.
+
+5. **Visual Indication of Disabled Button**:
+   - Added CSS styles to change the appearance of the disabled Update Review button to gray.
+   - This provides a clear visual indication to users when the button is not active, improving the overall user interface.
+
+By implementing these solutions, we've improved the overall user flow in the Single Course page, ensuring that users can easily navigate the sign-in process when needed, return to their intended actions without frustration, and have a more consistent and intuitive experience when interacting with reviews.
 
 [Back to top](#table-of-contents)
 

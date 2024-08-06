@@ -308,6 +308,18 @@
   border-color: #a68a3e;
 }
 
+.Button:disabled {
+  background-color: #d6d6d6;
+  color: #a1a1a1;
+  border-color: #c7ae6a;
+  cursor: not-allowed;
+}
+
+.Button:disabled:hover {
+  background-color: #d6d6d6;
+  color: #a1a1a1;
+}
+
 @media screen and (min-width: 280px) and (max-width: 320px) {
   .CourseContainer {
     padding: 1rem;
