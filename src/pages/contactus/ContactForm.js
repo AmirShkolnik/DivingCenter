@@ -7,6 +7,7 @@ import { useHistory } from 'react-router-dom';
 import styles from '../../styles/ContactForm.module.css';
 import Asset from '../../components/Asset';
 import DeleteConfirmationModal from '../../components/DeleteConfirmationModal';
+import UpdateConfirmationModal from '../../components/UpdateConfirmationModal';
 
 const ContactForm = () => {
   const history = useHistory();
@@ -21,7 +22,8 @@ const ContactForm = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [errors, setErrors] = useState({});
   const [messageId, setMessageId] = useState(null);
-  const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const [showDeleteConfirmModal, setShowDeleteConfirmModal] = useState(false);
+  const [showUpdateConfirmModal, setShowUpdateConfirmModal] = useState(false);
   const [hasLoaded, setHasLoaded] = useState(false);
   const [isChanged, setIsChanged] = useState(false);
 
@@ -56,7 +58,7 @@ const ContactForm = () => {
       );
       toast.success('Your message was deleted.');
       resetForm();
-      setShowConfirmModal(false);
+      setShowDeleteConfirmModal(false);
       history.push('/');
     } catch (err) {
       console.error('Error deleting message:', err);
@@ -136,7 +138,7 @@ const ContactForm = () => {
   };
 
   const handleCancelMessage = () => {
-    setShowConfirmModal(true);
+    setShowDeleteConfirmModal(true);
   };
 
   const handleEditMessage = () => {
@@ -186,8 +188,8 @@ const ContactForm = () => {
         </div>
 
         <DeleteConfirmationModal
-          show={showConfirmModal}
-          handleClose={() => setShowConfirmModal(false)}
+          show={showDeleteConfirmModal}
+          handleClose={() => setShowDeleteConfirmModal(false)}
           handleConfirm={handleDeleteMessage}
         />
       </div>
@@ -264,14 +266,20 @@ const ContactForm = () => {
                 Cancel Edit
               </Button>
               <Button
-                type="submit"
+                type="button"
                 className={`${styles.SubmitButton} ${
                   !isChanged ? styles.DisabledButton : ''
                 }`}
                 disabled={!isChanged}
+                onClick={() => setShowUpdateConfirmModal(true)}
               >
                 Update Message
               </Button>
+              <UpdateConfirmationModal
+                show={showUpdateConfirmModal}
+                handleClose={() => setShowUpdateConfirmModal(false)}
+                handleConfirm={handleSubmit}
+              />
             </>
           ) : (
             <>
