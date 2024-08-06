@@ -43,11 +43,6 @@ function PostsPage({ message, filter = '' }) {
     };
   }, [filter, query, pathname, currentUser, fetchPosts]);
 
-  useEffect(() => {
-    const interval = setInterval(fetchPosts, 5000);
-    return () => clearInterval(interval);
-  }, [fetchPosts]);
-
   return (
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
