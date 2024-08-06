@@ -15,6 +15,7 @@ import {
 import btnStyles from '../../styles/Button.module.css';
 import appStyles from '../../App.module.css';
 import { toast } from 'react-toastify';
+import UpdateConfirmationModal from '../../components/UpdateConfirmationModal';
 
 const ProfileEditForm = () => {
   const currentUser = useCurrentUser();
@@ -33,6 +34,7 @@ const ProfileEditForm = () => {
   const [originalProfileData, setOriginalProfileData] = useState({});
   const [errors, setErrors] = useState({});
   const [isChanged, setIsChanged] = useState(false);
+  const [showUpdateConfirmation, setShowUpdateConfirmation] = useState(false);
 
   useEffect(() => {
     const handleMount = async () => {
@@ -68,8 +70,12 @@ const ProfileEditForm = () => {
     });
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
+    setShowUpdateConfirmation(true);
+  };
+
+  const confirmSubmit = async () => {
     const formData = new FormData();
     formData.append('name', name);
     formData.append('content', content);
@@ -90,6 +96,7 @@ const ProfileEditForm = () => {
       setErrors(err.response?.data);
       toast.error('Failed to update profile. Please try again.');
     }
+    setShowUpdateConfirmation(false);
   };
 
   const handleImageChange = (event) => {
@@ -177,6 +184,11 @@ const ProfileEditForm = () => {
           <Container className={appStyles.Content}>{textFields}</Container>
         </Col>
       </Row>
+      <UpdateConfirmationModal
+        show={showUpdateConfirmation}
+        handleClose={() => setShowUpdateConfirmation(false)}
+        handleConfirm={confirmSubmit}
+      />
     </Form>
   );
 };

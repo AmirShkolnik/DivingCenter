@@ -14,12 +14,14 @@ import {
 } from '../../contexts/CurrentUserContext';
 import btnStyles from '../../styles/Button.module.css';
 import appStyles from '../../App.module.css';
+import UpdateConfirmationModal from '../../components/UpdateConfirmationModal';
 
 const UsernameForm = () => {
   const [username, setUsername] = useState('');
   const [originalUsername, setOriginalUsername] = useState('');
   const [errors, setErrors] = useState({});
   const [isChanged, setIsChanged] = useState(false);
+  const [showUpdateConfirmation, setShowUpdateConfirmation] = useState(false);
 
   const history = useHistory();
   const { id } = useParams();
@@ -41,8 +43,12 @@ const UsernameForm = () => {
     setIsChanged(username !== originalUsername);
   }, [username, originalUsername]);
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
+    setShowUpdateConfirmation(true);
+  };
+
+  const confirmSubmit = async () => {
     try {
       await axiosRes.put('/dj-rest-auth/user/', {
         username,
@@ -57,6 +63,7 @@ const UsernameForm = () => {
       setErrors(err.response?.data);
       toast.error('Failed to update username. Please try again.');
     }
+    setShowUpdateConfirmation(false);
   };
 
   const handleCancel = () => {
@@ -99,6 +106,11 @@ const UsernameForm = () => {
           </Form>
         </Container>
       </Col>
+      <UpdateConfirmationModal
+        show={showUpdateConfirmation}
+        handleClose={() => setShowUpdateConfirmation(false)}
+        handleConfirm={confirmSubmit}
+      />
     </Row>
   );
 };
