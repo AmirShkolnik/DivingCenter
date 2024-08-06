@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Form from 'react-bootstrap/Form';
 import Alert from 'react-bootstrap/Alert';
@@ -29,8 +29,15 @@ function SignInForm() {
   const { username, password } = signInData;
 
   const [errors, setErrors] = useState({});
+  const [isChanged, setIsChanged] = useState(false);
 
   const history = useHistory();
+
+  useEffect(() => {
+    const hasChanges = Object.values(signInData).some((value) => value !== '');
+    setIsChanged(hasChanges);
+  }, [signInData]);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -101,8 +108,11 @@ function SignInForm() {
               </Alert>
             ))}
             <Button
-              className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`}
+              className={`${btnStyles.Button} ${btnStyles.Wide} ${
+                isChanged ? btnStyles.Bright : btnStyles.Gray
+              }`}
               type="submit"
+              disabled={!isChanged}
             >
               Sign in
             </Button>

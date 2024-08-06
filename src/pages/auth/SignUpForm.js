@@ -28,6 +28,7 @@ const SignUpForm = () => {
   const { username, password1, password2 } = signUpData;
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [isChanged, setIsChanged] = useState(false);
 
   useEffect(() => {
     if (currentUser === null) {
@@ -36,6 +37,11 @@ const SignUpForm = () => {
       history.push('/');
     }
   }, [currentUser, history]);
+
+  useEffect(() => {
+    const hasChanges = Object.values(signUpData).some((value) => value !== '');
+    setIsChanged(hasChanges);
+  }, [signUpData]);
 
   const handleChange = (event) => {
     setSignUpData({
@@ -145,8 +151,11 @@ const SignUpForm = () => {
             ))}
 
             <Button
-              className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`}
+              className={`${btnStyles.Button} ${btnStyles.Wide} ${
+                isChanged ? btnStyles.Bright : btnStyles.Gray
+              }`}
               type="submit"
+              disabled={!isChanged}
             >
               Sign up
             </Button>
