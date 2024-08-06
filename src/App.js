@@ -48,7 +48,7 @@ function App() {
             <Route exact path="/" component={LandingPage} />
             <Route
               exact
-              path="/"
+              path="/feed"
               render={() => (
                 <PostsPage message="No results found. Adjust the search keyword." />
               )}
@@ -124,9 +124,7 @@ function App() {
             <Route exact path="/courses/:slug" component={CourseSingle} />
             <Route exact path="/contactus" component={ContactForm} />
             <Route exact path="/403" component={Forbidden403} />{' '}
-            {/* Add the 403 route */}
             <Route exact path="/500" component={ServerError500} />{' '}
-            {/* Add the 500 route */}
             <Route component={NotFound} />
           </Switch>
         </Container>
