@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 import styles from '../styles/MoreDropdown.module.css';
 import { useHistory } from 'react-router-dom';
-import DeleteConfirmationModal from './DeleteConfirmationModal';
 
 const ThreeDots = React.forwardRef(({ onClick }, ref) => (
   <i
@@ -62,11 +63,20 @@ export const MoreDropdown = ({ handleEdit, handleDelete }) => {
         </Dropdown.Menu>
       </Dropdown>
 
-      <DeleteConfirmationModal
-        show={showDeleteModal}
-        handleClose={handleCloseDeleteModal}
-        handleConfirm={handleConfirmDelete}
-      />
+      <Modal show={showDeleteModal} onHide={handleCloseDeleteModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>Confirm Deletion</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Are you sure you want to delete this item?</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseDeleteModal}>
+            Cancel
+          </Button>
+          <Button variant="danger" onClick={handleConfirmDelete}>
+            Delete
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 };

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
 import { axiosReq } from '../../api/axiosDefaults';
 import { toast } from 'react-toastify';
 import { useHistory } from 'react-router-dom';
 import styles from '../../styles/ContactForm.module.css';
 import Asset from '../../components/Asset';
+import DeleteConfirmationModal from '../../components/DeleteConfirmationModal';
 
 const ContactForm = () => {
   const history = useHistory();
@@ -47,7 +47,7 @@ const ContactForm = () => {
       toast.success('Your message was deleted.');
       resetForm();
       setShowConfirmModal(false);
-      history.push('/');
+      history.push('/'); // Redirect to the desired page after deletion
     } catch (err) {
       console.error('Error deleting message:', err);
       if (err.response) {
@@ -172,32 +172,11 @@ const ContactForm = () => {
           </div>
         </div>
 
-        <Modal
+        <DeleteConfirmationModal
           show={showConfirmModal}
-          onHide={() => setShowConfirmModal(false)}
-          className={styles.ConfirmModal}
-        >
-          <Modal.Header closeButton>
-            <Modal.Title>Confirm Cancellation</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>Are you sure you want to cancel your message?</Modal.Body>
-          <Modal.Footer>
-            <Button
-              variant="secondary"
-              onClick={() => setShowConfirmModal(false)}
-              className={styles.btn_secondary}
-            >
-              No, Keep My Message
-            </Button>
-            <Button
-              variant="danger"
-              onClick={handleDeleteMessage}
-              className={styles.btn_danger}
-            >
-              Yes, Delete My Message
-            </Button>
-          </Modal.Footer>
-        </Modal>
+          handleClose={() => setShowConfirmModal(false)}
+          handleConfirm={handleDeleteMessage}
+        />
       </div>
     );
   }
