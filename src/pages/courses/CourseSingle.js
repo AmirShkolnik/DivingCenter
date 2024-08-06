@@ -1,19 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
-import {
-  Container,
-  Button,
-  Form,
-  Alert,
-  Spinner,
-  Modal,
-} from 'react-bootstrap';
+import { Container, Button, Form, Alert, Spinner } from 'react-bootstrap';
 import StarRatings from 'react-star-ratings';
 import { axiosReq, axiosRes } from '../../api/axiosDefaults';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import styles from '../../styles/CourseSingle.module.css';
 import { toast } from 'react-toastify';
 import DeleteConfirmationModal from '../../components/DeleteConfirmationModal';
+import UpdateConfirmationModal from '../../components/UpdateConfirmationModal';
 
 function CourseSingle() {
   const { slug } = useParams();
@@ -28,7 +22,7 @@ function CourseSingle() {
   const [loading, setLoading] = useState(true);
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
   const [showUpdateConfirmation, setShowUpdateConfirmation] = useState(false);
-  const [hasChanges, setHasChanges] = useState(false); // New state variable
+  const [hasChanges, setHasChanges] = useState(false);
 
   useEffect(() => {
     const fetchCourse = async () => {
@@ -106,7 +100,7 @@ function CourseSingle() {
       setShowReviewForm(false);
       setIsEditing(false);
       setShowUpdateConfirmation(false);
-      setHasChanges(false); // Reset changes state
+      setHasChanges(false);
     } catch (err) {
       setError(err.response?.data?.detail || 'Failed to submit review');
       toast.error('Failed to submit review. Please try again.');
@@ -189,6 +183,7 @@ function CourseSingle() {
       </Container>
     );
   }
+
   if (error) {
     return <Alert variant="danger">Error: {error}</Alert>;
   }
@@ -296,7 +291,6 @@ function CourseSingle() {
                     }}
                     className={`${styles.Button} ${styles.modalCancelButton}`}
                   >
-                    {' '}
                     Cancel
                   </Button>
                 </div>
@@ -343,44 +337,11 @@ function CourseSingle() {
         handleClose={() => setShowDeleteConfirmation(false)}
         handleConfirm={handleDeleteReview}
       />
-
-      <Modal
+      <UpdateConfirmationModal
         show={showUpdateConfirmation}
-        onHide={() => setShowUpdateConfirmation(false)}
-      >
-        <Modal.Header className={styles.modalHeader}>
-          <Modal.Title className={styles.modalTitle}>
-            Confirm Update
-          </Modal.Title>
-          <button
-            type="button"
-            className={styles.modalCloseButton}
-            onClick={() => setShowUpdateConfirmation(false)}
-            aria-label="Close"
-          >
-            &times;
-          </button>
-        </Modal.Header>
-        <Modal.Body className={styles.modalBody}>
-          Are you sure you want to update your review?
-        </Modal.Body>
-        <Modal.Footer className={styles.modalFooter}>
-          <Button
-            variant="secondary"
-            onClick={() => setShowUpdateConfirmation(false)}
-            className={styles.modalCancelButton}
-          >
-            Cancel
-          </Button>
-          <Button
-            variant="primary"
-            onClick={submitReview}
-            className={styles.modalPrimaryButton}
-          >
-            Update
-          </Button>
-        </Modal.Footer>
-      </Modal>
+        handleClose={() => setShowUpdateConfirmation(false)}
+        handleConfirm={submitReview}
+      />
     </Container>
   );
 }
