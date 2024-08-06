@@ -5,12 +5,13 @@ import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import { toast } from 'react-toastify';
 import { useHistory, useLocation } from 'react-router-dom';
 import { Spinner } from 'react-bootstrap';
-import DeleteConfirmationModal from '../../components/DeleteConfirmationModal.js';
+import DeleteConfirmationModal from '../../components/DeleteConfirmationModal';
 
 const BookingPage = () => {
   const currentUser = useCurrentUser();
   const [bookings, setBookings] = useState([]);
   const [editingBooking, setEditingBooking] = useState(null);
+  const [originalBooking, setOriginalBooking] = useState(null);
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [deletingBookingId, setDeletingBookingId] = useState(null);
   const [courses, setCourses] = useState([]);
@@ -61,12 +62,27 @@ const BookingPage = () => {
   }, [location, fetchBookings, history]);
 
   const handleEdit = (booking) => {
-    setEditingBooking({ ...booking });
+    setEditingBooking({ ...booking, course: booking.course.toString() });
+    setOriginalBooking({ ...booking, course: booking.course.toString() });
     setIsChanged(false);
   };
 
   const handleCancelEdit = () => {
     setEditingBooking(null);
+    setOriginalBooking(null);
+  };
+
+  const handleInputChange = (field, value) => {
+    setEditingBooking((prev) => {
+      const newBooking = { ...prev, [field]: value };
+
+      const hasChanges = ['date', 'time', 'course', 'additional_info'].some(
+        (key) => newBooking[key] !== originalBooking[key]
+      );
+
+      setIsChanged(hasChanges);
+      return newBooking;
+    });
   };
 
   const checkExistingBooking = (date, time, course, currentBookingId) => {
@@ -86,22 +102,8 @@ const BookingPage = () => {
       setEditingBooking(null);
       return;
     }
-    const { id, date, time, course, additional_info } = editingBooking;
+    const { id, date, time, course } = editingBooking;
     const formattedDate = new Date(date).toISOString().split('T')[0];
-
-    const originalBooking = bookings.find((booking) => booking.id === id);
-
-    const hasChanges =
-      formattedDate !== originalBooking.date ||
-      time !== originalBooking.time ||
-      course !== originalBooking.course ||
-      additional_info !== originalBooking.additional_info;
-
-    if (!hasChanges) {
-      toast.info('No changes were made to the booking.');
-      setEditingBooking(null);
-      return;
-    }
 
     if (checkExistingBooking(formattedDate, time, course, id)) {
       toast.warning(
@@ -129,6 +131,7 @@ const BookingPage = () => {
         )
       );
       setEditingBooking(null);
+      setOriginalBooking(null);
       toast.success('Booking updated successfully!');
     } catch (err) {
       if (
@@ -202,6 +205,7 @@ const BookingPage = () => {
       </div>
     );
   }
+
   return (
     <div className={styles.bookingPage}>
       <h2 className={styles.bookingTitle}>Your Bookings</h2>
@@ -237,13 +241,7 @@ const BookingPage = () => {
                   type="date"
                   id="date"
                   value={editingBooking.date.split('T')[0]}
-                  onChange={(e) => {
-                    setEditingBooking({
-                      ...editingBooking,
-                      date: e.target.value,
-                    });
-                    setIsChanged(true);
-                  }}
+                  onChange={(e) => handleInputChange('date', e.target.value)}
                   required
                 />
               </div>
@@ -252,13 +250,7 @@ const BookingPage = () => {
                 <select
                   id="time"
                   value={editingBooking.time}
-                  onChange={(e) => {
-                    setEditingBooking({
-                      ...editingBooking,
-                      time: e.target.value,
-                    });
-                    setIsChanged(true);
-                  }}
+                  onChange={(e) => handleInputChange('time', e.target.value)}
                   required
                 >
                   <option value="09:00">09:00</option>
@@ -270,13 +262,7 @@ const BookingPage = () => {
                 <select
                   id="course"
                   value={editingBooking.course}
-                  onChange={(e) => {
-                    setEditingBooking({
-                      ...editingBooking,
-                      course: e.target.value,
-                    });
-                    setIsChanged(true);
-                  }}
+                  onChange={(e) => handleInputChange('course', e.target.value)}
                   required
                 >
                   {courses.map((course) => (
@@ -291,13 +277,9 @@ const BookingPage = () => {
                 <textarea
                   id="additionalInfo"
                   value={editingBooking.additional_info}
-                  onChange={(e) => {
-                    setEditingBooking({
-                      ...editingBooking,
-                      additional_info: e.target.value,
-                    });
-                    setIsChanged(true);
-                  }}
+                  onChange={(e) =>
+                    handleInputChange('additional_info', e.target.value)
+                  }
                   rows="4"
                 ></textarea>
               </div>
@@ -313,7 +295,6 @@ const BookingPage = () => {
                 onClick={handleCancelEdit}
                 className={styles.cancelButton}
               >
-                {' '}
                 Cancel
               </button>
             </form>
