@@ -5,6 +5,7 @@ import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import { toast } from 'react-toastify';
 import { useHistory, useLocation } from 'react-router-dom';
 import { Spinner } from 'react-bootstrap';
+import DeleteConfirmationModal from '../../components/DeleteConfirmationModal.js';
 
 const BookingPage = () => {
   const currentUser = useCurrentUser();
@@ -201,7 +202,6 @@ const BookingPage = () => {
       </div>
     );
   }
-
   return (
     <div className={styles.bookingPage}>
       <h2 className={styles.bookingTitle}>Your Bookings</h2>
@@ -313,6 +313,7 @@ const BookingPage = () => {
                 onClick={handleCancelEdit}
                 className={styles.cancelButton}
               >
+                {' '}
                 Cancel
               </button>
             </form>
@@ -338,26 +339,13 @@ const BookingPage = () => {
           )}
         </div>
       ))}
-      {showConfirmation && (
-        <>
-          <div className={styles.overlay}></div>
-          <div className={styles.confirmationDialog}>
-            <p>Are you sure you want to delete this booking?</p>
-            <button
-              onClick={confirmDelete}
-              className={styles.cancelConfirmButton}
-            >
-              Yes, Delete
-            </button>
-            <button
-              onClick={() => setShowConfirmation(false)}
-              className={styles.keepBookingButton}
-            >
-              No, Keep Booking
-            </button>
-          </div>
-        </>
-      )}
+
+      <DeleteConfirmationModal
+        show={showConfirmation}
+        handleClose={() => setShowConfirmation(false)}
+        handleConfirm={confirmDelete}
+      />
+
       {showUpdateConfirmation && (
         <>
           <div className={styles.overlay}></div>
