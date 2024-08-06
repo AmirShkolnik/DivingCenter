@@ -17,7 +17,9 @@ import appStyles from '../../App.module.css';
 
 const UsernameForm = () => {
   const [username, setUsername] = useState('');
+  const [originalUsername, setOriginalUsername] = useState('');
   const [errors, setErrors] = useState({});
+  const [isChanged, setIsChanged] = useState(false);
 
   const history = useHistory();
   const { id } = useParams();
@@ -28,11 +30,16 @@ const UsernameForm = () => {
   useEffect(() => {
     if (currentUser?.profile_id?.toString() === id) {
       setUsername(currentUser.username);
+      setOriginalUsername(currentUser.username);
     } else {
       history.push('/');
       toast.error("You don't have permission to edit this profile.");
     }
   }, [currentUser, history, id]);
+
+  useEffect(() => {
+    setIsChanged(username !== originalUsername);
+  }, [username, originalUsername]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -77,14 +84,15 @@ const UsernameForm = () => {
               </Alert>
             ))}
             <Button
-              className={`${btnStyles.Button} ${btnStyles.Blue}`}
+              className={`${btnStyles.Button} ${btnStyles.Red}`}
               onClick={handleCancel}
             >
               cancel
             </Button>
             <Button
-              className={`${btnStyles.Button} ${btnStyles.Blue}`}
+              className={`${btnStyles.Button} ${isChanged ? btnStyles.Blue : btnStyles.Gray}`}
               type="submit"
+              disabled={!isChanged}
             >
               save
             </Button>

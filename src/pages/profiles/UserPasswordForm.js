@@ -25,12 +25,18 @@ const UserPasswordForm = () => {
   const { new_password1, new_password2 } = userData;
 
   const [errors, setErrors] = useState({});
+  const [isChanged, setIsChanged] = useState(false);
 
   const handleChange = (event) => {
-    setUserData({
-      ...userData,
-      [event.target.name]: event.target.value,
-    });
+    const { name, value } = event.target;
+    setUserData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+    setIsChanged(
+      value.trim() !== '' ||
+        (name === 'new_password1' ? new_password2 : new_password1).trim() !== ''
+    );
   };
 
   useEffect(() => {
@@ -90,7 +96,7 @@ const UserPasswordForm = () => {
               </Alert>
             ))}
             <Button
-              className={`${btnStyles.Button} ${btnStyles.Blue}`}
+              className={`${btnStyles.Button} ${btnStyles.Red}`}
               onClick={() => {
                 history.goBack();
                 toast.info('Password change cancelled.');
@@ -100,7 +106,8 @@ const UserPasswordForm = () => {
             </Button>
             <Button
               type="submit"
-              className={`${btnStyles.Button} ${btnStyles.Blue}`}
+              className={`${btnStyles.Button} ${isChanged ? btnStyles.Blue : btnStyles.Gray}`}
+              disabled={!isChanged}
             >
               save
             </Button>

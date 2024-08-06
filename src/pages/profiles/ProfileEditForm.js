@@ -30,7 +30,9 @@ const ProfileEditForm = () => {
   });
   const { name, content, image } = profileData;
 
+  const [originalProfileData, setOriginalProfileData] = useState({});
   const [errors, setErrors] = useState({});
+  const [isChanged, setIsChanged] = useState(false);
 
   useEffect(() => {
     const handleMount = async () => {
@@ -39,6 +41,7 @@ const ProfileEditForm = () => {
           const { data } = await axiosReq.get(`/profiles/${id}/`);
           const { name, content, image } = data;
           setProfileData({ name, content, image });
+          setOriginalProfileData({ name, content, image });
         } catch (err) {
           toast.error('Failed to load profile. Please try again.');
           history.push('/');
@@ -50,6 +53,13 @@ const ProfileEditForm = () => {
 
     handleMount();
   }, [currentUser, history, id]);
+
+  useEffect(() => {
+    const hasChanges = Object.keys(profileData).some(
+      (key) => profileData[key] !== originalProfileData[key]
+    );
+    setIsChanged(hasChanges);
+  }, [profileData, originalProfileData]);
 
   const handleChange = (event) => {
     setProfileData({
@@ -111,7 +121,7 @@ const ProfileEditForm = () => {
         </Alert>
       ))}
       <Button
-        className={`${btnStyles.Button} ${btnStyles.Blue}`}
+        className={`${btnStyles.Button} ${btnStyles.Red}`}
         onClick={() => {
           history.goBack();
           toast.info('Changes discarded.');
@@ -119,7 +129,11 @@ const ProfileEditForm = () => {
       >
         cancel
       </Button>
-      <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
+      <Button
+        className={`${btnStyles.Button} ${btnStyles.Blue}`}
+        type="submit"
+        disabled={!isChanged}
+      >
         save
       </Button>
     </>
