@@ -16,6 +16,7 @@ const ContactForm = () => {
     subject: '',
     message: '',
   });
+  const [originalFormData, setOriginalFormData] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [errors, setErrors] = useState({});
@@ -27,6 +28,15 @@ const ContactForm = () => {
   useEffect(() => {
     setHasLoaded(true);
   }, []);
+
+  useEffect(() => {
+    if (isEditing) {
+      const hasChanges = Object.keys(formData).some(
+        (key) => formData[key] !== originalFormData[key]
+      );
+      setIsChanged(hasChanges);
+    }
+  }, [formData, originalFormData, isEditing]);
 
   const handleDeleteMessage = async () => {
     if (!messageId) {
@@ -47,7 +57,7 @@ const ContactForm = () => {
       toast.success('Your message was deleted.');
       resetForm();
       setShowConfirmModal(false);
-      history.push('/'); // Redirect to the desired page after deletion
+      history.push('/');
     } catch (err) {
       console.error('Error deleting message:', err);
       if (err.response) {
@@ -67,7 +77,6 @@ const ContactForm = () => {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    setIsChanged(true);
   };
 
   const handleSubmit = async (e) => {
@@ -97,6 +106,8 @@ const ContactForm = () => {
       localStorage.setItem(`deletion_token_${data.id}`, data.deletion_token);
       setIsSubmitted(true);
       setIsEditing(false);
+      setOriginalFormData(formData);
+      setIsChanged(false);
       toast.success(
         isEditing
           ? 'Your message has been updated successfully!'
@@ -117,6 +128,7 @@ const ContactForm = () => {
 
   const resetForm = () => {
     setFormData({ name: '', email: '', subject: '', message: '' });
+    setOriginalFormData({});
     setIsSubmitted(false);
     setIsEditing(false);
     setMessageId(null);
@@ -130,6 +142,7 @@ const ContactForm = () => {
   const handleEditMessage = () => {
     setIsEditing(true);
     setIsSubmitted(false);
+    setOriginalFormData({ ...formData });
     setIsChanged(false);
   };
 
@@ -244,6 +257,8 @@ const ContactForm = () => {
                 onClick={() => {
                   setIsEditing(false);
                   setIsSubmitted(true);
+                  setFormData(originalFormData);
+                  setIsChanged(false);
                 }}
               >
                 Cancel Edit
@@ -251,9 +266,9 @@ const ContactForm = () => {
               <Button
                 type="submit"
                 className={`${styles.SubmitButton} ${
-                  !isChanged || !hasChanges() ? styles.DisabledButton : ''
+                  !isChanged ? styles.DisabledButton : ''
                 }`}
-                disabled={!isChanged || !hasChanges()}
+                disabled={!isChanged}
               >
                 Update Message
               </Button>
@@ -269,9 +284,9 @@ const ContactForm = () => {
               <Button
                 type="submit"
                 className={`${styles.SubmitButton} ${
-                  !isChanged || !hasChanges() ? styles.DisabledButton : ''
+                  !hasChanges() ? styles.DisabledButton : ''
                 }`}
-                disabled={!isChanged || !hasChanges()}
+                disabled={!hasChanges()}
               >
                 Send Message
               </Button>
