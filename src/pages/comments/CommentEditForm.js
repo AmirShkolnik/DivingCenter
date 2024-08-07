@@ -10,7 +10,6 @@ function CommentEditForm(props) {
   const { id, content, setShowEditForm, setComments } = props;
   const [formContent, setFormContent] = useState(content);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
-  const [modalAction, setModalAction] = useState('');
   const isMounted = useRef(true);
 
   useEffect(() => {
@@ -25,8 +24,9 @@ function CommentEditForm(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setModalAction('update');
-    setShowConfirmModal(true);
+    if (formContent.trim() !== content) {
+      setShowConfirmModal(true);
+    }
   };
 
   const handleConfirmSubmit = async () => {
@@ -61,14 +61,8 @@ function CommentEditForm(props) {
   };
 
   const handleCancel = () => {
-    setModalAction('cancel');
-    setShowConfirmModal(true);
-  };
-
-  const handleConfirmCancel = () => {
     setShowEditForm(false);
     toast.info('Comment edit cancelled');
-    setShowConfirmModal(false);
   };
 
   return (
@@ -106,9 +100,7 @@ function CommentEditForm(props) {
       <UpdateConfirmationModal
         show={showConfirmModal}
         handleClose={() => setShowConfirmModal(false)}
-        handleConfirm={
-          modalAction === 'update' ? handleConfirmSubmit : handleConfirmCancel
-        }
+        handleConfirm={handleConfirmSubmit}
       />
     </>
   );
