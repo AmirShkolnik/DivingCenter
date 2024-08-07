@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
 import styles from '../styles/MoreDropdown.module.css';
 import { useHistory } from 'react-router-dom';
-import DeleteConfirmationModal from './DeleteConfirmationModal';
 
 const ThreeDots = React.forwardRef(({ onClick }, ref) => (
   <i
@@ -20,54 +19,37 @@ const ThreeDots = React.forwardRef(({ onClick }, ref) => (
     }}
     aria-label="toggle-dropdown"
     role="button"
-    tabIndex="0"
+    tabIndex={0}
   />
 ));
+
 ThreeDots.displayName = 'ThreeDots';
 
 export const MoreDropdown = ({ handleEdit, handleDelete }) => {
-  const [showDeleteModal, setShowDeleteModal] = useState(false);
-
-  const handleShowDeleteModal = () => setShowDeleteModal(true);
-  const handleCloseDeleteModal = () => setShowDeleteModal(false);
-
-  const handleConfirmDelete = () => {
-    handleDelete();
-    handleCloseDeleteModal();
-  };
-
   return (
-    <>
-      <Dropdown className="ml-auto" drop="left">
-        <Dropdown.Toggle as={ThreeDots} />
+    <Dropdown className="ml-auto" drop="left">
+      <Dropdown.Toggle as={ThreeDots} />
 
-        <Dropdown.Menu
-          className="text-center"
-          popperConfig={{ strategy: 'fixed' }}
+      <Dropdown.Menu
+        className="text-center"
+        popperConfig={{ strategy: 'fixed' }}
+      >
+        <Dropdown.Item
+          className={styles.DropdownItem}
+          onClick={handleEdit}
+          aria-label="edit"
         >
-          <Dropdown.Item
-            className={styles.DropdownItem}
-            onClick={handleEdit}
-            aria-label="edit"
-          >
-            <i className="fas fa-edit" />
-          </Dropdown.Item>
-          <Dropdown.Item
-            className={styles.DropdownItem}
-            onClick={handleShowDeleteModal}
-            aria-label="delete"
-          >
-            <i className="fas fa-trash-alt" />
-          </Dropdown.Item>
-        </Dropdown.Menu>
-      </Dropdown>
-
-      <DeleteConfirmationModal
-        show={showDeleteModal}
-        handleClose={handleCloseDeleteModal}
-        handleConfirm={handleConfirmDelete}
-      />
-    </>
+          <i className="fas fa-edit" />
+        </Dropdown.Item>
+        <Dropdown.Item
+          className={styles.DropdownItem}
+          onClick={handleDelete}
+          aria-label="delete"
+        >
+          <i className="fas fa-trash-alt" />
+        </Dropdown.Item>
+      </Dropdown.Menu>
+    </Dropdown>
   );
 };
 

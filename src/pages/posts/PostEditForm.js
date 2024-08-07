@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { toast } from 'react-toastify';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -12,6 +12,7 @@ import appStyles from '../../App.module.css';
 import btnStyles from '../../styles/Button.module.css';
 import { useHistory, useParams } from 'react-router';
 import { axiosReq } from '../../api/axiosDefaults';
+import UpdateConfirmationModal from '../../components/UpdateConfirmationModal';
 
 function PostEditForm() {
   const [errors, setErrors] = useState({});
@@ -23,12 +24,13 @@ function PostEditForm() {
 
   const [originalPostData, setOriginalPostData] = useState({});
   const [isChanged, setIsChanged] = useState(false);
-
+  const [showUpdateModal, setShowUpdateModal] = useState(false);
   const { title, content, image } = postData;
 
   const imageInput = useRef(null);
   const history = useHistory();
   const { id } = useParams();
+  const isMounted = useRef(true);
 
   useEffect(() => {
     const handleMount = async () => {
@@ -49,6 +51,10 @@ function PostEditForm() {
     };
 
     handleMount();
+
+    return () => {
+      isMounted.current = false;
+    };
   }, [history, id]);
 
   useEffect(() => {
@@ -80,8 +86,14 @@ function PostEditForm() {
     }
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
+    if (isChanged) {
+      setShowUpdateModal(true);
+    }
+  };
+
+  const handleConfirmUpdate = useCallback(async () => {
     const formData = new FormData();
     formData.append('title', title);
     formData.append('content', content);
@@ -92,15 +104,22 @@ function PostEditForm() {
 
     try {
       await axiosReq.put(`/posts/${id}/`, formData);
-      toast.success('Post updated successfully!');
-      history.push(`/posts/${id}`);
+      if (isMounted.current) {
+        toast.success('Post updated successfully!');
+        history.push(`/posts/${id}`);
+      }
     } catch (err) {
-      if (err.response?.status !== 401) {
-        setErrors(err.response?.data || {});
-        toast.error('Failed to update post. Please check your inputs.');
+      if (isMounted.current) {
+        if (err.response?.status !== 401) {
+          setErrors(err.response?.data || {});
+          toast.error('Failed to update post. Please check your inputs.');
+        }
       }
     }
-  };
+    if (isMounted.current) {
+      setShowUpdateModal(false);
+    }
+  }, [history, id, title, content]);
 
   const textFields = (
     <div className="text-center">
@@ -155,46 +174,53 @@ function PostEditForm() {
   );
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Row>
-        <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
-          <Container
-            className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
-          >
-            <Form.Group className="text-center">
-              <figure>
-                <Image className={appStyles.Image} src={image} rounded />
-              </figure>
-              <div>
-                <Form.Label
-                  className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
-                  htmlFor="image-upload"
-                >
-                  Change the image
-                </Form.Label>
-              </div>
+    <>
+      <Form onSubmit={handleSubmit}>
+        <Row>
+          <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
+            <Container
+              className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
+            >
+              <Form.Group className="text-center">
+                <figure>
+                  <Image className={appStyles.Image} src={image} rounded />
+                </figure>
+                <div>
+                  <Form.Label
+                    className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
+                    htmlFor="image-upload"
+                  >
+                    Change the image
+                  </Form.Label>
+                </div>
 
-              <Form.File
-                id="image-upload"
-                accept="image/*"
-                onChange={handleChangeImage}
-                ref={imageInput}
-              />
-            </Form.Group>
-            {errors?.image?.map((message, idx) => (
-              <Alert variant="warning" key={idx}>
-                {message}
-              </Alert>
-            ))}
+                <Form.File
+                  id="image-upload"
+                  accept="image/*"
+                  onChange={handleChangeImage}
+                  ref={imageInput}
+                />
+              </Form.Group>
+              {errors?.image?.map((message, idx) => (
+                <Alert variant="warning" key={idx}>
+                  {message}
+                </Alert>
+              ))}
 
-            <div className="d-md-none">{textFields}</div>
-          </Container>
-        </Col>
-        <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
-          <Container className={appStyles.Content}>{textFields}</Container>
-        </Col>
-      </Row>
-    </Form>
+              <div className="d-md-none">{textFields}</div>
+            </Container>
+          </Col>
+          <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
+            <Container className={appStyles.Content}>{textFields}</Container>
+          </Col>
+        </Row>
+      </Form>
+      <UpdateConfirmationModal
+        show={showUpdateModal}
+        handleClose={() => setShowUpdateModal(false)}
+        handleConfirm={handleConfirmUpdate}
+      />
+    </>
   );
 }
 
