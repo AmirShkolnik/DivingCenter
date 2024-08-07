@@ -925,8 +925,6 @@ By implementing these solutions, we've improved the component's functionality, u
 | axiosDefaults.js             | No automatic handling for 403 and 500 errors                          | Implement Axios interceptors to catch errors globally and redirect to custom error pages           | [Axios Interceptors Documentation](https://axios-http.com/docs/interceptors)                      |
 | ErrorBoundary.js             | Console logging errors instead of handling them                      | Remove `console.log` and handle error logging or display fallback UI                               | [React Error Boundaries Documentation](https://reactjs.org/docs/error-boundaries.html)            |
 | App.js                       | No global error boundary to catch rendering errors                    | Wrap the main `App` component with an `ErrorBoundary` to catch and handle rendering errors         | [React Error Boundaries Documentation](https://reactjs.org/docs/error-boundaries.html)            |
-| Forbidden403.test.js         | No test for 403 Forbidden error page                                  | Create a test to verify that the 403 error page renders correctly                                  | [React Testing Library Documentation](https://testing-library.com/docs/react-testing-library/intro) |
-| ServerError500.test.js       | No test for 500 Internal Server Error page                            | Create a test to verify that the 500 error page renders correctly                                  | [React Testing Library Documentation](https://testing-library.com/docs/react-testing-library/intro) |
 | axiosDefaults.js             | No handling for network errors                                        | Add alert for network errors when no response is received                                          | [Axios Interceptors Documentation](https://axios-http.com/docs/interceptors)                      |
 
 ### Explanation of Each Issue and Solution:
@@ -935,27 +933,53 @@ By implementing these solutions, we've improved the component's functionality, u
    - **Issue:** The application does not automatically handle 403 and 500 errors.
    - **Solution:** Implement Axios interceptors to catch these errors globally and redirect to custom error pages.
 
-2. **Console logging errors instead of handling them:**
-   - **Issue:** Errors were being logged to the console instead of being handled.
-   - **Solution:** Remove `console.log` and handle error logging or display a fallback UI in the `ErrorBoundary`.
-
-3. **No global error boundary to catch rendering errors:**
+2. **No global error boundary to catch rendering errors:**
    - **Issue:** There was no global error boundary to catch rendering errors.
    - **Solution:** Wrap the main `App` component with an `ErrorBoundary` to catch and handle rendering errors.
 
-4. **No test for 403 Forbidden error page:**
-   - **Issue:** There was no test to verify that the 403 error page renders correctly.
-   - **Solution:** Create a test to verify that the 403 error page renders correctly using React Testing Library.
-
-5. **No test for 500 Internal Server Error page:**
-   - **Issue:** There was no test to verify that the 500 error page renders correctly.
-   - **Solution:** Create a test to verify that the 500 error page renders correctly using React Testing Library.
-
-6. **No handling for network errors:**
+3. **No handling for network errors:**
    - **Issue:** Network errors were not being handled, leading to potential user confusion.
    - **Solution:** Add an alert for network errors when no response is received using Axios interceptors.
 
 These fixes ensure that the application handles errors gracefully, provides meaningful feedback to users, and follows best practices for error handling and testing.
+
+[Back to top](#table-of-contents)
+
+### MoreDropdown Component Issues
+
+| File Name | Issue | Solution | Reference |
+|-----------|-------|----------|-----------|
+| MoreDropdown.js | Icons without text labels are not user-friendly | Add text labels next to icons for better clarity | [Nielsen Norman Group - Icon Usability](https://www.nngroup.com/articles/icon-usability/) |
+| MoreDropdown.module.css | Dropdown menu might overflow or misalign | Update CSS to ensure proper alignment and prevent overflow | [Bootstrap Dropdown Documentation](https://getbootstrap.com/docs/4.5/components/dropdowns/) |
+| MoreDropdown.js | Dropdown positioning might be inconsistent across different screen sizes | Use `drop="left"` prop consistently and adjust CSS for responsive design | [React-Bootstrap Dropdown Documentation](https://react-bootstrap.github.io/components/dropdowns/) |
+| MoreDropdown.test.js | Tests checking only for aria-labels, not actual text content | Update tests to check for new text labels alongside icons | [Testing Library Documentation](https://testing-library.com/docs/queries/bytext) |
+| MoreDropdown.js | Lack of keyboard navigation support | Implement keyboard navigation for dropdown items | [W3C WAI-ARIA Authoring Practices](https://www.w3.org/TR/wai-aria-practices/#menu) |
+
+### Explanation of Each Issue and Solution:
+
+1. **Icons without text labels are not user-friendly:**
+   - **Issue:** The dropdown used only icons, which can be confusing for some users.
+   - **Solution:** Add text labels next to icons to improve clarity and usability.
+
+2. **Dropdown menu might overflow or misalign:**
+   - **Issue:** The dropdown menu could potentially overflow or misalign, especially with added text.
+   - **Solution:** Update CSS to ensure proper alignment and prevent overflow, using `min-width` and flexbox properties.
+
+3. **Dropdown positioning might be inconsistent:**
+   - **Issue:** The dropdown's position might not be consistent across different screen sizes.
+   - **Solution:** Use `drop="left"` prop consistently and adjust CSS for responsive design to ensure proper positioning.
+
+4. **Tests checking only for aria-labels:**
+   - **Issue:** The existing tests were only checking for aria-labels, not the actual text content.
+   - **Solution:** Update tests to check for new text labels alongside icons, ensuring comprehensive test coverage.
+
+5. **Lack of keyboard navigation support:**
+   - **Issue:** The dropdown might not be fully accessible via keyboard navigation.
+   - **Solution:** Implement keyboard navigation for dropdown items to improve accessibility.
+
+These improvements enhance the usability, accessibility, and testability of the MoreDropdown component, ensuring a better user experience and more robust code.
+
+[Back to top](#table-of-contents)
 
 ### Known Bugs
 
