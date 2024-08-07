@@ -29,16 +29,16 @@ describe('MoreDropdown', () => {
     });
     fireEvent.click(toggleButton);
 
-    // Check if edit and delete options are rendered
-    expect(screen.getByLabelText('edit')).toBeInTheDocument();
-    expect(screen.getByLabelText('delete')).toBeInTheDocument();
+    // Check if edit and delete options are rendered with text
+    expect(screen.getByText('Edit')).toBeInTheDocument();
+    expect(screen.getByText('Delete')).toBeInTheDocument();
 
     // Click edit option
-    fireEvent.click(screen.getByLabelText('edit'));
+    fireEvent.click(screen.getByText('Edit'));
     expect(handleEdit).toHaveBeenCalledTimes(1);
 
     // Click delete option
-    fireEvent.click(screen.getByLabelText('delete'));
+    fireEvent.click(screen.getByText('Delete'));
     expect(handleDelete).toHaveBeenCalledTimes(1);
   });
 });
@@ -57,21 +57,21 @@ describe('ProfileEditDropdown', () => {
     });
     fireEvent.click(toggleButton);
 
-    // Check if all profile edit options are rendered
-    expect(screen.getByLabelText('edit-profile')).toBeInTheDocument();
-    expect(screen.getByLabelText('edit-username')).toBeInTheDocument();
-    expect(screen.getByLabelText('edit-password')).toBeInTheDocument();
+    // Check if all profile edit options are rendered with text
+    expect(screen.getByText('Edit Profile')).toBeInTheDocument();
+    expect(screen.getByText('Change Username')).toBeInTheDocument();
+    expect(screen.getByText('Change Password')).toBeInTheDocument();
 
     // Click edit profile option
-    fireEvent.click(screen.getByLabelText('edit-profile'));
+    fireEvent.click(screen.getByText('Edit Profile'));
     expect(mockPush).toHaveBeenCalledWith('/profiles/123/edit');
 
     // Click edit username option
-    fireEvent.click(screen.getByLabelText('edit-username'));
+    fireEvent.click(screen.getByText('Change Username'));
     expect(mockPush).toHaveBeenCalledWith('/profiles/123/edit/username');
 
     // Click edit password option
-    fireEvent.click(screen.getByLabelText('edit-password'));
+    fireEvent.click(screen.getByText('Change Password'));
     expect(mockPush).toHaveBeenCalledWith('/profiles/123/edit/password');
   });
 });
