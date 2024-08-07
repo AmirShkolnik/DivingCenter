@@ -951,7 +951,7 @@ These fixes ensure that the application handles errors gracefully, provides mean
 |-----------|-------|----------|-----------|
 | MoreDropdown.js | Icons without text labels are not user-friendly | Add text labels next to icons for better clarity | [Nielsen Norman Group - Icon Usability](https://www.nngroup.com/articles/icon-usability/) |
 | MoreDropdown.module.css | Dropdown menu might overflow or misalign | Update CSS to ensure proper alignment and prevent overflow | [Bootstrap Dropdown Documentation](https://getbootstrap.com/docs/4.5/components/dropdowns/) |
-| MoreDropdown.js | Dropdown positioning might be inconsistent across different screen sizes | Use `drop="left"` prop consistently and adjust CSS for responsive design | [React-Bootstrap Dropdown Documentation](https://react-bootstrap.github.io/components/dropdowns/) |
+| MoreDropdown.js | Dropdown positioning might be inconsistent across different screen sizes | Use `drop="left"` prop consistently and adjust CSS for responsive design | [React-Bootstrap Dropdown Documentation](https://react-bootstrap.github.io/docs/components/dropdowns/) |
 | MoreDropdown.test.js | Tests checking only for aria-labels, not actual text content | Update tests to check for new text labels alongside icons | [Testing Library Documentation](https://testing-library.com/docs/queries/bytext) |
 | MoreDropdown.js | Lack of keyboard navigation support | Implement keyboard navigation for dropdown items | [W3C WAI-ARIA Authoring Practices](https://www.w3.org/TR/wai-aria-practices/#menu) |
 
