@@ -945,7 +945,7 @@ These fixes ensure that the application handles errors gracefully, provides mean
 
 [Back to top](#table-of-contents)
 
-### MoreDropdown Component Issues
+### MoreDropdown Component Bugs
 
 | File Name | Issue | Solution | Reference |
 |-----------|-------|----------|-----------|
