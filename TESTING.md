@@ -119,7 +119,7 @@ The table below indicates that all CSS files located in the `src/styles` directo
 | [CourseSingle.module.css](https://github.com/AmirShkolnik/DivingCenter/blob/main/src/styles/CourseSingle.module.css) | Same color for background-color and border-color | Changed border-color to a different shade | [css-tricks.com](https://css-tricks.com/almanac/properties/b/border/) | ✅ |
 | [CoursesPage.module.css](https://github.com/AmirShkolnik/DivingCenter/blob/main/src/styles/CoursesPage.module.css) | N/A | N/A | N/A | ✅ |
 | [Footer.module.css](https://github.com/AmirShkolnik/DivingCenter/blob/main/src/styles/Footer.module.css) | N/A | N/A | N/A | ✅ |
-| [index.css](https://github.com/AmirShkolnik/DivingCenter/blob/main/src/index.css) | Vendor-specific properties and font names | Warnings left as is (see explanation) | [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix) | ⚠️ |
+| [index.css](https://github.com/AmirShkolnik/DivingCenter/blob/main/src/index.css) | Vendor-specific properties and font names | Warnings left as is (see explanation below the table) | [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix) | ⚠️ |
 | [LandingPage.module.css](https://github.com/AmirShkolnik/DivingCenter/blob/main/src/styles/LandingPage.module.css) | N/A | N/A | N/A | ✅ |
 | [MoreDropdown.module.css](https://github.com/AmirShkolnik/DivingCenter/blob/main/src/styles/MoreDropdown.module.css) | N/A | N/A | N/A | ✅ |
 | [NavBar.module.css](https://github.com/AmirShkolnik/DivingCenter/blob/main/src/styles/NavBar.module.css) | N/A | N/A | N/A | ✅ |
@@ -721,28 +721,29 @@ The following table summarizes the testing files created for various components 
 
 | Component                     | Test File Link                                              | Status                          |
 |-------------------------------|-------------------------------------------------------------|---------------------------------|
-| App                           | [src/App.test.js](src/App.test.js)                          | PASS (10.304 s)                 |
-| Asset                         | [src/components/__tests__/Asset.test.js](src/components/__tests__/Asset.test.js) | PASS (14.6 s)                   |
-| Avatar                        | [src/components/__tests__/Avatar.test.js](src/components/__tests__/Avatar.test.js) | PASS (14.389 s)                 |
-| Footer                        | [src/components/__tests__/Footer.test.js](src/components/__tests__/Footer.test.js) | PASS (14.595 s)                 |
-| MoreDropDown                  | [src/components/__tests__/MoreDropDown.test.js](src/components/__tests__/MoreDropDown.test.js) | PASS (15.432 s)                 |
-| NavBar                        | [src/components/__tests__/NavBar.test.js](src/components/__tests__/NavBar.test.js) | PASS (15.642 s)                 |
-| NotFound                      | [src/components/__tests__/NotFound.test.js](src/components/__tests__/NotFound.test.js) | PASS (14.607 s)                 |
-| ScrollToTop                   | [src/components/__tests__/ScrollToTop.test.js](src/components/__tests__/ScrollToTop.test.js) | PASS (14.693 s)                 |
-| VideoPlayer                   | [src/components/__tests__/VideoPlayer.test.js](src/components/__tests__/VideoPlayer.test.js) | PASS (14.804 s)                 |
-| VideoPlayerSignIn             | [src/components/__tests__/VideoPlayerSignIn.test.js](src/components/__tests__/VideoPlayerSignIn.test.js) | PASS (14.801 s)                 |
-| VideoPlayerSignUp             | [src/components/__tests__/VideoPlayerSignUp.test.js](src/components/__tests__/VideoPlayerSignUp.test.js) | PASS (14.913 s)                 |
-| ServerError500                | [src/components/__tests__/ServerError500.test.js](src/components/__tests__/ServerError500.test.js) | PASS (14.605 s)                 |
-| Forbidden403                  | [src/components/__tests__/Forbidden403.test.js](src/components/__tests__/Forbidden403.test.js) | PASS (14.306 s)                 |
-| DeleteConfirmationModal       | [src/components/__tests__/DeleteConfirmationModal.test.js](src/components/__tests__/DeleteConfirmationModal.test.js) | PASS (15.206 s)                 |
-| UpdateConfirmationModal       | [src/components/__tests__/UpdateConfirmationModal.test.js](src/components/__tests__/UpdateConfirmationModal.test.js) | PASS (15.311 s)                 |
+| App                           | [src/App.test.js](src/App.test.js)                          | PASS (6.399 s)                  |
+| Asset                         | [src/components/__tests__/Asset.test.js](src/components/__tests__/Asset.test.js) | PASS (10.7 s)                   |
+| Avatar                        | [src/components/__tests__/Avatar.test.js](src/components/__tests__/Avatar.test.js) | PASS (9.793 s)                  |
+| Footer                        | [src/components/__tests__/Footer.test.js](src/components/__tests__/Footer.test.js) | PASS (9.402 s)                  |
+| MoreDropDown                  | [src/components/__tests__/MoreDropDown.test.js](src/components/__tests__/MoreDropDown.test.js) | PASS (10.9 s)                   |
+| NavBar                        | [src/components/__tests__/NavBar.test.js](src/components/__tests__/NavBar.test.js) | PASS (11.295 s)                 |
+| NotFound                      | [src/components/__tests__/NotFound.test.js](src/components/__tests__/NotFound.test.js) | PASS (10.499 s)                 |
+| ScrollToTop                   | [src/components/__tests__/ScrollToTop.test.js](src/components/__tests__/ScrollToTop.test.js) | PASS (10 s)                     |
+| VideoPlayer                   | [src/components/__tests__/VideoPlayer.test.js](src/components/__tests__/VideoPlayer.test.js) | PASS (10.292 s)                 |
+| VideoPlayerSignIn             | [src/components/__tests__/VideoPlayerSignIn.test.js](src/components/__tests__/VideoPlayerSignIn.test.js) | PASS (10.308 s)                 |
+| VideoPlayerSignUp             | [src/components/__tests__/VideoPlayerSignUp.test.js](src/components/__tests__/VideoPlayerSignUp.test.js) | PASS (10.399 s)                 |
+| ServerError500                | [src/components/__tests__/ServerError500.test.js](src/components/__tests__/ServerError500.test.js) | PASS (10.301 s)                 |
+| Forbidden403                  | [src/components/__tests__/Forbidden403.test.js](src/components/__tests__/Forbidden403.test.js) | PASS (10.208 s)                 |
+| DeleteConfirmationModal       | [src/components/__tests__/DeleteConfirmationModal.test.js](src/components/__tests__/DeleteConfirmationModal.test.js) | PASS (10.623 s)                 |
+| UpdateConfirmationModal       | [src/components/__tests__/UpdateConfirmationModal.test.js](src/components/__tests__/UpdateConfirmationModal.test.js) | PASS (10.603 s)                 |
+| ErrorBoundary                 | [src/components/__tests__/ErrorBoundary.test.js](src/components/__tests__/ErrorBoundary.test.js) | PASS (9.497 s)                  |
 
 ### Summary of Test Results
 
-- **Total Test Suites**: 15
-- **Passed Test Suites**: 15
-- **Total Tests**: 47
-- **Passed Tests**: 47
+- **Total Test Suites**: 16
+- **Passed Test Suites**: 16
+- **Total Tests**: 50
+- **Passed Tests**: 50
 - **Total Snapshots**: 0
 
 These results demonstrate the thoroughness of our testing approach and confirm that all components are functioning as expected within the Diving Center project. The successful passing of all tests provides confidence in the reliability and stability of the application's core components.
@@ -916,6 +917,45 @@ These solutions address the main issues in the `ContactForm` component:
 By implementing these solutions, we've improved the component's functionality, user experience, and overall performance. The references provided offer more in-depth information about each solution and the underlying concepts.
 
 [Back to top](#table-of-contents)
+
+### 403 and 500 Error Pages Bugs
+
+| File Name                    | Issue                                                                 | Solution                                                                                           | Reference                                                                                         |
+|------------------------------|-----------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------|
+| axiosDefaults.js             | No automatic handling for 403 and 500 errors                          | Implement Axios interceptors to catch errors globally and redirect to custom error pages           | [Axios Interceptors Documentation](https://axios-http.com/docs/interceptors)                      |
+| ErrorBoundary.js             | Console logging errors instead of handling them                      | Remove `console.log` and handle error logging or display fallback UI                               | [React Error Boundaries Documentation](https://reactjs.org/docs/error-boundaries.html)            |
+| App.js                       | No global error boundary to catch rendering errors                    | Wrap the main `App` component with an `ErrorBoundary` to catch and handle rendering errors         | [React Error Boundaries Documentation](https://reactjs.org/docs/error-boundaries.html)            |
+| Forbidden403.test.js         | No test for 403 Forbidden error page                                  | Create a test to verify that the 403 error page renders correctly                                  | [React Testing Library Documentation](https://testing-library.com/docs/react-testing-library/intro) |
+| ServerError500.test.js       | No test for 500 Internal Server Error page                            | Create a test to verify that the 500 error page renders correctly                                  | [React Testing Library Documentation](https://testing-library.com/docs/react-testing-library/intro) |
+| axiosDefaults.js             | No handling for network errors                                        | Add alert for network errors when no response is received                                          | [Axios Interceptors Documentation](https://axios-http.com/docs/interceptors)                      |
+
+### Explanation of Each Issue and Solution:
+
+1. **No automatic handling for 403 and 500 errors:**
+   - **Issue:** The application does not automatically handle 403 and 500 errors.
+   - **Solution:** Implement Axios interceptors to catch these errors globally and redirect to custom error pages.
+
+2. **Console logging errors instead of handling them:**
+   - **Issue:** Errors were being logged to the console instead of being handled.
+   - **Solution:** Remove `console.log` and handle error logging or display a fallback UI in the `ErrorBoundary`.
+
+3. **No global error boundary to catch rendering errors:**
+   - **Issue:** There was no global error boundary to catch rendering errors.
+   - **Solution:** Wrap the main `App` component with an `ErrorBoundary` to catch and handle rendering errors.
+
+4. **No test for 403 Forbidden error page:**
+   - **Issue:** There was no test to verify that the 403 error page renders correctly.
+   - **Solution:** Create a test to verify that the 403 error page renders correctly using React Testing Library.
+
+5. **No test for 500 Internal Server Error page:**
+   - **Issue:** There was no test to verify that the 500 error page renders correctly.
+   - **Solution:** Create a test to verify that the 500 error page renders correctly using React Testing Library.
+
+6. **No handling for network errors:**
+   - **Issue:** Network errors were not being handled, leading to potential user confusion.
+   - **Solution:** Add an alert for network errors when no response is received using Axios interceptors.
+
+These fixes ensure that the application handles errors gracefully, provides meaningful feedback to users, and follows best practices for error handling and testing.
 
 ### Known Bugs
 
