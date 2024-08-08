@@ -669,12 +669,25 @@ Results were documented in a table format, indicating whether each browser was t
 
 | Browser        | Tested? | Issues Found | Image | Pass/Fail |
 | -------------- | ------- | ------------ | ----- | --------- |
-| Chrome         | Yes     | None         | <details><summary>Chrome</summary><img src="doc/testing/browser/chrom.png" alt="Profiles"></details> | ✅       |
-| Firefox        | Yes     | None         | <details><summary>Firefox</summary><img src="doc/testing/browser/mozilla.png" alt="Profiles"></details> | ✅       |
-| Microsoft Edge | Yes     | None         | <details><summary>Microsoft Edge</summary><img src="doc/testing/browser/edge.png" alt="Profiles"></details> | ✅       |
-| Opera          | Yes     | None         | <details><summary>Opera</summary><img src="doc/testing/browser/opera.png" alt="Profiles"></details> | ✅       |
+| Chrome         | Yes     | None         | <details><summary>Chrome</summary><img src="doc/testing/browser/chrom.png" alt="Chrome"></details> | ✅       |
+| Firefox        | Yes     | None         | <details><summary>Firefox</summary><img src="doc/testing/browser/mozilla.png" alt="Firefox"></details> | ✅       |
+| Microsoft Edge | Yes     | None         | <details><summary>Microsoft Edge</summary><img src="doc/testing/browser/edge.png" alt="Microsoft"></details> | ✅       |
+| Opera          | Yes     | None         | <details><summary>Opera</summary><img src="doc/testing/browser/opera.png" alt="Opera"></details> | ✅       |
+| Safari          | Yes     | YES - Click for more [Safari Browser Bugs](#safari-browser-bugs)      | <details><summary>Safari - Error 1</summary><img src="doc/ios-bugs/20240808_123716.jpg" alt="Safari"></details> <details><summary>Safari - Error 2</summary><img src="doc/ios-bugs/20240808_123830.jpg" alt="Safari"></details>| ⚠️       |
 
-[Back to top](#table-of-contents)                                         |
+### Explanation
+
+The issues are primarily related to CORS (Cross-Origin Resource Sharing) and the strict handling of third-party cookies by Safari and iOS. When using different domains for the frontend and backend, browsers enforce strict CORS policies which can block requests if not properly configured. Additionally, Safari's privacy settings can block third-party cookies, which are crucial for maintaining sessions if using cookies for authentication.
+
+![Slack Screenshot](doc/ios-bugs/safari-1.png)
+
+![Slack Screenshot](doc/ios-bugs/safari-2.png)
+
+![Slack Screenshot](doc/ios-bugs/safari-3.png)
+
+![Slack Screenshot](doc/ios-bugs/safari-4.png)
+
+[Back to top](#table-of-contents)
 
 ### Responsiveness
 
@@ -983,7 +996,7 @@ These improvements enhance the usability, accessibility, and testability of the 
 
 ### Known Bugs
 
-Here's a table summarizing the known bugs you've described:
+
 
 | Bug ID | Description | Details |
 |--------|-------------|---------|
@@ -1008,6 +1021,32 @@ For more information, you can refer to the following resources:
 |--------|-------------|---------|
 | 1 | Authentication Errors for Non-Logged-In Users | Multiple 401 (Unauthorized) errors appear in the browser console for non-logged-in users: <br>- GET request to /dj-rest-auth/user/ <br>- POST request to /dj-rest-auth/token/refresh/ <br>- Another GET request to /dj-rest-auth/user/ ([1](https://techcommunity.microsoft.com/t5/microsoft-entra/entra-id-user-sign-ins-non-interactive-failed-connection/td-p/3979487), [2](https://community.postman.com/t/response-shows-error-code-1-user-not-logged-in/18273), [3](https://support.servicenow.com/kb?id=kb_article_view&sysparm_article=KB0822637), [4](https://ux.stackexchange.com/questions/107705/how-should-i-handle-errors-due-to-not-being-logged-in), [5](https://www.appwrite.io/threads/1264927475725762636)) |
 | 2 | Error Fetching User Data | Error message in console: "Error fetching user data: Error: Request failed with status code 401" ([1](https://techcommunity.microsoft.com/t5/microsoft-entra/entra-id-user-sign-ins-non-interactive-failed-connection/td-p/3979487), [2](https://community.postman.com/t/response-shows-error-code-1-user-not-logged-in/18273), [3](https://support.servicenow.com/kb?id=kb_article_view&sysparm_article=KB0822637), [4](https://ux.stackexchange.com/questions/107705/how-should-i-handle-errors-due-to-not-being-logged-in), [5](https://www.appwrite.io/threads/1264927475725762636)) |
+
+[Back to top](#table-of-contents)
+
+### Safari Browser Bugs
+
+### Explanation
+
+The issues are primarily related to CORS (Cross-Origin Resource Sharing) and the strict handling of third-party cookies by Safari and iOS. When using different domains for the frontend and backend, browsers enforce strict CORS policies which can block requests if not properly configured. Additionally, Safari's privacy settings can block third-party cookies, which are crucial for maintaining sessions if using cookies for authentication.
+
+| Problem | Solution Implemented | Suggestion | Status | Solution Source |
+|---------|----------------------|------------|--------|------------------|
+| **CORS Issues**: XMLHttpRequest cannot load due to access control checks. | Implemented `CORS_ALLOWED_ORIGINS` and `CORS_ALLOW_CREDENTIALS` in Django settings. | Ensure that both domains are listed in `CORS_ALLOWED_ORIGINS`. Consider using the `proxy` setting in `package.json` during development to avoid CORS issues. | ✅ Implemented, but manual test failed on Safari | [Troubleshooting CORS Errors](https://www.linkedin.com/pulse/its-always-cors-problem-troubleshooting-solving-errors-carrubba-) |
+| **Third-party Cookies**: Strict third-party cookie policies on iOS/Safari. | Using `JWT_AUTH_SAMESITE = 'None'` and `JWT_AUTH_SECURE = True`. | Test if setting `SameSite=None` and `Secure=True` resolves the issue. Consider using local storage for tokens if cookies are blocked. | ✅ Implemented, but manual test failed on Safari | [Understanding CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors) |
+| **Domain Mismatch**: Using different domains for frontend and backend. | Separate domains for frontend and backend. | Consider using a single domain or subdomain for both frontend and backend to simplify CORS and cookie management. | ⚠️ Needs implementation and testing. | [How to Solve CORS Issues](https://beeceptor.com/docs/bypassing-cors/) |
+| **User Browser Settings**: Disabling third-party cookies by users. | Cannot control user browser settings. | Inform users about the need to enable third-party cookies or use local storage for session management. | ⚠️ Cannot be controlled by developer. | [Managing Cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies) |
+
+
+### Solutions
+
+1. **CORS Configuration**: Ensure that both the frontend and backend domains are included in your `CORS_ALLOWED_ORIGINS`. During development, you can use a proxy setting in your `package.json` to direct API requests to the backend, which can help avoid CORS issues.
+
+2. **Cookie Settings**: Since Safari enforces strict cookie policies, setting `SameSite=None` and `Secure=True` for your JWT cookies is essential. This allows cookies to be sent in cross-site requests, which is necessary for authentication to work correctly.
+
+3. **Domain Strategy**: Using a single domain or subdomain for both the frontend and backend can simplify CORS and cookie management, as requests would be considered same-origin.
+
+4. **User Browser Settings**: Inform users about the need to enable third-party cookies or consider using local storage for session management if cookies are blocked. This is something that cannot be controlled programmatically.
 
 [Back to top](#table-of-contents)
 
