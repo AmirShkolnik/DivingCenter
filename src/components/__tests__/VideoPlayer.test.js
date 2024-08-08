@@ -4,10 +4,14 @@ import '@testing-library/jest-dom/extend-expect';
 import VideoPlayer from '../Video/VideoPlayer';
 
 jest.mock('@cloudinary/react', () => ({
-  AdvancedVideo: ({ cldVid, publicId, ...divProps }) => {
-    // eslint-disable-next-line no-unused-vars
+  AdvancedVideo: ({ cldVid, publicId, playsInline, ...divProps }) => {
     return (
-      <div data-testid="mock-advanced-video" data-cldvid={cldVid} {...divProps}>
+      <div
+        data-testid="mock-advanced-video"
+        data-cldvid={cldVid}
+        data-playsinline={playsInline}
+        {...divProps}
+      >
         Mock AdvancedVideo
       </div>
     );
@@ -45,5 +49,12 @@ describe('VideoPlayer', () => {
       height: '100vh',
       overflow: 'hidden',
     });
+  });
+
+  test('includes playsInline attribute', () => {
+    render(<VideoPlayer />);
+
+    const videoElement = screen.getByTestId('mock-advanced-video');
+    expect(videoElement).toHaveAttribute('data-playsinline', 'true');
   });
 });

@@ -1,40 +1,44 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import VideoPlayer from '../Video/VideoPlayerSignIn';
+import VideoPlayerSignIn from '../Video/VideoPlayerSignIn';
 
 jest.mock('@cloudinary/react', () => ({
-  AdvancedVideo: ({ cldVid, publicId, ...divProps }) => {
-    // eslint-disable-next-line no-unused-vars
+  AdvancedVideo: ({ cldVid, playsInline, ...divProps }) => {
     return (
-      <div data-testid="mock-advanced-video" data-cldvid={cldVid} {...divProps}>
+      <div
+        data-testid="mock-advanced-video"
+        data-cldvid={cldVid}
+        data-playsinline={playsInline ? 'true' : 'false'}
+        {...divProps}
+      >
         Mock AdvancedVideo
       </div>
     );
   },
 }));
 
-describe('VideoPlayer', () => {
+describe('VideoPlayerSignIn', () => {
   test('renders without crashing', () => {
-    render(<VideoPlayer />);
+    render(<VideoPlayerSignIn />);
 
     // Check if the VideoPlayer component renders
     expect(screen.getByTestId('mock-advanced-video')).toBeInTheDocument();
   });
 
   test('renders the AdvancedVideo component with correct props', () => {
-    render(<VideoPlayer id="video123" publicId="public123" />);
+    render(<VideoPlayerSignIn />);
 
     // Check if the AdvancedVideo component is rendered
     const videoElement = screen.getByTestId('mock-advanced-video');
     expect(videoElement).toBeInTheDocument();
 
-    // Verify props are passed correctly (mock component does not pass props to real AdvancedVideo)
-    // This test is just to confirm the component renders, no actual prop validation for mock
+    // Verify that playsInline attribute is set
+    expect(videoElement).toHaveAttribute('data-playsinline', 'true');
   });
 
   test('applies the correct styles', () => {
-    const { container } = render(<VideoPlayer />);
+    const { container } = render(<VideoPlayerSignIn />);
 
     // Check container styles
     const videoContainer = container.querySelector('div');

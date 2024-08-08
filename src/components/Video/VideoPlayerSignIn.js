@@ -27,6 +27,7 @@ const VideoPlayerSignIn = () => {
         autoPlay
         muted
         loop
+        playsInline
         style={{
           width: '100%',
           height: '100%',
