@@ -24,7 +24,9 @@ describe('UpdateConfirmationModal', () => {
   test('renders modal when show is true', () => {
     renderModal();
     expect(screen.getByText('Confirm Update')).toBeInTheDocument();
-    expect(screen.getByText('Are you sure you want to update this item?')).toBeInTheDocument();
+    expect(
+      screen.getByText('Are you sure you want to update this item?')
+    ).toBeInTheDocument();
   });
 
   test('does not render modal when show is false', () => {

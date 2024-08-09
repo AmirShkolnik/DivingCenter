@@ -27,8 +27,14 @@ describe('Forbidden403', () => {
     expect(screen.getByText('403 - Forbidden')).toBeInTheDocument();
 
     // Check if the description text is displayed
-    expect(screen.getByText(/Oops! It looks like you've stumbled into restricted waters./i)).toBeInTheDocument();
-    expect(screen.getByText(/You don't have permission to access this area./i)).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        /Oops! It looks like you've stumbled into restricted waters./i
+      )
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(/You don't have permission to access this area./i)
+    ).toBeInTheDocument();
   });
 
   test('applies the correct styles', () => {

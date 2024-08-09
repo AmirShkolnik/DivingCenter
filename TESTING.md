@@ -742,29 +742,29 @@ The following table summarizes the testing files created for various components 
 
 | Component                     | Test File Link                                              | Status                          |
 |-------------------------------|-------------------------------------------------------------|---------------------------------|
-| App                           | [src/App.test.js](src/App.test.js)                          | PASS (6.399 s)                  |
-| Asset                         | [src/components/__tests__/Asset.test.js](src/components/__tests__/Asset.test.js) | PASS (10.7 s)                   |
-| Avatar                        | [src/components/__tests__/Avatar.test.js](src/components/__tests__/Avatar.test.js) | PASS (9.793 s)                  |
-| Footer                        | [src/components/__tests__/Footer.test.js](src/components/__tests__/Footer.test.js) | PASS (9.402 s)                  |
-| MoreDropDown                  | [src/components/__tests__/MoreDropDown.test.js](src/components/__tests__/MoreDropDown.test.js) | PASS (10.9 s)                   |
-| NavBar                        | [src/components/__tests__/NavBar.test.js](src/components/__tests__/NavBar.test.js) | PASS (11.295 s)                 |
-| NotFound                      | [src/components/__tests__/NotFound.test.js](src/components/__tests__/NotFound.test.js) | PASS (10.499 s)                 |
-| ScrollToTop                   | [src/components/__tests__/ScrollToTop.test.js](src/components/__tests__/ScrollToTop.test.js) | PASS (10 s)                     |
-| VideoPlayer                   | [src/components/__tests__/VideoPlayer.test.js](src/components/__tests__/VideoPlayer.test.js) | PASS (10.292 s)                 |
-| VideoPlayerSignIn             | [src/components/__tests__/VideoPlayerSignIn.test.js](src/components/__tests__/VideoPlayerSignIn.test.js) | PASS (10.308 s)                 |
-| VideoPlayerSignUp             | [src/components/__tests__/VideoPlayerSignUp.test.js](src/components/__tests__/VideoPlayerSignUp.test.js) | PASS (10.399 s)                 |
-| ServerError500                | [src/components/__tests__/ServerError500.test.js](src/components/__tests__/ServerError500.test.js) | PASS (10.301 s)                 |
-| Forbidden403                  | [src/components/__tests__/Forbidden403.test.js](src/components/__tests__/Forbidden403.test.js) | PASS (10.208 s)                 |
-| DeleteConfirmationModal       | [src/components/__tests__/DeleteConfirmationModal.test.js](src/components/__tests__/DeleteConfirmationModal.test.js) | PASS (10.623 s)                 |
-| UpdateConfirmationModal       | [src/components/__tests__/UpdateConfirmationModal.test.js](src/components/__tests__/UpdateConfirmationModal.test.js) | PASS (10.603 s)                 |
-| ErrorBoundary                 | [src/components/__tests__/ErrorBoundary.test.js](src/components/__tests__/ErrorBoundary.test.js) | PASS (9.497 s)                  |
+| App                           | [src/App.test.js](src/App.test.js)                          | PASS (9.409 s)                  |
+| Asset                         | [src/components/__tests__/Asset.test.js](src/components/__tests__/Asset.test.js) | PASS (14.807 s)                 |
+| Avatar                        | [src/components/__tests__/Avatar.test.js](src/components/__tests__/Avatar.test.js) | PASS (14.906 s)                 |
+| Footer                        | [src/components/__tests__/Footer.test.js](src/components/__tests__/Footer.test.js) | PASS (14.493 s)                 |
+| MoreDropDown                  | [src/components/__tests__/MoreDropDown.test.js](src/components/__tests__/MoreDropDown.test.js) | PASS (15.236 s)                 |
+| NavBar                        | [src/components/__tests__/NavBar.test.js](src/components/__tests__/NavBar.test.js) | PASS (15.834 s)                 |
+| NotFound                      | [src/components/__tests__/NotFound.test.js](src/components/__tests__/NotFound.test.js) | PASS (14.897 s)                 |
+| ScrollToTop                   | [src/components/__tests__/ScrollToTop.test.js](src/components/__tests__/ScrollToTop.test.js) | PASS (14.807 s)                 |
+| VideoPlayer                   | [src/components/__tests__/VideoPlayer.test.js](src/components/__tests__/VideoPlayer.test.js) | PASS (15.192 s)                 |
+| VideoPlayerSignIn             | [src/components/__tests__/VideoPlayerSignIn.test.js](src/components/__tests__/VideoPlayerSignIn.test.js) | PASS (14.804 s)                 |
+| VideoPlayerSignUp             | [src/components/__tests__/VideoPlayerSignUp.test.js](src/components/__tests__/VideoPlayerSignUp.test.js) | PASS (14.699 s)                 |
+| ServerError500                | [src/components/__tests__/ServerError500.test.js](src/components/__tests__/ServerError500.test.js) | PASS (15.083 s)                 |
+| Forbidden403                  | [src/components/__tests__/Forbidden403.test.js](src/components/__tests__/Forbidden403.test.js) | PASS (14.807 s)                 |
+| DeleteConfirmationModal       | [src/components/__tests__/DeleteConfirmationModal.test.js](src/components/__tests__/DeleteConfirmationModal.test.js) | PASS (15.521 s)                 |
+| UpdateConfirmationModal       | [src/components/__tests__/UpdateConfirmationModal.test.js](src/components/__tests__/UpdateConfirmationModal.test.js) | PASS (15.402 s)                 |
+| ErrorBoundary                 | [src/components/__tests__/ErrorBoundary.test.js](src/components/__tests__/ErrorBoundary.test.js) | PASS (14.705 s)                 |
 
 ### Summary of Test Results
 
 - **Total Test Suites**: 16
 - **Passed Test Suites**: 16
-- **Total Tests**: 50
-- **Passed Tests**: 50
+- **Total Tests**: 51
+- **Passed Tests**: 51
 - **Total Snapshots**: 0
 
 These results demonstrate the thoroughness of our testing approach and confirm that all components are functioning as expected within the Diving Center project. The successful passing of all tests provides confidence in the reliability and stability of the application's core components.

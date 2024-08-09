@@ -24,7 +24,9 @@ describe('DeleteConfirmationModal', () => {
   test('renders modal when show is true', () => {
     renderModal();
     expect(screen.getByText('Confirm Deletion')).toBeInTheDocument();
-    expect(screen.getByText('Are you sure you want to delete this item?')).toBeInTheDocument();
+    expect(
+      screen.getByText('Are you sure you want to delete this item?')
+    ).toBeInTheDocument();
   });
 
   test('does not render modal when show is false', () => {

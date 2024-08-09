@@ -27,9 +27,17 @@ describe('ServerError500', () => {
     expect(screen.getByText('500 - Internal Server Error')).toBeInTheDocument();
 
     // Check if the description text is displayed
-    expect(screen.getByText(/We've hit some unexpected turbulence!/i)).toBeInTheDocument();
-    expect(screen.getByText(/Our servers are experiencing difficulties./i)).toBeInTheDocument();
-    expect(screen.getByText(/Please try again later or contact support if the problem persists./i)).toBeInTheDocument();
+    expect(
+      screen.getByText(/We've hit some unexpected turbulence!/i)
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(/Our servers are experiencing difficulties./i)
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        /Please try again later or contact support if the problem persists./i
+      )
+    ).toBeInTheDocument();
   });
 
   test('applies the correct styles', () => {
