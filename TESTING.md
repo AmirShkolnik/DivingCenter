@@ -443,11 +443,11 @@ The manual testing process ensures that each of these features works correctly f
 
 | What was tested | Expected Result | Image | Fail/Pass |
 |-----------------|-----------------|-------|-----------|
-| Home link | Clicking "Home" navigates to the home page | <details><summary>Home Navigation</summary><img src="doc/testing/divingreact/pages/home.png" alt="Home Navigation"></details> | ✅ |
-| Contact Us link | Clicking "Contact Us" navigates to the contact page | <details><summary>Contact Us Navigation</summary><img src="doc/testing/divingreact/pages/contact-us.png" alt="Contact Us Navigation"></details> | ✅ |
-| Courses link | Clicking "Courses" navigates to the courses page | <details><summary>Courses Navigation</summary><img src="doc/testing/divingreact/pages/courses-page.png" alt="Courses Navigation"></details> | ✅ |
-| Sign In link | Clicking "Sign In" navigates to the sign in page | <details><summary>Sign In Navigation</summary><img src="doc/testing/divingreact/pages/sign-in.png" alt="Sign In Navigation"></details> | ✅ |
-| Sign Up link | Clicking "Sign Up" navigates to the sign up page | <details><summary>Sign Up Navigation</summary><img src="doc/testing/divingreact/pages/sign-up.png" alt="Sign Up Navigation"></details> | ✅ |
+| Home link | Clicking "Home" navigates to the home page | <details><summary>Home Navigation</summary><img src="doc/testing/divingreact/non-logged-in/home.png" alt="Home Navigation"></details> | ✅ |
+| Contact Us link | Clicking "Contact Us" navigates to the contact page | <details><summary>Contact Us Navigation</summary><img src="doc/testing/divingreact/non-logged-in/contactus.png" alt="Contact Us Navigation"></details> | ✅ |
+| Courses link | Clicking "Courses" navigates to the courses page | <details><summary>Courses Navigation</summary><img src="doc/testing/divingreact/non-logged-in/courses.png" alt="Courses Navigation"></details> | ✅ |
+| Sign In link | Clicking "Sign In" navigates to the sign in page | <details><summary>Sign In Navigation</summary><img src="doc/testing/divingreact/non-logged-in/sign-in.png" alt="Sign In Navigation"></details> | ✅ |
+| Sign Up link | Clicking "Sign Up" navigates to the sign up page | <details><summary>Sign Up Navigation</summary><img src="doc/testing/divingreact/non-logged-in/sign-up.png" alt="Sign Up Navigation"></details> | ✅ |
 
 [Back to top](#table-of-contents)
 
