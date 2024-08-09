@@ -700,9 +700,17 @@ Responsiveness and interactive elements were thoroughly tested on various device
 | Chrome DevTools         | All                      |
 | Firefox Responsive Mode | All                      |
 | iPhone xr               | All |
+| iPhone 14 pro               | All |
+| iPhone 14               | All |
+| iPhone 15              | All |
+| MacBook Pro               | All |
 | samsung s21               | All |
 | Tablet                    | All                    |
 | Real Android Device     | All                      |
+| PC - Lenovo              | All |
+| Laptop - Lenovo Legion             | All |
+
+[Back to top](#table-of-contents)
 
 ## Automated Testing
 
