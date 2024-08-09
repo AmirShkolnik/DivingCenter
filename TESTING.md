@@ -294,7 +294,7 @@ These styles are essential for ensuring optimal font rendering and custom scroll
 
 **npm test**
 
-![npm test Screenshot](doc/testing/divingreact/npmtest/npmtest.png)
+![npm test Screenshot](doc/testing/npmtest/npmtest.png)
 
 </details>
 
