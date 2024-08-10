@@ -53,7 +53,7 @@ export const MoreDropdown = ({ handleEdit, handleDelete }) => {
   );
 };
 
-export const ProfileEditDropdown = ({ id }) => {
+export const ProfileEditDropdown = ({ id, handleDeleteProfile }) => {
   const history = useHistory();
   return (
     <Dropdown className={`ml-auto px-3 ${styles.Absolute}`} drop="left">
@@ -79,6 +79,13 @@ export const ProfileEditDropdown = ({ id }) => {
           aria-label="edit-password"
         >
           <i className="fas fa-key" /> Change Password
+        </Dropdown.Item>
+        <Dropdown.Item
+          className={styles.DropdownItem}
+          onClick={handleDeleteProfile}
+          aria-label="delete-profile"
+        >
+          <i className="fas fa-trash-alt" /> Delete Profile
         </Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>

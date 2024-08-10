@@ -24,7 +24,6 @@ axios.interceptors.response.use(
       }
     } else if (error.request) {
       // The request was made but no response was received
-      console.log('Network error. Please try again later.');
     }
     return Promise.reject(error);
   }
