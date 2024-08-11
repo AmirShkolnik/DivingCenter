@@ -2,7 +2,6 @@ import React from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
 import styles from '../styles/MoreDropdown.module.css';
 import { useHistory } from 'react-router-dom';
-import axios from 'axios';
 
 const ThreeDots = React.forwardRef(({ onClick }, ref) => (
   <button
@@ -27,50 +26,44 @@ const ThreeDots = React.forwardRef(({ onClick }, ref) => (
 
 ThreeDots.displayName = 'ThreeDots';
 
-export const MoreDropdown = ({ handleEdit, handleDelete }) => (
-  <Dropdown className="ml-auto" drop="left">
-    <Dropdown.Toggle as={ThreeDots} />
-    <Dropdown.Menu
-      className={`text-center ${styles.DropdownMenu}`}
-      popperConfig={{ strategy: 'fixed' }}
-    >
-      <Dropdown.Item
-        className={styles.DropdownItem}
-        onClick={handleEdit}
-        aria-label="edit"
+export const MoreDropdown = ({ handleEdit, handleDelete, profileId }) => {
+  const history = useHistory();
+
+  return (
+    <Dropdown className="ml-auto" drop="left">
+      <Dropdown.Toggle as={ThreeDots} />
+      <Dropdown.Menu
+        className={`text-center ${styles.DropdownMenu}`}
+        popperConfig={{ strategy: 'fixed' }}
       >
-        <i className="fas fa-edit" aria-hidden="true" /> Edit
-      </Dropdown.Item>
-      <Dropdown.Item
-        className={styles.DropdownItem}
-        onClick={handleDelete}
-        aria-label="delete"
-      >
-        <i className="fas fa-trash-alt" aria-hidden="true" /> Delete
-      </Dropdown.Item>
-    </Dropdown.Menu>
-  </Dropdown>
-);
+        <Dropdown.Item
+          className={styles.DropdownItem}
+          onClick={handleEdit}
+          aria-label="edit"
+        >
+          <i className="fas fa-edit" aria-hidden="true" /> Edit
+        </Dropdown.Item>
+        <Dropdown.Item
+          className={styles.DropdownItem}
+          onClick={handleDelete}
+          aria-label="delete"
+        >
+          <i className="fas fa-trash-alt" aria-hidden="true" /> Delete
+        </Dropdown.Item>
+        <Dropdown.Item
+          className={styles.DropdownItem}
+          onClick={() => history.push(`/profiles/${profileId}/delete`)}
+          aria-label="delete-profile"
+        >
+          <i className="fas fa-user-times" aria-hidden="true" /> Delete Profile
+        </Dropdown.Item>
+      </Dropdown.Menu>
+    </Dropdown>
+  );
+};
 
 export const ProfileEditDropdown = ({ id }) => {
   const history = useHistory();
-
-  const handleDeleteProfile = async () => {
-    try {
-      console.log(`Attempting to delete profile with ID: ${id}`);
-      const response = await axios.delete(`/profiles/${id}/delete/`);
-      console.log('Delete response:', response);
-
-      await axios.post('/logout/');
-      console.log('User logged out successfully');
-
-      localStorage.removeItem('authToken');
-      history.push('/');
-    } catch (error) {
-      console.error('There was an error deleting the profile!', error);
-    }
-  };
-
   return (
     <Dropdown className={`ml-auto px-3 ${styles.Absolute}`} drop="left">
       <Dropdown.Toggle as={ThreeDots} />
@@ -95,13 +88,6 @@ export const ProfileEditDropdown = ({ id }) => {
           aria-label="edit-password"
         >
           <i className="fas fa-key" aria-hidden="true" /> Change Password
-        </Dropdown.Item>
-        <Dropdown.Item
-          className={styles.DropdownItem}
-          onClick={handleDeleteProfile}
-          aria-label="delete-profile"
-        >
-          <i className="fas fa-trash-alt" aria-hidden="true" /> Delete Profile
         </Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>

@@ -34,6 +34,7 @@ import BookingForm from './pages/bookings/BookingForm';
 import BookingPage from './pages/bookings/BookingPage';
 import ScrollToTop from './components/ScrollToTop';
 import ErrorBoundary from './components/ErrorBoundary';
+import ProfileDeleteForm from './pages/profiles/ProfileDeleteForm';
 
 function App() {
   const currentUser = useCurrentUser();
@@ -125,6 +126,10 @@ function App() {
                 render={() =>
                   currentUser ? <BookingForm /> : <Redirect to="/signin" />
                 }
+              />
+              <Route
+                path="/profiles/:id/delete"
+                component={ProfileDeleteForm}
               />
               <Route exact path="/courses" component={CoursesPage} />
               <Route exact path="/courses/:slug" component={CourseSingle} />
