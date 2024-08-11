@@ -320,6 +320,26 @@
   color: #a1a1a1;
 }
 
+.ReviewForm .RatingContainer label {
+  font-size: 30px;
+  margin-right: 1rem;
+  margin-bottom: 0;
+}
+
+.RatingContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.RatingContainer label {
+  font-size: 20px;
+  margin-right: 10px;
+  margin-bottom: 0;
+  line-height: 30px;
+}
+
+
 @media screen and (min-width: 280px) and (max-width: 320px) {
   .CourseContainer {
     padding: 1rem;

@@ -24,7 +24,6 @@ function CourseSingle() {
   const [showUpdateConfirmation, setShowUpdateConfirmation] = useState(false);
   const [hasChanges, setHasChanges] = useState(false);
 
-  // Ref for the reviews headline
   const reviewsHeadlineRef = useRef(null);
 
   useEffect(() => {
@@ -145,7 +144,6 @@ function CourseSingle() {
     setReview({ content: reviewContent, rating: reviewRating });
     setIsEditing(true);
     setShowReviewForm(true);
-    // Scroll to the reviews headline
     if (reviewsHeadlineRef.current) {
       reviewsHeadlineRef.current.scrollIntoView({ behavior: 'smooth' });
     }
@@ -271,7 +269,11 @@ function CourseSingle() {
                     />
                   </Form.Group>
                   <div className={styles.RatingContainer}>
-                    <Form.Label>Your Rating</Form.Label>
+                    <Form.Label
+                      style={{ marginRight: '10px', fontSize: '20px' }}
+                    >
+                      Your Rating
+                    </Form.Label>
                     <StarRatings
                       rating={review.rating}
                       starRatedColor="#c7ae6a"
