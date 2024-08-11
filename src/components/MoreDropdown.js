@@ -3,6 +3,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import styles from '../styles/MoreDropdown.module.css';
 import { useHistory } from 'react-router-dom';
 
+// ThreeDots component
 const ThreeDots = React.forwardRef(({ onClick }, ref) => (
   <button
     ref={ref}
@@ -26,12 +27,12 @@ const ThreeDots = React.forwardRef(({ onClick }, ref) => (
 
 ThreeDots.displayName = 'ThreeDots';
 
-export const MoreDropdown = ({ handleEdit, handleDelete, profileId }) => {
-  const history = useHistory();
-
+// MoreDropdown component
+export const MoreDropdown = ({ handleEdit, handleDelete }) => {
   return (
     <Dropdown className="ml-auto" drop="left">
       <Dropdown.Toggle as={ThreeDots} />
+
       <Dropdown.Menu
         className={`text-center ${styles.DropdownMenu}`}
         popperConfig={{ strategy: 'fixed' }}
@@ -49,13 +50,6 @@ export const MoreDropdown = ({ handleEdit, handleDelete, profileId }) => {
           aria-label="delete"
         >
           <i className="fas fa-trash-alt" aria-hidden="true" /> Delete
-        </Dropdown.Item>
-        <Dropdown.Item
-          className={styles.DropdownItem}
-          onClick={() => history.push(`/profiles/${profileId}/delete`)}
-          aria-label="delete-profile"
-        >
-          <i className="fas fa-user-times" aria-hidden="true" /> Delete Profile
         </Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
