@@ -12,6 +12,7 @@ axios.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response) {
+      console.error('Error response:', error.response);
       switch (error.response.status) {
         case 403:
           window.location = '/403';
@@ -23,7 +24,7 @@ axios.interceptors.response.use(
           break;
       }
     } else if (error.request) {
-      // The request was made but no response was received
+      console.error('No response received:', error.request);
     }
     return Promise.reject(error);
   }

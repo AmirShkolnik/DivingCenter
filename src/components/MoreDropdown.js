@@ -2,10 +2,10 @@ import React from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
 import styles from '../styles/MoreDropdown.module.css';
 import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 
 const ThreeDots = React.forwardRef(({ onClick }, ref) => (
-  <i
-    className="fas fa-ellipsis-v"
+  <button
     ref={ref}
     onClick={(e) => {
       e.preventDefault();
@@ -18,9 +18,11 @@ const ThreeDots = React.forwardRef(({ onClick }, ref) => (
       }
     }}
     aria-label="toggle-dropdown"
-    role="button"
-    tabIndex={0}
-  />
+    className={styles.ThreeDotsButton}
+    type="button"
+  >
+    <i className="fas fa-ellipsis-v" aria-hidden="true" />
+  </button>
 ));
 
 ThreeDots.displayName = 'ThreeDots';
@@ -29,7 +31,6 @@ export const MoreDropdown = ({ handleEdit, handleDelete }) => {
   return (
     <Dropdown className="ml-auto" drop="left">
       <Dropdown.Toggle as={ThreeDots} />
-
       <Dropdown.Menu
         className={`text-center ${styles.DropdownMenu}`}
         popperConfig={{ strategy: 'fixed' }}
@@ -39,22 +40,44 @@ export const MoreDropdown = ({ handleEdit, handleDelete }) => {
           onClick={handleEdit}
           aria-label="edit"
         >
-          <i className="fas fa-edit" /> Edit
+          <i className="fas fa-edit" aria-hidden="true" /> Edit
         </Dropdown.Item>
         <Dropdown.Item
           className={styles.DropdownItem}
           onClick={handleDelete}
           aria-label="delete"
         >
-          <i className="fas fa-trash-alt" /> Delete
+          <i className="fas fa-trash-alt" aria-hidden="true" /> Delete
         </Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
   );
 };
 
-export const ProfileEditDropdown = ({ id, handleDeleteProfile }) => {
+export const ProfileEditDropdown = ({ id }) => {
   const history = useHistory();
+
+  const handleDeleteProfile = async () => {
+    try {
+      console.log(`Attempting to delete profile with ID: ${id}`);
+      const response = await axios.delete(`/profiles/${id}/delete/`);
+      console.log('Delete response:', response);
+
+      // Log out the user after deletion
+      await axios.post('/logout/');
+      console.log('User logged out successfully');
+
+      // Clear any authentication tokens or session data
+      localStorage.removeItem('authToken');
+      // document.cookie = 'authToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+
+      // Redirect to home page or a goodbye page
+      history.push('/');
+    } catch (error) {
+      console.error('There was an error deleting the profile!', error);
+    }
+  };
+
   return (
     <Dropdown className={`ml-auto px-3 ${styles.Absolute}`} drop="left">
       <Dropdown.Toggle as={ThreeDots} />
@@ -64,28 +87,28 @@ export const ProfileEditDropdown = ({ id, handleDeleteProfile }) => {
           onClick={() => history.push(`/profiles/${id}/edit`)}
           aria-label="edit-profile"
         >
-          <i className="fas fa-edit" /> Edit Profile
+          <i className="fas fa-edit" aria-hidden="true" /> Edit Profile
         </Dropdown.Item>
         <Dropdown.Item
           className={styles.DropdownItem}
           onClick={() => history.push(`/profiles/${id}/edit/username`)}
           aria-label="edit-username"
         >
-          <i className="far fa-id-card" /> Change Username
+          <i className="far fa-id-card" aria-hidden="true" /> Change Username
         </Dropdown.Item>
         <Dropdown.Item
           className={styles.DropdownItem}
           onClick={() => history.push(`/profiles/${id}/edit/password`)}
           aria-label="edit-password"
         >
-          <i className="fas fa-key" /> Change Password
+          <i className="fas fa-key" aria-hidden="true" /> Change Password
         </Dropdown.Item>
         <Dropdown.Item
           className={styles.DropdownItem}
           onClick={handleDeleteProfile}
           aria-label="delete-profile"
         >
-          <i className="fas fa-trash-alt" /> Delete Profile
+          <i className="fas fa-trash-alt" aria-hidden="true" /> Delete Profile
         </Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>

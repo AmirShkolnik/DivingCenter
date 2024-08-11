@@ -18,3 +18,19 @@
   right: 0;
   z-index: 99;
 }
+
+.ThreeDotsButton {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: #b99a45;
+}
+
+.ThreeDotsButton:hover {
+  color: #0d5589;
+}
+
+.ThreeDotsButton:focus {
+  outline: none;
+}
