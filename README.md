@@ -2301,7 +2301,6 @@ All images and videos for the home page, sign in, sign up, posts, profiles, and 
 
 ## Acknowledgements
 
-- My mentor, Antonio Rodriguez, for his guidance and encouragement.
 - My Code Institute class facilitator, Kristyna Wach, for her cheerful motivation and encouragement.
 - Slack community for support and advice.
 - Stackoverflow community for information.
