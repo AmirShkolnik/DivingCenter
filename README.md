@@ -2140,8 +2140,6 @@ By adopting this approach, the project benefits from a dedicated and optimized i
 
 ## Cloning the Repository
 
-# Cloning and Forking
-
 **Note**: This project consists of two repositories: the frontend repository and the API repository. The instructions below are for the frontend repository. For the API repository, please follow the same steps but use the API repository URL: https://github.com/AmirShkolnik/DivingCenter_API
 
 - **Local Setup:**
