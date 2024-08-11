@@ -27,32 +27,30 @@ const ThreeDots = React.forwardRef(({ onClick }, ref) => (
 
 ThreeDots.displayName = 'ThreeDots';
 
-export const MoreDropdown = ({ handleEdit, handleDelete }) => {
-  return (
-    <Dropdown className="ml-auto" drop="left">
-      <Dropdown.Toggle as={ThreeDots} />
-      <Dropdown.Menu
-        className={`text-center ${styles.DropdownMenu}`}
-        popperConfig={{ strategy: 'fixed' }}
+export const MoreDropdown = ({ handleEdit, handleDelete }) => (
+  <Dropdown className="ml-auto" drop="left">
+    <Dropdown.Toggle as={ThreeDots} />
+    <Dropdown.Menu
+      className={`text-center ${styles.DropdownMenu}`}
+      popperConfig={{ strategy: 'fixed' }}
+    >
+      <Dropdown.Item
+        className={styles.DropdownItem}
+        onClick={handleEdit}
+        aria-label="edit"
       >
-        <Dropdown.Item
-          className={styles.DropdownItem}
-          onClick={handleEdit}
-          aria-label="edit"
-        >
-          <i className="fas fa-edit" aria-hidden="true" /> Edit
-        </Dropdown.Item>
-        <Dropdown.Item
-          className={styles.DropdownItem}
-          onClick={handleDelete}
-          aria-label="delete"
-        >
-          <i className="fas fa-trash-alt" aria-hidden="true" /> Delete
-        </Dropdown.Item>
-      </Dropdown.Menu>
-    </Dropdown>
-  );
-};
+        <i className="fas fa-edit" aria-hidden="true" /> Edit
+      </Dropdown.Item>
+      <Dropdown.Item
+        className={styles.DropdownItem}
+        onClick={handleDelete}
+        aria-label="delete"
+      >
+        <i className="fas fa-trash-alt" aria-hidden="true" /> Delete
+      </Dropdown.Item>
+    </Dropdown.Menu>
+  </Dropdown>
+);
 
 export const ProfileEditDropdown = ({ id }) => {
   const history = useHistory();
@@ -63,15 +61,10 @@ export const ProfileEditDropdown = ({ id }) => {
       const response = await axios.delete(`/profiles/${id}/delete/`);
       console.log('Delete response:', response);
 
-      // Log out the user after deletion
       await axios.post('/logout/');
       console.log('User logged out successfully');
 
-      // Clear any authentication tokens or session data
       localStorage.removeItem('authToken');
-      // document.cookie = 'authToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-
-      // Redirect to home page or a goodbye page
       history.push('/');
     } catch (error) {
       console.error('There was an error deleting the profile!', error);
