@@ -3,7 +3,6 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import styles from '../styles/MoreDropdown.module.css';
 import { useHistory } from 'react-router-dom';
 
-// ThreeDots component
 const ThreeDots = React.forwardRef(({ onClick }, ref) => (
   <button
     ref={ref}
@@ -27,7 +26,6 @@ const ThreeDots = React.forwardRef(({ onClick }, ref) => (
 
 ThreeDots.displayName = 'ThreeDots';
 
-// MoreDropdown component
 export const MoreDropdown = ({ handleEdit, handleDelete }) => {
   return (
     <Dropdown className="ml-auto" drop="left">

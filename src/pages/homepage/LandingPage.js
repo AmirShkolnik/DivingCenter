@@ -10,7 +10,7 @@ import {
 import { removeTokenTimestamp } from '../../utils/utils';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Avatar from '../../components/Avatar'; // Import Avatar component
+import Avatar from '../../components/Avatar';
 
 const LandingPage = () => {
   const currentUser = useCurrentUser();
