@@ -398,7 +398,7 @@ Click to exploer the [Diving Center API - DataBase](https://github.com/AmirShkol
 
 [Back to top](#table-of-contents)
 
-### Milestones
+## Milestones
 
 **A milestone**, is a major checkpoint or goal in a project's timeline that signifies the completion of a key phase or the achievement of a significant objective.
 
@@ -434,7 +434,7 @@ Click to exploer the [Diving Center API - DataBase](https://github.com/AmirShkol
 
 [Back to top](#table-of-contents)
 
-### Epics
+## Epics
 
 **An epic** is a large feature or goal that is divided into smaller tasks or user stories to be completed over multiple sprints.
 
