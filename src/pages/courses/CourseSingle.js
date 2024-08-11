@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { Container, Button, Form, Alert, Spinner } from 'react-bootstrap';
 import StarRatings from 'react-star-ratings';
@@ -23,6 +23,9 @@ function CourseSingle() {
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
   const [showUpdateConfirmation, setShowUpdateConfirmation] = useState(false);
   const [hasChanges, setHasChanges] = useState(false);
+
+  // Ref for the reviews headline
+  const reviewsHeadlineRef = useRef(null);
 
   useEffect(() => {
     const fetchCourse = async () => {
@@ -142,7 +145,10 @@ function CourseSingle() {
     setReview({ content: reviewContent, rating: reviewRating });
     setIsEditing(true);
     setShowReviewForm(true);
-    toast.info('Editing review...');
+    // Scroll to the reviews headline
+    if (reviewsHeadlineRef.current) {
+      reviewsHeadlineRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   const calculateAverageRating = (reviews) => {
@@ -241,7 +247,7 @@ function CourseSingle() {
           <p className={styles.CourseType}>Course Type: {course.course_type}</p>
 
           <div className={styles.ReviewSection}>
-            <h2>Reviews</h2>
+            <h2 ref={reviewsHeadlineRef}>Reviews</h2>
             {!userReview && !showReviewForm && (
               <Button
                 onClick={handleAddReview}
@@ -251,50 +257,52 @@ function CourseSingle() {
               </Button>
             )}
             {(showReviewForm || isEditing) && (
-              <Form onSubmit={handleSubmitReview}>
-                <Form.Group>
-                  <Form.Label>Your Review</Form.Label>
-                  <Form.Control
-                    as="textarea"
-                    rows={3}
-                    name="content"
-                    value={review.content}
-                    onChange={handleReviewChange}
-                    required
-                  />
-                </Form.Group>
-                <div className={styles.RatingContainer}>
-                  <Form.Label>Your Rating</Form.Label>
-                  <StarRatings
-                    rating={review.rating}
-                    starRatedColor="#c7ae6a"
-                    changeRating={handleRatingChange}
-                    numberOfStars={5}
-                    name="rating"
-                    starDimension="30px"
-                    starSpacing="5px"
-                  />
-                </div>
-                <div className={styles.ButtonContainer}>
-                  <Button
-                    type="submit"
-                    className={`${styles.Button} ${styles.Blue}`}
-                    disabled={!hasChanges}
-                  >
-                    {isEditing ? 'Update Review' : 'Submit Review'}
-                  </Button>
-                  <Button
-                    onClick={() => {
-                      setIsEditing(false);
-                      setShowReviewForm(false);
-                      toast.info('Review cancelled.');
-                    }}
-                    className={`${styles.Button} ${styles.modalCancelButton}`}
-                  >
-                    Cancel
-                  </Button>
-                </div>
-              </Form>
+              <div>
+                <Form onSubmit={handleSubmitReview}>
+                  <Form.Group>
+                    <Form.Label>Your Review</Form.Label>
+                    <Form.Control
+                      as="textarea"
+                      rows={3}
+                      name="content"
+                      value={review.content}
+                      onChange={handleReviewChange}
+                      required
+                    />
+                  </Form.Group>
+                  <div className={styles.RatingContainer}>
+                    <Form.Label>Your Rating</Form.Label>
+                    <StarRatings
+                      rating={review.rating}
+                      starRatedColor="#c7ae6a"
+                      changeRating={handleRatingChange}
+                      numberOfStars={5}
+                      name="rating"
+                      starDimension="30px"
+                      starSpacing="5px"
+                    />
+                  </div>
+                  <div className={styles.ButtonContainer}>
+                    <Button
+                      type="submit"
+                      className={`${styles.Button} ${styles.Blue}`}
+                      disabled={!hasChanges}
+                    >
+                      {isEditing ? 'Update Review' : 'Submit Review'}
+                    </Button>
+                    <Button
+                      onClick={() => {
+                        setIsEditing(false);
+                        setShowReviewForm(false);
+                        toast.info('Review cancelled.');
+                      }}
+                      className={`${styles.Button} ${styles.modalCancelButton}`}
+                    >
+                      Cancel
+                    </Button>
+                  </div>
+                </Form>
+              </div>
             )}
             {course.reviews &&
               course.reviews.map((review) => (
